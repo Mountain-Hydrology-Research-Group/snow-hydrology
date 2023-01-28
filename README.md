@@ -1,20 +1,19 @@
-# Data Analysis in Water Sciences
+# Snow Hydrology
 
-**CEE 465 / CEWA 565**
+**CEWA 573**
 
 This website is the home of labs, assignments, and resources for this class.
 
-This course covers fundamental topics related to data analysis using modern computer techniques, with applications to water sciences (but techniques are applicable to many science disciplines), including:
- * Statistical inference testing and error estimation
- * Linear and quantile-based regression models
- * Monte Carlo simulation
- * Time series analysis
- * Bayes theorem
- * Data visualization 
+This course covers fundamental topics related to snow physics and hydrology using modern computer techniques, inlcuding:
+ * Snow mass balance
+ * Snowpack energy balance
+ * Data plotting and visualization
+ * Turbulence over snow
+ * Mountain meteorology 
 
-**Prerequisite:** Any one of the following recommended: IND E 315; AMATH 301 CSE 142; Knowledge of basic statistics and computer programming (Python, R, MATLAB)
+**Prerequisites:** Graduate level standing or permission of the instructor
 
-**Offered:** Autumn quarters
+**Offered:** Spring quarter
 
 
 
