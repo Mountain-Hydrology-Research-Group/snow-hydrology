@@ -1,20 +1,17 @@
 
-# Syllabus: CEE 465 & CEWA 565
+# Syllabus: CEWA 573
 
 ## Course Overview
 
-**Data Analysis in Water Sciences - Fall Quarter, 2022**
+**Snow Hydrology - Spring Quarter, 2023**
 
 The course will cover a number of fundamental topics related to data analysis including statistical inference testing and error estimation, use of linear and quantile-based regression models, Monte Carlo simulation, time series analysis, Bayes theorem, and data visualization using modern computer techniques.
 
-| **CEE 465** | SLN 12184 | 4 units |
-| **CEWA 565A** | SLN 12271 | 4 units |
-| **CEWA 565B PCE** | SLN 12272 | 4 units |
+| **CEWA 573A** | SLN 12271 | 4 units |
+| **CEWA 573B PCE** | SLN 12272 | 4 units |
 
 
 **Instructor:**      Jessica Lundquist, jdlund@uw.edu
-
-**TA:**          Danny Hogan, dlhogan@uw.edu 
 
 **Lectures:**      Tuesdays & Thursdays: 10:30 am - 12:20 pm (Pacific Time)
 
