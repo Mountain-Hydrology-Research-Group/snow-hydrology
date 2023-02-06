@@ -1,5 +1,5 @@
 
-# Syllabus: CEWA 573
+# Syllabus: CEWA 568
 
 ## Course Overview
 
