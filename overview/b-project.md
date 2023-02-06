@@ -1,7 +1,7 @@
 
-# Course Project: CEWA 565
+# Course Project: CEWA 568
 
-The goal of the course project is to give you hands on experience dealing with data of particular interest to you, as well as experience writing about and presenting data and statistical information. Ask and answer a question (pose a hypothesis), using a variety of analysis techniques, and clearly address the statistical uncertainty of the answer. Explain your objectives, your data source, your methodology, and your results. Discuss remaining uncertainties.Project will consist of an oral presentation (20% of total) and a written report (80% of total), which will be no longer than 10 pages (for a group of two; or 15 for a group of three), including figures.
+The goal of the course project is to give you hands on explaining and teaching topics of particular interest to you, as well as experience writing about and presenting data and snow hydrology information. Project will consist of an oral presentation (20% of total) and a written report (80% of total), which will be no longer than 10 pages (for a group of two; or 15 for a group of three), including figures.
 
 ```note
 **Sources of help:**
@@ -12,26 +12,12 @@ UW has services to help people with [statistics](https://www.stat.washington.edu
 
 ## Potential project ideas...
 
-You are welcome to use your own data and answer a question of interest to you and relevant to your own research – please let the instructor know as early as possible so that we can make sure you have sufficient data to be successful. Alternatively, you may choose one of the projects below. Multiple groups may answer the same general question, but they should pick different specific data or specific tests to use, which can be coordinated in conjunction with the instructor. Past project examples are available on the [class Canvas page](https://canvas.uw.edu/) under *Files* > *Student Projects and Presentations* > *Project Examples*.
+You are welcome to use your own data and answer a question of interest to you and relevant to your own research – please let the instructor know as early as possible so that we can make sure you have sufficient data to be successful. Alternatively, you may choose one of the projects below. 
 
-1. **How does forest harvesting affect flooding?** Using data from the [HJ Andrews experimental forest](https://andrewsforest.oregonstate.edu/), determine whether the risk of flooding has increased following forest harvesting. You may download timeseries data from the [class Canvas page](https://canvas.uw.edu/) or from the [HJ Andrews data page](https://andrewsforest.oregonstate.edu/data). 
-* Watershed 1 was a 400- to 500-year old-growth forest, measured from 1953-1961; from 1962-66, it was 100% clearcut, and in 1967, it was burned. 
-* Watershed 2 was kept as a control during this time.
-Using a variety of techniques we learned in class, as well as others you may encounter in the literature (use at least three different tests), determine whether forest removal increases flood risk at different return intervals in the HJ Andrews area.  What is your confidence in this (Type I and Type II errors)?  How sensitive are your results to the statistical tests you chose?
+1. **How does weather vary in a high-elevation valley in Colorado?**  The U.S. Department of Energy and the National Oceanographic and Atmospheric Administration have been measuring a lot in the East River Basin of Colorado, as part of the [SAIL and SPLASH](https://www.arm.gov/news/features/post/81524) campaigns.  The data is publicly available for both [SAIL](https://adc.arm.gov/discovery/#/results/s:guc/site) and [SPLASH](https://psl.noaa.gov/splash/), and your TA, Danny, can help with questions and processsing code. Talk to Jessica and/or Danny if you want to work on a project using these data. 
 
-2. **How does forest regeneration (following harvesting) change summer streamflow, or low flows?** Similar to question 1, again using the HJ Andrews data.  See [Perry & Jones (2017)](https://doi.org/10.1002/eco.1790) paper on this topic. (Ask the instructor for a copy of this paper if you're unable to access it online)
 
-3. **How does weather vary in a high-elevation valley in Colorado?**  The U.S. Department of Energy and the National Oceanographic and Atmospheric Administration have been measuring a lot in the East River Basin of Colorado, as part of the [SAIL and SPLASH](https://www.arm.gov/news/features/post/81524) campaigns.  The data is publicly available for both [SAIL](https://adc.arm.gov/discovery/#/results/s:guc/site) and [SPLASH](https://psl.noaa.gov/splash/), and your TA, Danny, can help with questions and processsing code. Talk to Jessica and/or Danny if you want to work on a project using these data. 
-
-4. **How does stream temperature in different months and different streams relate to the onset date of snowmelt runoff (when the streams start rising)?** Elevated stream temperatures can be unhealthy for fish if snow melts earlier (resulting in earlier streamflow). You may download time series of discharge and stream temperature [here](https://depts.washington.edu/mtnhydr/Pages/Data/yosemite.shtml) for different streams in Yosemite National Park, California. Using a variety of techniques we learned in class, as well as others you may encounter in the literature (use at least three different tests), determine whether stream temperature is significantly changed by streamflow timing. What is your confidence in this? You may want to consider different months of the year or different times of the day (e.g., daily maximum temperature vs. daily mean), and you may want to compare and contrast streams of different sizes. (See this [guide](https://depts.washington.edu/mtnhydr/Pages/Data/yosemite/Lundquist_2016_WRR_SupportingInfo.pdf) to learn more about these sites. Also, talk to Jessica if you want more recent data.)
-
-5. **Does snow accumulation and/or melt change after forest disturbance?  How?** (Please ask Jessica if you’re interested in this project.)
-
-6. **How do temperature and relative humidity vary across San Juan Island?  Are there potential locations of climate refugia?** (Please ask Jessica if you’re interested in this project.)
-
-7. **What controls changes in groundwater across property on the Olympic Peninsula?**  (These data are provided by a CEE alumni family, and Jessica can put you in touch with them if you are interested.)
-
-7.  **Choose your own adventure...**
+2.  **Choose your own adventure...**
 
 
 ## Grading Rubic
