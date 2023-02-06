@@ -1,8 +1,8 @@
-# 6) Bayesian Statistics
+# 6) Turbulent transfer above the snow
 
 
 ```note
-## Lab 6: Bayesian Statistics
+## Lab 6: Turbulence and mass and energy balance
 
 **Lab 6-1: A Bayesian Example**
 
