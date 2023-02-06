@@ -1,9 +1,8 @@
-# 2) Hypothesis Testing
+# 2) Mass Balance:  How much snow is there?
 
-- [Confidence Intervals](lab2/confidence-intervals.ipynb) with our [snow depth guesses](data/snow_depth_guesses.csv)
 
 ```note
-## Lab 2: Hypothesis Testing
+## Lab 2: Mass Balance
 
 Download the lab and data files to your computer. Then, upload them to your JupyterHub [following the instructions here](/resources/b-learning-jupyter.html#working-with-files-on-our-jupyterhub).
 
