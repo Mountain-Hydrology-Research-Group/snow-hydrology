@@ -1,4 +1,4 @@
-# 1) Python, Statistics Review
+# 1) What is snow? Phases and properties of matter
 
 Each week, the labs are designed to give you specific coding examples to help you with that week's homework.
 Please look through the lab material before beginning the homework.  Note that the first week's lab has a lot of examples to help people learning python.  This will get easier as we go.
