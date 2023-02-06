@@ -1,6 +1,6 @@
 # Snow Hydrology
 
-**CEWA 573**
+**CEWA 568**
 
 This website is the home of labs, assignments, and resources for this class.
 
