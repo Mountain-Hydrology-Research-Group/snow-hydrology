@@ -1,7 +1,7 @@
-# 3) Non-Parametric Tests and Analysis of Variance
+# 3) How does a snowpack change?
 
 ```note
-## Lab 3: Non-Parametric Tests and Analysis of Variance
+## Lab 3: How does a snowpack change?
 
 Download the lab and data files to your computer. Then, upload them to your JupyterHub [following the instructions here](/resources/b-learning-jupyter.html#working-with-files-on-our-jupyterhub).
 
