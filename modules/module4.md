@@ -1,4 +1,4 @@
-# 4) Trend Analysis, Regression
+# 4) Mass Balance:  Blowing snow and how snow smoothes landscapes
 
 - [Confidence Intervals](lab2/confidence-intervals.ipynb) with our [snow depth guesses](data/snow_depth_guesses.csv)
 
