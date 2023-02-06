@@ -1,7 +1,7 @@
-# 7) Markov Chains
+# 7) Radiation, albedo, and the energy balance
 
 ```note
-## Lab 7: Markov Models & Markov Chain Monte Carlo (MCMC)
+## Lab 7: Radiation, albedo, and the energy balance
 
 Download the lab and data files to your computer. Then, upload them to your JupyterHub [following the instructions here](/resources/b-learning-jupyter.html#working-with-files-on-our-jupyterhub).
 
