@@ -7,24 +7,24 @@
 
 The course will cover a number of fundamental topics related to data analysis including statistical inference testing and error estimation, use of linear and quantile-based regression models, Monte Carlo simulation, time series analysis, Bayes theorem, and data visualization using modern computer techniques.
 
-| **CEWA 573A** | SLN 12271 | 4 units |
-| **CEWA 573B PCE** | SLN 12272 | 4 units |
+| **CEWA 568A** | SLN 11962 | 3 units |
+| **CEWA 568B PCE** | SLN 11963 | 3 units |
 
 
 **Instructor:**      Jessica Lundquist, jdlund@uw.edu
 
-**Lectures:**      Tuesdays & Thursdays: 10:30 am - 12:20 pm (Pacific Time)
+**Lectures:**      Fridays: 9:30 am - 12:20 pm (Pacific Time)
 
 The room location, and the Zoom link (if needed) to remotely attend lectures and labs, and the link to where recorded lectures can be viewed or downloaded are available via the [course Canvas page](https://canvas.uw.edu/) (UW NetID login required).
 
-**Data Analysis Feedback Form**: Use this form to provide anonymous feedback to the TA and instructor. The link to the form is available in the copy of the syllabus on the [course Canvas page](https://canvas.uw.edu/) (UW NetID login required). 
+**Snow Hydrology Feedback Form**: Use this form to provide anonymous feedback to the TA and instructor. The link to the form is available in the copy of the syllabus on the [course Canvas page](https://canvas.uw.edu/) (UW NetID login required). 
 
 ### Learning Objectives
 
 By the end of the course, students should be able to
- * Understand common terminology in statistics and data analysis and know how to search for more detailed information as needed
- * Read, modify, and write computer programs to analyze data
- * Apply statistics and computer-based data analysis techniques to real observations (sets of numbers) in order to solve real world problems
+ * Explain the snow mass and energy balance over a snowpack
+ * Read, modify, and write computer programs to analyze snow-related data
+ * Apply data analysis techniques to understand real world problems related to snow
 
 ```note
 ### Guiding principles for this quarter
@@ -48,9 +48,7 @@ By the end of the course, students should be able to
 
 ### Office Hours
 
-Jessica: Thursdays, immediately after class; or by appointment
-
-Danny: Wednesdays, 4:00-5:00 Wilcox 264
+Jessica: Fridays, immediately after class; or by appointment
 
 ```note
 The UW eScience institute offers [data science office hours](https://escience.washington.edu/office-hours/) which could be useful for your projects or your own research work.
@@ -58,7 +56,6 @@ The UW eScience institute offers [data science office hours](https://escience.wa
 
 ### Textbooks
 
- * **Required**: *[Statistical Methods in Water Resources (PDF)](https://pubs.usgs.gov/tm/04/a03/tm4a3.pdf)*, Helsel, et al., 2020 [https://doi.org/10.3133/tm4A3](https://doi.org/10.3133/tm4A3)
  * **Recommended**: *Probability and Statistics for Engineering and the Sciences*, Devore, J.L.
  * **Additional Course Materials** are available on the [UW Canvas site](https://canvas.uw.edu/) (UW NetID login required)
 
@@ -74,7 +71,7 @@ If you need access to a laptop computer (such as if yours breaks) you may check 
 
 ### Lectures
 
-The first half of each class period is reserved for lectures and discussions. We will be using Zoom for these live lectures, and to record lectures for later viewing. Lectures will be recorded and made available afterwards. Lecture slides will be available on Canvas, along with any additional files for reading.
+The first half of each class period is reserved for lectures and associated discussions. We will be using Zoom for these live lectures, and to record lectures for later viewing. Lectures will be recorded and made available afterwards. Lecture slides will be available on Canvas, along with any additional files for reading.
 
 
 ### Labs
@@ -86,7 +83,7 @@ We will use classroom space and Slack to work in small groups on lab excercises.
 
 ### Homework Assignments
 
-Homework assignments will be given out on Thursdays at the beginning of class, and will be **due the following week on Thursday at the beginning of class (10:30 am, Pacific Time)**. Homework questions are posted on the class website along with links to any data files you might need.
+Homework assignments will be given out on Fridays at the beginning of class, and will be **due the following week on Friday at the beginning of class (9:30 am, Pacific Time)**. Homework questions are posted on the class website along with links to any data files you might need.
 
 You are encouraged to work together on homeworks and collaborate, but you must turn in your own assignments with your own work. 
 
@@ -103,13 +100,9 @@ Homework will be graded on a scale of 1 to 10, with 10 being the best. Homework 
 Homework solutions will be posted in the Solutions folder on [Canvas](https://canvas.uw.edu/) by the Thursday after the assignment was turned in.
 
 
-### Final Exam (for CEE 465)
+### Final Project
 
-The final exam will be take-home, and will be assigned on Monday, December 5th, giving you a full week to complete it. The exam will ask a series of general application questions spanning all of the topics covered in the course. It will be open notes and online materials, but students must sign an honor statement that the work is their own and not done with consultation and/or help from other students, friends, or faculty. The final exam must be submitted electronically, via Canvas, before 5:00 pm (Pacific Time) of the day of the scheduled final exam: **Monday, December 12, 5:00 pm (Pacific Time)**.
-
-### Final Project (for CEWA 565)
-
-Final projects will be completed in pairs (or individually on request), and the topic will be selected by the students in consultation with the instructor. The topic should ideally involve data analysis related to a real-world engineering problem from within the student’s area of interest. Updates on the project are required as part of the 2nd, 5th, and 7th homework assignments, and each student will give a short overview of their research problem and project results to the class on **12/1**, **12/6** and **12/8**. The project will be graded on the basis of the presentation (20%) and on the report (80%), which should be less than 10 pages long. Final reports will be due on **Monday, December 12, 5:00 pm (Pacific Time)**. Further details are provided on the [Course Project page](b-project.html).
+Final projects will be completed in pairs (or individually on request), and the topic will be selected by the students in consultation with the instructor. The topic should ideally involve explaining/teaching a concept and/or snow hydrology coding problem selected from within the student’s area of interest. Updates on the project are required as part of the 2nd, 5th, and 7th homework assignments, and each student will give a short overview of their research problem and project results to the class. The project will be graded on the basis of the presentation (20%) and on the report (80%), which should be less than 10 pages long. Final reports will be due on **Wednesday, June 7, 2:30 pm (Pacific Time)**. Further details are provided on the [Course Project page](b-project.html).
 
 ### Grading Policy
 
@@ -132,18 +125,17 @@ This schedule is subject to change throughout the quarter. Check assignment due 
 
 | Week | Lecture Dates | Lecture Topics | Labs | Assignments |
 | --- | --- |  --- | --- | --- |
-| **0** | 9/29 <br /> | Introduction and Course Overview <br />  Python basics: Coding and Plotting | Python tutorials | Lab 1: Plotting Data in Python |
-| **1** | 10/4 <br /> 10/6 | Review of Descriptive Statistics: Probability Distributions (PDFs and CDFs) including Uniform, Normal, Binomial distributions (Devore Ch 3 & 4), Random Number Generators, and Graphical Data Analysis (H&H Ch 1 and 2; Devore Ch 1) <br /> Hypothesis Testing (H&H Ch 4 & 5; Devore Ch 8 & Ch 9) | Lab 1: Data and Statistics in Python | 10/6: **HW1 Due**|
-| **2** | 10/11 <br /> 10/13 | Hypothesis Testing (H&H Ch 4 & 5; Devore Ch 8 & Ch 9): Student’s T test, Type I, Type II errors. <br /> Confidence Intervals | Lab 2: Hypothesis Testing | 10/13: **HW2 Due** |
-| **3** | 10/18 <br /> 10/20 | Non-Parametric Tests: sign test, Wilcoxon signed rank test <br /> Non-parametric quantile mapping approaches <br /> Analysis of Variance (ANOVA)| Lab 3: Non-Parametric Tests & ANOVA | 10/20: **HW3 Due** |
-| **4** | 10/25 <br /> 10/27 | Correlation Analysis (H&H Ch 8); Regression models <br /> Linear Regression (H&H Ch 9; Devore Ch 12) <br /> Trend Analysis (H&H Ch 12); Mann Kendall Test <br /> | Lab 4: Regression and Trend Tests | 10/27: **HW4 Due** |
-| **5** | 11/1 <br /> 11/3 | Graphics and Visualization (H&H Ch 16) <br /> Multiple Linear Regression (H&H Ch 11); Autocorrelation  <br /> Regression with Transformed Variables | Lab 5: Multiple Linear Regression & Regression with Transformed Variables | 11/3: **HW5 Due** |
-| **6** | 11/8 <br /> 11/10 | Decision Trees; Applications of Bayes’ Theorem | Lab 6: Bayesian Statistics & BaRatin and Bayesian Rating curves  | 11/10: **HW6 Due** |
-| **7** | 11/15 <br /> 11/17 |  Conditional Probability (Markov Models) | Lab 7: Markov Chains & Monte Carlo | 11/17: **HW7 Due** |
-| **8** | 11/22 <br /> (**11/24 is a holiday**) | Empirical Orthogonal Functions (EOFs) and Principal Components (PCs), Timeseries Analysis <br /> Fourier Transforms; Power Spectra, Timeseries analysis | Lab 8: SVD and Timeseries Analysis |  |
-| **9** | 11/29 <br /> 12/1 | <br /> Data Analysis Applications: Student Presentations | Project Work | 11/29: **HW8 Due** <br /> 12/1: **Presentations** |
-| **10** | 12/6 <br /> 12/8 | Data Analysis Applications: Student Presentations | Project Work | 12/6: **Presentations** <br /> 12/8: **Presentations** |
-| **Finals Week** | 12/12 |  |  | 12/12: **CEWA 565 - Final Project Report Due** <br /> 12/12: **CEE 465 - Final Exam Due** |
+| **1** | 3/31 | What is snow?  Phases and properties of matter | Lab 1: Plotting data in Python | |
+| **2** | 4/7 | Mass balance: How much snow is there? | Lab 2: Snow depth, snow density, snow covered area, and snow water equivalent (SWE) | 4/7: **HW1 Due** |
+| **3** | 4/14 | How does a snowpack change? | Lab 3: Snow pits, crystals, and snowpack evolution | 4/14: **HW2 Due** |
+| **4** | 4/21 | Mass balance: Blowing snow & How snow smoothes landscapes | Lab 4: Blowing snow | 4/21: **HW3 Due** |
+| **5** | 4/28 | Temperature above and within the snow | Lab 5: Temperature gradients and the heat equation | 4/28: **HW4 Due** |
+| **6** | 5/5 | Turbulent transfer above the snow: changing mass and energy | Lab 6: Examining turbulence | 5/5: **HW5 Due** |
+| **7** | 5/12 | Radiation, albedo, and the energy balance | Lab 7: Examining the energy balance | 5/12: **HW6 Due** |
+| **8** | 5/19 | What makes snow melt?  | Lab 8: Putting the energy balance together | 5/19: **HW7 Due** |
+| **9** | 5/26 | Trees and snow | Project Work | 5/26: **HW8 Due** |
+| **10** | 6/02 | Mountain Meteorology | Project Presentations | 6/2: **Presentations** |
+| **Finals Week** | 6/07 |  |  | 12/12: **CEWA 568 - Final Project Report Due** |
 
 ## Additional Information
 
