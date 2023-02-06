@@ -1,4 +1,4 @@
-# 5) Regression, Data Visualization
+# 5) Temperatures above, below, and within the snow
 
 Data visualization (Note, this may be helpful for projects but is not required now -- we will return to these labs later in the quarter):
 - [Interactive Plots](lab5/interactive-plots.ipynb) with [iButtons_2008-2010.mat](data/iButtons_2008-2010.mat)
