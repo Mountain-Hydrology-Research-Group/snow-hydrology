@@ -9,7 +9,7 @@ Please look through the background and lab material before beginning the homewor
 
 Very few substances exist in all three phases in nature.  We experience water vapor, water, and ice so frequently that we forget how unique they are.
 
-![Phase diagram](https://en.wikipedia.org/wiki/Phase_diagram#/media/File:Phase_diagram_of_water.svg) 
+![Phase diagram](images/Phase_diagram_of_water.svg.png) 
 
 To understand how water changes phase within the atmosphere and within a snowpack, we need to understand basic chemistry and molecular physics. 
 [Growing snowflackes with Ken Libbrecht](https://www.youtube.com/watch?v=ao2Jfm35XeE) 
