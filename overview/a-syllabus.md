@@ -124,7 +124,7 @@ This schedule is subject to change throughout the quarter. Check assignment due 
 | **6** | 5/5 | Turbulent transfer above the snow: changing mass and energy | Lab 6: Examining turbulence | 5/5: **HW5 Due** |
 | **7** | 5/12 | Radiation, albedo, and the energy balance | Lab 7: Examining the energy balance | 5/12: **HW6 Due** |
 | **8** | 5/19 | What makes snow melt?  | Lab 8: Putting the energy balance together | 5/19: **HW7 Due** |
-| **9** | 5/26 | Trees and snow | Project Work (Class held in UW Maker Space)| 5/26: **HW8 Due** |
+| **9** | 5/26 | Trees and snow (Class held in UW Maker Space)| Project Work | 5/26: **HW8 Due** |
 | **10** | 6/02 | Mountain Meteorology | Project Presentations | 6/2: **Presentations** |
 | **Finals Week** | 6/07 |  |  | 12/12: **CEWA 568 - Final Project Report Due** |
 
