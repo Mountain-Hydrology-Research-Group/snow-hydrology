@@ -5,7 +5,7 @@
 
 **Snow Hydrology - Spring Quarter, 2023**
 
-The course will cover a number of fundamental topics related to data analysis including statistical inference testing and error estimation, use of linear and quantile-based regression models, Monte Carlo simulation, time series analysis, Bayes theorem, and data visualization using modern computer techniques.
+The course will cover a number of fundamental topics related to snow hydrology including phases of water, evolution of a snowpack, mass balance, energy balance, and measuring, plotting, analyzing snow and energy balance timeseries.
 
 | **CEWA 568A** | SLN 11962 | 3 units |
 | **CEWA 568B PCE** | SLN 11963 | 3 units |
@@ -15,7 +15,7 @@ The course will cover a number of fundamental topics related to data analysis in
 
 **Lectures:**      Fridays: 9:30 am - 12:20 pm (Pacific Time)
 
-The room location, and the Zoom link (if needed) to remotely attend lectures and labs, and the link to where recorded lectures can be viewed or downloaded are available via the [course Canvas page](https://canvas.uw.edu/) (UW NetID login required).
+The room location, and relevant course information are available via the [course Canvas page](https://canvas.uw.edu/) (UW NetID login required).
 
 **Snow Hydrology Feedback Form**: Use this form to provide anonymous feedback to the TA and instructor. The link to the form is available in the copy of the syllabus on the [course Canvas page](https://canvas.uw.edu/) (UW NetID login required). 
 
@@ -25,25 +25,16 @@ By the end of the course, students should be able to
  * Explain the snow mass and energy balance over a snowpack
  * Read, modify, and write computer programs to analyze snow-related data
  * Apply data analysis techniques to understand real world problems related to snow
+ * Teach someone else something about snow
 
 ```note
 ### Guiding principles for this quarter
-1. **Our learning situation is still in flux.**
-  * We will prioritize meeting together on campus, but we expect that some people will need to stay home at times during the quarter
-  * Therefore, we are prepared for online options, for potentially teaching remotely, for potentially learning from home, and for varied access to learning materials
-2. **The humane option is the best option.**
-  * We are going to prioritize supporting each other as humans
-  * We are going to prioritize simple solutions that make sense
-  * We are going to prioritize sharing resources and communicating clearly
-  * We are going to prioritize learning what is most useful for you
-3. **We will foster intellectual nourishment, social connection, and personal accommodation.**
-  * Accessible asynchronous content for diverse access, time zones, and contexts
-  * Accessible synchronous discussion to learn together
-4. **We will remain flexible and adjust to the situation.**
-  * Provide feedback at any point in the quarter and we will try to improve and adapt
-5. **We’re all in this together**
-
-(These principles were adapted from the [Adjusted Syllabus](https://docs.google.com/document/d/1-6d_W8rdzE9mW2DvPi-dPvRxo4sekKlz3VqEpnu4Dwg/preview) by Brandon Bayne at UNC Chapel Hill)
+1. **We want to emphasize in person, experiential learning.**
+  * We will have labs and field trips on campus that cannot be done remotely.
+  * If something comes up so that you cannot attend class, please reach out to the professor as soon as possible.
+2. **We’re all in this together**
+ * If you do need to miss one week, you can best make up the material by meeting up with someone else in the class.
+ * Please reach out to your fellow students and make plans to watch out for each other.
 ```
 
 ### Office Hours
@@ -56,7 +47,7 @@ The UW eScience institute offers [data science office hours](https://escience.wa
 
 ### Textbooks
 
- * **Recommended**: *Probability and Statistics for Engineering and the Sciences*, Devore, J.L.
+ * **Recommended**: [*A Field Guide to Snow*](https://www.amazon.com/Field-Guide-Snow-Snowy-Owl/dp/1602234140), by Matthew Sturm
  * **Additional Course Materials** are available on the [UW Canvas site](https://canvas.uw.edu/) (UW NetID login required)
 
 
@@ -64,14 +55,14 @@ The UW eScience institute offers [data science office hours](https://escience.wa
 
 ### Computing Resources
 
-For lab activities and assignments, we will be using a [JupyterHub](https://spestana.github.io/data-analysis/resources/b-learning-jupyter.html) computing environment, and programming with [python](https://spestana.github.io/data-analysis/resources/a-learning-python.html). (While the course is taught using python, prior versions of the labs in MATLAB are also available by request.)
+For lab activities and assignments, we will be using a [JupyterHub](https://spestana.github.io/data-analysis/resources/b-learning-jupyter.html) computing environment, and programming with [python](https://spestana.github.io/data-analysis/resources/a-learning-python.html). 
 
 If you need access to a laptop computer (such as if yours breaks) you may check one out from the [Student Technology Loan Program](https://stlp.uw.edu/). Please contact me if you need help accessing a computer reliably.
 
 
 ### Lectures
 
-The first half of each class period is reserved for lectures and associated discussions. We will be using Zoom for these live lectures, and to record lectures for later viewing. Lectures will be recorded and made available afterwards. Lecture slides will be available on Canvas, along with any additional files for reading.
+The first hour of each class period is reserved for lectures and associated discussions. We will be using Zoom for these live lectures, and to record lectures for later viewing. Lectures will be recorded and made available afterwards. Lecture slides will be available on Canvas, along with any additional files for reading.  However, the second two hours of each class will not be recorded, so please make every effort to be there in person.
 
 
 ### Labs
@@ -126,14 +117,14 @@ This schedule is subject to change throughout the quarter. Check assignment due 
 | Week | Lecture Dates | Lecture Topics | Labs | Assignments |
 | --- | --- |  --- | --- | --- |
 | **1** | 3/31 | What is snow?  Phases and properties of matter | Lab 1: Plotting data in Python | |
-| **2** | 4/7 | Mass balance: How much snow is there? | Lab 2: Snow depth, snow density, snow covered area, and snow water equivalent (SWE) | 4/7: **HW1 Due** |
-| **3** | 4/14 | How does a snowpack change? | Lab 3: Snow pits, crystals, and snowpack evolution | 4/14: **HW2 Due** |
+| **2** | 4/7 | Mass balance: How much snow is there? (Possible class fieldtrip day!)| Lab 2: Snow depth, snow density, snow covered area, and snow water equivalent (SWE) | 4/7: **HW1 Due** |
+| **3** | 4/14 | How does a snowpack change? (Class held in UW Maker Space)| Lab 3: Snow pits, crystals, and snowpack evolution | 4/14: **HW2 Due** |
 | **4** | 4/21 | Mass balance: Blowing snow & How snow smoothes landscapes | Lab 4: Blowing snow | 4/21: **HW3 Due** |
 | **5** | 4/28 | Temperature above and within the snow | Lab 5: Temperature gradients and the heat equation | 4/28: **HW4 Due** |
 | **6** | 5/5 | Turbulent transfer above the snow: changing mass and energy | Lab 6: Examining turbulence | 5/5: **HW5 Due** |
 | **7** | 5/12 | Radiation, albedo, and the energy balance | Lab 7: Examining the energy balance | 5/12: **HW6 Due** |
 | **8** | 5/19 | What makes snow melt?  | Lab 8: Putting the energy balance together | 5/19: **HW7 Due** |
-| **9** | 5/26 | Trees and snow | Project Work | 5/26: **HW8 Due** |
+| **9** | 5/26 | Trees and snow | Project Work (Class held in UW Maker Space)| 5/26: **HW8 Due** |
 | **10** | 6/02 | Mountain Meteorology | Project Presentations | 6/2: **Presentations** |
 | **Finals Week** | 6/07 |  |  | 12/12: **CEWA 568 - Final Project Report Due** |
 
@@ -143,7 +134,7 @@ This schedule is subject to change throughout the quarter. Check assignment due 
 
 * [Student Resources](https://grad.uw.edu/equity-inclusion-and-diversity/go-map/student-resources/) from the [UW Graduate Opportunities and Minority Achievement Program (GO-MAP)](https://grad.uw.edu/equity-inclusion-and-diversity/go-map/).
 * The [Q Center](https://depts.washington.edu/qcenter/wordpress/)
-* Review the [Husky PACK Pledge](https://www.washington.edu/coronavirus/pack-pledge/) for informaiton about protecting yourselves and others from COVID-19.
+* The [UW Counseling Center](https://www.washington.edu/counseling/)  
 * The [University District Food Bank](https://www.udistrictfoodbank.org/)
 * King County COVID-19 [Child Care Financial Support](https://www.kingcounty.gov/depts/community-human-services/COVID/child-care.aspx)
 
@@ -170,7 +161,7 @@ Washington state law requires that UW develop a policy for accommodation of stud
 
 Call SafeCampus at 206-685-7233 (206-685-SAFE) anytime – no matter where you work or study – to anonymously discuss safety and well-being concerns for yourself or others. SafeCampus’s team of caring professionals will provide individualized support, while discussing short- and long-term solutions and connecting you with additional resources when requested.
 
-Mental health resources are available at [wellbeing.uw.edu](https://wellbeing.uw.edu/topic/mental-health/). The [UW Counseling Center](https://www.washington.edu/counseling/) is also a good resource (206-543-1240). University of Washington students are eligible for services at the Counseling Center. Also see their [flyer](https://s3-us-west-2.amazonaws.com/uw-s3-cdn/wp-content/uploads/sites/31/2020/03/10140856/Coping-with-COVID-19-Related-Stress5.pdf) for tips on coping with COVID-19 related stress. Please review the [COVID-19 face cover policy](https://www.ehs.washington.edu/covid-19-prevention-and-response/face-covering-requirements) .
+Mental health resources are available at [wellbeing.uw.edu](https://wellbeing.uw.edu/topic/mental-health/). The [UW Counseling Center](https://www.washington.edu/counseling/) is also a good resource (206-543-1240). University of Washington students are eligible for services at the Counseling Center. 
 
 Additionally, if you’re thinking about suicide, are worried about a friend or loved one, or would like emotional support, the Lifeline network is available 24/7 across the United States: National Suicide Prevention Lifeline (1-800-273-8255), Forefront Suicide Prevention (866-598-3978), and Crisis Text Line (741741). If the person you are concerned about is in immediate danger of killing them self and/or refuses to stay safe with you, call or text 911.
 
