@@ -117,7 +117,7 @@ This schedule is subject to change throughout the quarter. Check assignment due 
 | Week | Lecture Dates | Lecture Topics | Labs | Assignments |
 | --- | --- |  --- | --- | --- |
 | **1** | 3/31 | What is snow?  Phases and properties of matter | Lab 1: Plotting data in Python | |
-| **2** | 4/7 | Mass balance: How much snow is there? (Possible class fieldtrip day!)| Lab 2: Snow depth, snow density, snow covered area, and snow water equivalent (SWE) | 4/7: **HW1 Due** |
+| **2** | 4/7 | Mass balance: How much snow is there? (Class fieldtrip to Snoqualmie Pass!)| Lab 2: Snow depth, snow density, and snow water equivalent (SWE) | 4/7: **HW1 Due** |
 | **3** | 4/14 | How does a snowpack change? (Class held in UW Maker Space)| Lab 3: Snow pits, crystals, and snowpack evolution | 4/14: **HW2 Due** |
 | **4** | 4/21 | Mass balance: Blowing snow & How snow smoothes landscapes | Lab 4: Blowing snow | 4/21: **HW3 Due** |
 | **5** | 4/28 | Temperature above and within the snow | Lab 5: Temperature gradients and the heat equation | 4/28: **HW4 Due** |
