@@ -2,7 +2,9 @@
 
 # Background
 
-For many regions, mountain snow provides much of society's water.  The weight of snow is due almost entirely to its water content.  Therefore, one of the main instruments of snow hydrology is similar to giant scale similar to the one you might find in your bathroom.  [insert snow pillow video here] 
+For many regions, mountain snow provides much of society's water.  The weight of snow is due almost entirely to its water content.  Therefore, one of the main instruments of snow hydrology is similar to giant scale similar to the one you might find in your bathroom.  
+[![Watch a video of a fluidless snow pillow being installed in Colorado](https://img.youtube.com/vi/aK1_gYcgT9w/0.jpg)](https://www.youtube.com/watch?v=aK1_gYcgT9w))
+
 
 ```note
 ## Lab 2: Mass Balance
