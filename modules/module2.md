@@ -23,9 +23,15 @@ Download the lab and data files to your computer. Then, upload them to your Jupy
 
 ### Problem 1
 
-Using the [observations of total precipitation](data/KPprecip.dat), and the snow pillow data, we are going to investigate mass balance and snow accumulation at Kettle Ponds.
+Using the [observations of total precipitation](data/KPprecip.dat), and the snow pillow data (see labs above), we are going to investigate mass balance and snow accumulation at Kettle Ponds.
 
-A. Plot a timeseries of total accumulated precipitation and total accumulated snow water equivalent from the four snow pillows.  Discuss how they match and how they differ, and why you think they differ.
+A. Plot a timeseries of total accumulated precipitation and total accumulated snow water equivalent from the four snow pillows.  Add to your plot timeseries from the two Snotel Stations located nearby.  Discuss how they match and how they differ, and why you think they differ.
+
+B. Write out the snow mass balance equation for a control volume.  Given the data you have plotted, what aspects of the mass balance equation do you have the most certainty about?  The least certainty?
+
+C. What factors of the mass balance are the most similar spatially?  Which differ the most across different locations?  Is there more variability between sites further away?  Or are the four snow pillows at Kettle Ponds as different as the two sites just outside of the watershed?
+
+D. **Prediction** NCAR's EOL team is committed to removing the towers at Kettle Ponds on 1 June 2023.  To do that, they need to drive down a road (shown in the map above) that is currently snowed in.  The road will open when the snow melts and disappears. This typically occurs in mid to late May.  Using the long term records at the SNOTEL sites, and any other information you may have, to make a prediction about whether the snow will be gone (and hence the road clear) by 1 June 2023. (Note that we will assess everyone's accuracy at the end of the quarter!)
 
 
 ### Problem 2: Course Project Selection
