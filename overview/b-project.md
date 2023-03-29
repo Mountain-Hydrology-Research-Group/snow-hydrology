@@ -1,7 +1,9 @@
 
 # Course Project: CEWA 568
 
-The goal of the course project is to give you hands on explaining and teaching topics of particular interest to you, as well as experience writing about and presenting data and snow hydrology information. Project will consist of an oral presentation (20% of total) and a written report (80% of total), which will be no longer than 10 pages (for a group of two; or 15 for a group of three), including figures.
+The goal of the course project is to give you hands on experience explaining and teaching topics of particular interest to you, as well as experience writing about and presenting data and snow hydrology information. Project will consist of an oral presentation (20% of total) and written/published teaching materials (80% of total), which may consist of a website, details for an activity, a jupyter notebook lab, a video, and/or written documents.
+
+You should identify your target audience (graduate students? fourth graders? the general public?) and include teaching objectives.  By the end of your lesson (lab, video, website exploration, makerspace activity, etc.) students should be able to do what (use actions verbs, such as *explain longwave radiation* or *create a plot of snowpit data*).
 
 ```note
 **Sources of help:**
@@ -12,12 +14,14 @@ UW has services to help people with [statistics](https://www.stat.washington.edu
 
 ## Potential project ideas...
 
-You are welcome to use your own data and answer a question of interest to you and relevant to your own research – please let the instructor know as early as possible so that we can make sure you have sufficient data to be successful. Alternatively, you may choose one of the projects below. 
+You are welcome to use your own data and design a lesson on a subject of interest to you and relevant to your own research – please let the instructor know as early as possible so that we can make sure you have sufficient resources to be successful. Alternatively, you may choose one of the projects below. 
 
-1. **How does weather vary in a high-elevation valley in Colorado?**  The U.S. Department of Energy and the National Oceanographic and Atmospheric Administration have been measuring a lot in the East River Basin of Colorado, as part of the [SAIL and SPLASH](https://www.arm.gov/news/features/post/81524) campaigns.  The data is publicly available for both [SAIL](https://adc.arm.gov/discovery/#/results/s:guc/site) and [SPLASH](https://psl.noaa.gov/splash/), and your TA, Danny, can help with questions and processsing code. Talk to Jessica and/or Danny if you want to work on a project using these data. 
+1. **How does weather vary in a high-elevation valley in Colorado?**  The U.S. Department of Energy and the National Oceanographic and Atmospheric Administration have been measuring a lot in the East River Basin of Colorado, as part of the [SAIL and SPLASH](https://www.arm.gov/news/features/post/81524) campaigns.  The data is publicly available for both [SAIL](https://adc.arm.gov/discovery/#/results/s:guc/site) and [SPLASH](https://psl.noaa.gov/splash/). Talk to Jessica and/or Danny if you want to work on a project using these data. 
 
 
-2.  **Choose your own adventure...**
+2. **Make this class better.**  Pick one of the modules from this snow hydrology class and develop a new lab or activity on the topic that students taking the class in future years would benefit from.
+
+3. **Choose your own adventure...**
 
 
 ## Grading Rubic
@@ -26,10 +30,10 @@ You are welcome to use your own data and answer a question of interest to you an
 ### Presentation 
 (30 points; will account for 20% of project grade)
 
-A powerpoint-type presentation, like you would expect at a conference, 10 minutes in length, with an additional 5 minutes for questions. Your classmates are your audience. Present your question, why it is important, what methods you employed to answer the question, your major results, and the implications of your results. For pairs, both project partners will present together.
+A powerpoint-type presentation, like you would expect at a conference, 10 minutes in length, with an additional 5 minutes for questions. Your classmates are your audience. Present your teaching materials and teaching objectives.  , why it is important, what methods you employed to answer the question, your major results, and the implications of your results. For pairs, both project partners will present together.
 
 * Clarity of Overall Presentation (10 points)
-  - Clear statement of the problem
+  - Clear statement of the topic and objectives
   - Clear explanations of what you did, easy to follow
   - Good transitions from one section to the next
   - Ability to answer questions raised by audience
@@ -38,30 +42,29 @@ A powerpoint-type presentation, like you would expect at a conference, 10 minute
   - Correct limits on plot axes to show relevant information
   - Proper choice of type of graph to convey information
   - Interest level – slides nice/interesting to engage audience
-* Technical Analysis and Discussion (10 points)
+* Teaching Topics Conveyed (10 points)
   - Proper methods applied
-  - Accuracy of results
-  - Explanation of why results are what they are
-  - Ability to relate results to other studies and other presentations in the class
+  - Accuracy of information taught
+  - Explanations, exercises, or ah ha moments to convey teaching objectives
 
 
-### Written Report
+### Written/Published Teaching Materials
 (30 points; will account for 80% of project grade)
 
-For the written report, you must include an abstract (no more than 300 words) and a list of references; these can be in addition to your 10 (for a group of two; or 15 for a group of three) pages.  Follow the same format outlined for the presentation but feel free to include more details (equations, etc.). Please address any questions or comments that were raised during the presentation. Use clear, concise sentences and proper grammar.
+Please address any questions or comments that were raised during the presentation. 
 
-* Quality of Writing (10 points)
+* Quality of Presentation of the Materials (10 points)
   - Clear and easy to read 
   - Proper grammar and spelling
-  - Clear statement of the problem 
+  - Clear statement of the learning objectives and goals 
   - Good transitions from one section to the next
-  - Clarity of explanations of what you did
-* Technical Analysis (10 points)
-  - Clearly described methods, proper literature cited
-  - Technical difficulty of methods applied
-  - Accuracy of results
-* Interpretation, Analysis, and Discussion of Result (10 points)
-  - Attempted to explain why certain patterns were observed in the data and/or analysis 
-  - Thought about results in context of other studies
-  - Outlined next steps to be taken
-  - Addressed underlying assumptions in the analysis and how these may have affected results
+  - Clarity of explanations
+* Information Conveyed (10 points)
+  - Clearly taught something related to snow hydrology, proper literature cited
+  - Appropriateness of techniques applied to the target audience
+  - Accuracy of information taught
+* Originality and Interest Level (10 points)
+  - Methods for teaching were more interesting than reading a paper or watching a powerpoint 
+  - Related target subject to larger context and greater importance
+  - Addressed any underlying assumptions in the analysis/demo/presentation and how these may have affected results
+  - Taught scientific inquiry more than basic presentation of facts
