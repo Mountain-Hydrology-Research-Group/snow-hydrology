@@ -12,7 +12,7 @@ Very few substances exist in all three phases in nature.  We experience water va
 ![Phase diagram](data/Phase_diagram_of_water.svg.png) 
 
 To understand how water changes phase within the atmosphere and within a snowpack, we need to understand basic chemistry and molecular physics. 
-[Growing snowflackes with Ken Libbrecht](https://www.youtube.com/watch?v=ao2Jfm35XeE) 
+[Popular Science video with ads on growing snowflakes with Ken Libbrecht](https://www.youtube.com/watch?v=ao2Jfm35XeE) 
 
 We may not have a lab of this quality, but you can print and build your own hexogonal snow crystal out of [paper](data/CutOutIceCrystalPrism_Aug25.jpg).  
 
@@ -21,7 +21,7 @@ We may not have a lab of this quality, but you can print and build your own hexo
 ```note
 ## Lab 1: Plotting Data and Calculating the Energy of Phase Changes in Python
 
-Download the lab and data files to your computer. Then, upload them to your JupyterHub [following the instructions here](../resources/b-learning-jupyter.html#jupyterhub).
+Download the lab and data files to your computer. Then, upload them to your JupyterHub [following the instructions here](../resources/b-learning-jupyter.html#jupyterhub). Note, if you took CEWA 565 Data Analysis Class or are otherwise already familiar with Python, you can skip Lab 1-1 and go to Lab 1-2.
 
 * Download this data file for the lab activities: [Skykomish peak flows](data/Skykomish_peak_flow_12134500_skykomish_river_near_gold_bar.xlsx)
 * [Lab 1-1: Plotting Data in Python](lab1/lab1-1.ipynb)
@@ -39,7 +39,7 @@ Some extra helpful activities:
 
 ## Homework 1
 
-In this homework assignment we will work start with programming and data visualization to better qualitatively understand the types of datasets that we'll be using the rest of the quarter.  Please download the notebooks at the top of this page and use them as reference for your coding.  **Be sure to save your work for later reference**
+In this homework assignment we will work start with programming and data visualization to better qualitatively understand the types of datasets that we'll be using the rest of the quarter. This homework is on the shorter side because we have a fieldtrip next week and will also be covering the material necessary for the second homework.   Please download the notebooks at the top of this page and use them as reference for your coding.  **Be sure to save your work for later reference**
 
 
 ### Water and States of Matter
@@ -51,5 +51,9 @@ For this week's homework, we will pretend we are in very controlled laboratory c
  B. Now, consider that same block of ice at -10 degrees C and 1 atm of pressure.  Calculate the amount of energy required to **sublimate** all of the ice.  (Note that you do not need to warm the ice to sublimate it.)
  
  C. Repeat the calculations above, but imagine you are high in the mountains at 0.5 atm of pressure.  What changes?
+ 
+ D. We know that cold snow is primarily a mixture of ice and air.  Consider no phase changes and temperatures between -15 degrees and -5 degrees C.  Imagine that no interactions occur between the ice and air in the snow matrix.  How does the energy required to heat the mixture those 10 degrees change as the fractions of ice vs. air change in the total mixture?  
+ 
+ E. I argue that sublimation saves the snowpack more than it reduces it.  Why would I say this?  Do you agree or disagree?  Use the specific and latent heats in lab 1-2 to make your argument.
 
 ---
