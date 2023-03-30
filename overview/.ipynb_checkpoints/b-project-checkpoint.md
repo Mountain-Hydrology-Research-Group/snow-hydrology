@@ -1,14 +1,14 @@
 
 # Course Project: CEWA 568
 
-The goal of the course project is to give you hands on experience explaining and teaching topics of particular interest to you, as well as experience writing about and presenting data and snow hydrology information. Project will consist of an oral presentation (20% of total) and written/published teaching materials (80% of total), which may consist of a website, details for an activity, a jupyter notebook lab, a video, and/or written documents.
+The goal of the course project is to give you hands on experience explaining and teaching snow hydrology topics of particular interest to you. Project will consist of an oral presentation (20% of total) and written/published teaching materials (80% of total), which may consist of a website, details for an activity, a jupyter notebook lab, a video, and/or written documents.
 
 You should identify your target audience (graduate students? fourth graders? the general public?) and include teaching objectives.  By the end of your lesson (lab, video, website exploration, makerspace activity, etc.) students should be able to do what (use actions verbs, such as *explain longwave radiation* or *create a plot of snowpit data*).
 
 ```note
 **Sources of help:**
 
-UW has services to help people with [statistics](https://www.stat.washington.edu/consulting/) and [data analysis](http://escience.washington.edu/dss-hours). These are designed primarily to help graduate students engaged in research (not with homework), but presuming your course project is related to a research interest of yours, they have been very helpful in the past.
+UW has services to help people with [teaching in general](https://teaching.washington.edu/) and [teaching engineers specifically](https://www.engr.washington.edu/mycoe/oaetl).  UW also offers help with [data analysis](http://escience.washington.edu/dss-hours).
 ```
 
 
@@ -16,7 +16,7 @@ UW has services to help people with [statistics](https://www.stat.washington.edu
 
 You are welcome to use your own data and design a lesson on a subject of interest to you and relevant to your own research – please let the instructor know as early as possible so that we can make sure you have sufficient resources to be successful. Alternatively, you may choose one of the projects below. 
 
-1. **How does weather vary in a high-elevation valley in Colorado?**  The U.S. Department of Energy and the National Oceanographic and Atmospheric Administration have been measuring a lot in the East River Basin of Colorado, as part of the [SAIL and SPLASH](https://www.arm.gov/news/features/post/81524) campaigns.  The data is publicly available for both [SAIL](https://adc.arm.gov/discovery/#/results/s:guc/site) and [SPLASH](https://psl.noaa.gov/splash/). Talk to Jessica and/or Danny if you want to work on a project using these data. 
+1. **What does a snow hydrology student need to know about the weather?**  The U.S. Department of Energy and the National Oceanographic and Atmospheric Administration have been measuring a lot in the East River Basin of Colorado, as part of the [SAIL and SPLASH](https://www.arm.gov/news/features/post/81524) campaigns.  The data is publicly available for both [SAIL](https://adc.arm.gov/discovery/#/results/s:guc/site) and [SPLASH](https://psl.noaa.gov/splash/). These data are complimentary to the date we've been analyzing in this class, so a new learning module focused on mountain or cold region meteorology could be useful.
 
 
 2. **Make this class better.**  Pick one of the modules from this snow hydrology class and develop a new lab or activity on the topic that students taking the class in future years would benefit from.
@@ -45,7 +45,7 @@ A powerpoint-type presentation, like you would expect at a conference, 10 minute
 * Teaching Topics Conveyed (10 points)
   - Proper methods applied
   - Accuracy of information taught
-  - Explanations, exercises, or ah ha moments to convey teaching objectives
+  - Explanations, exercises, or "ah ha" moments to convey teaching objectives
 
 
 ### Written/Published Teaching Materials
