@@ -11,7 +11,8 @@ For many regions, mountain snow provides much of society's water.  The weight of
 
 Download the lab and data files to your computer. Then, upload them to your JupyterHub [following the instructions here](/resources/b-learning-jupyter.html#working-with-files-on-our-jupyterhub).
 
-* Data: [Daily Precipitation at Kettle Ponds](data/KPprecip.dat) 
+* Data: [Daily Precipitation at Kettle Ponds](data/precipitation.nc) 
+NOTE:  These two labs involve directly downloading a lot of data and are advanced enough that you can modify to download any data timeperiod you want.  If you are just learning python, you may prefer to wait until Monday, when I will post here two simplified versions of these labs using just the data you need for this week's homework.
 * [Lab 2-1: Downloading and plotting data from a Snotel station](lab2/lab2-1.ipynb)
 * [Lab 2-2: Downloading and plotting data from the Kettle Ponds snow pillows and one temperature sensor](lab2/lab2-2.ipynb)
 
@@ -23,7 +24,7 @@ Download the lab and data files to your computer. Then, upload them to your Jupy
 
 ### Problem 1
 
-Using the [observations of total precipitation](data/KPprecip.dat), and the snow pillow data (see labs above), we are going to investigate mass balance and snow accumulation at Kettle Ponds.
+Using the observations of total precipitation and the snow pillow data (see labs above), we are going to investigate the mass balance and snow accumulation at Kettle Ponds.
 
 A. Plot a timeseries of total accumulated precipitation and total accumulated snow water equivalent from the four snow pillows.  Add to your plot timeseries from the two Snotel Stations located nearby.  Discuss how they match and how they differ, and why you think they differ.
 
