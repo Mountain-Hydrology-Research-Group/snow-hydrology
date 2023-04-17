@@ -14,12 +14,13 @@ Download the lab and data files to your computer. Then, upload them to your Jupy
 
 * [Lab 3-1: Plotting Snow Depth from scanning lidar](lab3/lab3-1.ipynb)
 * [Lab 3-2: Calculating Snow Density and investigating compaction](lab3/lab3-2.ipynb)
-* [lidar_l3_pillow_depths.nc](data/lidar_l3_pillow_depths.nc)
-  [lidar_l4_pillow_depths.nc](data/lidar_l4_pillow_depths.nc)
-  [lidar_l5_pillow_depths.nc](data/lidar_l5_pillow_depths.nc)
-  [lidar_l6_pillow_depths.nc](data/lidar_l6_pillow_depths.nc)
-  [lidar_l1_pillow_depths.nc](data/lidar_l1_pillow_depths.nc)
-  [lidar_l2_pillow_depths.nc](data/lidar_l2_pillow_depths.nc)
+* [Lidar 1 Snow Pillow Depths](data/lidar_l1_pillow_depths.nc)
+* [Lidar 2 Snow Pillow Depths](data/lidar_l2_pillow_depths.nc)
+* [Lidar 3 Snow Pillow Depths](data/lidar_l3_pillow_depths.nc)
+* [Lidar 4 Snow Pillow Depths](data/lidar_l4_pillow_depths.nc)
+* [Lidar 5 Snow Pillow Depths](data/lidar_l5_pillow_depths.nc)
+* [Lidar 6 Snow Pillow Depths](data/lidar_l6_pillow_depths.nc)
+
 
 
 
