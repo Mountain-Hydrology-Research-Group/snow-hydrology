@@ -6,6 +6,11 @@ For many regions, mountain snow provides much of society's water.  The weight of
 
 [![Watch a video of a fluidless snow pillow being installed in Colorado](https://img.youtube.com/vi/aK1_gYcgT9w/0.jpg)](https://www.youtube.com/watch?v=6Ivn666w5xo)
 
+Click on the photo above to see a short Youtube video of a snow pillow being installed.  Look at the map below to see where these snow pillows are located relative to the meteorological towers at Kettle Ponds.
+
+![Here is a map of where the Kettle Ponds pillows are located](data/KettlePondsPillowlidarmap.png)
+
+Above, we see an aerial photo, with each tower and corresponding snow pillow labeled.  We also see a lidar map of snow depth, with the snow pillow locations shown with circles, and a webcam photo taken from the downwind tower towards the central and upwind towers. This map will be useful in the lab and homework below, and in future modules.
 
 ```note
 ## Lab 2: Mass Balance
@@ -25,9 +30,7 @@ Download the lab and data files to your computer. Then, upload them to your Jupy
 * [Lab 2-2 (short version): Plotting data from the Kettle Ponds snow pillows and one temperature sensor](lab2/lab2-2-short.ipynb)
 
 ```
-![Here is a map of where the Kettle Ponds pillows are located](data/KettlePondsPillowlidarmap.png)
 
-Above, we see an aerial photo, with each tower and corresponding snow pillow labeled.  We also see a lidar map of snow depth, with the snow pillow locations shown with circles, and a webcam photo taken from the downwind tower towards the central and upwind towers.
 
 
 ## Homework 2

@@ -23,9 +23,11 @@ Download the lab and data files to your computer. Then, upload them to your Jupy
 
 ### Problem 1, based on combining material in Labs 2 & 3 and Modules 2 & 3
 
-In Lab 2 and Module 2, we saw that in late December, one of the three snow pillows had a sudden increase in snow water equivalent while the other three had a decrease.  Look at the snow depths, wind speeds, and snow particle fluxes during this period.  Create plots to explain what is happening here. 
+In Lab 2 and Module 2, we saw that in late December, one of the three snow pillows had a sudden increase in snow water equivalent while the other three had a decrease.  Look at the snow depths, the snow densities, wind speeds, and snow particle fluxes during this period.  Create plots to explain what is happening here. 
 
 ### Problem 2: Testing wind thresholds and particle counts
+
+There is a threshold wind speed that must be exceeded for snow transport.  [Li and Pomeroy 1997](https://doi.org/10.1175/1520-0450(1997)036<0205:EOTWSF>2.0.CO;2) state that 10-m wind speeds must exceed about 7.7 m/s for dry snow transport and about 9.9 m/s for wet snow transport.  Use the 10-m wind speed measurements and particle counters to test if these thresholds match the observations at Kettle Ponds.
 
  
 
