@@ -6,13 +6,21 @@ Snow exists on earth very close to its melting point.  This means it has a very 
 
 **To study how snow changes with time, we can bring it into a cold lab, or we can dig snow pits and study the layers.**
 
+# About Snow Pits
+Kelly Elder put together a good set of training videos for the NASA SnowEx Campaigns.  You can view these via the links below.
+* [An Introduction to NASA SnowEx Snow Pit Sampling Methods](https://www.youtube.com/embed/PCteYh66dEQ)
+* [SnowEx Snow Pit Profile Sampling](https://www.youtube.com/embed/DEJvh5dZnpY)
+* [SnowEx Snow Pit Density Sampling](https://www.youtube.com/embed/VtHj3ccu5A8)
+
+# About Snow Metamorphism
 [SLF Website on Snow Metamorphism](https://www.slf.ch/en/snow/snow-as-a-material/snow-metamorphism.html)
 In [A Field Guide to Snow](https://www.amazon.com/Field-Guide-Snow-Snowy-Owl/dp/1602234140/), read Chapter 4 on how to dig and interpret data from a snow pit, and read Chapter 5 on snow metamorphism.
 To hear Matthew Sturm explain the concepts in these chapters, check out his [class lecture on snow metamorphism](https://www.youtube.com/watch?v=tg2v1DC5Nrk&list=PLPG5Ed5L1SY4RpFe-55WAlFZ58-TwwrWw&index=5).
 
+# About Snow Compaction and Snow Density
 ![Image of snow compaction](data/Wayand_compaction_illustration.png)
 
-One way that snow changes through time is simply from compacting under the weight of the snow above it.  Thus, the depth of snow will often decrease even during periods when the snow water content does not change.
+One way that snow changes through time is simply from compacting under the weight of the snow above it.  This will cause depth to decrease and density to increase. The image above is from supplemental material from [Nic Wayand's 2013 paper](data/Wayand_rain_snow_newdensity_hyp11002.pdf).  We can see in observations (labs below) that the depth of snow will often decrease even during periods when the snow water content does not change.  You can read about how people have conceptually modeled snow compaction in Section 4.1 of [Richard Essery's 2013 paper on snow modeling](https://www.sciencedirect.com/science/article/pii/S0309170812002011).
 
 ```note
 ## Lab 3: How does a snowpack change?
