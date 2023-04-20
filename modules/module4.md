@@ -13,6 +13,7 @@ Read this article by Charles Parr, Matthew Sturm and Chris Larsen about [Arctic 
 Download the lab and data files to your computer. Then, upload them to your JupyterHub [following the instructions here](/resources/b-learning-jupyter.html#working-with-files-on-our-jupyterhub).
 
 * [Data: sos_wind_snowflux.nc](data/snow_wind_snowflux.nc) 
+* [Data: lidar_l2_particles.nc](data/lidar_l2_particles.nc) 
 * [Lab 4-1-long: Downloading and Plotting wind speed](lab4/lab4-1-long.ipynb)
 * [Lab 4-1-short: Just Plotting wind speed](lab4/lab4-1-short.ipynb)
 * [Lab 4-2: Comparing wind speed with snow particle fluxes](lab4/lab4-2.ipynb)
@@ -34,4 +35,4 @@ There is a threshold wind speed that must be exceeded for snow transport.  [Li a
 
 ### Problem 3: Project
 
-Please give a brief update of where you are with your project.  At this poing you should have acquired data that you can plot.  Include one example plot of the data in this homework.  Let us know if you have any questions or concerns at this point.
+Please give a brief update of where you are with your project.  At this point you should have acquired data that you can plot.  Include one example plot of the data in this homework.  Let us know if you have any questions or concerns at this point.
