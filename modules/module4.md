@@ -3,9 +3,10 @@
 # Background
 
 [![Watch a video of Ethan Gutmann explaining how scanning lidars can detect both snow depth and blowing snow](https://img.youtube.com/vi/-9Mt2mrmAy8/0.jpg)](https://www.youtube.com/watch?v=-9Mt2mrmAy8)
+
 In the video above, Ethan explains how the scanning lidars work, while Jessica looks at the lidar equipment.
 
-Read this article by Charles Parr, Matthew Sturm and Chris Larsen about [Arctic Snowdrift Patterns](https://doi.org/10.1029/2020WR027823).
+Read this article by Charles Parr, Matthew Sturm and Chris Larsen about [Arctic Snowdrift Patterns](https://doi.org/10.1029/2020WR027823).  Watch Matthew Sturm's lecture on [wind aand snow](https://www.youtube.com/watch?v=rBlDG9Tp8rM&list=PLPG5Ed5L1SY4RpFe-55WAlFZ58-TwwrWw&index=6).  (Note that this is labeled as Lecture 6 and starts at minute 13:48 on the video.) 
 
 ```note
 ## Lab 4: Wind Speed and Particle Flux
@@ -35,4 +36,4 @@ There is a threshold wind speed that must be exceeded for snow transport.  [Li a
 
 ### Problem 3: Project
 
-Please give a brief update of where you are with your project.  At this point you should have acquired data that you can plot.  Include one example plot of the data in this homework.  Let us know if you have any questions or concerns at this point.
+Please give a brief update of where you are with your project.  Let me know if you have any questions or concerns at this point.

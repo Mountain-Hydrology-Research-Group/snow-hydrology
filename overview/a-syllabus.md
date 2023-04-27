@@ -120,12 +120,12 @@ This schedule is subject to change throughout the quarter. Check assignment due 
 | **2** | 4/7 | Mass balance: How much snow is there? (Class fieldtrip to Snoqualmie Pass!)| Lab 2: Snow depth, snow density, and snow water equivalent (SWE) | 4/7: **HW1 Due** |
 | **3** | 4/14 | How does a snowpack change? (Class held in UW Maker Space)| Lab 3: Snow pits, crystals, and snowpack evolution | 4/14: **HW2 Due** |
 | **4** | 4/21 | Mass balance: Blowing snow & How snow smoothes landscapes | Lab 4: Blowing snow | 4/21: **HW3 Due** |
-| **5** | 4/28 | Temperature above and within the snow | Lab 5: Temperature gradients and the heat equation | 4/28: **HW4 Due** |
-| **6** | 5/5 | Turbulent transfer above the snow: changing mass and energy | Lab 6: Examining turbulence | 5/5: **HW5 Due** |
-| **7** | 5/12 | Radiation, albedo, and the energy balance | Lab 7: Examining the energy balance | 5/12: **HW6 Due** |
+| **5** | 4/28 | Radiation, albedo, and the energy balance | Lab 7: Examining the energy balance | 4/28: **HW4 Due** |
+| **6** | 5/5 | Temperature above and within the snow | Lab 5: Temperature gradients and the heat equation  | 5/5: **HW5 Due** |
+| **7** | 5/12 | Turbulent transfer above the snow: changing mass and energy | Lab 6: Examining turbulence| 5/12: **HW6 Due** |
 | **8** | 5/19 | What makes snow melt?  | Lab 8: Putting the energy balance together | 5/19: **HW7 Due** |
 | **9** | 5/26 | Trees and snow (Class held in UW Maker Space)| Project Work | 5/26: **HW8 Due** |
-| **10** | 6/02 | Mountain Meteorology | Project Presentations | 6/2: **Presentations** |
+| **10** | 6/02 | Topic of Choice | Project Presentations | 6/2: **Presentations** |
 | **Finals Week** | 6/07 |  |  | 12/12: **CEWA 568 - Final Project Report Due** |
 
 ## Additional Information
@@ -136,7 +136,6 @@ This schedule is subject to change throughout the quarter. Check assignment due 
 * The [Q Center](https://depts.washington.edu/qcenter/wordpress/)
 * The [UW Counseling Center](https://www.washington.edu/counseling/)  
 * The [University District Food Bank](https://www.udistrictfoodbank.org/)
-* King County COVID-19 [Child Care Financial Support](https://www.kingcounty.gov/depts/community-human-services/COVID/child-care.aspx)
 
 ### Conduct
 
