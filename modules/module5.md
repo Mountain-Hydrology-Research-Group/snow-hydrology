@@ -16,7 +16,7 @@ In cooperation with our campaign, NOAA is conducting the [Study of Precipitation
 Download the lab and data files to your computer. Then, upload them to your JupyterHub [following the instructions here](/resources/b-learning-jupyter.html#working-with-files-on-our-jupyterhub).
 
 * [Lab 5-1: Plotting Radiation Data at Kettle Ponds and Potential Radiation](lab5/lab5-1.ipynb)
-* [SPLASH attribute data -- get from Danny if link doesn't work](data/radsys_attributes.txt)
+* [SPLASH radsys_attribute data, used in lab5-1](data/radsys_attributes.txt)
 
 ```
 

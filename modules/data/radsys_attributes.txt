@@ -1,0 +1,115 @@
+{"SZA":
+{"value":"solar zenith angle",
+"units":"Degrees",
+"type":"Float",
+"QC":"Calc From Timestamp and Lat/Lon"},
+"dw_solar":
+{"value":"downwelling global solar",
+"units":"W/m^2",
+"type":"Float",
+"QC":"QC = Col 10"},
+"uw_solar":
+{"value":"upwelling global solar",
+"units":"W/m^2",
+"type":"Float",
+"QC":"QC = Col 12"},
+"Direct horizontal":
+{"value":"Direct horizontal solar",
+"units":"W/m^2",
+"type":"Float",
+"QC":"QC = Col 14, calculated as described below"},
+"Diffuse":
+{"value":"Downwelling diffuse solar",
+"units":"W/m^2",
+"type":"Float",
+"QC":"QC = Col 16, calculated as described below"},
+"dw_ir":
+{"value":"downwelling thermal infrared",
+"units":"W/m^2",
+"type":"Float",
+"QC":"QC = Col 18"},
+"DwCaseTemp":
+{"value":"downwelling IR case temp.",
+"units":"Kelvin",
+"type":"Float",
+"QC":"QC = Col 20"},
+"DwDomeTemp":
+{"value":"downwelling IR dome temp.",
+"units":"Kelvin",
+"type":"Float",
+"QC":"QC = Col 22"},
+"uw_ir":
+{"value":"upwelling thermal infrared",
+"units":"W/m^2",
+"type":"Float",
+"QC":"QC = Col 24"},
+"UwCaseTemp":
+{"value":"upwelling IR case temp.",
+"units":"Kelvin",
+"type":"Float",
+"QC":"QC = Col 26"},
+"UwDomeTemp":
+{"value":"upwelling IR dome temp.",
+"units":"Kelvin",
+"type":"Float",
+"QC":"QC = Col 28"},
+"UV":
+{"value":"global UVB",
+"units":"W/m^2",
+"type":"Float",
+"QC":"QC = Col 30, not usually measured with RADSYS"},
+"PAR":
+{"value":"photosynthetically active radiation",
+"units":"W/m^2",
+"type":"Float",
+"QC":"QC = Col 32, not usually measured with RADSYS"},
+"NetSolar":
+{"value":"net solar (dw_solar - uw_solar)",
+"units":"W/m^2",
+"type":"Float",
+"QC":"QC = Col 34"},
+"NetIR":
+{"value":"net infrared (dw_ir - uw_ir)",
+"units":"W/m^2",
+"type":"Float",
+"QC":"QC = Col 36"},
+"TotalNet":
+{"value":"net radiation (netsolar+netir)",
+"units":"W/m^2",
+"type":"Float",
+"QC":"QC = Col 38"},
+"AirTemp":
+{"value":"10-meter air temperature",
+"units":"Celcius",
+"type":"Float",
+"QC":"QC = Col 40"},
+"RH":
+{"value":"relative humidity",
+"units":"%",
+"type":"Float",
+"QC":"QC = Col 42"},
+"WindSpd":
+{"value":"wind speed",
+"units":"m/s",
+"type":"Float",
+"QC":"QC = Col 44"},
+"WindDir":
+{"value":"wind direction",
+"units":"Degrees",
+"type":"Float",
+"QC":"QC = Col 46"},
+"Baro":
+{"value":"station pressure",
+"units":"mBar",
+"type":"Float",
+"QC":"QC = Col 48"},
+"SPN1_total_Avg": 
+{"value":"Total irradiance as measured by SPN1",
+"units":"W/m^2",
+"type":"Float",
+"QC":"QC = Col 50"},
+"SPN1_diffuse_Avg":
+{"value":"Diffuse irradiance as measured by SPN1",
+"units":"W/m^2",
+"type":"Float",
+"QC":"QC = Col 52"}}
