@@ -6,9 +6,9 @@
 
 [News about the dust on snow event](https://crestedbuttenews.com/2023/04/quicker-spring-runoff-expected-with-recent-dust-storm-impact/) 
 
-The [Snow International, SINTER](https://nsidc.org/sinter) community puts on snow schools and lectures to help people worldwide learn more about snow science and current snow research.  From the 2021 online snow school series, you can watch the [SINTER Lecture by Cassie Lumbrazo on the Energy Balance](https://youtu.be/LV5elFtjjcc) 
+The [Snow International, SINTER](https://nsidc.org/sinter) community puts on snow schools and lectures to help people worldwide learn more about snow science and current snow research.  From the 2021 online snow school series, you can watch the [SINTER Lecture by Cassie Lumbrazo on the Energy Balance.](https://youtu.be/LV5elFtjjcc) 
 
-In cooperation with our campaign, NOAA is conducting the [Study of Precipitation, the Lower Atmosphere and Surface for Hydrometeorology, SPLASH, campaign](https://psl.noaa.gov/splash/). From the pior link, if you click on _data_ and on _KettlePonds_, you can see photos of the radiometer and streams of data.  For today's lab, we will bring in one of the [Superheros of SPLASH](https://storymaps.arcgis.com/stories/093640ac6bdc479394d7fd9c7068fd27) 
+In cooperation with our campaign, NOAA is conducting the [Study of Precipitation, the Lower Atmosphere and Surface for Hydrometeorology, SPLASH, campaign](https://psl.noaa.gov/splash/). From the prior link, if you click on _data_ and on _KettlePonds_, you can see photos of the radiometer and streams of data.  For today's lab, we will bring in one of the [Superheros of SPLASH.](https://storymaps.arcgis.com/stories/093640ac6bdc479394d7fd9c7068fd27) 
 
 ```note
 ## Lab 5: Plotting radiation data around the snow.
@@ -16,7 +16,7 @@ In cooperation with our campaign, NOAA is conducting the [Study of Precipitation
 Download the lab and data files to your computer. Then, upload them to your JupyterHub [following the instructions here](/resources/b-learning-jupyter.html#working-with-files-on-our-jupyterhub).
 
 * [Lab 5-1: Plotting Radiation Data at Kettle Ponds and Potential Radiation](lab5/lab5-1.ipynb)
-* [Attributed data -- get from Danny if link doesn't work](data/radsys_attributes.txt)
+* [SPLASH attribute data -- get from Danny if link doesn't work](data/radsys_attributes.txt)
 
 ```
 

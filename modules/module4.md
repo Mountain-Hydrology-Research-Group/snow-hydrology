@@ -6,9 +6,18 @@
 
 In the video above, Ethan explains how the scanning lidars work, while Jessica looks at the lidar equipment.
 
-To learn more about blowing snow and snow on the ground, check out
+**To learn more about the basic atmospheric dynamics of wind**
+* [COMET](https://www.meted.ucar.edu/education_training/) offers online classes on many topics in meteorology. Note that you need to register, but their classes are free. Here I've linked to some lessons relevant to mountain snow, but there are many more.
+* COMET MetEd module on [basic dynamic meteorology and atmospheric relationships between temperature, pressure, and wind](https://www.meted.ucar.edu/education_training/lesson/889)
+
+**To learn more about mountain scale winds and how they impact snow accumulation at a watershed scale**
+* article by former UW student Dylan Reynolds about [Using lidar snow maps to evaluate atmospheric wind fields](https://doi.org/10.1029/2020WR028536)
+* the COMET education program has a short lesson on valley wind circulations [here](https://www.meted.ucar.edu/education_training/lesson/55) 
+* COMET also has two lessons by David Whiteman on the planetary boundary layer (including mountain wind systems) over complex terrain, available [here](https://www.meted.ucar.edu/norlat/pbl_complexterrain/part1/) and [here](https://www.meted.ucar.edu/norlat/pbl_complexterrain/part2/).
+
+**To learn more about blowing snow and snow on the ground, check out**
 * article by Charles Parr, Matthew Sturm and Chris Larsen about [Arctic Snowdrift Patterns](https://doi.org/10.1029/2020WR027823).  
-* article by Simon Filhold and Matthew Sturm about [Snow Bedforms](https://doi.org/10.1002/2015JF003529)
+* article by Simon Filhol and Matthew Sturm about [Snow Bedforms](https://doi.org/10.1002/2015JF003529)
 * Watch Matthew Sturm's lecture on [wind and snow](https://www.youtube.com/watch?v=rBlDG9Tp8rM&list=PLPG5Ed5L1SY4RpFe-55WAlFZ58-TwwrWw&index=6).  (Note that this is labeled as Lecture 6 and starts at minute 13:48 on the linked video.) 
 
 ```note
