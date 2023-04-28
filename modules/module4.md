@@ -6,7 +6,10 @@
 
 In the video above, Ethan explains how the scanning lidars work, while Jessica looks at the lidar equipment.
 
-Read this article by Charles Parr, Matthew Sturm and Chris Larsen about [Arctic Snowdrift Patterns](https://doi.org/10.1029/2020WR027823).  Watch Matthew Sturm's lecture on [wind aand snow](https://www.youtube.com/watch?v=rBlDG9Tp8rM&list=PLPG5Ed5L1SY4RpFe-55WAlFZ58-TwwrWw&index=6).  (Note that this is labeled as Lecture 6 and starts at minute 13:48 on the video.) 
+To learn more about blowing snow and snow on the ground, check out
+* article by Charles Parr, Matthew Sturm and Chris Larsen about [Arctic Snowdrift Patterns](https://doi.org/10.1029/2020WR027823).  
+* article by Simon Filhold and Matthew Sturm about [Snow Bedforms](https://doi.org/10.1002/2015JF003529)
+* Watch Matthew Sturm's lecture on [wind and snow](https://www.youtube.com/watch?v=rBlDG9Tp8rM&list=PLPG5Ed5L1SY4RpFe-55WAlFZ58-TwwrWw&index=6).  (Note that this is labeled as Lecture 6 and starts at minute 13:48 on the linked video.) 
 
 ```note
 ## Lab 4: Wind Speed and Particle Flux
@@ -27,7 +30,7 @@ Download the lab and data files to your computer. Then, upload them to your Jupy
 
 ### Problem 1, based on combining material in Labs 2 & 3 and Modules 2 & 3
 
-In Lab 2 and Module 2, we saw that in late December, one of the four snow pillows had a sudden increase in snow water equivalent while the other three had a decrease.  In Lab 3, we saw a similar pattern in the snow depth measurements near of the snow pillows.  Look at the snow depths, the snow densities, wind speeds, and snow particle fluxes during this period.  Create plots to help explain what is happening here. Referencing your plots, explain what happened in Kettle Ponds during this period.
+In Lab 2 and Module 2, we saw that in late December, one of the four snow pillows had a sudden increase in snow water equivalent while the other three had a decrease.  In Lab 3, we saw a similar pattern in the snow depth measurements near of the snow pillows.  Look at the snow depths, the snow densities, wind speeds, and snow particle fluxes during this period.  Create plots to help explain what is happening here. Referencing your plots, explain what happened in Kettle Ponds during this period.  You may also want to check out the [weekly weather blog.](https://depts.washington.edu/mtnhydr/Pages/SOSdata.html) 
 
 ### Problem 2: Testing wind thresholds and particle counts
 
