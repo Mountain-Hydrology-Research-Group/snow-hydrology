@@ -1,6 +1,6 @@
 # 6) Temperatures above, below, and within the snow
 
-Data visualization (Note, this was developed with air temperature data but may be helpful with visualizing our snow data):
+Data visualization (Note, the files below were developed by Steven Pestana for working with air temperature data but may be helpful with visualizing our snow data):
 - [Interactive Plots](lab5/interactive-plots.ipynb) with [iButtons_2008-2010.mat](data/iButtons_2008-2010.mat)
 - [Warming Stripes Figure](lab5/warming-stripes.ipynb)
 
@@ -14,8 +14,9 @@ Data visualization (Note, this was developed with air temperature data but may b
 
 Download the lab and data files to your computer. Then, upload them to your JupyterHub [following the instructions here](/resources/b-learning-jupyter.html#working-with-files-on-our-jupyterhub).
 
-* [Lab 6-1: Temperature gradients and the heat equation](lab5/lab5-1.ipynb)
-* [Lab 6-2: Atmospheric stability](lab5/lab5-2.ipynb)
+* [Lab 6-1: Temperature gradients and the heat equation](lab6/lab6-1.ipynb)
+* [Lab 6-2: Air Temperature and Atmospheric stability](lab6/lab6-2.ipynb)
+* [Lab 6-3: Snow surface temperatures](lab6/lab6-3.ipynb)
 
 ```
 
