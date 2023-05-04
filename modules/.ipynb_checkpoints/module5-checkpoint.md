@@ -10,7 +10,7 @@ For background on the earth's energy balance as a whole, NCAR has put together t
 
 The [Snow International, SINTER](https://nsidc.org/sinter) community puts on snow schools and lectures to help people worldwide learn more about snow science and current snow research.  From the 2021 online snow school series, you can watch the [SINTER Lecture by Cassie Lumbrazo on the Energy Balance.](https://youtu.be/LV5elFtjjcc) 
 
- ```Key Points
+ ```tip
 The majority of the energy available for snow melt or sublimation comes from the net radiation, which is a balance of incoming shortwave, reflected shortwave, incoming longwave, and emitted longwave radiation.
 
 * Radition comes in a wide range of frequencies and wavelengths, which interact with molecules and materials in different ways. 

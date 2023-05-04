@@ -30,6 +30,7 @@ Download the lab and data files to your computer. Then, upload them to your Jupy
 * [Lab 4-1-long: Downloading and Plotting wind speed](lab4/lab4-1-long.ipynb)
 * [Lab 4-1-short: Just Plotting wind speed](lab4/lab4-1-short.ipynb)
 * [Lab 4-2: Comparing wind speed with snow particle fluxes](lab4/lab4-2.ipynb)
+* [To hear Ethan explain the FlowCapt sensors used in the lab, click here](https://youtu.be/07um8VtGj-g ) 
 
 
 ```
