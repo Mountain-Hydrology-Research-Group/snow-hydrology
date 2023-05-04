@@ -8,6 +8,7 @@ Data visualization (Note, the files below were developed by Steven Pestana for w
 ![Here are February temperatures at Kettle Ponds](data/SoSFebtemps.png)
 
 * For an overview of mountain temperatures and lapse rates, check out Jessica's seminar on [How cold is it in the mountains](https://youtu.be/saUe3uIegRs) 
+* To see Danny explain the snow temperature deployment, click [here](https://www.youtube.com/watch?v=OGa2GtRcdIw)
 
 ```note
 ## Lab 6: Plotting temperatures around the snow.
