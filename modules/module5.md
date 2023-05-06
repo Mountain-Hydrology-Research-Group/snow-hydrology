@@ -22,6 +22,8 @@ The majority of the energy available for snow melt or sublimation comes from the
 
 In cooperation with our campaign, NOAA is conducting the [Study of Precipitation, the Lower Atmosphere and Surface for Hydrometeorology, SPLASH, campaign](https://psl.noaa.gov/splash/). From the prior link, if you click on _data_ and on _KettlePonds_, you can see photos of the radiometer and streams of data.  For today's lab, we will bring in one of the [Superheros of SPLASH](https://storymaps.arcgis.com/stories/093640ac6bdc479394d7fd9c7068fd27) to help us with our investigation.
 
+For even more detailed information about clouds, aerosols, and radiation, DOE is conducting the [Surface Atmosphere Integrated Field Laboratory, SAIL, campaign](https://sail.lbl.gov/), with a list of sensors [here](https://sail.lbl.gov/what-we-measure/).
+
 ```note
 ## Lab 5: Plotting radiation data around the snow.
 
@@ -39,6 +41,10 @@ Download the lab and data files to your computer. Then, upload them to your Jupy
 A common problem in mountain snow energy balance studies is that snow accumulates on the upward pointing radiometers.  Find a time in our dataset when you think this occurred and explain your reasoning. _Hint, you may want to look at the precipitation dataset in Lab 2 for timing._ Which radiometer set-up (SOS or SPLASH) worked better during your timeperiod?  Why do you think this is?  Compare downwelling and reflected shortwave radiation with potential shortwave radiation for your day.
  
  ```tip
+Look at the graphic below from the site we visited at Snoqualmie Pass.  What do you think is happening here?
+
+![radiation timeseries from Snoqualmie Pass](data/solar_radiometer_Snoqualmie.png)
+
 Former UW PhD student Karl Lapo created several GitHub repositories for working with radiation data in mountain areas and a paper about identifying times when sensors have radiation on them.
 
 * [Paper on identifying period with snow on a radiometer](https://doi.org/10.1002/2015WR017590)
