@@ -23,34 +23,43 @@ Download the lab and data files to your computer. Then, upload them to your Jupy
 * [Lab 6-2: Snow surface temperatures derived from radiation](lab6/lab6-2.ipynb)
 * [Lab 6-3: Air temperature and atmospheric stability](lab6/lab6-3.ipynb)
 * [BONUS Lab 6-4: Sounding data from SAIL at Gothic, CO](lab6/lab6-4.ipynb)
+* [26 Dec 2021 Sounding data for lab 6-4](data/2021-12-26_radiosonde.csv)
+* [03 Jan 2022 Sounding data for lab 6-4](data/2022-01-03_radiosonde.csv)
+* [06 Jan 2022 Sounding data for lab 6-4](data/2022-01-06_radiosonde.csv)
+* [10 Jan 2022 Sounding data for lab 6-4](data/2022-01-10_radiosonde.csv)
 
 ```
 
 ## Homework 6
 
 ### Problem 1: Measuring snow temperatures and deciding how to trust the measurements  
-
+Using the data presented in labs, pick three different 3-day-durationperiods in each of early season (Nov-Dec), mid season (Jan-Feb) and late season (April). Plot the temperatures.  Determine which of the "snow temperature" sensors are actually in the snow at each side.  Also determine which sensors are "broken" and displaying nonsensicle results.  Explain your answers.   
 
  
  ```tip
-This is a tip.
+Learning to manipulate all of this data in python is hard.  Please post on slack if anything is causing you trouble -- your fellow students can help you!
 ```
 
-### Problem 2: Working with the heat equation
+### Problem 2:  Calculating atmospheric stability
+[Static stability](https://glossary.ametsoc.org/wiki/Static_stability) is related to the change in temperature with height.  If you choose to use the sounding data, you must be sure to use [potential temperature](https://en.wikipedia.org/wiki/Potential_temperature).  For this problem, just focus on our data from the surface to 20 m, and it's okay to just use temperature within that narrow elevation range. The change in temperature with height above the surface is a measure of the stability.  Pick out three different days in our dataset and calculate dT/dz over the first 2 meters and over the first 20 meters. Make plots of temperature vs elevation.  Is the change in temperature with height linear?  Does that depend on the day?  What do you think controls the change in temperature with height over the snow?  Feel free to plot some other variables from earlier labs to test your hypotheses. 
+
+Lab 6-4 includes more of atmospheric stability over a greater range of heights using the sounding data from SAIL.
+
+### BONUS Problem: Working with the heat equation
 We have talked in class about snow being insulating and about the surface skin temperature of the snow changing rapidly in time.  But how is energy at the surface translated into the lower layers?  We can estimate the thermal conductivity of our snowpack using the one-dimensional heat equation. 
 
 The one-dimensional heat equation is given by:
 
-$$
+${
 \frac{\partial T}{\partial t} = \alpha \frac{\partial^2 T}{\partial z^2}
-$$
+}$
 
-where $T(z,t)$ is the temperature at position $z$ and time $t$, and $\alpha$ is the thermal diffusivity of the material.
+where ${T(z,t)}$ is the temperature at position $z$ and time $t$, and $\alpha$ is the thermal diffusivity of the material.
 
 Using the material provided in Lab 6-1, pick a period of about 5-7 days wherein (a) you trust the temperature measurements and (b) that have a clear diurnal cycle in the surface temperature.  Assign that rapidly varying surface temperature as one boundary condition and provide the lowest temperature (you can presume it's constant0 as the other boundary condition.  Then, numerically integrate the heat equation to determine the time-varying temperatures at the snow layers in between.  Comparing your simulation with the observations, what is your best guess of the thermal conductivity of the snowpack?  Hint, you may want to rerun your simulation, iterating over multiple values of thermal conductivity.  
 
 
 
-### Problem 3:  Calculating atmospheric stability
+
 
 
