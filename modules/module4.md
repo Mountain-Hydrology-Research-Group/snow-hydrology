@@ -4,7 +4,7 @@
 
 [![Watch a video of Ethan Gutmann explaining how scanning lidars can detect both snow depth and blowing snow](https://img.youtube.com/vi/-9Mt2mrmAy8/0.jpg)](https://www.youtube.com/watch?v=-9Mt2mrmAy8)
 
-In the video above, Ethan explains how the scanning lidars work, while Jessica looks at the lidar equipment.
+In the video above, Ethan explains how the scanning lidars work, while Jessica looks at the lidar equipment.  In the [video linked here](https://www.youtube.com/watch?v=rlwSuNWQHSo) Ethan takes the lidar away from Jessica and explains how it works more succinctly.  You can vote which one you think is more useful for inclusion in the final class website.
 
 **To learn more about the basic atmospheric dynamics of wind**
 * [COMET](https://www.meted.ucar.edu/education_training/) offers online classes on many topics in meteorology. Note that you need to register, but their classes are free. Here I've linked to some lessons relevant to mountain snow, but there are many more.

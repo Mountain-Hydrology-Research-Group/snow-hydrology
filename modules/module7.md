@@ -4,7 +4,10 @@ Fluxes of sensible and latent heat above the snow
 
 
 # Background
-![Here are February temperatures at Kettle Ponds](data/SoSFebtemps.png)
+[![Watch a video of Steve Oncley talking about how sonic anemometers work](https://img.youtube.com/vi/2kUJari_PpM/0.jpg)](https://www.youtube.com/watch?v=2kUJari_PpM)
+
+Text here.
+[Michi Haugeneder explains how we can visualize turbulence with an IR camera and a sheet](https://www.youtube.com/watch?v=pEcRLSMFXcw) 
 
 ```note
 ## Lab 7: Turbulence and the mass and energy balance

@@ -6,6 +6,8 @@
 
 [News about the dust on snow event](https://crestedbuttenews.com/2023/04/quicker-spring-runoff-expected-with-recent-dust-storm-impact/)
 
+[Danny explains the SOS net radiometer](https://www.youtube.com/watch?v=yGsDh4b_tZA) 
+
 For background on the earth's energy balance as a whole, NCAR has put together this [4-minute video](https://www.youtube.com/watch?v=t9B8gGQtJzo).  If you prefer reading to a video, they also have this [online resource on the total energy balance](https://scied.ucar.edu/learning-zone/how-climate-works/energy-budget).  
 
 The [Snow International, SINTER](https://nsidc.org/sinter) community puts on snow schools and lectures to help people worldwide learn more about snow science and current snow research.  From the 2021 online snow school series, you can watch the [SINTER Lecture by Cassie Lumbrazo on the Energy Balance.](https://youtu.be/LV5elFtjjcc) 
