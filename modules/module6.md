@@ -55,9 +55,9 @@ We have talked in class about snow being insulating and about the surface skin t
 
 The one-dimensional heat equation is given by:
 
-<img src="https://render.githubusercontent.com/render/math?math=\frac{\partial T}{\partial t} = \alpha \frac{\partial^2 T}{\partial z^2}">
+![heat equation](data/heat_equation.png)
 
-where <img src="https://render.githubusercontent.com/render/math?math={T(z,t)}"> is the temperature at position z and time t, and <img src="https://render.githubusercontent.com/render/math?math=\alpha"> is the thermal diffusivity of the material.
+where T(z,t) is the temperature at position z and time t, and <img src="https://render.githubusercontent.com/render/math?math=\alpha"> is the thermal diffusivity of the material.
 
 Using the material provided in Lab 6-1, pick a period of about 5-7 days wherein (a) you trust the temperature measurements and (b) that have a clear diurnal cycle in the surface temperature.  Assign that rapidly varying surface temperature as one boundary condition and provide the lowest temperature (you can presume it's constant0 as the other boundary condition.  Then, numerically integrate the heat equation to determine the time-varying temperatures at the snow layers in between.  Comparing your simulation with the observations, what is your best guess of the thermal conductivity of the snowpack?  Hint, you may want to rerun your simulation, iterating over multiple values of thermal conductivity.  
 
