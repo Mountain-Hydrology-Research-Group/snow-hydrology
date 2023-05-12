@@ -14,8 +14,8 @@ Text here.
 
 Download the lab and data files to your computer. Then, upload them to your JupyterHub [following the instructions here](/resources/b-learning-jupyter.html#working-with-files-on-our-jupyterhub).
 
-* [Lab 7-1: Plotting turbulence data from Kettle Ponds](lab7/lab7-1.ipynb)
-* [Lab 7-2: Calculating atmospheric stability](lab7/lab7-2.ipynb) 
+* [Lab 7-1: Calculating atmospheric stability and the Richardson Number](lab7/lab7-1.ipynb) 
+* [Lab 7-2: Plotting turbulence data from Kettle Ponds](lab7/lab7-2.ipynb)
 
 ```
 
