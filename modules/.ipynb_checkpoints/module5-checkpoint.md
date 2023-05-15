@@ -4,7 +4,9 @@
 # Background
 ![Photo of April 2023 dust event at Kettle Ponds](data/Dust_on_SOS.png)
 
-[News about the dust on snow event](https://crestedbuttenews.com/2023/04/quicker-spring-runoff-expected-with-recent-dust-storm-impact/)
+Click [here](https://crestedbuttenews.com/2023/04/quicker-spring-runoff-expected-with-recent-dust-storm-impact/) for news about the dust on snow event.
+
+Click [here](https://www.youtube.com/watch?v=yGsDh4b_tZA) for a short (1 minute) video of Danny explaining the SOS net radiometer.
 
 For background on the earth's energy balance as a whole, NCAR has put together this [4-minute video](https://www.youtube.com/watch?v=t9B8gGQtJzo).  If you prefer reading to a video, they also have this [online resource on the total energy balance](https://scied.ucar.edu/learning-zone/how-climate-works/energy-budget).  
 
