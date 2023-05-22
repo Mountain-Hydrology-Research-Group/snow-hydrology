@@ -12,6 +12,8 @@ All good things, like this class and the seasonal snowpack, have to come to an e
 Download the lab and data files to your computer. Then, upload them to your JupyterHub [following the instructions here](/resources/b-learning-jupyter.html#working-with-files-on-our-jupyterhub).
 
 * [Lab 8-1: Ripe snowpack, Energy balance, and Melt rates.](lab8/lab8-1.ipynb)
+  * [data: April1to21SoSdata](data/sos_EB_1to21April2023.nc)
+  * note that you may prefer to load the above hourly data rather than download from the server.
   
 * [Lab 8-2: Timeseries Lab](lab8/lab8-2.ipynb)
   * data: [waterlevel.mat](data/waterlevel.mat)
