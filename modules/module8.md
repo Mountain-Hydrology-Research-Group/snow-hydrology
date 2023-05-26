@@ -16,7 +16,7 @@ Download the lab and data files to your computer. Then, upload them to your Jupy
 
 * [Lab 8-1: Ripe snowpack, Energy balance, and Melt rates.](lab8/lab8-1.ipynb)
   * [data: April1to21SoSdata](data/sos_EB_1to21April2023.nc)
-  * [data: April1to21SoSdata](data/sos_EB_25Aprilto20May2023.nc)
+  * [data: 1Aprilto15MaySoSdata](data/sos_EB_1Apr_15May2023.nc)
   * note that you may prefer to load the above hourly data rather than download from the server.  See notes in the lab8-1 notebook about which cells to run if you just want to load the hourly data.  
   * [bonus data: lidar_l1](data/updated_pillow_depths/lidar_l1_pillow_depths.nc)
   * [bonus data: lidar_l2](data/updated_pillow_depths/lidar_l2_pillow_depths.nc)
@@ -28,7 +28,7 @@ Download the lab and data files to your computer. Then, upload them to your Jupy
 ```
 
 ### Homework 8, Problem 1: Energy for melt and melt rates
-Using the data collected, as presented in Lab 8-1, calculate (a) the total daily energy balance, (b) the total daily change in snow temperature, (c) the total daily vertical water vapor flux, and (d) the total daily snow melt for the period from April 1 to April 21, and then, separately from April 25 to May 10.    Do our data suggest that the mass and energy budgets work?  If not, what do you think are the primary sources of our errors?  **Note:** There was a power surge on May 11 that created incorrect flux numbers and broke the radiomter, so we will leave processing that data until some other time.
+Using the data collected, as presented in Lab 8-1, calculate (a) the total daily energy balance, (b) the total daily change in snow temperature (okay to just estimate this and just use one of the layers a bit below the surface), (c) the total daily vertical water vapor flux, and (d) the total daily snow melt for the period from April 1 to April 21, and then, separately from April 25 to May 10.    Do our data suggest that the mass and energy budgets work?  If not, what do you think are the primary sources of our errors?  **Note:** There was a power surge on May 11 that created incorrect flux numbers and broke the radiomter, so we will leave processing that data until some other time.
 
  
 ### Homework 8, Problem 2: Feedback on class modules
