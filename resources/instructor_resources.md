@@ -30,6 +30,8 @@ Working with your fork of the repository that you've cloned, you can directly ed
 
 When you've made the changes you want, [commit and push](https://www.earthdatascience.org/workshops/intro-version-control-git/basic-git-commands/) the modified files to your fork of the respository. Then [open a pull request](https://www.earthdatascience.org/workshops/intro-version-control-git/pull-request/) from the [upstream repository](https://github.com/Mountain-Hydrology-Research-Group/data-analysis) to pull the changes made in your fork. After merging the pull request, the changes will appear on the class website within a few minutes as the page is re-built from the new files.
 
+Note that github security requires you to create an authentication token. You can find step-by-step instructions on how to do that [here](https://techglimpse.com/git-push-github-token-based-passwordless/).
+
 
 ## Slack
 
