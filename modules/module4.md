@@ -25,7 +25,7 @@ In the video above, Ethan explains how the scanning lidars work, while Jessica l
 
 Download the lab and data files to your computer. Then, upload them to your JupyterHub [following the instructions here](/resources/b-learning-jupyter.html#working-with-files-on-our-jupyterhub).
 
-* [Data: sos_wind_snowflux.nc](data/snow_wind_snowflux.nc) 
+* [Data: sos_wind_snowflux.nc](data/sos_wind_snowflux.nc) 
 * [Data: lidar_l2_particles.nc](data/lidar_l2_particles.nc) 
 * [Lab 4-1-long: Downloading and Plotting wind speed](lab4/lab4-1-long.ipynb)
 * [Lab 4-1-short: Just Plotting wind speed](lab4/lab4-1-short.ipynb)

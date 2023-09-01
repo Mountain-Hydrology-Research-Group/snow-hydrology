@@ -25,7 +25,7 @@ One way that snow changes through time is simply from compacting under the weigh
 ```note
 ## Lab 3: How does a snowpack change?
 
-For our lab, we are going to look at one of the easier-to-observe processes of a changing snowpack:  compaction.  To do this, we will use the Kettle Ponds snow pillow data from Lab 2 and combine it with lidar-derived snow depth data at the same locations.  (For a map of where the snow pillows are in relation to each other, see the backgroun section of Module 2.  For a link to a video explaining how the lidar instruments work, see the background section on Module 4.)
+For our lab, we are going to look at one of the easier-to-observe processes of a changing snowpack, compaction.  To do this, we will use the Kettle Ponds snow pillow data from Lab 2 and combine it with lidar-derived snow depth data at the same locations.  (For a map of where the snow pillows are in relation to each other, see the backgroun section of Module 2.  For a link to a video explaining how the lidar instruments work, see the background section on Module 4.)
 
 Download the lab and data files to your computer. Then, upload them to your JupyterHub [following the instructions here](/resources/b-learning-jupyter.html#working-with-files-on-our-jupyterhub).
 
