@@ -4,7 +4,7 @@
 
 For many regions, mountain snow provides much of society's water.  The weight of snow is due almost entirely to its water content.  Therefore, one of the main instruments of snow hydrology is a giant scale similar to the one you might find in your bathroom.  In the video below, we are installing a fluidless snow pillow in the East River Basin at Kettle Ponds.  Many snow pillows are filled with fluid and measure the pressure on the fluid from the weight of the snow.  In the Western U.S., networks of snow pillows are maintained by the [National Resource Conservations Service,NRCS](https://www.nrcs.usda.gov/wps/portal/wcc/home/quicklinks/imap) and the [California Department of Water Resources](https://cdec.water.ca.gov/snow/).
 
-[![Watch a video of a fluidless snow pillow being installed in Colorado](https://img.youtube.com/vi/aK1_gYcgT9w/0.jpg)](https://www.youtube.com/watch?v=6Ivn666w5xo)
+[![Watch a video of a fluidless snow pillow being installed in Colorado](https://img.youtube.com/vi/6Ivn666w5xo/default.jpg)](https://www.youtube.com/watch?v=6Ivn666w5xo)
 
 Click on the photo above to see a short Youtube video of a snow pillow being installed.  Look at the map below to see where these snow pillows are located relative to the meteorological towers at Kettle Ponds.
 

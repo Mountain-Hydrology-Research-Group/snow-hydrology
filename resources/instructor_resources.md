@@ -11,26 +11,28 @@ Each webpage is created from a markdown (.md) file, which is a plain text file w
 ### Getting started
 
 1. **Log into your github account**, or create an account at https://github.com/ (Note: your account will need to be connected to the Mountain-Hydrology-Research-Group github organization)
-2. **Go to the course website repository** at https://github.com/Mountain-Hydrology-Research-Group/data-analysis
+2. **Go to the course website repository** at https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology
 3. **Create your own [fork](https://www.earthdatascience.org/workshops/intro-version-control-git/about-forks/) of the repository**. (It is good practice to work on a separate fork, your own personal copy, of the repository while you update the website.)
 4. **[Clone](https://www.earthdatascience.org/workshops/intro-version-control-git/basic-git-commands/) the repository** onto the class JupyterHub or to your personal computer. (The advantage of having a clone of the respository on the JupyterHub is to test out the jupyter notebooks for labs in the same environment students will be using.)
-5. Repeat steps 2-4 with the [repository containing homework solutions](https://github.com/Mountain-Hydrology-Research-Group/data-analysis-solutions). (This is a private repository accessible only to approved users. It is not connected to the class website.)
+
 
 ### File organization
 
-In your cloned respository, in the top level `data-analysis/` directory, you can find a `README.md` file (the home page of the website), and several subdirectories. Each subdirectory below here that is used for website organization needs to have a special README file with formatting information (these are already present for the existing subdirectories).
-* `data-analysis/overview`, contains syllabus and project pages ("a" and "b" in the filenames are used here to sort the pages alphabetically)
-* `data-analysis/modules`, each module/lab corresponds roughly to one week of the quarter. The `module#.md` files create the main page for each module with the lab and homework assignment text, while the `lab#/` folder corresponding to that modules contains the jupyter notebook files. The `data/` folder contains any data files for labs or homeworks.
-* `data-analysis/resources`, jupyter and python documentation and links to other websites of interest to students learning hydrology, statistics, and programming
-* `data-analysis/images` folder containing any images to embed on the website
+In your cloned respository, in the top level `snow-hydrology/` directory, you can find a `README.md` file (the home page of the website), and several subdirectories. Each subdirectory below here that is used for website organization needs to have a special README file with formatting information (these are already present for the existing subdirectories).
+* `snow-hydrology/overview`, contains syllabus and project pages ("a" and "b" in the filenames are used here to sort the pages alphabetically)
+* `snow-hydrology/modules`, each module/lab corresponds roughly to one week of the quarter. The `module#.md` files create the main page for each module with the lab and homework assignment text, while the `lab#/` folder corresponding to that modules contains the jupyter notebook files. The `data/` folder contains any data files for labs or homeworks.
+* `snow-hydrology/resources`, jupyter and python documentation and links to other websites of interest to students learning hydrology, statistics, and programming
+* `snow-hydrology/images` folder containing any images to embed on the website
 
 ### Updating the website and Jupyter Notebooks
 
-Working with your fork of the repository that you've cloned, you can directly edit any of the markdown (.md) files in any text editor. If you are working on the JupyterHub, the lab jupyter notebooks can be opened and edited directly from the hub. If you are working on your own computer, you will need to launch your own instance of jupyter notebook then open the notebook files to edit. Besides the webpage markdown (.md) files and jupyter notebook (.ipynb) files, there are data files (primarily csv or excel files) for homework and lab activities within the `data-analysis/modules/data` directory.
+Working with your fork of the repository that you've cloned, you can directly edit any of the markdown (.md) files in any text editor. If you are working on the JupyterHub, the lab jupyter notebooks can be opened and edited directly from the hub. If you are working on your own computer, you will need to launch your own instance of jupyter notebook then open the notebook files to edit. Besides the webpage markdown (.md) files and jupyter notebook (.ipynb) files, there are data files (primarily csv or excel files) for homework and lab activities within the `snow-hydrology/modules/data` directory.
 
-When you've made the changes you want, [commit and push](https://www.earthdatascience.org/workshops/intro-version-control-git/basic-git-commands/) the modified files to your fork of the respository. Then [open a pull request](https://www.earthdatascience.org/workshops/intro-version-control-git/pull-request/) from the [upstream repository](https://github.com/Mountain-Hydrology-Research-Group/data-analysis) to pull the changes made in your fork. After merging the pull request, the changes will appear on the class website within a few minutes as the page is re-built from the new files.
+When you've made the changes you want, [commit and push](https://www.earthdatascience.org/workshops/intro-version-control-git/basic-git-commands/) the modified files to your fork of the respository. Then [open a pull request](https://www.earthdatascience.org/workshops/intro-version-control-git/pull-request/) from the [upstream repository](https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology) to pull the changes made in your fork. After merging the pull request, the changes will appear on the class website within a few minutes as the page is re-built from the new files.
 
 Note that github security requires you to create an authentication token. You can find step-by-step instructions on how to do that [here](https://techglimpse.com/git-push-github-token-based-passwordless/).
+
+Also note that if you are cloning this class to teach somewhere other than at UW, you will need to set up your own website and not modify the UW class website, but you can establish similar github workflows to those used here for your class and website.
 
 
 ## Slack
@@ -38,7 +40,7 @@ Note that github security requires you to create an authentication token. You ca
 ### Create a new Slack workspace
 
 1. Go to https://slack.com/create and start by entering your uw.edu email address, then entering the confirmation code sent to you.
-2. For *"What's the name of your company or team?"* use the course name and year in a format like **uw-waterdata2021** (this will be the name and URL of the Slack workspace)
+2. For *"What's the name of your company or team?"* use the course name and year in a format like **uw-snowhydrology** (this will be the name and URL of the Slack workspace)
 3. For *"What’s a project your team is working on?"* enter "projects" to create a channel with this name (a channel to discuss final projects). More channels can be added later.
 4. You can click "skip" when prompted for *"Who do you email most about this project?"* (People can be added later to the workspace)
 5. Then finish up by clicking *"See your slack channel"*
@@ -65,19 +67,15 @@ Note that github security requires you to create an authentication token. You ca
    * Add a note that students can always find this list by clicking the Pin icon near top of the channel:
 
 Example:
-> **Welcome to the Data Analysis in Water Sciences - Fall 2022 Slack Workspace**
+> **Welcome to the Snow Hydrology - Spring 2023 Slack Workspace**
 > We will be using Slack for most day-to-day communications, and for you all to collaborate on labs, homework assignments, and (for graduate students) projects.
 > There is a channel for each weekly module for discussions about each lab and assignment, a channel for initiating discussion around #projects, a #general channel for announcements and general discussions, and an #it_help channel for trying to resolve issues with JupyterHub or other IT issues.
 > **Please edit your Slack profile, add a picture, add your preferred name and pronouns as your "Display Name", and your time zone.**
 > Please bookmark these pages for easy access:
-> * **Class website**: https://mountain-hydrology-research-group.github.io/data-analysis/ (contains the syllabus, labs, homework assignments, links to other resources)
+> * **Class website**: https://mountain-hydrology-research-group.github.io/snow-hydrology/ (contains the syllabus, labs, homework assignments, links to other resources)
 > * **UW Canvas**: https://canvas.uw.edu/ (for turning in assignments, grades, extra reading resources)
-> * **JupyterHub**: https://rttl.axdd.s.uw.edu/2022-autumn-cee-465-a/ (the computing environment we’ll be using for labs, homework, projects, instructions for getting started are here)
+> * **JupyterHub**: INSERT appropriate link here (the computing environment we’ll be using for labs, homework, projects, instructions for getting started are here)
 > * **Slack Workspace**: uw-waterdata2020.slack.com (for communication, questions, collaboration)
-
-
-
-
 
 
 
