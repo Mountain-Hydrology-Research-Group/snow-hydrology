@@ -15,8 +15,3 @@ This course covers fundamental topics related to snow physics and hydrology usin
 
 **Offered:** Spring quarter
 
-
-
-
-
-
