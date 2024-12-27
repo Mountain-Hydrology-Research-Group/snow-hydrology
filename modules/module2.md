@@ -36,6 +36,8 @@ C. Discuss which factors of the mass balance are likely to be the most similar s
 
 D. Researchers at the Rocky Mountain National Biological Lab in the Upper East River Valley want to start their research as soon as possible. To access the lab, they need to drive down a forest service road that is currently snowed in.  The forest service opens the road when the snow melts and disappears. Using the long term records at the SNOTEL sites, and any other information you like, make a prediction about whether the snow will be gone (and hence the road clear) by 1 June 2025.
 
+E. Using snow depth and SWE measurements from the snotel sites and Kettle Ponds (select one of the towers from Kettle Ponds), calculate the snow density at each site and plot the distribution (histogram) of snow density values throughout the entire 2022-2023 winter season. Plot a separate distribution for each site and only use data from between December 1 2022 and May 10 2023. Also plot, for each site, a time series of the snow density values. Comment on the believability of the snow density estimate from each site. Also comment on which time of year appears to the best for "powder hounds" - skiiers looking for light, fluffy snow. 
+
 
 ### Problem 2: Course Project Selection
 
