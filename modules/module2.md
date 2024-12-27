@@ -1,4 +1,4 @@
-# 2) Mass Balance:  How much snow is there?
+# 2) Measurement Strategies, Basics of the Snowpack Mass and Energy Balances, and Snowpack Dynamics 
 
 # Background
 
@@ -12,24 +12,13 @@ Click on the photo above to see a short Youtube video of a snow pillow being ins
 
 Above, we see an aerial photo, with each tower and corresponding snow pillow labeled.  We also see a lidar map of snow depth, with the snow pillow locations shown with circles, and a webcam photo taken from the downwind tower towards the central and upwind towers. This map will be useful in the lab and homework below, and in future modules.
 
-```note
 ## Lab 2: Mass Balance
 
-This week's lab includes two options -- if you are interested in accessing further data on you own, work through the long version of the two labs to learn how to access data from servers and import it to your computer.  Downloading a lot of data can take some time, so be patient.  If you are short on time or new to python and want to learn first how to plot basic data, work through the short versions of the labs.
+In Lab 2, we will look at data from SNOTEL stations and the Kettle Ponds field site, in the Upper East River Valley. 
 
-Download the lab and data files to your computer. Then, upload them to your JupyterHub [following the instructions here](/resources/b-learning-jupyter.html#working-with-files-on-our-jupyterhub).
+We will download SNOTEL data and use pre-downloaded SOS data. 
 
-* Data (needed for both versions): [Daily Precipitation at Kettle Ponds](data/precipitation.nc) and [Map of area](data/east_polygon.json) 
-
-* [Lab 2-1 (long version): Downloading and plotting data from a Snotel station](lab2/lab2-1.ipynb)
-* [Lab 2-2 (long version): Downloading and plotting data from the Kettle Ponds snow pillows and one temperature sensor](lab2/lab2-2.ipynb)
-
-* Data (needed for the short version): [Snow Pillow data at Kettle Ponds](data/sos_SWE_T_P.nc)
-
-* [Lab 2-1 (short version): Downloading and plotting data from a Snotel station](lab2/lab2-1-short.ipynb)
-* [Lab 2-2 (short version): Plotting data from the Kettle Ponds snow pillows and one temperature sensor](lab2/lab2-2-short.ipynb)
-
-```
+Working through labs 2-1 and 2-2 will prepare you to complete Homework 2. 
 
 
 
@@ -37,17 +26,18 @@ Download the lab and data files to your computer. Then, upload them to your Jupy
 
 ### Problem 1
 
-Using the observations of total precipitation and the snow pillow data (see labs above), we are going to investigate the mass balance and snow accumulation at Kettle Ponds.
+Using the observations of precipitation and the snow pillow data at Kettle Ponds and the two SNOTEL stations (see Module 2 labs), we are going to investigate the mass balance and snow accumulation at sites in the East River Valley.
 
 A. Plot a timeseries of total accumulated precipitation and total accumulated snow water equivalent from the four snow pillows.  Add to your plot timeseries from the two Snotel Stations located nearby.  Discuss how they match and how they differ, and why you think they differ.
 
-B. Write out the snow mass balance equation for a control volume.  Given the data you have plotted, what aspects of the mass balance equation do you have the most certainty about?  The least certainty?
+B. Write out the snow mass balance equation from lecture.  Discuss, given the data you have plotted, what aspects of the mass balance equation do you have the most certainty about?  The least certainty?
 
-C. What factors of the mass balance are the most similar spatially?  Which differ the most across different locations?  Is there more variability between sites further away?  Or are the four snow pillows at Kettle Ponds as different as the two sites just outside of the watershed?
+C. Discuss which factors of the mass balance are likely to be the most similar spatially?  Which differ the most across different locations?  Is there more variability between sites further away?  Or are the four snow pillows at Kettle Ponds as different as the two sites near the watershed?
 
-D. **Prediction** NCAR's EOL team is committed to removing the towers at Kettle Ponds on 1 June 2023.  To do that, they need to drive down a road (shown in the map above) that is currently snowed in.  The road will open when the snow melts and disappears. This typically occurs in mid to late May.  Using the long term records at the SNOTEL sites, and any other information you may have, to make a prediction about whether the snow will be gone (and hence the road clear) by 1 June 2023. (Note that we will assess everyone's accuracy at the end of the quarter!)
+D. Researchers at the Rocky Mountain National Biological Lab in the Upper East River Valley want to start their research as soon as possible. To access the lab, they need to drive down a forest service road that is currently snowed in.  The forest service opens the road when the snow melts and disappears. Using the long term records at the SNOTEL sites, and any other information you like, make a prediction about whether the snow will be gone (and hence the road clear) by 1 June 2025.
 
 
 ### Problem 2: Course Project Selection
 
-Write a brief paragraph (3-9 sentences) describing your term project. If you would like to work with a partner, include the name of your partner, or specify you will be doing the project alone.  Describe the concept you will communicate or teach, and the tools you will use. **If you have questions about the project, now is the time to talk to the instructor.**
+Write a brief paragraph (3-9 sentences) describing your term project. If you would like to work with a partner, include the name of your partner, or specify you will be doing the project alone.  Describe the concept you want to explore and the measurements (dataset) you want to use. **If you have questions about the project, now is the time to talk to the instructor.**
+
