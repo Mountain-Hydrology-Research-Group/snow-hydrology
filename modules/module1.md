@@ -1,4 +1,4 @@
-# 1) What is snow? Phases and properties of matter
+# 1) Properties of Snow
 
 Each week, the labs are designed to give you specific coding examples to help you with that week's homework.
 Please look through the background and lab material before beginning the homework.  Note that the first week's lab has a lot of examples to help people learning python.  This will get easier as we go.
