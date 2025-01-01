@@ -49,3 +49,11 @@ where max_density is the maximum possible snow density (e.g. 300 kg/m^3), densit
 
 Write a brief paragraph (3-9 sentences) describing your term project. If you would like to work with a partner, include the name of your partner, or specify you will be doing the project alone.  Describe the concept you want to explore and the measurements (dataset) you want to use. **If you have questions about the project, now is the time to talk to the instructor.**
 
+## Additional resources  
+Kelly Elder put together a good set of training videos for the NASA SnowEx Campaigns.  You can view these via the links below.
+* [An Introduction to NASA SnowEx Snow Pit Sampling Methods](https://www.youtube.com/embed/PCteYh66dEQ)
+* [SnowEx Snow Pit Profile Sampling](https://www.youtube.com/embed/DEJvh5dZnpY)
+* [SnowEx Snow Pit Density Sampling](https://www.youtube.com/embed/VtHj3ccu5A8)
+
+This website on Snow Metamoporphism includes some intuitive explanations.
+[SLF Website on Snow Metamorphism](https://www.slf.ch/en/snow/snow-as-a-material/snow-metamorphism.html)
