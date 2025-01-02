@@ -31,5 +31,6 @@ exclude:
 # optional plugins
 plugins:
   - jemoji
+  - jekyll-include-cache
   - jekyll-avatar
   - jekyll-mentions
