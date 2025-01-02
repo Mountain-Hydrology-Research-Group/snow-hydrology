@@ -81,7 +81,7 @@ Homework questions are posted on the class website along with links to any data 
 
 You are encouraged to work together on homeworks and collaborate, but you must turn in your own assignments with your own work. 
 
-Make sure that your name and the assignment number are at the top of your notebook file in markdown text. **Your answers should be clearly labeled and written in markdown cells of the notebook. **
+Make sure that your name and the assignment number are at the top of your notebook file in markdown text. **Your answers should be clearly labeled and written in *markdown* cells of the notebook.**
 
 Submit your completed homework assignments via Canvas by uploading:
 * Your original .ipynb jupyter notebook file(s)
@@ -97,7 +97,8 @@ Final projects will be completed in pairs (or individually on request), and the 
 The topic should involve analyzing field measurements to answer a snow-hydrology related question.
 Updates on the project are required as part of the 2nd, 5th, and 7th homework assignments. 
 During the final week of class, students will present their research project results to the class.
-The project will be graded on the basis of the presentation (20%) and on the report (80%), which should be less than 10 pages long. Final reports will be due on the final day of class, **March 13 2025, by 11:59pm**. Further details are provided on the [Course Project page](b-project.html).
+The project will be graded on the basis of the presentation (20%) and on the report (80%). 
+Final reports will be due on the final day of class, **March 13 2025, by 11:59pm**. Further details are provided on the [Course Project page](b-project.html).
 
 ### Grading Policy
 

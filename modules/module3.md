@@ -51,7 +51,9 @@ This means that the presense of clouds, while decreasing incoming solar radiatio
 
 The reflective properties of the snow surface, for both longwave and shortwave radiation, mean that the longwave terms and shortwave terms in the energy balance equation we started with can be rewritten,
 
-$$LW_{in} + LW_{out} = LW_{in} - \epsilon \sigma T_{ss}^4$$, and
+$$LW_{in} + LW_{out} = LW_{in} - \epsilon \sigma T_{ss}^4$$
+
+and
 
 $$SW_{in} + SW_{out} = (1 - \alpha) SW_{in}$$
 
