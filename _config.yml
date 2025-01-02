@@ -2,7 +2,7 @@ title: Snow Hydrology
 lang: en
 description: CEWA 568
 
-remote_theme: rundocs/jekyll-rtd-theme@v1.1.7
+remote_theme: clearpathrobotics/jekyll-rtd-theme@v1.1.7
 
 addons_branch: true
 edit: true
@@ -31,6 +31,5 @@ exclude:
 # optional plugins
 plugins:
   - jemoji
-  - jekyll-include-cache
   - jekyll-avatar
   - jekyll-mentions
