@@ -1,3 +1,102 @@
 # 3) Surface Energy Balance – Radiation + Albedo, Dust on Snow
 
-To be updated.
+# Background
+![Photo of April 2023 dust event at Kettle Ponds](data/Dust_on_SOS.png)
+
+The balance of energy over a snow surface is a phenomenon studied by both biologists, hydrologists, boundary layer meteorologists, and snow scientists. Many fields use the surface energy balance (SEB) to estimate evaporation and transpiration of water from the earth's surface. Meteorologists study the SEB's radiative effects on the atmosphere.
+
+The surface energy balance equation balances incoming and outgoing sources of energy at the surface, measured in terms of energy flux (energy per units area, i.e. W/m^2, Watts per meters squared). 
+We as snow scientists are generally interested in the SEB to understand the energy available for snow melt and snow sublimation. 
+Therefore, we augment the more standard version of the surface energy balance equation to include terms involving phase changes and energy storage changes (temperature change) within the snowpack. 
+The snowpack energy balance equation can be written
+
+$$c_p^{SS} \frac{\partial T_{ss}}{\partial t} = LW_{in} + LW_{out} + SW_{in} + SW_{out} - \lambda \frac{\partial T_s}{\partial z} - H_L - H_s + E_{melt}$$
+
+where 
+
+$c_p^{SS} \frac{\partial T_{ss}}{\partial t}$
+represents the change in the snow surface temperature ($c_p^{SS}$ is the specific heat capacity of the snowpack surface and $T_{ss}$ is the snowpack surface temperature),
+
+$LW_{in} + LW_{out} $ is the incoming and outgoing longwave radiation (AKA infrared radiation),
+
+$SW_{in} + SW_{out}$ is the incoming and outoing shortwave radiation (ultraviolet, visible, and near-infrared radiation; all sourced from the sun),
+
+$\lambda \frac{\partial T_s}{\partial z} $ is the change in the "cold content" of the snowpack, i.e. the change in the vertically averaged temperature of the snowpack,
+
+$H_L$  is the vertical flux of *latent heat* away from the snowpack surface, i.e. the flux of water vapor away from the snowpack, either through sublimation or perhaps evaporation from melted water at the snowpack surface, 
+
+$H_s$ is the vertical flux of *sensible heat* away from the snowpack surface, i.e. the flux of temperature away from the snowpack, i.e. the heating or cooling of the lower atmosphere by the snowpack,
+
+and, lastly,
+
+$E_{melt}$ is the energy that goes to the latent heat involved in the melting of snow.
+
+Snow scientists are generally most interested in snow melt ($E_{melt}$) and snow sublimation ($H_L$) and the majority of the energy available for snow melt or sublimation comes from the net radiation, the balance of incoming shortwave, reflected shortwave, incoming longwave, and emitted longwave radiation. Incoming shortwave radiation ($SW_{in}$) comes from the sun and is a function of time of year, time of day, cloud cover, atmospheric aerosols, and topographic position. We can predict/model potential SW radiation well, although in complex/mountainous terrain, topography matters a lot.
+
+Incoming shortwave radiation at the snowpack's (earth's) surface is a result of the sun's output radiation and the interaction of with that incoming radiation on earth with the atmosphere. 
+Gasses in the atmopshere, mostly water vapor, absorb shortwave radiation, such that $SW_{in}$ at the earth's surface is always lower than at the outermost edge of the atmosphere. 
+Therefore, clouds can reduce the amount of incoming shortwave radiation at the earth's surface.
+Snow is highly reflective, returning 60-90% of the incoming SW radiation to the atmosphere, i.e. snow has a high [*albedo* ($\alpha$)](https://mynasadata.larc.nasa.gov/mini-lessonactivity/what-albedo). 
+Albedo varies between zero and 1; a highly reflective surface reflects most of the incoming solar radiation ($\alpha$ approaches 1) and non-reflective surfaces absorb most of the incoming solar radiation ($\alpha$ approaches 1). Snow albedo varies between 0.6 and 0.9. although dirt, dust, and rocks on snow or glacier surfaces can decrease the surface-averaged albedo significantly. 
+
+Longwave radiation is output by all mass in the universe, and the output LW radiation is proportional to the surface temperature of the mass, according to the [Stefan–Boltzmann Law](https://en.wikipedia.org/wiki/Stefan–Boltzmann_law), which states that energy radiated per unit surface area per unit time (i.e. energy flux at the surface) is equal to the fourth power of the black body's (surface's) temperature, and therefore the outgoing longwave radiation (i.e. the energy emitted by the earth into the atmosphere) is defined
+
+$LW_{out} = \epsilon \sigma T^4$$,
+
+where $\epsilon$ is the Stefan–Boltzmann constant ($\sigma \approx 5.67 × 10^{−8} \space W⋅m^{-2}⋅K^{-4}$)
+and $\epsilon$ is the emisivity of the surface emitting the radiation ($\epsilon$ varies between zero and one). The snowpack surface [emissivity](https://www.jpl.nasa.gov/images/pia18833-nasa-spacecraft-maps-earths-global-emissivity) is near 1, meaning that the snowpack surface (i.e. water molecules) absorb most of the incoming LW radiation, and reflect very little. $epsilon$ for the snowpack depends on snowpack properties, but a commonly assumed value is $\epsilon = 0.985$.
+
+Note that the Stefan-Boltzmann law implies that when gases in the atmosphere (i.e. clouds) absorb incopming shortwave/solar radiation and warm up, they increase their output of longwave radiation. 
+This means that the presense of clouds, while decreasing incoming solar radiation at the snow surface, increase incoming longwave radiation at the snow surface.
+
+The reflective properties of the snow surface, for both longwave and shortwave radiation, mean that the longwave terms and shortwave terms in the energy balance equation we started with can be rewritten,
+
+$$LW_{in} + LW_{out} = LW_{in} - \epsilon \sigma T_{ss}^4$$, and
+
+$$SW_{in} + SW_{out} = (1 - \alpha) SW_{in}$$
+
+and therefore
+
+$$c_p^{SS} \frac{\partial T_{ss}}{\partial t} = LW_{in} - \epsilon \sigma T_{ss}^4 + (1 - \alpha) SW_{in} - \lambda \frac{\partial T_s}{\partial z} - H_L - H_s + E_{melt}$$
+
+In cooperation with the Sublimation of Snow campaign, NOAA is conducting the [Study of Precipitation, the Lower Atmosphere and Surface for Hydrometeorology, SPLASH, campaign](https://psl.noaa.gov/splash/). From the prior link, if you click on _data_ and on _KettlePonds_, you can see photos of the radiometer and streams of data. 
+
+For today's lab, we will bring in one of the [Superheros of SPLASH](https://storymaps.arcgis.com/stories/093640ac6bdc479394d7fd9c7068fd27) to help us with our investigation.
+
+For even more detailed information about clouds, aerosols, and radiation, DOE is conducting the [Surface Atmosphere Integrated Field Laboratory, SAIL, campaign](https://sail.lbl.gov/), with a list of sensors [here](https://sail.lbl.gov/what-we-measure/).
+
+```note
+## Lab 5: Plotting radiation data around the snow.
+
+Download the lab and data files to your computer. Then, upload them to your JupyterHub [following the instructions here](/resources/b-learning-jupyter.html#working-with-files-on-our-jupyterhub).
+
+* [Lab 5-1: Plotting Radiation Data at Kettle Ponds and Potential Radiation](lab5/lab5-1.ipynb)
+* [SPLASH radsys_attribute data, used in lab5-1](data/radsys_attributes.txt)
+
+```
+
+## Homework 5
+
+### Problem 1: Comparing solar radiation sensors
+
+A common problem in mountain snow energy balance studies is that snow accumulates on the upward pointing radiometers.  Find a time in our dataset when you think this occurred and explain your reasoning. _Hint, you may want to look at the precipitation dataset in Lab 2 for timing._ Which radiometer set-up (SOS or SPLASH) worked better during your timeperiod?  Why do you think this is?  Compare downwelling and reflected shortwave radiation with potential shortwave radiation for your day.
+ 
+ ```tip
+Look at the graphic below from the site we visited at Snoqualmie Pass.  What do you think is happening here?
+
+![radiation timeseries from Snoqualmie Pass](data/solar_radiometer_Snoqualmie.png)
+
+Former UW PhD student Karl Lapo created several GitHub repositories for working with radiation data in mountain areas and a paper about identifying times when sensors have radiation on them.
+
+* [Paper on identifying period with snow on a radiometer](https://doi.org/10.1002/2015WR017590)
+* [Mountain observation quality control](https://github.com/klapo/moq)
+```
+
+### Problem 2: Clouds
+ 
+Identify a period of variable cloud cover in the dataset.  Explain how you can use both shortwave and longwave measurements to identify variations in clouds.  include periods from both day and nighttime hours.  How are the shortwave and longwave datasets complimentary?  Do they tell you the same or different information about the clouds?  
+
+
+### Problem 3: Dust on snow and albedo
+ 
+We know that the reflectivity of snow, termed albedo, calculated as outgoing-solar-radiation divided by incoming-solar-radiation, is brightest right after new snowfall and then darkens as snow ages.  This occurs both as a process of snow grains rounding and growing and as snow gets dirtier with deposition.  In early April, a substantial amount of dust was deposited on our site at Kettle Ponds (see the photo at the top of this page).  Using the Kettle Ponds radiation dataset, investigate how albedo changes both with time after a new snowfall event earlier in the winter (no dust) and in mid-April (with dust).  How much does dust impact albedo compared to the natural snow aging process? 
