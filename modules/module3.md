@@ -17,7 +17,7 @@ where
 $c_p^{SS} \frac{\partial T_{ss}}{\partial t}$
 represents the change in the snow surface temperature ($c_p^{SS}$ is the specific heat capacity of the snowpack surface and $T_{ss}$ is the snowpack surface temperature),
 
-$LW_{in} + LW_{out} $ is the incoming and outgoing longwave radiation (AKA infrared radiation),
+$LW_{in} + LW_{out}$ is the incoming and outgoing longwave radiation (AKA infrared radiation),
 
 $SW_{in} + SW_{out}$ is the incoming and outoing shortwave radiation (ultraviolet, visible, and near-infrared radiation; all sourced from the sun),
 
@@ -37,7 +37,7 @@ Incoming shortwave radiation at the snowpack's (earth's) surface is a result of 
 Gasses in the atmopshere, mostly water vapor, absorb shortwave radiation, such that $SW_{in}$ at the earth's surface is always lower than at the outermost edge of the atmosphere. 
 Therefore, clouds can reduce the amount of incoming shortwave radiation at the earth's surface.
 Snow is highly reflective, returning 60-90% of the incoming SW radiation to the atmosphere, i.e. snow has a high [*albedo* ($\alpha$)](https://mynasadata.larc.nasa.gov/mini-lessonactivity/what-albedo). 
-Albedo varies between zero and 1; a highly reflective surface reflects most of the incoming solar radiation ($\alpha$ approaches 1) and non-reflective surfaces absorb most of the incoming solar radiation ($\alpha$ approaches 1). Snow albedo varies between 0.6 and 0.9. although dirt, dust, and rocks on snow or glacier surfaces can decrease the surface-averaged albedo significantly. 
+Albedo, $\alpha$, varies between zero and 1; a highly reflective surface reflects most of the incoming solar radiation ($\alpha$ approaches 1) and non-reflective surfaces absorb most of the incoming solar radiation ($\alpha$ approaches 1). Snow albedo varies between 0.6 and 0.9. although dirt, dust, and rocks on snow or glacier surfaces can decrease the surface-averaged albedo significantly. 
 
 Longwave radiation is output by all mass in the universe, and the output LW radiation is proportional to the surface temperature of the mass, according to the [Stefan–Boltzmann Law](https://en.wikipedia.org/wiki/Stefan–Boltzmann_law), which states that energy radiated per unit surface area per unit time (i.e. energy flux at the surface) is equal to the fourth power of the black body's (surface's) temperature, and therefore the outgoing longwave radiation (i.e. the energy emitted by the earth into the atmosphere) is defined
 
@@ -78,27 +78,37 @@ Download the lab and data files to your computer. Then, upload them to your Jupy
 ```
 
 ## Homework 3
+Radiometers are used to measure the radiation components of the surface energy balance.
+One type of instrument, a "net radiometer" or "four-stream radiometer", measures incoming and outgoing longwave and shortwave radiation using four sensors built into a single instrument. An image of a type of radiometer used by the Sublimation of Snow Campaign, the [Hukseflux NR01](https://www.hukseflux.com/products/pyranometers-solar-radiation-sensors/net-radiometers/nr01-net-radiometer), is shown below.
+
+[<img src="data/huskeflux_nr01.png" width="400"/>](data/huskeflux_nr01.png)
 
 ### Problem 1: Comparing solar radiation sensors
+A common problem in snow energy balance studies is that snow accumulates on the upward pointing radiometers (see image below, compliments of [Lapo et al., 2015](https://doi.org/10.1002/2015WR017590)).
 
-A common problem in mountain snow energy balance studies is that snow accumulates on the upward pointing radiometers.  Find a time in our dataset when you think this occurred and explain your reasoning. _Hint, you may want to look at the precipitation dataset in Lab 2 for timing._ Which radiometer set-up (SOS or SPLASH) worked better during your timeperiod?  Why do you think this is?  Compare downwelling and reflected shortwave radiation with potential shortwave radiation for your day.
- 
- ```tip
-Look at the graphic below from the site we visited at Snoqualmie Pass.  What do you think is happening here?
+[<img src="data/radiometer_snow_covered_lapoetal_2015.jpg" width="800"/>](data/radiometer_snow_covered_lapoetal_2015.jpg)
 
-![radiation timeseries from Snoqualmie Pass](data/solar_radiometer_Snoqualmie.png)
+Use the precipitation dataset from Lab 2 to examine both incoming and outgoing radiation measurements during and after times with precipitation.
+Find a time in the dataset when you think snow covered the radiometer and explain why this occurred.
 
-Former UW PhD student Karl Lapo created several GitHub repositories for working with radiation data in mountain areas and a paper about identifying times when sensors have radiation on them.
-
-* [Paper on identifying period with snow on a radiometer](https://doi.org/10.1002/2015WR017590)
-* [Mountain observation quality control](https://github.com/klapo/moq)
-```
+You may find that skimming [Lapo et al., 2015](https://doi.org/10.1002/2015WR017590) is useful (Karl Lapo is a graduated, former UW PhD student).
 
 ### Problem 2: Clouds
- 
-Identify a period of variable cloud cover in the dataset.  Explain how you can use both shortwave and longwave measurements to identify variations in clouds.  include periods from both day and nighttime hours.  How are the shortwave and longwave datasets complimentary?  Do they tell you the same or different information about the clouds?  
-
+Identify two periods of variable cloud cover in the dataset, one during nighttime and one during daytime.
+You can use shortwave radiation measurements to identify what is day/night.
+Explain why and how you can use both shortwave and longwave measurements to identify variations in cloud cover.
+Explain what both shortwave and longwave radiation tell you about the cloud cover.
 
 ### Problem 3: Dust on snow and albedo
- 
-We know that the reflectivity of snow, termed albedo, calculated as outgoing-solar-radiation divided by incoming-solar-radiation, is brightest right after new snowfall and then darkens as snow ages.  This occurs both as a process of snow grains rounding and growing and as snow gets dirtier with deposition.  In early April, a substantial amount of dust was deposited on our site at Kettle Ponds (see the photo at the top of this page).  Using the Kettle Ponds radiation dataset, investigate how albedo changes both with time after a new snowfall event earlier in the winter (no dust) and in mid-April (with dust).  How much does dust impact albedo compared to the natural snow aging process? 
+The reflectivity of snow, AKA albedo ($\alpha$), is defined
+
+$$\alpha = \frac{SW_{out}}{SW_{in}}$$.
+
+It is understood intuitively to most people in cold climates that snow is brightest right after new snowfall, and darkens as it ages.
+This is a result both of the rounding and growing of snow grains as well as the "dirtying" of snow through the deposition of atmospheric deposition particulates.
+In April, 2024, a substantial amount of dust was deposited on our site at Kettle Ponds (see the photo at the top of this page).
+Calculate and plot albedo during April the first half of April and identify the date on which you think dust was deposited. 
+
+Find a day or two with precipitation from earlier in the season (say, January) and plot albedo during and after the snowfall event.
+
+How does the effect of snow "aging" on albedo differ from the effect of dust deposition on albedo?
