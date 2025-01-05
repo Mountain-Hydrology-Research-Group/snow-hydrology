@@ -121,4 +121,4 @@ How does the effect of snow "aging" on albedo differ from the effect of dust dep
 
 ### Problem 5: Snow surface energy balance - Intuition
 
-In Lab3-2, we plotted the average diurnal cycle of the snow surface energy balance. Explain what you observe in this plot. What does each of the four terms represent? When is each term negative/positive and why? (Ignore the residual term, look at the plot before we added the residual).
+In Lab3-2, we plotted the average diurnal cycle of the snow surface energy balance. Explain what you observe in this plot (you do not need to recreate the plot in your homework). What does each of the four terms represent? When is each term negative/positive and why? (Ignore the residual term, look at the plot before we added the residual).
