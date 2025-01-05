@@ -118,3 +118,7 @@ Calculate and plot albedo during April the first half of April and identify the 
 Find a day or two with precipitation from earlier in the season (say, January) and plot albedo during and after the snowfall event.
 
 How does the effect of snow "aging" on albedo differ from the effect of dust deposition on albedo?
+
+### Problem 5: Snow surface energy balance - Intuition
+
+In Lab3-2, we plotted the average diurnal cycle of the snow surface energy balance. Explain what you observe in this plot. What does each of the four terms represent? When is each term negative/positive and why? (Ignore the residual term, look at the plot before we added the residual).
