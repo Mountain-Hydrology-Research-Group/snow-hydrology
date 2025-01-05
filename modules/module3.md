@@ -21,7 +21,7 @@ $LW_{in} + LW_{out}$ is the incoming and outgoing longwave radiation (AKA infrar
 
 $SW_{in} + SW_{out}$ is the incoming and outoing shortwave radiation (ultraviolet, visible, and near-infrared radiation; all sourced from the sun),
 
-$\lambda \frac{\partial T_s}{\partial z} $ is the change in the "cold content" of the snowpack, i.e. the change in the vertically averaged temperature of the snowpack,
+$\lambda \frac{\partial T_s}{\partial z}$ is the change in the "cold content" of the snowpack, i.e. the change in the vertically averaged temperature of the snowpack,
 
 $H_L$  is the vertical flux of *latent heat* away from the snowpack surface, i.e. the flux of water vapor away from the snowpack, either through sublimation or perhaps evaporation from melted water at the snowpack surface, 
 
@@ -41,10 +41,10 @@ Albedo, $\alpha$, varies between zero and 1; a highly reflective surface reflect
 
 Longwave radiation is output by all mass in the universe, and the output LW radiation is proportional to the surface temperature of the mass, according to the [Stefan–Boltzmann Law](https://en.wikipedia.org/wiki/Stefan–Boltzmann_law), which states that energy radiated per unit surface area per unit time (i.e. energy flux at the surface) is equal to the fourth power of the black body's (surface's) temperature, and therefore the outgoing longwave radiation (i.e. the energy emitted by the earth into the atmosphere) is defined
 
-$LW_{out} = \epsilon \sigma T^4$$,
+$$LW_{out} = \epsilon \sigma T^4$$
 
 where $\epsilon$ is the Stefan–Boltzmann constant ($\sigma \approx 5.67 × 10^{−8} \space W⋅m^{-2}⋅K^{-4}$)
-and $\epsilon$ is the emisivity of the surface emitting the radiation ($\epsilon$ varies between zero and one). The snowpack surface [emissivity](https://www.jpl.nasa.gov/images/pia18833-nasa-spacecraft-maps-earths-global-emissivity) is near 1, meaning that the snowpack surface (i.e. water molecules) absorb most of the incoming LW radiation, and reflect very little. $epsilon$ for the snowpack depends on snowpack properties, but a commonly assumed value is $\epsilon = 0.985$.
+and $\epsilon$ is the emisivity of the surface emitting the radiation ($\epsilon$ varies between zero and one). The snowpack surface [emissivity](https://www.jpl.nasa.gov/images/pia18833-nasa-spacecraft-maps-earths-global-emissivity) is near 1, meaning that the snowpack surface (i.e. water molecules) absorb most of the incoming LW radiation, and reflect very little. $\epsilon$ for the snowpack depends on snowpack properties, but a commonly assumed value is $\epsilon = 0.985$.
 
 Note that the Stefan-Boltzmann law implies that when gases in the atmosphere (i.e. clouds) absorb incopming shortwave/solar radiation and warm up, they increase their output of longwave radiation. 
 This means that the presense of clouds, while decreasing incoming solar radiation at the snow surface, increase incoming longwave radiation at the snow surface.
@@ -99,10 +99,16 @@ You can use shortwave radiation measurements to identify what is day/night.
 Explain why and how you can use both shortwave and longwave measurements to identify variations in cloud cover.
 Explain what both shortwave and longwave radiation tell you about the cloud cover.
 
-### Problem 3: Dust on snow and albedo
+### Problem 3: Estimating snow surface temperature from outgoing longwave radiation
+At Kettle Ponds, a dedicated instrument for measuring surface temperature (an Apogee infrared radiometer) is used to measure surface temperature (see variables `Tsurf_c`, `Tsurf_d`, `Tsurf_ue`, `Tsurf_uw`).
+One could also estimate surface temperature using the broadband longwave radiometers (which measure more than just infrared wavelengths, see variable  `Rlw_out_9m_d`). 
+Use broadband longwave radiometer meausrements of outgoing longwave radiation (`Rlw_out_9m_d`) to estimate snow surface temperature using the Stefan-Boltzmann equation. For 3-7 days during any time in the dataset, plot your estimate of surface temperature along with the Apogee infrared radiometer estimate. 
+Discuss how they differ and why they might differ.
+
+### Problem 4: Dust on snow and albedo
 The reflectivity of snow, AKA albedo ($\alpha$), is defined
 
-$$\alpha = \frac{SW_{out}}{SW_{in}}$$.
+$$\alpha = \frac{SW_{out}}{SW_{in}}$$
 
 It is understood intuitively to most people in cold climates that snow is brightest right after new snowfall, and darkens as it ages.
 This is a result both of the rounding and growing of snow grains as well as the "dirtying" of snow through the deposition of atmospheric deposition particulates.
