@@ -21,12 +21,13 @@ In Lab 2, we will look at data from SNOTEL stations and the Kettle Ponds field s
 
 We will download SNOTEL data and use pre-downloaded SOS data. 
 
-Working through labs 2-1 and 2-2 will prepare you to complete Homework 2. 
+Working through labs 2-1, 2-2, and 2-3 will prepare you to complete Homework 2. 
 
 * [Lab 2-1](lab2/lab2-1.ipynb)
-* [Lab 2-2](lab1/lab2-2.ipynb)
-* [Lab 2-3](lab1/lab2-3.ipynb)
+* [Lab 2-2](lab2/lab2-2.ipynb)
+* [Lab 2-3](lab2/lab2-3.ipynb)
 * [SoS dataset](data/sos_full_dataset_30min.nc)
+* [Precipitation dataset](data/kettle_ponds_precip.csv)
 ```
 
 ---
