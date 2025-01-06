@@ -12,6 +12,9 @@ Click on the photo above to see a short Youtube video of a snow pillow being ins
 
 Above, we see an aerial photo, with each tower and corresponding snow pillow labeled.  We also see a lidar map of snow depth, with the snow pillow locations shown with circles, and a webcam photo taken from the downwind tower towards the central and upwind towers. This map will be useful in the lab and homework below, and in future modules.
 
+---
+
+```note
 ## Lab 2: Mass Balance
 
 In Lab 2, we will look at data from SNOTEL stations and the Kettle Ponds field site, in the Upper East River Valley. 
@@ -20,7 +23,13 @@ We will download SNOTEL data and use pre-downloaded SOS data.
 
 Working through labs 2-1 and 2-2 will prepare you to complete Homework 2. 
 
+* [Lab 2-1](lab2/lab2-1.ipynb)
+* [Lab 2-2](lab1/lab2-2.ipynb)
+* [Lab 2-3](lab1/lab2-3.ipynb)
+* [SoS dataset](data/sos_full_dataset_30min.nc)
+```
 
+---
 
 ## Homework 2
 

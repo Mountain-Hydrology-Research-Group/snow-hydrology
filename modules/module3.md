@@ -74,13 +74,11 @@ For today's lab, we will bring in one of the [Superheros of SPLASH](https://stor
 For even more detailed information about clouds, aerosols, and radiation, DOE is conducting the [Surface Atmosphere Integrated Field Laboratory, SAIL, campaign](https://sail.lbl.gov/), with a list of sensors [here](https://sail.lbl.gov/what-we-measure/).
 
 ```note
-## Lab 3: Plotting radiation data around the snow.
+## Lab 3: Plotting radiation and energy balance data at Kettle Ponds.
 
-Download the lab and data files to your computer. Then, upload them to your JupyterHub [following the instructions here](/resources/b-learning-jupyter.html#working-with-files-on-our-jupyterhub).
-
-* [Lab 3-1: Plotting Radiation Data at Kettle Ponds and Potential Radiation](lab3/lab3-1.ipynb)
-* [SPLASH radsys_attribute data, used in lab3-1](data/radsys_attributes.txt)
-
+* [Lab 2-1](lab2/lab3-1.ipynb)
+* [Lab 2-2](lab1/lab3-2.ipynb)
+* [SoS dataset](data/sos_full_dataset_30min.nc)
 ```
 
 ## Homework 3
