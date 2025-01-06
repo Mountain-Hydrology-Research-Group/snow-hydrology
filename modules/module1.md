@@ -53,8 +53,4 @@ For this week's homework, we will pretend we are in very controlled laboratory c
  
  E. I argue that sublimation saves the snowpack more than it reduces it.  Why would I say this?  Do you agree or disagree?  Use the specific and latent heats in lab 1-2 to make your argument.
 
- ### Problem 2: Course Project Selection
-
-Initial Project proposal (Due January 16) - Please write a few sentences stating the research question you would like to explore. If you would like to work with a partner, include the name of your partner, or specify you will be doing the project alone.  Describe the concept you want to explore and the measurements (dataset) you want to use. **If you have questions about the project, now is the time to talk to the instructor.**
-
 ---

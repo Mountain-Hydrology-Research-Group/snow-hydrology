@@ -108,7 +108,7 @@ Note that assigned journal articles should be read, but not obsessed over. I und
 
 ### Final Project Due Dates
 Please take note of these due dates early on in the semester, as they serve as progress checks towards your final project.
-* Initial Project proposal (Due January 16) - Please write a few sentences stating the research question you would like to explore.
+* Initial Project proposal (Due January 23) - Please write a few sentences stating the research question you would like to explore.
 
 * Midterm Progress Report (Due February 20) - At this point, you should have a clearly-stated research question, a description of the methods you are using, as well as some initial results. At least one research paper/reference should be identified by this point.
 
