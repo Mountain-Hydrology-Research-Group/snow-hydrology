@@ -39,7 +39,7 @@ Some extra helpful activities:
 In this homework assignment we will work start with programming and data visualization to better qualitatively understand the types of datasets that we'll be using the rest of the quarter. This homework is on the shorter side because we have a fieldtrip next week and will also be covering the material necessary for the second homework.   Please download the notebooks at the top of this page and use them as reference for your coding.  **Be sure to save your work for later reference**
 
 
-### Water and States of Matter
+### Problem 1: Water and States of Matter
 
 For this week's homework, we will pretend we are in very controlled laboratory conditions.  If you dislike python, these questions can all be answered with pencil, paper, and a calculator, but you may want to use this exercise as a chance to practice your programming skills.
 
@@ -52,5 +52,9 @@ For this week's homework, we will pretend we are in very controlled laboratory c
  D. We know that cold snow is primarily a mixture of ice and air.  Consider no phase changes and temperatures between -15 degrees and -5 degrees C.  Imagine that no interactions occur between the ice and air in the snow matrix.  How does the energy required to heat the mixture those 10 degrees change as the fractions of ice vs. air change in the total mixture?  
  
  E. I argue that sublimation saves the snowpack more than it reduces it.  Why would I say this?  Do you agree or disagree?  Use the specific and latent heats in lab 1-2 to make your argument.
+
+ ### Problem 2: Course Project Selection
+
+Initial Project proposal (Due January 16) - Please write a few sentences stating the research question you would like to explore. If you would like to work with a partner, include the name of your partner, or specify you will be doing the project alone.  Describe the concept you want to explore and the measurements (dataset) you want to use. **If you have questions about the project, now is the time to talk to the instructor.**
 
 ---

@@ -57,11 +57,6 @@ Identify a short time period between January 1--15 during which you observe a si
 Apply this equation to the short time series of snow density.
 Plot the observed density and the predicted density time series.
 
-
-### Problem 2: Course Project Selection
-
-Write a brief paragraph (3-9 sentences) describing your term project. If you would like to work with a partner, include the name of your partner, or specify you will be doing the project alone.  Describe the concept you want to explore and the measurements (dataset) you want to use. **If you have questions about the project, now is the time to talk to the instructor.**
-
 ## Additional resources  
 Kelly Elder put together a good set of training videos for the NASA SnowEx Campaigns.  You can view these via the links below.
 * [An Introduction to NASA SnowEx Snow Pit Sampling Methods](https://www.youtube.com/embed/PCteYh66dEQ)
