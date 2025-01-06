@@ -30,11 +30,10 @@ By the end of the course, students should be able to
 
 
 > ### Guiding principles for this quarter
-> 
 > **We want to emphasize in person, experiential learning.**
 >   * We will have labs and field trips on campus that cannot be done remotely.
 >   * If something comes up so that you cannot attend class, please reach out to the professor as soon as possible.
->
+> 
 > **We’re all in this together**
 >  * If you do need to miss one week, you can best make up the material by meeting up with someone else in the class.
 >  * Please reach out to your fellow students and make plans to watch out for each other.
@@ -111,8 +110,89 @@ Final reports will be due on the final day of class, **March 13 2025, by 11:59pm
 
 
 ## Schedule
+The schedule is subject to change.
+Lecture topics, assignments, and readings will be updated for incomplete weeks as the quarter progresses. 
+Note that readings should be completed *in advance of class*. 
+Labs will be completed on the day that they are listed.
+Note that assigned journal articles should be read, but not obsessed over. I understand that truly reading and digesting a research article can take hours. That is not my intent in assigning these readings. I recommend skimming the articles and reading closely where you find your interest lies. Other readings (e.g. from Field Guide to Snow) should be read closely.
 
-The schedule is subject to change and will be posted during the first week of class.
+### Week 1 – Properties of Snow
+#### Day 1  – Introduction, importance of snow globally, snow science history
+**Readings**
+* Huss 2017 “Toward mountains without permanent snow and ice”
+* Field Guide to Snow, Chapter 1 “Where Is Snow?“
+
+**Assignments**
+* Lab 1-1 
+* HW0 (Due January 9): Write short paragraph about answering the following questions: 1. Why do you want to take this class? 2. Are there any specific topics that you’d like covered in this class? 3. What is your preferred learning style? – I.e. what do you think about powerpoint vs chalk board lectures, use of python notebook “labs” and homeworks, term projects.
+
+#### Day 2  – Phases of water, snowflake and snowpack properties, and SWE
+**Readings**
+* Librrecht 2007 “The formation of snow crystals”
+* Field Guide to Snow, Chapters 2, 3, and 4 “The Crystal Factory” , “Snowflakes”, and “Snow Layers and Weather”
+
+**Assignments**
+* Lab 1-2
+* HW1 (Due January 16)
+
+### Week 2 - Measurement Strategies, Basics of the Snowpack Mass and Energy Balances, and Snowpack Dynamics (compaction, metamorphism)
+#### Day 1 – Intro to the Sublimation of Snow (SOS) Campaign, Basics of the Snowpack Mass and Energy Balances
+**Readings**
+* Lundquist 2024 “Sublimation of Snow”
+
+**Assignments**
+* Lab 2-1
+
+#### Day 2  – Snowpack Dynamics (compaction, metamorphism)
+**Readings**
+* Field Guide to Snow, Chapter 5 “Metamorphism: Snow in the Crucible” but you can skip 5.1.3
+
+**Assignments**
+* Lab 2-2
+* HW2 (Due January 23)
+
+### Week 3 - Surface Energy Balance over snow - The energy balance equation, radiation and albedo, optical properties of snow
+#### Day 1 – 
+**Readings**
+* Warren 2019, Optical properties of ice and snow (Skip the sections “Lake ice and sea ice”, “Marine ice”, and “The transition snow–firn–glacier ice”). Note that Stephen Warren is a UW legend!
+
+**Assignments**
+* Lab 3-1
+
+#### Day 2  – 
+**Readings**
+* Marks and Dozier, 1992. Climate and energy exchange at the snow surface in the Alpine Region of the Sierra Nevada: 2. Snow cover energy balance
+
+**Assignments**
+* Lab 3-2
+* HW3 (Due January 30)
+
+### Week 4 - Temperatures: snowpack and atmosphere, atmospheric stability
+### Week 5 - Turbulent transport
+### Week 6 - Blowing snow: transport and sublimation 
+### Week 7 - Snow melt 
+### Week 8 - Snow-dominated watershed hydrology
+### Week 9 - Snowpack structure and avalanches
+### Week 10 - Final project presentations
+
+
+### Week X - 
+#### Day 1 – 
+**Readings**
+* 
+
+**Assignments**
+* 
+
+#### Day 2  – 
+**Readings**
+* 
+
+**Assignments**
+* 
+
+
+
 
 ## Additional Information
 
