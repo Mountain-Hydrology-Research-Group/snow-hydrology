@@ -6,7 +6,6 @@
 **Snow Hydrology - Winter Quarter, 2025**
 
 The course will cover a number of fundamental topics related to snow hydrology including phases of water, evolution of a snowpack, mass and energy balances, and field measurement techniques.
-Students will read research papers, analyze data from a field campaign using python, and complete a research project.
 
 | **CEWA 568A** | SLN 11962 | 3 units |
 | **CEWA 568B PCE** | SLN 11963 | 3 units |
@@ -18,25 +17,21 @@ Students will read research papers, analyze data from a field campaign using pyt
 
 The room location, and relevant course information are available via the [course Canvas page](https://canvas.uw.edu/) (UW NetID login required).
 
-**Snow Hydrology Feedback Form**: Use this form to provide anonymous feedback to the TA and instructor. The link to the form is available in the copy of the syllabus on the [course Canvas page](https://canvas.uw.edu/) (UW NetID login required). 
-
 ### Learning Objectives
 
 By the end of the course, students should be able to
  * Explain the snow mass and energy balance over a snowpack
+ * Read and understand research papers in the field of Snow Hydrology
  * Read, modify, and write computer programs to analyze snow-related data
  * Apply data analysis techniques to understand real world problems related to snow
- * Perform original analysis of snow field measurements
-
 
 > ### Guiding principles for this quarter
-> **We want to emphasize in person, experiential learning.**
->   * We will have labs and field trips on campus that cannot be done remotely.
->   * If something comes up so that you cannot attend class, please reach out to the professor as soon as possible.
+> **In person, experiential learning.**
+>   * Labs and field trips cannot be completed remotely.
 > 
 > **We’re all in this together**
->  * If you do need to miss one week, you can best make up the material by meeting up with someone else in the class.
->  * Please reach out to your fellow students and make plans to watch out for each other.
+>  * No problem if you need to miss a class, just let the instructor know.
+>  * Reach out to your fellow students.
 
 ### Office Hours
 
@@ -63,18 +58,16 @@ If you need access to a laptop computer (such as if yours breaks) you may check 
 
 ### Lectures and labs
 
-The first 50 minutes of each class period is reserved for lectures and associated discussions. Lecture slides will be available on Canvas, along with any additional files for reading.
-
+The first half (~50 minutes) of each class period is reserved for lecture discussion. Lecture slides will be available on Canvas, along with any additional files for reading.
 
 ### Labs
-After a 10 minute break, 50 minutes of class will involve working on python labs.
-Lab content (jupyter notebooks and data files) can be downloaded directly from the class website. ([GitHub Option](https://spestana.github.io/data-analysis/resources/b-learning-jupyter.html#working-with-files-on-our-jupyterhub))
+After a 5 minute break, 50 minutes of class will be spent working collaboratively on labs, homeworks, and projects.
+Lab content (jupyter notebooks and data files) can be downloaded directly from the class website and uploaded to your jupyter hub ([GitHub Option](https://spestana.github.io/data-analysis/resources/b-learning-jupyter.html#working-with-files-on-our-jupyterhub))
 
-We will use classroom space and Slack to work in small groups on lab exercises. If you are not able to attend the lab in person, please reach out to others in the class for collaborative support. Contact the instructor or TA to be added to the Slack workspace.
-
+In addition to the classroom space, we will use Slack to communicate with each other about lab exercises and projects.
+Contact the instructor if you need to be added to the Slack workspace.
 
 ### Homework Assignments
-
 Homework assignments will be given out on Thursdays at the beginning of class, and will be **due the following week on Thursday at the beginning of class (10:30 am, Pacific Time)**. 
 Homework questions are posted on the class website along with links to any data files you might need.
 
@@ -91,13 +84,11 @@ Submit your completed homework assignments via Canvas by uploading:
 Homework will be graded on a scale of 1 to 10, with 10 being the best. Homework handed in late will be accepted up to (but not later than) the following Tuesday at the beginning of class (10:30am), but two grade points will be deducted from the grade for late assignments (i.e. a late assignment that would receive a 10 if handed in on time will be assigned a grade of 8). Everyone's lowest scoring homework assignment will be dropped, so please do not worry if one week is not going your way.
 
 ### Final Project
-
 Final projects will be completed in pairs (or individually on request), and the topic will be selected by the students in consultation with the instructor. 
 The topic should involve analyzing field measurements to answer a snow-hydrology related question.
-Updates on the project are required as part of the 2nd, 5th, and 7th homework assignments. 
-During the final week of class, students will present their research project results to the class.
-The project will be graded on the basis of the presentation (20%) and on the report (80%). 
-Final reports will be due on the final day of class, **March 13 2025, by 11:59pm**. Further details are provided on the [Course Project page](b-project.html).
+During the final week of class, students will present their research projects to the class.
+Final reports will be due on the final day of class, **March 13 2025, by 11:59pm**. 
+Further details are provided in the schedule below and on the [Course Project page](b-project.html).
 
 ### Grading Policy
 
@@ -110,11 +101,20 @@ Final reports will be due on the final day of class, **March 13 2025, by 11:59pm
 
 
 ## Schedule
-The schedule is subject to change.
-Lecture topics, assignments, and readings will be updated for incomplete weeks as the quarter progresses. 
-Note that readings should be completed *in advance of class*. 
+The readings, lab and homework assignments for each week are listed below. Weeks missing information will be updated as the quarter progresses.
+Readings should be completed *in advance of class*. 
 Labs will be completed on the day that they are listed.
-Note that assigned journal articles should be read, but not obsessed over. I understand that truly reading and digesting a research article can take hours. That is not my intent in assigning these readings. I recommend skimming the articles and reading closely where you find your interest lies. Other readings (e.g. from Field Guide to Snow) should be read closely.
+Note that assigned journal articles should be read, but not obsessed over. I understand that truly reading and digesting a research article can take hours. That is not my intent in assigning these readings. I recommend skimming the articles and reading closely where you find your interest lies. Other readings (e.g. from Field Guide to Snow) should be read closely. 
+
+### Final Project Due Dates
+Please take note of these due dates early on in the semester, as they serve as progress checks towards your final project.
+* Initial Project proposal (Due January 16) - Please write a few sentences stating the research question you would like to explore.
+
+* Midterm Progress Report (Due February 20) - At this point, you should have a clearly-stated research question, a description of the methods you are using, as well as some initial results. At least one research paper/reference should be identified by this point.
+
+* Presentations (Due March 11) - Students will present either March 11 or 13, be prepared on the 11th.
+
+* Final Reports (Due March 13) 
 
 ### Week 1 – Properties of Snow
 #### Day 1  – Introduction, importance of snow globally, snow science history
@@ -151,15 +151,15 @@ Note that assigned journal articles should be read, but not obsessed over. I und
 * Lab 2-2
 * HW2 (Due January 23)
 
-### Week 3 - Surface Energy Balance over snow - The energy balance equation, radiation and albedo, optical properties of snow
-#### Day 1 – 
+### Week 3 - Surface Energy Balance over snow - The energy balance equation, radiation, optical properties of snow
+#### Day 1 – Surface energy balance and radiation
 **Readings**
 * Warren 2019, Optical properties of ice and snow (Skip the sections “Lake ice and sea ice”, “Marine ice”, and “The transition snow–firn–glacier ice”). Note that Stephen Warren is a UW legend!
 
 **Assignments**
 * Lab 3-1
 
-#### Day 2  – 
+#### Day 2 – Optical properties of snow, applications of the energy balance
 **Readings**
 * Marks and Dozier, 1992. Climate and energy exchange at the snow surface in the Alpine Region of the Sierra Nevada: 2. Snow cover energy balance
 
@@ -174,25 +174,6 @@ Note that assigned journal articles should be read, but not obsessed over. I und
 ### Week 8 - Snow-dominated watershed hydrology
 ### Week 9 - Snowpack structure and avalanches
 ### Week 10 - Final project presentations
-
-
-### Week X - 
-#### Day 1 – 
-**Readings**
-* 
-
-**Assignments**
-* 
-
-#### Day 2  – 
-**Readings**
-* 
-
-**Assignments**
-* 
-
-
-
 
 ## Additional Information
 

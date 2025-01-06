@@ -14,22 +14,28 @@ $$c_p^{SS} \frac{\partial T_{ss}}{\partial t} = LW_{in} + LW_{out} + SW_{in} + S
 
 where 
 
-$c_p^{SS} \frac{\partial T_{ss}}{\partial t}$
+$$c_p^{SS} \frac{\partial T_{ss}}{\partial t}$$
 represents the change in the snow surface temperature ($c_p^{SS}$ is the specific heat capacity of the snowpack surface and $T_{ss}$ is the snowpack surface temperature),
 
-$LW_{in} + LW_{out}$ is the incoming and outgoing longwave radiation (AKA infrared radiation),
+$$LW_{in} + LW_{out}$$
+is the incoming and outgoing longwave radiation (AKA infrared radiation),
 
-$SW_{in} + SW_{out}$ is the incoming and outoing shortwave radiation (ultraviolet, visible, and near-infrared radiation; all sourced from the sun),
+$$SW_{in} + SW_{out}$$
+is the incoming and outoing shortwave radiation (ultraviolet, visible, and near-infrared radiation; all sourced from the sun),
 
-$\lambda \frac{\partial T_s}{\partial z}$ is the change in the "cold content" of the snowpack, i.e. the change in the vertically averaged temperature of the snowpack,
+$$\lambda \frac{\partial T_s}{\partial z}$$
+is the change in the "cold content" of the snowpack, i.e. the change in the vertically averaged temperature of the snowpack,
 
-$H_L$  is the vertical flux of *latent heat* away from the snowpack surface, i.e. the flux of water vapor away from the snowpack, either through sublimation or perhaps evaporation from melted water at the snowpack surface, 
+$$H_L$$
+is the vertical flux of *latent heat* away from the snowpack surface, i.e. the flux of water vapor away from the snowpack, either through sublimation or perhaps evaporation from melted water at the snowpack surface, 
 
-$H_s$ is the vertical flux of *sensible heat* away from the snowpack surface, i.e. the flux of temperature away from the snowpack, i.e. the heating or cooling of the lower atmosphere by the snowpack,
+$$H_s$$
+is the vertical flux of *sensible heat* away from the snowpack surface, i.e. the flux of temperature away from the snowpack, i.e. the heating or cooling of the lower atmosphere by the snowpack,
 
 and, lastly,
 
-$E_{melt}$ is the energy that goes to the latent heat involved in the melting of snow.
+$$E_{melt}$$ 
+is the energy that goes to the latent heat involved in the melting of snow.
 
 Snow scientists are generally most interested in snow melt ($E_{melt}$) and snow sublimation ($H_L$) and the majority of the energy available for snow melt or sublimation comes from the net radiation, the balance of incoming shortwave, reflected shortwave, incoming longwave, and emitted longwave radiation. Incoming shortwave radiation ($SW_{in}$) comes from the sun and is a function of time of year, time of day, cloud cover, atmospheric aerosols, and topographic position. We can predict/model potential SW radiation well, although in complex/mountainous terrain, topography matters a lot.
 
