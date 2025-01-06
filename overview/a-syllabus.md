@@ -53,6 +53,8 @@ The UW eScience institute offers [data science office hours](https://escience.wa
 
 For lab activities and assignments, we will be using a [JupyterHub](https://spestana.github.io/data-analysis/resources/b-learning-jupyter.html) computing environment, and programming with [python](https://spestana.github.io/data-analysis/resources/a-learning-python.html). 
 
+The JupyterHub for this course can be accessed [here](https://jupyter.rttl.uw.edu/2025-winter-cewa-568-a) with a UW net id.
+
 If you need access to a laptop computer (such as if yours breaks) you may check one out from the [Student Technology Loan Program](https://stlp.uw.edu/). Please contact me if you need help accessing a computer reliably.
 
 
