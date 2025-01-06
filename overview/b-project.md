@@ -26,11 +26,19 @@ See the Syllabus page for due dates.
 
 4) Test the performance of simple snowpack compaction models using snow pillow and snow depth measurements from Kettle Ponds.
 
+1) Explore variability in the snow surface temperatures measured by multiple instruments at Kettle Ponds.
+
+2) Explore wind speed thresholds for initiation of suspended and blowing snow using wind speed and blowing snow measurements at Kettle Ponds.
+
+3) Examine the snowpack structure and associated avalanche risk using snowpit data from Kettle Ponds.
+
+4) Test the performance of simple snowpack compaction models using snow pillow and snow depth measurements from Kettle Ponds.
+
 5) Diagnose the snow energy balances residual problem
 
 ## Rubric
 
-### (20%) Final presentation
+ ### (20%) Final presentation
 
 ### (80%) Final report
 The written report should include a clearly-stated research question, a methods section identifying the data and data analysis techniques utilized, and a results section describing your findings.
