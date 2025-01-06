@@ -76,8 +76,8 @@ For even more detailed information about clouds, aerosols, and radiation, DOE is
 ```note
 ## Lab 3: Plotting radiation and energy balance data at Kettle Ponds.
 
-* [Lab 2-1](lab2/lab3-1.ipynb)
-* [Lab 2-2](lab1/lab3-2.ipynb)
+* [Lab 3-1](lab3/lab3-1.ipynb)
+* [Lab 3-2](lab3/lab3-2.ipynb)
 * [SoS dataset](data/sos_full_dataset_30min.nc)
 ```
 
