@@ -25,14 +25,11 @@ Download the lab and data files to your computer. Then, upload them to your Jupy
 
 * Download this data file for the lab activities: [Skykomish peak flows](data/Skykomish_peak_flow_12134500_skykomish_river_near_gold_bar.xlsx)
 * [Lab 1-1: Plotting Data in Python](lab1/lab1-1.ipynb)
-* For more practice in plotting, try this graphical data analysis lab: - [Graphical Data Analysis](lab1/graphical-data-analysis.ipynb) with this [sample data set](data/my_data.csv)
 * [Lab 1-2: Phase Changes](lab1/lab1-2.ipynb)
-
 
 Some extra helpful activities:
 * [Numpy Tutorial](lab1/numpy-tutorial.ipynb)
 * [Some more python tips](lab1/some-python-tips.ipynb)
-
 ```
 
 ---
