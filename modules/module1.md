@@ -39,7 +39,7 @@ Some extra helpful activities:
 In this homework assignment we will work start with programming and data visualization to better qualitatively understand the types of datasets that we'll be using the rest of the quarter. This homework is on the shorter side because we have a fieldtrip next week and will also be covering the material necessary for the second homework.   Please download the notebooks at the top of this page and use them as reference for your coding.  **Be sure to save your work for later reference**
 
 
-### Water and States of Matter
+### Problem 1: Water and States of Matter
 
 For this week's homework, we will pretend we are in very controlled laboratory conditions.  If you dislike python, these questions can all be answered with pencil, paper, and a calculator, but you may want to use this exercise as a chance to practice your programming skills.
 
