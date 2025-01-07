@@ -38,17 +38,19 @@ Working through labs 2-1, 2-2, and 2-3 will prepare you to complete Homework 2.
 
 Using the observations of precipitation and the snow pillow data at Kettle Ponds and the two SNOTEL stations (see Module 2 labs), we are going to investigate the mass balance and snow accumulation at sites in the East River Valley.
 
-A. Plot a timeseries of total accumulated precipitation and total accumulated snow water equivalent from the four snow pillows.  Add to your plot timeseries from the two Snotel Stations located nearby.  Discuss how they match and how they differ, and why you think they differ.
+A. Plot a timeseries of total accumulated precipitation and total accumulated snow water equivalent from the four snow pillows.  Add to your two plots timeseries data from the two Snotel Stations located nearby.
 
-B. Write out the snow mass balance equation from lecture.  Discuss, given the data you have plotted, what aspects of the mass balance equation do you have the most certainty about?  The least certainty?
+B. Calculate the seasonal maximum SWE from one of the Kettle Ponds (not Snotel) snow pillows. Calculate the cumulative precipitation up until the date of your identified maximum SWE. Calculate the percentage of the cumulative precipitation accounted for by the max SWE value.
 
-C. Discuss which factors of the mass balance are likely to be the most similar spatially?  Which differ the most across different locations?  Is there more variability between sites further away?  Or are the four snow pillows at Kettle Ponds as different as the two sites near the watershed?
+C. Write out the snow mass balance equation from lecture.  Given your calculations for part B, what terms in the mass balance do you think are most likely to account for the disparity between cumulative precipitation and maximum SWE? How certain do you think our estimates of cumulative precipitation and maximum SWE are?
 
-D. Summer researchers at the Rocky Mountain National Biological Lab in the Upper East River Valley want to start their research as soon as possible. To access the lab, they need to drive down a forest service road that is currently snowed in.  The forest service opens the road when the snow melts and disappears. Using the long term records at the SNOTEL sites, and (optionally) any other information you like, predict when the snow will be gone (and the road clear) in 2025.
+D. Discuss which factors of the mass balance are most likely to be vary spatially Reference your plots from A.  Is there more variability between sites further away?  Or are the four snow pillows at Kettle Ponds as different as the two SNOTEL sites from elsewhere in the watershed?
 
-E. Following lab 2-3, calculate snow density at one Kettle Ponds tower using 30-minute data (i.e. mimic what we did in lab 2-3, but do not resample the data to daily time steps). For the time period January 1-15, 2023, plot snow density and snow depth. Explain what patterns you see in the two time series.
+E. Summer researchers at the Rocky Mountain National Biological Lab in the Upper East River Valley want to start their research as soon as possible. To access the lab, they need to drive down a forest service road that is currently snowed in.  The forest service opens the road when the snow melts and disappears. Using the long term records at the SNOTEL sites, and (optionally) any other information you like, predict when the snow will be gone (and the road clear) in 2025.
 
-F. In snow models, a simple exponential decay equation is used to predict the compaction of snow over time (e.g. Essery et al., 2013, https://www.sciencedirect.com/science/article/abs/pii/S0309170812002011). Such a model takes the form:
+F. Following lab 2-3, calculate snow density at one Kettle Ponds tower using 30-minute data (i.e. mimic what we did in lab 2-3, but do not resample the data to daily time steps). For the time period January 1-15, 2023, plot snow density and snow depth. Explain what patterns you see in the two time series.
+
+G. In snow models, a simple exponential decay equation is used to predict the compaction of snow over time (e.g. Essery et al., 2013, https://www.sciencedirect.com/science/article/abs/pii/S0309170812002011). Such a model takes the form:
 ```
 density = max_density + (initial_density - max_density)*e^(-1 / tau_p)
 ```
@@ -57,9 +59,15 @@ Identify a short time period between January 1--15 during which you observe a si
 Apply this equation to the short time series of snow density.
 Plot the observed density and the predicted density time series.
 
-### Problem 2: Course Project Selection
+### Problem 2
+On your reading of Lundquist et al. 2024 “Sublimation of Snow””.
 
-Initial Project proposal (Due January 23) - Please write a few sentences stating the research question you would like to explore. If you would like to work with a partner, include the name of your partner, or specify you will be doing the project alone.  Describe the concept you want to explore and the measurements (dataset) you want to use. **If you have questions about the project, now is the time to talk to the instructor.**
+In Figure 3B, SWE measured on four different snow pillows show significant and diverging change on the morning of December 22. 
+What caused the SWE signals to diverge? 
+Based on this answer, what do you think is a shortcoming of SNOTEL measurement sites?
+Describe the ideal area for a SNOTEL site (think about topography, weather/wind conditions).
+Maximum 8 sentences. 
+
 
 ## Additional resources  
 Kelly Elder put together a good set of training videos for the NASA SnowEx Campaigns.  You can view these via the links below.

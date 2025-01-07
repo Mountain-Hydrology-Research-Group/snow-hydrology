@@ -6,13 +6,13 @@ The project will consist of an oral presentation (20% of total) and written repo
 
 ## Final Project Due Dates
 Please take note of these due dates early on in the semester, as they serve as progress checks towards your final project.
-* Initial Project proposal (Due January 23) - Please write a few sentences stating the research question you would like to explore.
+* Initial Project proposal (Due January 23) - Please write a few sentences stating the research question you would like to explore. If you would like to work with a partner, include the name of your partner, or specify you will be doing the project alone.  Describe the concept you want to explore and the measurements (dataset) you want to use. **If you have questions about the project, now is the time to talk to the instructor.**
 
 * Midterm Progress Report (Due February 20) - At this point, you should have a clearly-stated research question, a description of the methods you are using, as well as some initial results. At least one research paper/reference should be identified by this point.
 
-* Presentations (Due March 11) - Students will present either March 11 or 13, be prepared on the 11th.
+* Presentations (Due March 11) - Students will present either March 11 or 13, be prepared on the 11th. Please submit your slides before the beginning of class on March 11.
 
-* Final Reports (Due March 13) 
+* Final Reports (Due March 13) - Due by 11:59pm on March 13.
 
 See the Syllabus page for due dates.
 

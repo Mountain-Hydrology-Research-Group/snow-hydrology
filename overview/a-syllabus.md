@@ -14,7 +14,7 @@ The course will cover a number of fundamental topics related to snow hydrology i
 **Instructors:**      Eli Schwat (elilouis@uw.edu) and Jessica Lundquist (jdlund@uw.edu)
 
 **Lectures:**         10:30am - 12:20pm Tuesday/Thursday (Pacific Time)
-
+ 
 The room location, and relevant course information are available via the [course Canvas page](https://canvas.uw.edu/) (UW NetID login required).
 
 ### Learning Objectives
@@ -27,11 +27,12 @@ By the end of the course, students should be able to
 
 > ### Guiding principles for this quarter
 > **In person, experiential learning.**
+>   * No zoom links.
 >   * Labs and field trips cannot be completed remotely.
 > 
 > **We’re all in this together**
 >  * No problem if you need to miss a class, just let the instructor know.
->  * Reach out to your fellow students.
+>  * Reach out to your fellow students to take notes for you.
 
 ### Office Hours
 
@@ -70,12 +71,14 @@ In addition to the classroom space, we will use Slack to communicate with each o
 Contact the instructor if you need to be added to the Slack workspace.
 
 ### Homework Assignments
-Homework assignments will be given out on Thursdays at the beginning of class, and will be **due the following week on Thursday at the beginning of class (10:30 am, Pacific Time)**. 
+Homework assignments are posted on the course website on each week's module page.
+Homework due dates are listed in the schedule below, as well as on the course Canvas page. Assignments should be turned in on Canvas. 
+On days with assignments due, assignments should be turned in **before the beginning of class (10:30 am, Pacific Time)**. 
 Homework questions are posted on the class website along with links to any data files you might need.
 
-You are encouraged to work together on homeworks and collaborate, but you must turn in your own assignments with your own work. 
+You are encouraged to work together on homeworks and collaborate, but you must turn in your own assignments with your own work.
 
-Make sure that your name and the assignment number are at the top of your notebook file in markdown text. **Your answers should be clearly labeled and written in *markdown* cells of the notebook.**
+Coding assignments should include your name and the assignment number at the top of the notebook (ipynb) file in markdown text. **Your answers should be clearly labeled and written in *markdown* cells of the notebook.**
 
 Submit your completed homework assignments via Canvas by uploading:
 * Your original .ipynb jupyter notebook file(s)
@@ -102,80 +105,78 @@ Further details are provided in the schedule below and on the [Course Project pa
   * See the [CEWA 565 course project page](/overview/b-project.html) for grading rubric.
 
 
-## Schedule
+## Schedule of topics and assignments
 The readings, lab and homework assignments for each week are listed below. Weeks missing information will be updated as the quarter progresses.
-Readings should be completed *in advance of class*. 
+Required readings should be completed *in advance of class*.
 Labs will be completed on the day that they are listed.
+
 Note that assigned journal articles should be read, but not obsessed over. I understand that truly reading and digesting a research article can take hours. That is not my intent in assigning these readings. I recommend skimming the articles and reading closely where you find your interest lies. Other readings (e.g. from Field Guide to Snow) should be read closely. 
 
-### Final Project Due Dates
-Please take note of these due dates early on in the semester, as they serve as progress checks towards your final project.
-* Initial Project proposal (Due January 23) - Please write a few sentences stating the research question you would like to explore.
-
-* Midterm Progress Report (Due February 20) - At this point, you should have a clearly-stated research question, a description of the methods you are using, as well as some initial results. At least one research paper/reference should be identified by this point.
-
-* Presentations (Due March 11) - Students will present either March 11 or 13, be prepared on the 11th.
-
-* Final Reports (Due March 13) 
+Optional readings are listed for you to explore at your leisure. They also may be useful in inspiring your term projects.
 
 ### Week 1 – Properties of Snow
+---
 #### Day 1  – Introduction, importance of snow globally, snow science history
-**Readings**
-* Huss 2017 “Toward mountains without permanent snow and ice”
-* Field Guide to Snow, Chapter 1 “Where Is Snow?“
+* **Readings**
+  * Field Guide to Snow, Chapter 1 “Where Is Snow?“
 
-**Assignments**
-* Lab 1-1 
-* HW0 (Due January 9): Write short paragraph about answering the following questions: 1. Why do you want to take this class? 2. Are there any specific topics that you’d like covered in this class? 3. What is your preferred learning style? – I.e. what do you think about powerpoint vs chalk board lectures, use of python notebook “labs” and homeworks, term projects.
+* **Assignments**
+  * Lab 1-1 
+  * HW0 (Due January 9): Write short paragraph about answering the following questions: 1. Why do you want to take this class? 2. Are there any specific topics that you’d like covered in this class? 3. What is your preferred learning style? – I.e. what do you think about powerpoint vs chalk board lectures, use of python notebook “labs” and homeworks, term projects.
 
 #### Day 2  – Phases of water, snowflake and snowpack properties, and SWE
-**Readings**
-* Librrecht 2007 “The formation of snow crystals”
-* Field Guide to Snow, Chapters 2, 3, and 4 “The Crystal Factory” , “Snowflakes”, and “Snow Layers and Weather”
-
-**Assignments**
-* Lab 1-2
-* HW1 (Due January 16)
+* **Readings**
+  * Librrecht 2007 “The formation of snow crystals”
+  * Field Guide to Snow, Chapters 2, 3, and 4 “The Crystal Factory” , “Snowflakes”, and “Snow Layers and Weather”
+* **Assignments**
+  * Lab 1-2
+  * HW1 (Due January 16)
+* **Optional Readings**
+  * Huss 2017 “Toward mountains without permanent snow and ice”
 
 ### Week 2 - Measurement Strategies, Basics of the Snowpack Mass and Energy Balances, and Snowpack Dynamics (compaction, metamorphism)
+---
 #### Day 1 – Intro to the Sublimation of Snow (SOS) Campaign, Basics of the Snowpack Mass and Energy Balances
-**Readings**
-* Lundquist 2024 “Sublimation of Snow”
-
-**Assignments**
-* Lab 2-1
+* **Readings**
+  * Lundquist 2024 “Sublimation of Snow”
+* **Assignments**
+  * Lab 2-1
 
 #### Day 2  – Snowpack Dynamics (compaction, metamorphism)
-**Readings**
-* Field Guide to Snow, Chapter 5 “Metamorphism: Snow in the Crucible” but you can skip 5.1.3
-
-**Assignments**
-* Lab 2-2
-* HW2 (Due January 23)
+* **Readings**
+  * Field Guide to Snow, Chapter 5 “Metamorphism: Snow in the Crucible” but you can skip 5.1.3
+* **Assignments**
+  * Lab 2-2
+  * HW2 (Due January 23)
+  * See the course project page - your Initial Project proposal is due on January 23
 
 ### Week 3 - Surface Energy Balance over snow - The energy balance equation, radiation, optical properties of snow
+---
 #### Day 1 – Surface energy balance and radiation
-**Readings**
-* Warren 2019, Optical properties of ice and snow (Skip the sections “Lake ice and sea ice”, “Marine ice”, and “The transition snow–firn–glacier ice”). Note that Stephen Warren is a UW legend!
-
-**Assignments**
-* Lab 3-1
+* **Readings**
+  * Warren 2019, Optical properties of ice and snow (Skip the sections “Lake ice and sea ice”, “Marine ice”, and “The transition snow–firn–glacier ice”). Note that Stephen Warren is a UW legend!
+* **Assignments**
+  * Lab 3-1
 
 #### Day 2 – Optical properties of snow, applications of the energy balance
-**Readings**
-* Marks and Dozier, 1992. Climate and energy exchange at the snow surface in the Alpine Region of the Sierra Nevada: 2. Snow cover energy balance
-
-**Assignments**
-* Lab 3-2
-* HW3 (Due January 30)
+* **Assignments**
+  * Lab 3-2
+  * HW3 (Due January 30)
+* **Optional Readings**
+  * Marks and Dozier, 1992. Climate and energy exchange at the snow surface in the Alpine Region of the Sierra Nevada: 2. Snow cover energy balance
 
 ### Week 4 - Temperatures: snowpack and atmosphere, atmospheric stability
 ### Week 5 - Turbulent transport
 ### Week 6 - Blowing snow: transport and sublimation 
 ### Week 7 - Snow melt 
+* **Assignments**
+  * See the course project page - your Midterm Progress Report is due on February 20
 ### Week 8 - Snow-dominated watershed hydrology
 ### Week 9 - Snowpack structure and avalanches
 ### Week 10 - Final project presentations
+* **Assignments**
+  * See the course project page - your Presentation is due on March 11
+  * See the course project page - your Final Report is due on March 13
 
 ## Additional Information
 
