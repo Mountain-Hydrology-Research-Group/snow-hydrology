@@ -101,7 +101,7 @@ Calculate and plot albedo during April the first half of April and identify the 
 
 ### Problem 5: Snow surface energy balance - Intuition
 
-In Lab3-2, we plotted the average diurnal cycle of the snow surface energy balance. Explain what you observe in this plot (you do not need to recreate the plot in your homework). What does each of the four terms represent? When is each term negative/positive and why? (Ignore the residual term, look at the plot before we added the residual).
+In Lab3-2, we plotted the average diurnal cycle of the snow surface energy balance (the final plot in that lab). Explain what you observe in this plot (you do not need to recreate the plot in your homework). What do each of the five terms represent? When is each term negative/positive and why?
 
 ### Problem 6
 On your reading of Warren 2019.
