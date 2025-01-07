@@ -1,47 +1,34 @@
-# 3) Surface Energy Balance – Radiation + Albedo, Dust on Snow
+# 3) Snowpack Energy Balance – Radiation + Albedo, Dust on Snow
 
 # Background
 ![Photo of April 2023 dust event at Kettle Ponds](data/Dust_on_SOS.png)
 
 The balance of energy over a snow surface is a phenomenon studied by both biologists, hydrologists, boundary layer meteorologists, and snow scientists. Many fields use the surface energy balance (SEB) to estimate evaporation and transpiration of water from the earth's surface. Meteorologists study the SEB's radiative effects on the atmosphere.
 
-The surface energy balance equation balances incoming and outgoing sources of energy at the surface, measured in terms of energy flux (energy per units area, i.e. W/m^2, Watts per meters squared). 
-We as snow scientists are generally interested in the SEB to understand the energy available for snow melt and snow sublimation. 
-Therefore, we augment the more standard version of the surface energy balance equation to include terms involving phase changes and energy storage changes (temperature change) within the snowpack. 
-The snowpack energy balance equation can be written
+Because we are interested in the snowpack, we modify the more common "surface energy 
+balance" and consider a "snowpack energy balance".
+The snowpack energy balance states that the change of the internal energy of the snowpack is a result of incoming and outgoing sources of energy,
 
-$$c_p^{SS} \frac{\partial T_{ss}}{\partial t} = LW_{in} + LW_{out} + SW_{in} + SW_{out} - \lambda \frac{\partial T_s}{\partial z} - H_L - H_s + E_{melt}$$
+$$∆ \text{Internal Energy} = \text{Incoming Energy} - \text{Outgoing Energy} $$
 
-where 
+Energy fluxes are on both sides of the equation are measured in units of Watts per meters squared (W/m^2). The full snowpack energy balance is written 
 
-$$c_p^{SS} \frac{\partial T_{ss}}{\partial t}$$
-represents the change in the snow surface temperature ($c_p^{SS}$ is the specific heat capacity of the snowpack surface and $T_{ss}$ is the snowpack surface temperature),
+$$c_p^{S} \int^D_0 \frac{\partial T_{s}}{\partial t} dz = LW_{in} + LW_{out} + SW_{in} + SW_{out} - H_L - H_s + E_{melt} + G$$
 
-$$LW_{in} + LW_{out}$$
-is the incoming and outgoing longwave radiation (AKA infrared radiation),
+where D is the height of the snowpack, the bottom of the snowpack is at z = 0, and the term on the left represents the change in internal energy of the snowpack, which is equal to the change in the depth-averaged temperature of the snowpack multiplied by the specific heat capacity of snow. 
 
-$$SW_{in} + SW_{out}$$
-is the incoming and outoing shortwave radiation (ultraviolet, visible, and near-infrared radiation; all sourced from the sun),
+The first and second terms on the right represent incoming and outgoing longwave radiation (AKA infrared radiation). 
+The third and fourth terms represent incoming and outgoing shortwave radiation (ultraviolet, visible, and near-infrared radiation).
+The fifth term is the vertical flux of latent heat _away_ from the snowpack surface, i.e. the flux of water vapor away from the snowpack, either through sublimation or perhaps evaporation from melted water at the snowpack surface. 
+The term is positive during sublimation when energy is lost from the snowpack.
+Occasionally, deposition occurs (i.e. the solid equivalent of condensation, also known as surface hoar formation), and the term is negative, and energy is gained by the snowpack.
+The fifth term is the vertical flux of sensible heat _away_ from the snowpack surface. Generally, but not always, the air over a snowpack is warmer than the snowpack surface temperature, and so H<sub>s</sub> is negative and energy is gained by the snowpack from sensible heat flux. It can sometimes become positive.
+The sixth term is the energy that is lost to the latent heat involved in the melting of snow.
+The seventh term is the energy fluxed from the earth, upwards into the bottom of the snowpack. Often, the bottom of the snowpack and the ground temperature equalize, and this term goes to 0. 
 
-$$\lambda \frac{\partial T_s}{\partial z}$$
-is the change in the "cold content" of the snowpack, i.e. the change in the vertically averaged temperature of the snowpack,
+Snow scientists are generally most interested in snow melt ($E_{melt}$) and snow sublimation ($H_L$) and the majority of the energy available for snow melt or sublimation comes from the net radiation, the sum of the four radiation terms. Incoming shortwave radiation ($SW_{in}$) comes from the sun and is a function of time of year, time of day, cloud cover, atmospheric aerosols, and topographic position. We can predict/model potential SW radiation well, although in complex/mountainous terrain, topography matters a lot.
 
-$$H_L$$
-is the vertical flux of *latent heat* away from the snowpack surface, i.e. the flux of water vapor away from the snowpack, either through sublimation or perhaps evaporation from melted water at the snowpack surface, 
-
-$$H_s$$
-is the vertical flux of *sensible heat* away from the snowpack surface, i.e. the flux of temperature away from the snowpack, i.e. the heating or cooling of the lower atmosphere by the snowpack,
-
-and, lastly,
-
-$$E_{melt}$$ 
-is the energy that goes to the latent heat involved in the melting of snow.
-
-Snow scientists are generally most interested in snow melt ($E_{melt}$) and snow sublimation ($H_L$) and the majority of the energy available for snow melt or sublimation comes from the net radiation, the balance of incoming shortwave, reflected shortwave, incoming longwave, and emitted longwave radiation. Incoming shortwave radiation ($SW_{in}$) comes from the sun and is a function of time of year, time of day, cloud cover, atmospheric aerosols, and topographic position. We can predict/model potential SW radiation well, although in complex/mountainous terrain, topography matters a lot.
-
-Incoming shortwave radiation at the snowpack's (earth's) surface is a result of the sun's output radiation and the interaction of with that incoming radiation on earth with the atmosphere. 
-Gasses in the atmopshere, mostly water vapor, absorb shortwave radiation, such that $SW_{in}$ at the earth's surface is always lower than at the outermost edge of the atmosphere. 
-Therefore, clouds can reduce the amount of incoming shortwave radiation at the earth's surface.
+Gasses in the atmopshere ("greenhouse gasses"), mostly water vapor, absorb shortwave radiation and heat up, such that $SW_{in}$ at the earth's surface is always lower than at the outermost edge of the atmosphere. 
 Snow is highly reflective, returning 60-90% of the incoming SW radiation to the atmosphere, i.e. snow has a high [*albedo* ($\alpha$)](https://mynasadata.larc.nasa.gov/mini-lessonactivity/what-albedo). 
 Albedo, $\alpha$, varies between zero and 1; a highly reflective surface reflects most of the incoming solar radiation ($\alpha$ approaches 1) and non-reflective surfaces absorb most of the incoming solar radiation ($\alpha$ approaches 1). Snow albedo varies between 0.6 and 0.9. although dirt, dust, and rocks on snow or glacier surfaces can decrease the surface-averaged albedo significantly. 
 
@@ -51,27 +38,20 @@ $$LW_{out} = \epsilon \sigma T^4$$
 
 where $\epsilon$ is the Stefan–Boltzmann constant ($\sigma \approx 5.67 × 10^{−8} \space W⋅m^{-2}⋅K^{-4}$)
 and $\epsilon$ is the emisivity of the surface emitting the radiation ($\epsilon$ varies between zero and one). The snowpack surface [emissivity](https://www.jpl.nasa.gov/images/pia18833-nasa-spacecraft-maps-earths-global-emissivity) is near 1, meaning that the snowpack surface (i.e. water molecules) absorb most of the incoming LW radiation, and reflect very little. $\epsilon$ for the snowpack depends on snowpack properties, but a commonly assumed value is $\epsilon = 0.985$.
+Note that the Stefan-Boltzmann law implies that when gases in the atmosphere (i.e. clouds) absorb incoming shortwave/solar radiation and warm up, they increase their output of longwave radiation.
+This means that the presense of clouds both decrease incoming solar radiation at the snow surface and increase incoming longwave radiation at the snow surface.
 
-Note that the Stefan-Boltzmann law implies that when gases in the atmosphere (i.e. clouds) absorb incopming shortwave/solar radiation and warm up, they increase their output of longwave radiation. 
-This means that the presense of clouds, while decreasing incoming solar radiation at the snow surface, increase incoming longwave radiation at the snow surface.
-
-The reflective properties of the snow surface, for both longwave and shortwave radiation, mean that the longwave terms and shortwave terms in the energy balance equation we started with can be rewritten,
-
-$$LW_{in} + LW_{out} = LW_{in} - \epsilon \sigma T_{ss}^4$$
-
-and
+The reflective properties of the snow surface mean that the shortwave terms in the energy balance equation can be rewritten,
 
 $$SW_{in} + SW_{out} = (1 - \alpha) SW_{in}$$
 
-and therefore
+The Stefan-Boltzmann law implies that the longwave terms could be rewritten 
 
-$$c_p^{SS} \frac{\partial T_{ss}}{\partial t} = LW_{in} - \epsilon \sigma T_{ss}^4 + (1 - \alpha) SW_{in} - \lambda \frac{\partial T_s}{\partial z} - H_L - H_s + E_{melt}$$
+$$LW_{in} + LW_{out} = LW_{in} - \epsilon \sigma T_{ss}^4$$
 
-In cooperation with the Sublimation of Snow campaign, NOAA is conducting the [Study of Precipitation, the Lower Atmosphere and Surface for Hydrometeorology, SPLASH, campaign](https://psl.noaa.gov/splash/). From the prior link, if you click on _data_ and on _KettlePonds_, you can see photos of the radiometer and streams of data. 
+where T<sub>ss</sub> is the temperature of the snow surface (in Kelvin).
 
-For today's lab, we will bring in one of the [Superheros of SPLASH](https://storymaps.arcgis.com/stories/093640ac6bdc479394d7fd9c7068fd27) to help us with our investigation.
-
-For even more detailed information about clouds, aerosols, and radiation, DOE is conducting the [Surface Atmosphere Integrated Field Laboratory, SAIL, campaign](https://sail.lbl.gov/), with a list of sensors [here](https://sail.lbl.gov/what-we-measure/).
+These equations will be useful in completing the labs and homeworks in this module. 
 
 ```note
 ## Lab 3: Plotting radiation and energy balance data at Kettle Ponds.
