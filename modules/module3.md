@@ -95,7 +95,7 @@ A common problem in snow energy balance studies is that snow accumulates on the 
 Use the precipitation dataset from Lab 2 to examine both incoming and outgoing radiation measurements during and after times with precipitation.
 Find a time in the dataset when you think snow covered the radiometer and explain why this occurred.
 
-You may find that skimming [Lapo et al., 2015](https://doi.org/10.1002/2015WR017590) is useful (Karl Lapo is a graduated, former UW PhD student).
+You may find that skimming the following paper is useful, but it's not necessary. [Lapo et al., 2015](https://doi.org/10.1002/2015WR017590) Karl Lapo is a graduated, former UW PhD student.
 
 ### Problem 2: Clouds
 Identify two periods of variable cloud cover in the dataset, one during nighttime and one during daytime.
@@ -117,12 +117,13 @@ $$\alpha = \frac{SW_{out}}{SW_{in}}$$
 It is understood intuitively to most people in cold climates that snow is brightest right after new snowfall, and darkens as it ages.
 This is a result both of the rounding and growing of snow grains as well as the "dirtying" of snow through the deposition of atmospheric deposition particulates.
 In April, 2024, a substantial amount of dust was deposited on our site at Kettle Ponds (see the photo at the top of this page).
-Calculate and plot albedo during April the first half of April and identify the date on which you think dust was deposited. 
-
-Find a day or two with precipitation from earlier in the season (say, January) and plot albedo during and after the snowfall event.
-
-How does the effect of snow "aging" on albedo differ from the effect of dust deposition on albedo?
+Calculate and plot albedo during April the first half of April and identify the date on which you think dust was deposited. Explain how you come to this conclusion.
 
 ### Problem 5: Snow surface energy balance - Intuition
 
 In Lab3-2, we plotted the average diurnal cycle of the snow surface energy balance. Explain what you observe in this plot (you do not need to recreate the plot in your homework). What does each of the four terms represent? When is each term negative/positive and why? (Ignore the residual term, look at the plot before we added the residual).
+
+### Problem 6
+On your reading of Warren 2019.
+
+Explain why coarse-grained snow has lower albedo than-grained snow. 
