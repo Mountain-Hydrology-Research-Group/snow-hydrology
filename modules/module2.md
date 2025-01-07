@@ -12,9 +12,6 @@ Click on the photo above to see a short Youtube video of a snow pillow being ins
 
 Above, we see an aerial photo, with each tower and corresponding snow pillow labeled.  We also see a lidar map of snow depth, with the snow pillow locations shown with circles, and a webcam photo taken from the downwind tower towards the central and upwind towers. This map will be useful in the lab and homework below, and in future modules.
 
----
-
-```note
 ## Lab 2: Mass Balance
 
 In Lab 2, we will look at data from SNOTEL stations and the Kettle Ponds field site, in the Upper East River Valley. 
@@ -28,7 +25,6 @@ Working through labs 2-1, 2-2, and 2-3 will prepare you to complete Homework 2.
 * [Lab 2-3](lab2/lab2-3.ipynb)
 * [SoS dataset](data/sos_full_dataset_30min.nc)
 * [Precipitation dataset](data/kettle_ponds_precip.csv)
-```
 
 ---
 
@@ -52,12 +48,22 @@ F. Following lab 2-3, calculate snow density at one Kettle Ponds tower using 30-
 
 G. In snow models, a simple exponential decay equation is used to predict the compaction of snow over time (e.g. Essery et al., 2013, https://www.sciencedirect.com/science/article/abs/pii/S0309170812002011). Such a model takes the form:
 ```
-density = max_density + (initial_density - max_density)*e^(-1 / tau_p)
+density(t) = max_density + (initial_density - max_density)*e^(-t / tau_p)
 ```
-where max_density is the maximum possible snow density (e.g. 300-400 kg/m^3), initial_density is the starting density of the snowpack, and tau_p is a decay constant, e.g. 3.6e5. 
-Identify a short time period between January 1--15 during which you observe a single instant of decaying density/snow depth (should be between 12 and 48 hours long).
+where max_density is a constant, the maximum possible snow density (e.g. 300-400 kg/m^3), initial_density is the starting density of the snowpack, and tau_p is a decay constant, e.g. 180,000 seconds. 
+Identify a short time period between January 1--15 during which you observe a single instant of decaying density/snow depth (should be between 24 and 72 hours long).
 Apply this equation to the short time series of snow density.
-Plot the observed density and the predicted density time series.
+Plot the observed density and the predicted density time series, and tweak the parameters until your model has a decent fit for your selected event.
+
+> #### HINT
+> You can isolate data for a specific time period from an xarray Dataset or Data array like this:
+> ```
+> snowdensity_c.sel(time=slice('20221206 0100', '20221208 0000'))
+> ```
+> Your final figure should look something like this 
+> 
+> ![Snow density, modeled + measured](data/snow_density_model_example.png)
+
 
 ### Problem 2
 On your reading of Lundquist et al. 2024 “Sublimation of Snow””.
