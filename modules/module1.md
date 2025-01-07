@@ -43,12 +43,10 @@ For this week's homework, we will pretend we are in very controlled laboratory c
  A. Imagine you have a 1 cubic centimeter block of ice at -10 degrees C and 1 atm of pressure.  Calculate the amount of energy required to **melt** all of the ice.  (Note that you will have to warm it to 0 degrees C before you begin melting it.)
 
  B. Now, consider that same block of ice at -10 degrees C and 1 atm of pressure.  Calculate the amount of energy required to **sublimate** all of the ice.  (Note that you do not need to warm the ice to sublimate it.)
+  
+ C. We know that cold snow is primarily a mixture of ice and air.  Consider no phase changes and temperatures between -15 degrees and -5 degrees C.  Imagine that no interactions occur between the ice and air in the snow matrix.  How does the energy required to heat the mixture those 10 degrees change as the fractions of ice vs. air change in the total mixture?  
  
- C. Repeat the calculations above, but imagine you are high in the mountains at 0.5 atm of pressure.  What changes?
- 
- D. We know that cold snow is primarily a mixture of ice and air.  Consider no phase changes and temperatures between -15 degrees and -5 degrees C.  Imagine that no interactions occur between the ice and air in the snow matrix.  How does the energy required to heat the mixture those 10 degrees change as the fractions of ice vs. air change in the total mixture?  
- 
- E. I argue that sublimation saves the snowpack more than it reduces it.  Why would I say this?  Do you agree or disagree?  Use the specific and latent heats in lab 1-2 to make your argument.
+ D. I argue that sublimation saves the snowpack more than it reduces it.  Why would I say this?  Do you agree or disagree?  Use the specific and latent heats in lab 1-2 to make your argument.
 
 ### Problem 2: 
 On your reading of Librrecht 2007 “The formation of snow crystals”.
