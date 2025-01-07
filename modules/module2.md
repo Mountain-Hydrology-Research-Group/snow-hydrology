@@ -38,13 +38,13 @@ Working through labs 2-1, 2-2, and 2-3 will prepare you to complete Homework 2.
 
 Using the observations of precipitation and the snow pillow data at Kettle Ponds and the two SNOTEL stations (see Module 2 labs), we are going to investigate the mass balance and snow accumulation at sites in the East River Valley.
 
-A. Plot a timeseries of total accumulated precipitation and total accumulated snow water equivalent from the four snow pillows.  Add to your two plots timeseries data from the two Snotel Stations located nearby.
+A. Plot timeseries of snow water equivalent from the four snow pillows at Kettle Ponds. Plot a separate time series of cumulative precipitation at Kettle Ponds.  Add to your two plots the SWE and precipitation data from two Snotel Stations located nearby.
 
 B. Calculate the seasonal maximum SWE from one of the Kettle Ponds (not Snotel) snow pillows. Calculate the cumulative precipitation up until the date of your identified maximum SWE. Calculate the percentage of the cumulative precipitation accounted for by the max SWE value.
 
 C. Write out the snow mass balance equation from lecture.  Given your calculations for part B, what terms in the mass balance do you think are most likely to account for the disparity between cumulative precipitation and maximum SWE? How certain do you think our estimates of cumulative precipitation and maximum SWE are?
 
-D. Discuss which factors of the mass balance are most likely to be vary spatially Reference your plots from A.  Is there more variability between sites further away?  Or are the four snow pillows at Kettle Ponds as different as the two SNOTEL sites from elsewhere in the watershed?
+D. Discuss which factors of the mass balance are most likely to vary spatially. Reference your plots from A. Is there more variability between sites further away?  Or are the four snow pillows at Kettle Ponds as different as the two SNOTEL sites from elsewhere in the watershed?
 
 E. Summer researchers at the Rocky Mountain National Biological Lab in the Upper East River Valley want to start their research as soon as possible. To access the lab, they need to drive down a forest service road that is currently snowed in.  The forest service opens the road when the snow melts and disappears. Using the long term records at the SNOTEL sites, and (optionally) any other information you like, predict when the snow will be gone (and the road clear) in 2025.
 
