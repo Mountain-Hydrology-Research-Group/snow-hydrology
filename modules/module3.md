@@ -1,6 +1,6 @@
 # 3) Snowpack Energy Balance – Radiation + Albedo, Dust on Snow
 
-# Background
+## Energy Balance Equation
 ![Photo of April 2023 dust event at Kettle Ponds](data/Dust_on_SOS.png)
 
 The balance of energy over a snow surface is a phenomenon studied by both biologists, hydrologists, boundary layer meteorologists, and snow scientists. Many fields use the surface energy balance (SEB) to estimate evaporation and transpiration of water from the earth's surface. Meteorologists study the SEB's radiative effects on the atmosphere.
@@ -13,11 +13,11 @@ $$∆ \text{Internal Energy} = \text{Incoming Energy} - \text{Outgoing Energy} $
 
 Energy fluxes are on both sides of the equation are measured in units of Watts per meters squared (W/m^2). The full snowpack energy balance is written 
 
-$$c_p^{S} \int^D_0 \frac{\partial T_{s}}{\partial t} dz = LW_{in} + LW_{out} + SW_{in} + SW_{out} - H_L - H_s + E_{melt} + G$$
+$$\frac{dU}{dt} = LW_{in} + LW_{out} + SW_{in} + SW_{out} - H_L - H_s + E_{melt} + G$$
 
-where D is the height of the snowpack, the bottom of the snowpack is at z = 0, and the term on the left represents the change in internal energy of the snowpack, which is equal to the change in the depth-averaged temperature of the snowpack multiplied by the specific heat capacity of snow. 
 
-The first and second terms on the right represent incoming and outgoing longwave radiation (AKA infrared radiation). 
+
+where $U$ is the internal energy of the snow pack, first and second terms on the right represent incoming and outgoing longwave radiation (AKA infrared radiation). 
 The third and fourth terms represent incoming and outgoing shortwave radiation (ultraviolet, visible, and near-infrared radiation).
 The fifth term is the vertical flux of latent heat _away_ from the snowpack surface, i.e. the flux of water vapor away from the snowpack, either through sublimation or perhaps evaporation from melted water at the snowpack surface. 
 The term is positive during sublimation when energy is lost from the snowpack.
@@ -26,9 +26,16 @@ The fifth term is the vertical flux of sensible heat _away_ from the snowpack su
 The sixth term is the energy that is lost to the latent heat involved in the melting of snow.
 The seventh term is the energy fluxed from the earth, upwards into the bottom of the snowpack. Often, the bottom of the snowpack and the ground temperature equalize, and this term goes to 0. 
 
+Note that the internal energy ($U$) of the snowpack is a function of the temperature of the snowpack, 
+
+$$ U = c_p^{S} \int^D_0 T_{s} dz. $$
+
+Note that the specific heat capacity of snow ($c_p^{S}$) is a combination of the specific heat capacity of ice and air, and thus is a function of the density of the snow. Note also that the equation above implies that to accurately measure the internal energy of snow, we need an array of temperature sensors throughout the depth of the snow. 
+
 Snow scientists are generally most interested in snow melt ($E_{melt}$) and snow sublimation ($H_L$) and the majority of the energy available for snow melt or sublimation comes from the net radiation, the sum of the four radiation terms. Incoming shortwave radiation ($SW_{in}$) comes from the sun and is a function of time of year, time of day, cloud cover, atmospheric aerosols, and topographic position. We can predict/model potential SW radiation well, although in complex/mountainous terrain, topography matters a lot.
 
-Gasses in the atmopshere ("greenhouse gasses"), mostly water vapor, absorb shortwave radiation and heat up, such that $SW_{in}$ at the earth's surface is always lower than at the outermost edge of the atmosphere. 
+## Radiation Terms 
+Gasses in the atmosphere ("greenhouse gasses"), mostly water vapor, absorb shortwave radiation and heat up, such that $SW_{in}$ at the earth's surface is always lower than at the outermost edge of the atmosphere. 
 Snow is highly reflective, returning 60-90% of the incoming SW radiation to the atmosphere, i.e. snow has a high [*albedo* ($\alpha$)](https://mynasadata.larc.nasa.gov/mini-lessonactivity/what-albedo). 
 Albedo, $\alpha$, varies between zero and 1; a highly reflective surface reflects most of the incoming solar radiation ($\alpha$ approaches 1) and non-reflective surfaces absorb most of the incoming solar radiation ($\alpha$ approaches 1). Snow albedo varies between 0.6 and 0.9. although dirt, dust, and rocks on snow or glacier surfaces can decrease the surface-averaged albedo significantly. 
 
