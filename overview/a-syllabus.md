@@ -36,7 +36,7 @@ By the end of the course, students should be able to
 
 ### Office Hours
 
-3-4pm Tuesday/Thursday or by appointment
+3-4pm Tuesday/Wednesday or by appointment. See Canvas for the location of office hours.
 
 ```note
 The UW eScience institute offers [data science office hours](https://escience.washington.edu/office-hours/) which could be useful for your projects or your own research work.

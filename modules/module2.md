@@ -25,6 +25,7 @@ Working through labs 2-1, 2-2, and 2-3 will prepare you to complete Homework 2.
 * [Lab 2-3](lab2/lab2-3.ipynb)
 * [SoS dataset](data/sos_full_dataset_30min.nc)
 * [Precipitation dataset](data/kettle_ponds_precip.csv)
+* [East River Polygon](data/east_polygon.json)
 
 ---
 
