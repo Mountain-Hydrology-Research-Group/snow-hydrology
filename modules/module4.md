@@ -52,7 +52,8 @@ In Labs 4, we will work with data collected by both methods.
 In Lab4-2, we plotted vertical profiles of snowpack temperature on multiple, sequential days.
 Replicate these plots for all days from the first half of April (April 1--15).
 Find 4-5 days during this period where some significant behavior in the snowpack temperatures changes. 
-Isolate the plots to only these 4-5 days. What is going on here? Why are the snowpack temperatures acting the way they are?
+Isolate the plots to only these 3-5 days. What is going on here? Why are the snowpack temperatures acting the way they are?
+Note: Please do not include plots for 15 days in your homework. Once you have found the "interesting behavior", only include plots that show these 3-5 days.
 
 ### Problem 2: Snowpack internal energy
 In Lab 4-2, we estimated the "change in snowpack internal energy" term by using an estimate of constant snowpack density. 
