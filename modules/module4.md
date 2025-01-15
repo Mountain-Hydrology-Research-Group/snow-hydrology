@@ -26,6 +26,15 @@ $$ c_p^{ice} \Delta z \langle \rho_s \rangle \frac{d}{dt} \langle T_s \rangle = 
 Note that the equation above implies that to accurately measure the internal energy of snow, we need measurements of temperature and density throughout the depth of the snow. 
 Also, if it turns out that snow density and snow depth do NOT change slowly, we need to include those terms within the time derivative, which complicates things.
 
+
+```note
+## Lab 4: Snowpack temperatures and snowpack internal energy
+
+* [Lab 4-1](lab4/lab4-1.ipynb)
+* [Lab 4-2](lab4/lab4-2.ipynb)
+* [SoS dataset](data/sos_full_dataset_30min.nc)
+```
+
 ## Homework 4
 
 ### Problem 1: Snowpack temperature profiles
