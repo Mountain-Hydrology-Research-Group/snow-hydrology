@@ -186,6 +186,7 @@ Optional readings are listed for you to explore at your leisure. They also may b
 
 * **Assignments**
   * See the course project page - your Midterm Progress Report is due on February 20
+
 ### Week 8 - Snow-dominated watershed hydrology
 ---
 
