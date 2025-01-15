@@ -62,17 +62,18 @@ In Lab 2-3, we examined estimates of snow density from snow-pillow SWE and snow 
 Combining your knowledge from these labs, complete the following steps:
 - A. Using the snowpit dataset, calculate the depth-averaged snowpack density for each snowpit-day (i.e. you should have one density value for day in the snowpit dataset). 
 - B. Using the main sos dataset, calculate the daily-averaged, depth-averaged snowpack density (we did this in Lab 2-3).
-- C. Plot the two time series of daily snowpack density from the two different dataets on the same plot.
+- C. Plot the two time series of daily snowpack density from the two different datasets on the same plot.
 - D. Describe the differences between the two. Describe how changes in snowpack density will result in a different estimate of the "change in snowpack internal energy term", assuming all other measurements stay the same. According to the equation below (copied from Lab 4-2), will increasing/decreasing density cause an estimate of the change-in-internal-energy term to increase or decrease?
 
 $$ \frac{d}{dt} (\Delta z U) = \rho_s c_p^{ice} \Delta z \frac{d}{dt} \langle T_s \rangle $$
 
 ### Problem 3: The snowpack energy balance (no coding or plotting)
-According to your answer to Problem 2D, do you think that snow pit measurements of density will help "close" the snowpack energy balance (by close, I mean decrease the Residual observed in the plot at the end of Lab 4-2). If someone is trying to "close" the snowpack energy balance, do you think that acquiring snow-pit measurements of snow density should be a high priority? 
+According to your answer to Problem 2D, do you think that snow pit measurements of density will help "close" the snowpack energy balance, relative to estimates of density from snow pillows and snow depth senosrs (by close, I mean decrease the "residual" observed in the energy balance, as shown at the end of Lab 4-2). If someone is trying to "close" the snowpack energy balance, do you think that acquiring snow-pit measurements of snow density should be a high priority? 
 
 ### Problem 4: Kinetic Growth Metamorphism (no coding or plotting)
 In Week 2, we discussed how kinetic growth of crystals occurs when the within-snowpack temperature gradient exceeds 0.2˚C/cm. When this occurs, depth hoar is likely to grow.
-A. In either of the days examined in Lab 4-2, does the snowpack temperature gradient favor kinetic growth of crystals?
+Using the two days of snow pit temperature profiles examined in Lab 4-3, estimate, by eye, the maximum temperature gradient observed in the snow pit, and report your estimate.
+If kinetic growth of crystals favored on either day? Where does the maximum temperature gradient occur?
 
 ### Problem 5: Behavior of temperatures above/below the snowpack (no coding or plotting)
 In Lab 4-1, we first plotted a time series of temperatures measured by all the thermistors on tower d for February 15 - 18. 

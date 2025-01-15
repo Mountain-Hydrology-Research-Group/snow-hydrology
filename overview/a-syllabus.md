@@ -166,6 +166,7 @@ Optional readings are listed for you to explore at your leisure. They also may b
   * Marks and Dozier, 1992. Climate and energy exchange at the snow surface in the Alpine Region of the Sierra Nevada: 2. Snow cover energy balance
 
 ### Week 4 - Snowpack temperatures - conduction and internal energy
+---
 * **Assignments**
   * Lab 4-1
   * Lab 4-2
@@ -175,13 +176,25 @@ Optional readings are listed for you to explore at your leisure. They also may b
   * Sturm 1997. The thermal conductivity of seasonal snow.
 
 ### Week 5 - Turbulent transport
+---
+
 ### Week 6 - Blowing snow: transport and sublimation 
+---
+
 ### Week 7 - Snow melt 
+---
+
 * **Assignments**
   * See the course project page - your Midterm Progress Report is due on February 20
 ### Week 8 - Snow-dominated watershed hydrology
+---
+
 ### Week 9 - Snowpack structure and avalanches
+---
+
 ### Week 10 - Final project presentations
+---
+
 * **Assignments**
   * See the course project page - your Presentation is due on March 11
   * See the course project page - your Final Report is due on March 13
