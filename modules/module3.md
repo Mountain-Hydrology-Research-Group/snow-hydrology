@@ -13,11 +13,11 @@ $$∆ \text{Internal Energy} = \text{Incoming Energy} - \text{Outgoing Energy} $
 
 Energy fluxes are on both sides of the equation are measured in units of Watts per meters squared (W/m^2). The full snowpack energy balance is written 
 
-$$\frac{dU}{dt} = LW_{in} + LW_{out} + SW_{in} + SW_{out} - H_L - H_s + E_{melt} + G$$
+$$\frac{d}{dt} (U \Delta z) = LW_{in} + LW_{out} + SW_{in} + SW_{out} - H_L - H_s + E_{melt} + G$$
 
 ![Energy balance diagram](data/energy_balance_diagram.png)
 
-where $U$ is the internal energy of the snow pack, the first and second terms on the right represent incoming and outgoing longwave radiation (AKA infrared radiation). 
+where $U$ is the internal energy of the snow pack and ∆z is the snowpack depth, the first and second terms on the right represent incoming and outgoing longwave radiation (AKA infrared radiation). 
 The third and fourth terms represent incoming and outgoing shortwave radiation (ultraviolet, visible, and near-infrared radiation).
 The fifth term is the vertical flux of latent heat _away_ from the snowpack surface, i.e. the flux of water vapor away from the snowpack, either through sublimation or perhaps evaporation from melted water at the snowpack surface. 
 The term is positive during sublimation when energy is lost from the snowpack.
@@ -27,25 +27,7 @@ The sixth term is the energy that is lost to the latent heat involved in the mel
 The seventh term is the energy transmitted from the earth upwards into the bottom of the snowpack. 
 Because snow is such a good insulator (air is a good insulator, and snow has lots of air - think about a down coat), the bottom of the snowpack is often 0˚C. In this state, a very small amount of water at the bottom of the snowpack persists throughout the snow season. In this case, $G = 0$ because there is no temperature gradient across the soil-snow interface. 
 
-Note that internal energy ($U$) of the snowpack is a function of the temperature, density, and specific heat capacity of the snowpack. Mass has internal energy, so generally one would consider a _volume_ of snow to have internal energy, but in our case, we are interested in energy fluxes, and so we use the depth of the snowpack. This is best explained by doing some dimensional analysis. The internal energy of snow, per kilogram, is approximately
-
-$$ U =c_p^{ice} \langle \rho_s T_s \rangle $$
-
-where the angle brackets indicate depth-averaging of the snow temperature and snow density. This equation has units
-
-$$U = [kg m^{-3}] [J K^{-1} kg^{-1}] [K] = J m^{-3} $$
-
-We want the units to be J m^-2, so we simply multiply by the depth of the snowpack (∆z), and take the derivative with respect to time
-
-$$\frac{d}{dt} (U \Delta z) = \frac{d}{dt} \big( c_p^{ice} \Delta z \langle \rho_s  T_s \rangle \big)$$
-
-which is in units of W m^-2 as desired (remember, 1 Watt = 1 Joule / second).
-Generally, we assume that snow density and depth are changing slowly, at least more slowly than the snowpack temperature, and thus we could pull those terms out of the time derivative to get
-
-$$ c_p^{ice} \Delta z \langle \rho_s \rangle \frac{d}{dt} \langle T_s \rangle = LW_{in} + LW_{out} + SW_{in} + SW_{out} - H_L - H_s + E_{melt} + G$$
-
-Note that the equation above implies that to accurately measure the internal energy of snow, we need measurements of temperature and density throughout the depth of the snow. 
-Also, if it turns out that snow density and snow depth do NOT change slowly, we need to include those terms within the time derivative, which complicates things. 
+We will talk about the internal energy term in Lab 4.
 
 Snow scientists are generally most interested in snow melt ($E_{melt}$) and snow sublimation ($H_L$) and the majority of the energy available for snow melt or sublimation comes from the net radiation, the sum of the four radiation terms.
 
