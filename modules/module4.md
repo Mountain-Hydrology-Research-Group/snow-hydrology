@@ -26,13 +26,24 @@ $$ c_p^{ice} \Delta z \langle \rho_s \rangle \frac{d}{dt} \langle T_s \rangle = 
 Note that the equation above implies that to accurately measure the internal energy of snow, we need measurements of temperature and density throughout the depth of the snow. 
 Also, if it turns out that snow density and snow depth do NOT change slowly, we need to include those terms within the time derivative, which complicates things.
 
+During the SOS campaign, vertical profiles of snowpack temperature were collected using two different methods. Snowpits were dug between January and March, and snowpack temperatures were measured with thermometers by hand.
+
+![Snowpit](data/snowpit_pic.jpg).
+
+Additionally, we had "in-situ" sensors stay in the snowpack for the entire winter season. These "thermistor arrays" had temperature sensors spaced every 10 centimeters, between 0.4m and 1.6m.
+
+![Thermistor array](data/thermistor_array.png)
+
+In Labs 4, we will work with data collected by both methods.
 
 ```note
 ## Lab 4: Snowpack temperatures and snowpack internal energy
 
 * [Lab 4-1](lab4/lab4-1.ipynb)
 * [Lab 4-2](lab4/lab4-2.ipynb)
+* [Lab 4-3](lab4/lab4-3.ipynb)
 * [SoS dataset](data/sos_full_dataset_30min.nc)
+* [SoS snow pit dataset](data/KettlePondsSnowPits.nc)
 ```
 
 ## Homework 4
@@ -44,3 +55,16 @@ Find 4-5 days during this period where some significant behavior in the snowpack
 Isolate the plots to only these 4-5 days. What is going on here? Why are the snowpack temperatures acting the way they are?
 
 ### Problem 2: Snowpack internal energy
+In Lab 4-2, we estimated the "change in snowpack internal energy" term by using an estimate of constant snowpack density. 
+In Lab 4-3, we examined actual measurements of snow density from snowpits. 
+In Lab 2-3, we examined estimates of snow density from snow-pillow SWE and snow depth measurements.
+Combining your knowledge from these labs, complete the following steps:
+- A. Using the snowpit dataset, calculate the depth-averaged snowpack density for each snowpit-day (i.e. you should have one density value for day in the snowpit dataset). 
+- B. Using the main sos dataset, calculate the daily-averaged, depth-averaged snowpack density (we did this in Lab 2-3).
+- C. Plot the two time series of daily snowpack density from the two different dataets on the same plot.
+- D. Describe the differences between the two. Describe how changes in snowpack density will result in a different estimate of the "change in snowpack internal energy term", assuming all other measurements stay the same. According to the equation below (copied from Lab 4-2), will increasing/decreasing density cause an estimate of the change-in-internal-energy term to increase or decrease?
+
+$$ \frac{d}{dt} (\Delta z U) = \rho_s c_p^{ice} \Delta z \frac{d}{dt} \langle T_s \rangle $$
+
+### Problem 3: The snowpack energy balance (no coding or plots)
+According to your answer to Problem 2D, do you think that snow pit measurements of density will help "close" the snowpack energy balance (by close, I mean decrease the Residual observed in the plot at the end of Lab 4-2). If someone is trying to "close" the snowpack energy balance, do you think that acquiring snow-pit measurements of snow density should be a high priority? 
