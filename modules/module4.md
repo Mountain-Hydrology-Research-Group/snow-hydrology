@@ -67,10 +67,14 @@ Combining your knowledge from these labs, complete the following steps:
 
 $$ \frac{d}{dt} (\Delta z U) = \rho_s c_p^{ice} \Delta z \frac{d}{dt} \langle T_s \rangle $$
 
-### Problem 3: The snowpack energy balance (no coding or plots)
+### Problem 3: The snowpack energy balance (no coding or plotting)
 According to your answer to Problem 2D, do you think that snow pit measurements of density will help "close" the snowpack energy balance (by close, I mean decrease the Residual observed in the plot at the end of Lab 4-2). If someone is trying to "close" the snowpack energy balance, do you think that acquiring snow-pit measurements of snow density should be a high priority? 
 
-### Problem 4: Kinetic Growth Metamorphism
+### Problem 4: Kinetic Growth Metamorphism (no coding or plotting)
 In Week 2, we discussed how kinetic growth of crystals occurs when the within-snowpack temperature gradient exceeds 0.2˚C/cm. When this occurs, depth hoar is likely to grow.
 A. In either of the days examined in Lab 4-2, does the snowpack temperature gradient favor kinetic growth of crystals?
-B. Calculate the average temperature gradient in the bottom 30cm of measurements for each snow pit day (i.e. the 30cm closest to the ground, the soil-snow interface). What is the maximum temperature gradient observed across all snow pits? How many days favor kinetic growth?
+
+### Problem 5: Behavior of temperatures above/below the snowpack (no coding or plotting)
+In Lab 4-1, we first plotted a time series of temperatures measured by all the thermistors on tower d for February 15 - 18. 
+Based on the behavior of the temperatures, can you determine which of the thermistors is above the snow surface and which is below the surface?
+Estimate the snow depth based on those plots, and explain how you came to this conclusion.
