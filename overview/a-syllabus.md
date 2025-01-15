@@ -165,7 +165,15 @@ Optional readings are listed for you to explore at your leisure. They also may b
 * **Optional Readings**
   * Marks and Dozier, 1992. Climate and energy exchange at the snow surface in the Alpine Region of the Sierra Nevada: 2. Snow cover energy balance
 
-### Week 4 - Temperatures: snowpack and atmosphere, atmospheric stability
+### Week 4 - Snowpack temperatures - conduction and internal energy
+* **Assignments**
+  * Lab 4-1
+  * Lab 4-2
+  * Lab 4-3
+  * HW4 (Due February 6)
+* **Optional Readings**
+  * Sturm 1997. The thermal conductivity of seasonal snow.
+
 ### Week 5 - Turbulent transport
 ### Week 6 - Blowing snow: transport and sublimation 
 ### Week 7 - Snow melt 
