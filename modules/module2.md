@@ -23,9 +23,9 @@ Working through labs 2-1, 2-2, and 2-3 will prepare you to complete Homework 2.
 * [Lab 2-1](lab2/lab2-1.ipynb)
 * [Lab 2-2](lab2/lab2-2.ipynb)
 * [Lab 2-3](lab2/lab2-3.ipynb)
-* [SoS dataset](data/sos_full_dataset_30min.nc)
-* [Precipitation dataset](data/kettle_ponds_precip.csv)
-* [East River Polygon](data/east_polygon.json)
+* [SoS dataset](data/sos_full_dataset_30min.nc) - Data collected by the Sublimation of Snow Campaign at Kettle Ponds
+* [Precipitation dataset](data/kettle_ponds_precip.csv) - Data collected by the SPLASH campaign at Kettle Ponds
+* [East River Polygon](data/east_polygon.json) - A shapefile containing a polygon outlining the East River Polygon
 
 ---
 
