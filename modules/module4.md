@@ -39,6 +39,7 @@ In Labs 4, we will work with data collected by both methods.
 ```note
 ## Lab 4: Snowpack temperatures and snowpack internal energy
 
+* [Lab 4-0 (Brownian Motion)](lab4/lab4-1.ipynb)
 * [Lab 4-1](lab4/lab4-1.ipynb)
 * [Lab 4-2](lab4/lab4-2.ipynb)
 * [Lab 4-3](lab4/lab4-3.ipynb)
