@@ -7,34 +7,50 @@ Chapter 2 on water vapor in the atmosphere and Chapter 3 on vertical gradients i
 ## Modeling turbulent fluxes
 Turbulent transport of momentum, heat, and moisture above a snow surface are estimated by eddy covariance fluxes. We are especially interested in heat fluxes.
 Sensible heat, in units of watts/m^2 is written 
+
 $$H_s = \rho_{air} c_p^{air} \overline{w'T'}$$
+
 where the first term is air density, the second term is the specific heat capacity of air, and the third term is the eddy covariance flux of temperature (sensible heat). w' is a vertical velocity flucutation and T' is a temperature fluctuation.
 
 Latent heat, in units of watts/m^2 is written 
+
 $$H_L = L_v \overline{w'q'}$$
+
 where the first term is the latent heat of sublimation and the second term is the eddy covariance flux of water vapor. q is a water vapor density (AKA absolute humidity, g/m^3) fluctuation.
 
 The covariance flux terms in the equations above can be predicted using Monin Obukhov Similarity Theory (MOST). Here, we will present the equations that form the "bulk aerodynamic" method for estimating turbulent fluxes. The bulk aerodynamic method is a simplified, easily solvable version of MOST.
 
 Sensible heat flux is calculated 
+
 $$H_s = - \rho_a c_p^{air} C_H u_h (\theta_h - \theta_s)$$
+
 or 
+
 $$\overline{w'T'} = - C_H u_h (\theta_h - \theta_s)$$
+
 
 where uₕ, θₕ, and θₛ are wind speed at measurement height h, potential temperature at h, and potential temperature at the snow surface.
 and latent heat flux is calculated
+
 $$H_L = - \rho_a c_p^{air} C_E u_h (q_h - q_s)$$
+
 or 
+
 $$\overline{w'q'} = - C_E u_h (q_h - q_s)$$
+
 where qₕ and qₛ are absolute humidity at measurement height h and at the snow surface.
 
 The transfer coefficents C<sub>H</sub> C<sub>L</sub> can be calculated in many different ways with varying levels of complexity. We present one of the simplest methods, where C<sub>H</sub> = C<sub>L</sub>.
 
+
 $$C_H = \frac{k^2}{\Big(ln(\frac{h}{z_o})\Big)^2} \Big(1 - \frac{Ri}{0.2}\Big)$$
+
 where k is the von Kármán constant (0.4), h is z<sub>0</sub> is the roughness length (over snow, often assumed to be 0.0002).
 Ri is the Richardson number, a dimensionless number that describes the dynamic stability of the atmosphere. The Richardson number can be approximated as the "bulk" Richardson number,
 
+
 $$Ri = \frac{g h (\theta_h - \theta_s)}{u_h^2 0.5(\theta_h + \theta_s)}$$
+
 
 To estimate H<sub>s</sub> and H<sub>L</sub>, assemble the equations above.
 
