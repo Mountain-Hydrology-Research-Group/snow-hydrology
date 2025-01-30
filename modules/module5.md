@@ -22,7 +22,7 @@ The covariance flux terms in the equations above can be predicted using Monin Ob
 
 Sensible heat flux is calculated 
 
-$$H_s = - \rho_a c_p^{air} C_H u_h (\theta_h - \theta_s)$$
+$$H_s = - \rho_{air} c_p^{air} C_H u_h (\theta_h - \theta_s)$$
 
 or 
 
@@ -32,7 +32,7 @@ $$\overline{w'T'} = - C_H u_h (\theta_h - \theta_s)$$
 where uₕ, θₕ, and θₛ are wind speed at measurement height h, potential temperature at h, and potential temperature at the snow surface.
 and latent heat flux is calculated
 
-$$H_L = - \rho_a c_p^{air} C_E u_h (q_h - q_s)$$
+$$H_L = - L_v C_E u_h (q_h - q_s)$$
 
 or 
 
