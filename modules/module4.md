@@ -48,6 +48,10 @@ In Labs 4, we will work with data collected by both methods.
 * [SoS snow pit dataset](data/KettlePondsSnowPits.nc)
 ```
 
+```tip
+Check out [Eli Schwat's github repo on altair plotting of our datasets](https://github.com/elischwat/altair_demo).  It makes some of the homework plots, particularly from Module 6, much more tidy.   
+```
+
 ## Homework 4
 
 ### Problem 1: Snowpack temperature profiles
