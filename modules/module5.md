@@ -45,7 +45,7 @@ The transfer coefficents C<sub>H</sub> C<sub>L</sub> can be calculated in many d
 
 $$C_H = \frac{k^2}{\Big(ln(\frac{h}{z_o})\Big)^2} \Big(1 - \frac{Ri}{0.2}\Big)$$
 
-where k is the von Kármán constant (0.4), h is z<sub>0</sub> is the roughness length (over snow, often assumed to be 0.0002).
+where k is the von Kármán constant (0.4), z<sub>0</sub> is the roughness length (over snow, often assumed to be 0.0002 m).
 Ri is the Richardson number, a dimensionless number that describes the dynamic stability of the atmosphere. The Richardson number can be approximated as the "bulk" Richardson number,
 
 
