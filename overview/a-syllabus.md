@@ -176,10 +176,11 @@ Optional readings are listed for you to explore at your leisure. They also may b
   * Sturm 1997. The thermal conductivity of seasonal snow.
 
 ### Week 5 - Turbulent transport - Turbulent fluxes, the eddy covariance method, and atmospheric stability
----
-* Part 1 - Introduction to turbulence: Reynolds averaging, the log-law for vertical wind speed profiles
-* Part 2 - Extension of the log-law for scalar fluxes (latent and sensible heat)
-* Part 3 - Atmospheric stability, Monin-Obukhov Similarity Theory
+--- 
+* **Assignments**
+  * Lab 5-1
+  * Lab 5-2
+  * HW5 (Due February 13)
 
 ### Week 6 - Blowing snow: transport and sublimation 
 ---
