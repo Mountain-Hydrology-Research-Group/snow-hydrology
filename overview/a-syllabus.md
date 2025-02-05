@@ -188,7 +188,8 @@ Optional readings are listed for you to explore at your leisure. They also may b
 Chapter 5 Wind Transport (pages 59-78)
 * **Assignments**
   * Lab 6-1
-  * ...
+  * Lab 6-2
+  * Lab 6-3
   * HW6 (Due February 20)
 * **Optional Readings**
   * Pomeroy and Gray 1995. Snowcover accumulation, relocation and management, Chapter 5 Wind Transport (pages 59--78)
