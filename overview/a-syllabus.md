@@ -180,10 +180,20 @@ Optional readings are listed for you to explore at your leisure. They also may b
 * **Assignments**
   * Lab 5-1
   * Lab 5-2
+  * Lab 5-3
   * HW5 (Due February 13)
 
 ### Week 6 - Blowing snow: transport and sublimation 
 ---
+Chapter 5 Wind Transport (pages 59-78)
+* **Assignments**
+  * Lab 6-1
+  * ...
+  * HW6 (Due February 20)
+* **Optional Readings**
+  * Pomeroy and Gray 1995. Snowcover accumulation, relocation and management, Chapter 5 Wind Transport (pages 59--78)
+  * Trouvilliez et al 2015. Evaluation of the FlowCapt Acoustic Sensor for the Aeolian Transport of Snow.
+
 
 ### Week 7 - Snow melt 
 ---
