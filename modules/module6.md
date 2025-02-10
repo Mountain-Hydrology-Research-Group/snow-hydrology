@@ -6,27 +6,27 @@ This link to his [lecture on blowing snow](https://youtu.be/rBlDG9Tp8rM?si=dqCCF
 
 ![Credits to Matthew Sturm's lecture (above) for this photo](data/sturm_bls_image.png)
 
-For our lab, we will try to do something not covered closely in the video - estimating the sublimation rate of blowing snow.
+For our homework, we will try to do something not covered closely in the video - estimating the sublimation rate of blowing snow.
 
 In the homework assignment below, we will find that blowing snow sublimation is an important contributor to total sublimation at the Kettle Ponds site in Colorado. While blowing snow in alpine environments is a rather niche topic, note that blowing snow sublimation is a primary mass ablation process in polar regions, influencing sea level rise as well as the global energy surface energy balance (see [Sharma et al. 2018](https://tc.copernicus.org/articles/12/3499/2018/) and [Sigmund et al. 2022](https://link.springer.com/10.1007/s10546-021-00653-x)).
 
 At the Kettle Ponds field site, we will estimate the rate with two simple methods,  which provide opportunity for future improvement.
 
-## Estimating blowing snow sublimation with the divergence in vertical turbulent water vapor flux
+## Flux Divergence Model - Estimating blowing snow sublimation with EC measurements
 
 In the atmospheric boundary layer, the conservation of water equation often simplifies to 
 
-$$S = \frac{\partial \overline{w'q'}}{\partial z}$$
+$$S = \frac{\partial \overline{w'\rho_v'}}{\partial z}$$
 
 where $S$ is a source term (grams of water vapor per m^3 of air), representing addition of water vapor to the atmosphere by blowing snow sublimation, and the derivative term represents the change in the vertical turbulent flux of water vapor with height above the snow surface.
 
-When the derivative term is positive, a higher EC (e.g. 10m) may measure larger $\overline{w'q'}$ than a lower EC (e.g. 3m). This was observed at Kettle Ponds during a blowing snow event on 21--22 December 2022 (Lundquist et al., 2024, DOI 10.1175/BAMS-D-23-0191.1).
+When the derivative term is positive, a higher EC (e.g. 10m) may measure larger w'ρᵥ' than a lower EC (e.g. 3m). This was observed at Kettle Ponds during a blowing snow event on 21--22 December 2022 (Lundquist et al., 2024, DOI 10.1175/BAMS-D-23-0191.1).
 
-Using a finite different approximation to the derivative above, one could try a *very rough* estimation of the blowing snow sublimation rate.
+Using a finite different approximation to the derivative above, one could try a very rough estimation of the blowing snow sublimation rate.
 
 $$
-S = \frac{\partial \overline{w'q'}}{\partial z} 
-\approx \frac{\Delta \overline{w'q'}}{\Delta z} 
+S = \frac{\partial \overline{w'\rho_v'}}{\partial z} 
+\approx \frac{\Delta \overline{w'\rho_v'}}{\Delta z} 
  \quad \Bigg[ \frac{\text{g/m}^2\text{/2}}{\text{m}} \Bigg] \Rightarrow \Bigg[ 
     \frac{\text{g}}{\text{m}^3} 
 \Bigg]
@@ -36,20 +36,19 @@ and so, in our case, using measurements at 10 and 1 meters, we will approximate 
 
 $$
 S \approx \frac{
-    \overline{w'q'}_{z=10m} - \overline{w'q'}_{z=1m}
+    \overline{w'\rho_v'}_{z=10m} - \overline{w'\rho_v'}_{z=1m}
 }{\
      10 - 1 \text{m}
 }
 $$
 
-Note that if we want to compare this estimating of the blowing snow sublimation rate (in g/m^3, a flux density) to the surface sublimation rate, we can multipl by the height of the blowing snow layer that we are estimating, in this case 9m, which gives us the blowing snow sublimation rate in the units of a flux (g/m^3/s)
+Note that if we want to compare this estimation of the blowing snow sublimation rate (in g/m^3, a flux density) to the surface sublimation rate, we can multiply by the height of the blowing snow layer that we are estimating, in this case 9m, which gives us the blowing snow sublimation rate in the units of a flux (g/m^3/s)
 
 $$
-S_{\text{flux}} \approx \overline{w'q'}_{z=10m} - \overline{w'q'}_{z=1m}
+S_{\text{flux}} \approx \overline{w'\rho_v'}_{z=10m} - \overline{w'\rho_v'}_{z=1m}.
 $$
 
-
-## Estimating blowing snow sublimation with a simple particle model - AKA, we finally made it to Spherical Cows
+## Particle Model - Estimating blowing snow sublimation with FlowCapt and Meteorological measurements - AKA the Spherical Cow Model
 
 We can also estimate blowing snow sublimation using a particle model, where we consider the physics of sublimation for $n$ particles in the airspace at Kettle Ponds. 
 For this model, we will keep things as simple as possible, but real blowing snow models
@@ -192,5 +191,4 @@ For this assignment, you will implement the two blowing snow sublimation models 
 
 4. Describe the shortcomings of the flux divergence model, as implemented here.
 
-5. Describe the shortcomings of the particle model, as implemented here.
-5. Describe the shortcomings of the particle model, as implemented here.
+5. Describe the shortcomings of the particle model, as implemented here. Include in your answer: your final choice for particle radius and how that compares to measurements of particle radii in the figure above.
