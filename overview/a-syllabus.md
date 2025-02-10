@@ -192,8 +192,10 @@ Chapter 5 Wind Transport (pages 59-78)
   * Lab 6-3
   * HW6 (Due February 20)
 * **Optional Readings**
-  * Pomeroy and Gray 1995. Snowcover accumulation, relocation and management, Chapter 5 Wind Transport (pages 59--78)
+  * Highly recommended to prepare for lecture
+    * Pomeroy and Gray 1995. Snowcover accumulation, relocation and management, Chapter 5 Wind Transport (pages 59--78)
   * Trouvilliez et al 2015. Evaluation of the FlowCapt Acoustic Sensor for the Aeolian Transport of Snow.
+    * Comparison of modern instruments used to measure blowing snow
 
 
 ### Week 7 - Snow melt 
