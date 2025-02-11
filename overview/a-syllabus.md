@@ -190,7 +190,7 @@ Chapter 5 Wind Transport (pages 59-78)
   * Lab 6-1
   * Lab 6-2
   * Lab 6-3
-  * HW6 (Due February 20)
+  * HW6 (Due February 25). Due date delayed to give you time to prepare your Midterm Progress report, due February 20 (see the project page).
 * **Optional Readings**
   * Highly recommended to prepare for lecture
     * Pomeroy and Gray 1995. Snowcover accumulation, relocation and management, Chapter 5 Wind Transport (pages 59--78)
