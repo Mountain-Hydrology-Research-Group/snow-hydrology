@@ -176,6 +176,21 @@ $r$
 These variables are time series and should change at each timestep you calculate snowflake sublimation. 
 You can and should treat r as a constant, for simplicity.
 
+## Labs
+```Note
+Note that these labs use quite a few files. For lab6-3, you must download files from the links included in the notebook.
+* [Lab 6-1](lab6/lab6-1.ipynb) - Examining blowing snow thresholds with SOS tower measurements.
+* [Lab 6-2](lab6/lab6-2.ipynb)
+* [Lab 6-3](lab6/lab6-3.ipynb)
+* [SoS dataset](data/sos_full_dataset_30min.nc) - Data collected by the Sublimation of Snow Campaign at Kettle Ponds
+* [30-minute precipitation dataset](data/kettle_ponds_precip_30min.csv) - Data collected by the SAIL campaign at Kettle Ponds
+* [Elevation dataset](data/east_river_elevation.tif)
+* [Elevation hillshade dataset](data/east_river_hillshade.tif)
+* [Elevation hillshade dataset](data/eastriver_snowdepth_2023april01.tif)
+* [East river polygon](data/east_polygon.json)
+* [Elevation transects](data/transects.geojson)
+```
+
 ## Homework 6
 For this assignment, you will implement the two blowing snow sublimation models described above (the "flux-divergence" model and the "particle" model) for two blowing snow events, 12--14 December 2022 and 21-22 December 2022. 
 

@@ -185,7 +185,6 @@ Optional readings are listed for you to explore at your leisure. They also may b
 
 ### Week 6 - Blowing snow: transport and sublimation 
 ---
-Chapter 5 Wind Transport (pages 59-78)
 * **Assignments**
   * Lab 6-1
   * Lab 6-2
@@ -200,12 +199,24 @@ Chapter 5 Wind Transport (pages 59-78)
 
 ### Week 7 - Snow melt 
 ---
-
 * **Assignments**
+  * Lab 7-1
+  * Lab 7-2
+  * The homework for module 7 is lumped together with the homework for module 8.
   * See the course project page - your Midterm Progress Report is due on February 20
+* **Required Readings**
+  * TBD
+  * For this module, the second day of class will be a discussion of the readings. Please prepare accordingly.
 
 ### Week 8 - Snow-dominated watershed hydrology
 ---
+* **Assignments**
+  * Lab 8-1
+  * Lab 8-2
+  * HW 7 (Due March 6). Note this homework assignment is worth double the points of other homework assignments.
+* **Required Readings**
+  * TBD
+  * For this module, the second day of class will be a discussion of the readings. Please prepare accordingly.
 
 ### Week 9 - Snowpack structure and avalanches
 ---
