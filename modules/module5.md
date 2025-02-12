@@ -32,11 +32,11 @@ $$\overline{w'T'} = - C_H u_h (\theta_h - \theta_s)$$
 where uₕ, θₕ, and θₛ are wind speed at measurement height h, potential temperature at h, and potential temperature at the snow surface.
 and latent heat flux is calculated
 
-$$H_L = - L_v C_E u_h (q_h - q_s)$$
+$$H_L = - L_v C_L u_h (q_h - q_s)$$
 
 or 
 
-$$\overline{w'q'} = - C_E u_h (q_h - q_s)$$
+$$\overline{w'q'} = - C_L u_h (q_h - q_s)$$
 
 where qₕ and qₛ are absolute humidity at measurement height h and at the snow surface.
 
