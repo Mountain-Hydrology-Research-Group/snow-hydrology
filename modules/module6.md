@@ -177,7 +177,7 @@ These variables are time series and should change at each timestep you calculate
 You can and should treat r as a constant, for simplicity.
 
 ## Labs
-```Note
+```note
 Note that these labs use quite a few files. For lab6-3, you must download files from the links included in the notebook.
 * [Lab 6-1](lab6/lab6-1.ipynb) - Examining blowing snow thresholds with SOS tower measurements.
 * [Lab 6-2](lab6/lab6-2.ipynb)
