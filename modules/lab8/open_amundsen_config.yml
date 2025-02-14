@@ -34,15 +34,15 @@ output_data:
   grids:
     format: netcdf # "netcdf", "ascii", "geotiff" or "memory"
     variables:
-      - var: meteo.precip # internal variable name
-        name: precip_month # NetCDF output variable name
-        freq: M # write frequency (if not specified, write every timestep)
-        agg: sum # aggregation function ("sum", "mean" or empty)
+      # - var: meteo.precip # internal variable name
+        # name: precip_month # NetCDF output variable name
+        # freq: M # write frequency (if not specified, write every timestep)
+        # agg: sum # aggregation function ("sum", "mean" or empty)
       - var: snow.melt
-        freq: M
-        agg: sum
-      - var: snow.swe
-        freq: D
+        # freq: M
+        # agg: sum
+      # - var: snow.swe
+        # freq: D
 
 meteo:
   # Spatial interpolation parameters
