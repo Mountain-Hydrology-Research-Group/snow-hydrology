@@ -205,8 +205,10 @@ Optional readings are listed for you to explore at your leisure. They also may b
   * The homework for module 7 is lumped together with the homework for module 8.
   * See the course project page - your Midterm Progress Report is due on February 20
 * **Required Readings**
-  * TBD
-  * For this module, the second day of class will be a discussion of the readings. Please prepare accordingly.
+  * On Tuesday February 25th, we will hold a discussion on one of the papers listed below. Please review the abstracts of the two papers and decide which paper you prefer to read - we will collectively decide on a paper in class on Thursday February 20th.
+  * (Painter et al., 2012, Dust radiative forcing in snow of the Upper Colorado River Basin:  1. A 6 year record of energy balance, radiation, and dust concentrations)[https://agupubs.
+onlinelibrary.wiley.com/doi/10.1029/2012WR011985]
+  * (Brandt et al., 2022, A Review of the Hydrologic Response Mechanisms During Mountain Rain-on-Snow)[https://www.frontiersin.org/articles/10.3389/feart.2022.791760/full]
 
 ### Week 8 - Snow-dominated watershed hydrology
 ---
@@ -215,8 +217,8 @@ Optional readings are listed for you to explore at your leisure. They also may b
   * Lab 8-2
   * HW 7 (Due March 6). Note this homework assignment is worth double the points of other homework assignments.
 * **Required Readings**
-  * TBD
-  * For this module, the second day of class will be a discussion of the readings. Please prepare accordingly.
+  * On Tuesday March 4th, we will hold a discussion on the paper below. Please read thoroughly and prepare for a discussion.
+  * (Li et al., 2017, How much runoff originates as snow in the western United States, and how will that change in the future?)[https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2017GL073551]
 
 ### Week 9 - Snowpack structure and avalanches
 ---
