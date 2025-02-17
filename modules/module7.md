@@ -15,7 +15,7 @@ Make sure to check out slush flows and wet snow mysteries at 1 hour 20 minutes a
 
 ## Temperature-Index method
 
-This basic model for snowmelt is based on the idea that changes in air temperature provide an index of snowmelt. This has some basics in physics, because tmeperature provides a _loose_, integrated measure of the sensible energy available for snowmelt.
+This basic model for snowmelt is based on the idea that changes in air temperature provide an index of snowmelt. This has some basis in physics, because temperature provides a _loose_, integrated measure of the sensible energy available for snowmelt.
 This method is particularly useful because air temperature is probably the most widely measured meteorological variable. 
 The approach uses the following equation
 
@@ -26,7 +26,7 @@ T<sub>a</sub> is the daytime mean or daytime maximum air temperature (˚C),
 T<sub>0</sub>  is a reference temperature (˚C) above which snowmelt occurs, generally set to 0˚C, and
 M<sub>f</sub> is calleed the "degree day factor" (mm/˚C/day), and is a fitted parameter that describes the relationship between air temperature and melt rates.
 
-In Lab 7-3, we use this method and test its performance in the East River Valley. For our purposes, we will consider "daytime" to be between 0900-1700, and we will set T<sub>0</sub>=0˚C.
+In Lab 7-3, we use this method and test its performance in the East River Valley. We will set T<sub>0</sub>=0˚C.
 
 ## Labs
 ```note
