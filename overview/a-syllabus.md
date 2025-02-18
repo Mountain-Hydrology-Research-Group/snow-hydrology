@@ -222,6 +222,9 @@ onlinelibrary.wiley.com/doi/10.1029/2012WR011985]
 
 ### Week 9 - Snowpack structure and avalanches
 ---
+For this module, we will have a visiting speaker from NWAC.
+
+No homework will be assigned for this module.
 
 ### Week 10 - Final project presentations
 ---
