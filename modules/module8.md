@@ -11,6 +11,11 @@ For this module, we will model snow processes across the entire upper East River
 ```
 
 ## Homework 7/8
+On Thursday March 6th, we will hold a discussion on the paper linked below.
+Please read the paper, take notes, and prepare some discussion points.
+
+[Li et al., 2017, How much runoff originates as snow in the western United States, and how will that change in the future?](https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2017GL073551)
+
 **Problem 1 - Temperature-Index Method**
 For this problem, we will use the Temperature-Index method for predicting snow melt, discussed in Module 7 and introduced in Lab 7-3.
 
