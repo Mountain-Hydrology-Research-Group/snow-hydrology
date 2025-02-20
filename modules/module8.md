@@ -18,8 +18,8 @@ a. Calculate M<sub>f</sub> using measurements from the Schofield Pass Snotel sta
 
 b. Compare M<sub>f</sub> values calculated at the Butte and Schofield Pass Snotel stations. Explain why you think one is larger/smaller than the other.
 
-c. Choose an M<sub>f</sub> value calculated from either the Butte or Schofield Pass Snotel stations, and model snowpack ablation at Kettle Ponds. I.E. mimic the second half of Lab 7-3 where we modeled snowpack ablation, air temperature and SWE measurements at Kettle Ponds. Your solution to this problem should include:
-  * A statement of which M<sub>f</sub> value you selected for to model snowpack ablation at Kettle Ponds, and why,
+c. Choose an M<sub>f</sub> value calculated from either the Butte or Schofield Pass Snotel stations, and model snowpack ablation at Kettle Ponds. I.E. mimic the second half of Lab 7-3 where we modeled snowpack ablation for the Butte Snotel station, but model snowpack ablation at Kettle Ponds using air temperature measurements at Kettle Ponds. Your solution to this problem should include:
+  * A statement of which M<sub>f</sub> value you selected to model snowpack ablation at Kettle Ponds, and why.
   * A plot of modeled and measured SWE during the ablation period (April 1 - June 1) (I.E. create a similar plot to the final plot generated in Lab 7-3).
 
 d. Explain why you think modeled and measured ablation from part c disagree. What do you know happened during the 2024 ablation period and how are those represented or not represented in the degree day factor, M<sub>f</sub>.

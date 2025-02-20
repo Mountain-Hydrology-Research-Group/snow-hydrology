@@ -41,9 +41,8 @@ In Lab 7-3, we use this method and test its performance in the East River Valley
 On Tuesday February 25th, we will hold a discussion on one of the papers listed below. 
 Please review the abstracts of the two papers and decide which paper you prefer to read - we will collectively decide on a paper in class on Thursday February 20th.
 
-(Painter et al., 2012, Dust radiative forcing in snow of the Upper Colorado River Basin:  1. A 6 year record of energy balance, radiation, and dust concentrations)[https://agupubs.
-onlinelibrary.wiley.com/doi/10.1029/2012WR011985]
+[Painter et al., 2012, Dust radiative forcing in snow of the Upper Colorado River Basin:  1. A 6 year record of energy balance, radiation, and dust concentrations](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2012WR011985)
 
-(Brandt et al., 2022, A Review of the Hydrologic Response Mechanisms During Mountain Rain-on-Snow)[https://www.frontiersin.org/articles/10.3389/feart.2022.791760/full]
+[Brandt et al., 2022, A Review of the Hydrologic Response Mechanisms During Mountain Rain-on-Snow](https://www.frontiersin.org/articles/10.3389/feart.2022.791760/full)
 
 The homework assignments for modules 7 and 8 are lumped together. See Module 8 for your homework assignment, Due March 6th.
