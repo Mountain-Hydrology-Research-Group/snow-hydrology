@@ -1,6 +1,6 @@
 domain: uppereastriver # name of the model domain (corresponding to the domain part of the spatial input data filenames)
 start_date: "2022-11-16"
-end_date: "2023-06-15"
+end_date: "2023-06-14"
 resolution: 50  # spatial resolution (m)
 timestep: 3h  # temporal resolution as a pandas-compatible frequency string (e.g., "h", "3h", "D")
 crs: "epsg:32613"  # CRS of the input grids
