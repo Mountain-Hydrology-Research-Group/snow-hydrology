@@ -208,3 +208,36 @@ For this assignment, you will implement the two blowing snow sublimation models 
 4. Describe the shortcomings of the flux divergence model, as implemented here.
 
 5. Describe the shortcomings of the particle model, as implemented here. Include in your answer: your final choice for particle radius and how that compares to measurements of particle radii in the figure above.
+
+
+### Notes to help with the homework.
+
+Hi folks - a couple of details to help with Homework 6.
+
+**1. Humidity Variables**
+
+The function that I provide on the module page - particle_sublimation_rate - requires, among many inputs, q and q_s. q is the ambient or actual/environmental absolute humidity and q_s is the saturation absolute humidity. absolute humidity can be calculated as the product of water vapor mixing ratio and dry air density. Both of these variables are available in the SOS dataset. For example, you can calculate q by multiplying `sos_dataset['mixingratio_1m_c']` * `sos_dataset['dryairdensity_1m_c']`. To calculate q_s, by that logic, you need a value for saturation mixing ratio. Saturation mixing ratio can be calculated using this function, providing pressure (`sos_dataset['P_10m_c'] * units("millibars")`)  and temperature (`sos_dataset['T_1m_c'] * units("degC")`) and providing a relative humidity value of 1 (i.e. 100% humidity, saturation).
+
+**2. Using Metpy Units**
+
+I HIGHLY recommend using the `metpy.units.units` object to assign units to all of your variables for these calculations. Look in earlier labs for examples of usage. As a reminder, you can import the units object and us it like this:
+from metpy.units import units
+
+```
+temp_in_c = 10 * units('degC') 
+temp_in_K = 283.15 * units('kelvin') 
+```
+
+**3. Finding units in the sos data**
+
+The sos_dataset has units for each variable written inside the attributes for each variable. You can see this if you have a jupyter notebook cell display a variable from the xarray dataset like so:
+
+`sos_dataset['mixingratio_1m_c']`
+
+or you can access them directly like so:
+
+`sos_dataset['mixingratio_1m_c'].attrs`
+
+or
+
+`sos_dataset['mixingratio_1m_c'].attrs['units']`
