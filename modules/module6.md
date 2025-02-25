@@ -212,8 +212,6 @@ For this assignment, you will implement the two blowing snow sublimation models 
 
 ### Notes to help with the homework.
 
-Hi folks - a couple of details to help with Homework 6.
-
 **1. Humidity Variables**
 
 The function that I provide on the module page - particle_sublimation_rate - requires, among many inputs, q and q_s. q is the ambient or actual/environmental absolute humidity and q_s is the saturation absolute humidity. absolute humidity can be calculated as the product of water vapor mixing ratio and dry air density. Both of these variables are available in the SOS dataset. For example, you can calculate q by multiplying `sos_dataset['mixingratio_1m_c']` * `sos_dataset['dryairdensity_1m_c']`. To calculate q_s, by that logic, you need a value for saturation mixing ratio. Saturation mixing ratio can be calculated using this function, providing pressure (`sos_dataset['P_10m_c'] * units("millibars")`)  and temperature (`sos_dataset['T_1m_c'] * units("degC")`) and providing a relative humidity value of 1 (i.e. 100% humidity, saturation).
