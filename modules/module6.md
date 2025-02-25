@@ -42,7 +42,7 @@ S \approx \frac{
 }
 $$
 
-Note that if we want to compare this estimation of the blowing snow sublimation rate (in g/m^3, a flux density) to the surface sublimation rate, we can multiply by the height of the blowing snow layer that we are estimating, in this case 9m, which gives us the blowing snow sublimation rate in the units of a flux (g/m^3/s)
+Note that if we want to compare this estimation of the blowing snow sublimation rate (in g/m^3, a flux density) to the surface sublimation rate, we can multiply by the height of the blowing snow layer that we are estimating, in this case 9m, which gives us the blowing snow sublimation rate in the units of a flux (g/m^2/s)
 
 $$
 S_{\text{flux}} \approx \overline{w'\rho_v'}_{z=10m} - \overline{w'\rho_v'}_{z=1m}.
