@@ -43,4 +43,4 @@ Please read the paper, take notes, and prepare some discussion points.
 
 [Brandt et al., 2022, A Review of the Hydrologic Response Mechanisms During Mountain Rain-on-Snow](https://www.frontiersin.org/articles/10.3389/feart.2022.791760/full)
 
-The homework assignments for modules 7 and 8 are lumped together. See Module 8 for your homework assignment, Due March 6th.
+The homework assignments for modules 7 and 8 are lumped together. See Module 8 for your homework assignment, Due March 7th.

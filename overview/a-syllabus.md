@@ -215,7 +215,7 @@ onlinelibrary.wiley.com/doi/10.1029/2012WR011985]
 * **Assignments**
   * Lab 8-1
   * Lab 8-2
-  * HW 7 (Due March 6). Note this homework assignment is worth double the points of other homework assignments.
+  * HW 7 (Due March 7). Note this homework assignment is worth double the points of other homework assignments.
 * **Required Readings**
   * On Tuesday March 4th, we will hold a discussion on the paper below. Please read thoroughly and prepare for a discussion.
   * (Li et al., 2017, How much runoff originates as snow in the western United States, and how will that change in the future?)[https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2017GL073551]
