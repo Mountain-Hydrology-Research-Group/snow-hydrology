@@ -1,4 +1,4 @@
-
+s
 # Course Project: CEWA 568
 
 The goal of the course project is to give you hands-on experience exploring a snow hydrology topic of particular interest to you. 
@@ -10,7 +10,7 @@ Please take note of these due dates early on in the semester, as they serve as p
 
 * Midterm Progress Report (Due February 20) - Write a document that includes: a clearly-stated research question, a description of the methods you are using, as well as some initial results. At least one research paper/reference should be identified by this point.
 
-* Presentations (Due March 11) - Students will present either March 11 or 13, be prepared on the 11th. Please submit your slides before the beginning of class on March 11.
+* Presentations (Due March 13) - Students will present on March 13. Please submit your slides before the beginning of class.
 
 * Final Reports (Due March 13) - Due by 11:59pm on March 13.
 
