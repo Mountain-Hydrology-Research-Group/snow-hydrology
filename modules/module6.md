@@ -198,10 +198,10 @@ For this assignment, you will implement the two blowing snow sublimation models 
 1. For both case studies, plot time series of blowing snow flux from both FlowCapt sensors and w'ρᵥ' at 1 and 10 meters. (Variables in the SOS dataset are `SF_avg_1m_ue`, `SF_avg_2m_ue`, `w_h2o__1m_c`, `w_h2o__10m_c`). Explain how blowing snow and turbulent water vapor fluxes vary with height during the two case studies, and why.
 2. Using the flux divergence model, calculate time series of S<sub>flux</sub> for the length of the two events. Using the particle model, calculate time series of S<sub>particle, flux</sub> for the length of the two events. Use the constants I provide above for the particle model. Choose your own value for snowflake/ice particle radius (r). For the two events, create a time series plot that includes lines for w'ρᵥ' at 1 meter, w'ρᵥ' at 10 meters, S<sub>flux</sub>, and S<sub>particle, flux</sub>. 
 
-> Note that estimates of S<sub>particle, flux</sub> are very sensitive to snowflake/ice particle radius (r). 
-> For this assignment, I want you use to use r as a fitting parameter - i.e., modify values of r until your estimates of S<sub>particle, flux</sub> are within a reasonable range of w'ρᵥ' measurements.
-> The image below shows the measured distribution of blowing snow particle sizes throughout the early December blowing snow event. I found that for the particle model to produce reasonable results, a very small snowflake size is necessary. Try values between 10<sup>-5</sup> to 10<sup>-3</sup>.
-> ![particle size distribution](data/snowflake_size_distribution.png)
+    > Note that estimates of S<sub>particle, flux</sub> are very sensitive to snowflake/ice particle radius (r). 
+    > For this assignment, I want you use to use r as a fitting parameter - i.e., modify values of r until your estimates of S<sub>particle, flux</sub> are within a reasonable range of w'ρᵥ' measurements.
+    > The image below shows the measured distribution of blowing snow particle sizes throughout the early December blowing snow event. I found that for the particle model to produce reasonable results, a very small snowflake size is necessary. Try values between 10<sup>-5</sup> to 10<sup>-3</sup>.
+    > ![particle size distribution](data/snowflake_size_distribution.png)
 
 3. With respect to your plots from Question 2, answer the following questions. What do the two model results tell you about blowing snow sublimation during the events? Which of the two models seems to produce more reasonable results? Which model do you believe more?
 
