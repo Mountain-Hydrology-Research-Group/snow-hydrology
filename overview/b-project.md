@@ -31,8 +31,10 @@ See the Syllabus page for due dates.
 ## Rubric
 
 ### (20%) Final presentation
+![image](../images/rubric_presentation.png)
 
 ### (80%) Final report
 The written report should include a clearly-stated research question, a methods section identifying the data and data analysis techniques utilized, and a results section describing your findings.
 The report should contain at least three references to relevant scientific literature.
 The report should be at least 3 pages long (excluding figures and references) and no longer than 10 pages, including figures and references.
+![image](../images/rubric_report.png)
