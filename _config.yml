@@ -2,7 +2,7 @@ title: Snow Hydrology
 lang: en
 description: CEWA 568
 
-remote_theme: clearpathrobotics/jekyll-rtd-theme
+remote_theme: readthedocs/sphinx_rtd_theme
 
 addons_branch: true
 edit: true
