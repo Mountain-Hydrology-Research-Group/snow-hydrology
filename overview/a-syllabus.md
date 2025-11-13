@@ -1,4 +1,6 @@
+[← Back to Home](../)
 
+---
 # Syllabus: CEWA 568
 
 ## Course Overview
