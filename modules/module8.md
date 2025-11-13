@@ -1,3 +1,6 @@
+[← Back to Home](../)
+
+---
 # 8) Snow-dominated watershed hydrology
 
 For this module, we will model snow and snow melt processes across the entire upper East River Valley.
