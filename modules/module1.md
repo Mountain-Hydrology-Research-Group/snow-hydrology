@@ -1,3 +1,6 @@
+[← Back to Home](../)
+
+---
 # 1) Properties of Snow
 
 Each week, the labs are designed to give you specific coding examples to help you with that week's homework.
