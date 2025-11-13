@@ -1,3 +1,6 @@
+[← Back to Home](../)
+
+---
 # 3) Snowpack Energy Balance – Radiation + Albedo, Dust on Snow
 
 ## Energy Balance Equation
