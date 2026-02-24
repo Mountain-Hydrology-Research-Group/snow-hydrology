@@ -6,11 +6,11 @@
 
 ## 📚 Quick Navigation
 
-### 📖 Overview
+### 📖 [Overview](overview/)
 - [Syllabus: CEWA 568](overview/a-syllabus.md)
 - [Course Project: CEWA 568](overview/b-project.md)
 
-### 📘 Modules
+### 📘 [Modules](modules/)
 1. [Properties of Snow](modules/module1.md)
 2. [Measurement Strategies, Basics of the Snowpack Mass and Energy Balances, and Snowpack Dynamics](modules/module2.md)
 3. [Snowpack Energy Balance – Radiation + Albedo, Dust on Snow](modules/module3.md)
@@ -20,7 +20,7 @@
 7. [Snow melt](modules/module7.md)
 8. [Snow-dominated watershed hydrology](modules/module8.md)
 
-### 📚 Learning Resources
+### 📚 [Learning Resources](resources/)
 - [Python](resources/a-learning-python.md)
 - [Jupyter](resources/b-learning-jupyter.md)
 - [Other Resources](resources/c-learning-other.md)
