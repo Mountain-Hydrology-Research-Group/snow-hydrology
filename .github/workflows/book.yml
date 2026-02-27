@@ -28,6 +28,7 @@ jobs:
     # Build the book
     - name: Build the book
       run: |
-        jupyter-book build --all book/
+        # jupyter-book build --all book/
+        jupyter-book build --all
         cd book
         ghp-import -n -p -f _build/html
