@@ -1,3 +1,9 @@
 _site/
 
 **solution**
+# MyST build outputs
+_build
+ 
+ **.DS_store
+
+ myst.yml

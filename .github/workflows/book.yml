@@ -1,0 +1,33 @@
+name: deploy-book
+
+# Only run this when the main branch changes
+on:
+  push:
+    branches:
+    - convert-website-to-jupyter
+
+# This job installs dependencies, build the book, and pushes it to `gh-pages`
+jobs:
+  deploy-book:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    # Install dependencies
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.11
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install ghp-import
+
+
+    # Build the book
+    - name: Build the book
+      run: |
+        jupyter-book build --all book/
+        cd book
+        ghp-import -n -p -f _build/html
