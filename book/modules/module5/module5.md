@@ -1,7 +1,7 @@
 # 5) Turbulent transport - momentum, heat, and moisture fluxes above the snow covered earth
 
 ## External resources.
-For a good introductory text, on fluxes of sensible and latent heat above the earth's surface, we recommend [Terrestrial Hydrometeorology](https://bcs.wiley.com/he-bcs/Books?action=index&bcsId=6961&itemId=0470659378) by W. James Shuttleworth.  In particular, Chapters 15-19 on turbulence are helpful with this week's lessons.
+For a good introductory text, on fluxes of sensible and latent heat above the earth's surface, we recommend [Terrestrial Hydrometeorology](http://doi.org/10.1002/9781119951933) by W. James Shuttleworth.  In particular, Chapters 15-19 on turbulence are helpful with this week's lessons.
 Chapter 2 on water vapor in the atmosphere and Chapter 3 on vertical gradients in the atmosphere may also be useful.
 
 ## Modeling turbulent fluxes
