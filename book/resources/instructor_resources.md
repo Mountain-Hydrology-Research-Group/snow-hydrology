@@ -4,9 +4,9 @@
 
 ## Course Website
 
-The course website ([https://mountain-hydrology-research-group.github.io/data-analysis/](https://mountain-hydrology-research-group.github.io/data-analysis/)) is hosted on [GitHub Pages](https://pages.github.com/) as a repository under the Mountain-Hydrology-Research-Group github organization, [here](https://github.com/Mountain-Hydrology-Research-Group/data-analysis). It is organized and formatted with the [jekyll-rtd-theme](https://jekyll-rtd-theme.rundocs.io/) built on top of the [rundocs.io](https://rundocs.io/) framework. See the [jekyll-rtd-theme](https://jekyll-rtd-theme.rundocs.io/) documentation for information on formatting and webpage layout. 
+The course website ([https://mountain-hydrology-research-group.github.io/snow-hydrology/](https://mountain-hydrology-research-group.github.io/snow-hydrology/)) is hosted on [GitHub Pages](https://pages.github.com/) as a repository under the Mountain-Hydrology-Research-Group github organization, [here](https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology). It is organized and formatted with [jupyter-book](https://jupyterbook.org).
 
-Each webpage is created from a markdown (.md) file, which is a plain text file where formatting is specified in the [markdown](https://guides.github.com/features/mastering-markdown/) syntax. Page organization is controlled by nesting directories containing special README.md files that contain some formatting information, and by creating special headers within a document such as `## My Document Subsection Name`. 
+Each webpage is created from either a markdown (.md), a plain text file where formatting is specified in the [markdown](https://guides.github.com/features/mastering-markdown/) syntax, or a jupyter notebook (.ipynb) file. Page organization is controlled with the table of contents file (_toc.yml).
 
 ### Getting started
 

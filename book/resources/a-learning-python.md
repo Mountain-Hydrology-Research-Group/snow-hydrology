@@ -30,7 +30,7 @@ These are some popular python libraries for visualization and ploting.
 This guide walks through the process of setting up Python and Jupyter Notebook on your own computer. 
 
 ```note
-While it is possible to run Jupyter Notebooks locally on your own computer, we suggest that you use the [JupyterHub](https://spestana.github.io/data-analysis-rtd/resources/b-learning-jupyter.html#jupyterhub) for labs, homeworks, and projects in this class.
+While it is possible to run Jupyter Notebooks locally on your own computer, we suggest that you use the [JupyterHub](../resources/b-learning-jupyter.html#jupyterhub) for labs, homeworks, and projects in this class.
 ```
 
 ### Setting up Anaconda

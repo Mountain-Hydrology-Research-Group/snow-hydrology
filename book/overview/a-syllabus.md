@@ -38,21 +38,19 @@ By the end of the course, students should be able to
 
 3-4pm Tuesday/Wednesday or by appointment. See Canvas for the location of office hours.
 
-```note
-The UW eScience institute offers [data science office hours](https://escience.washington.edu/office-hours/) which could be useful for your projects or your own research work.
-```
+**The UW eScience institute offers [data science office hours](https://escience.washington.edu/office-hours/) which could be useful for your projects or your own research work.**
 
-### Textbooks
+### Textbooks 
 
  * **Recommended**: [*A Field Guide to Snow*](https://www.amazon.com/Field-Guide-Snow-Snowy-Owl/dp/1602234140), by Matthew Sturm
- * **Required Course Materials** are available on the [UW Canvas site](https://canvas.uw.edu/) (UW NetID login required)
+ * **Required Course Materials**: Available on the [UW Canvas site](https://canvas.uw.edu/) (UW NetID login required)
 
 
 ## Logistics and Grading
 
 ### Computing Resources
 
-For lab activities and assignments, we will be using a [JupyterHub](https://spestana.github.io/data-analysis/resources/b-learning-jupyter.html) computing environment, and programming with [python](https://spestana.github.io/data-analysis/resources/a-learning-python.html). 
+For lab activities and assignments, we will be using a [JupyterHub](../resources/b-learning-jupyter.html) computing environment, and programming with [python](../resources/a-learning-python.html). 
 
 The JupyterHub for this course can be accessed [here](https://jupyter.rttl.uw.edu/2025-winter-cewa-568-a) with a UW net id.
 
@@ -65,7 +63,7 @@ The first half (~50 minutes) of each class period is reserved for lecture discus
 
 ### Labs
 After a 5 minute break, 50 minutes of class will be spent working collaboratively on labs, homeworks, and projects.
-Lab content (jupyter notebooks and data files) can be downloaded directly from the class website and uploaded to your jupyter hub ([GitHub Option](https://spestana.github.io/data-analysis/resources/b-learning-jupyter.html#working-with-files-on-our-jupyterhub))
+Lab content (jupyter notebooks and data files) can be downloaded directly from the class website and uploaded to your jupyter hub ([GitHub Option](../resources/b-learning-jupyter.html#working-with-files-on-our-jupyterhub))
 
 In addition to the classroom space, we will use Slack to communicate with each other about lab exercises and projects.
 Contact the instructor if you need to be added to the Slack workspace.
