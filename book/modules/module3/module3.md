@@ -69,12 +69,12 @@ These equations will be useful in completing the labs and homeworks in this modu
 Radiometers are used to measure the radiation components of the surface energy balance.
 One type of instrument, a "net radiometer" or "four-stream radiometer", measures incoming and outgoing longwave and shortwave radiation using four sensors built into a single instrument. An image of a type of radiometer used by the Sublimation of Snow Campaign, the [Hukseflux NR01](https://www.hukseflux.com/products/pyranometers-solar-radiation-sensors/net-radiometers/nr01-net-radiometer), is shown below.
 
-[<img src="../data/huskeflux_nr01.png" width="400"/>](../data/huskeflux_nr01.png)
+![huskeflux_nr01](../data/huskeflux_nr01.png)
 
 ### Problem 1: Comparing solar radiation sensors
 A common problem in snow energy balance studies is that snow accumulates on the upward pointing radiometers (see image below, compliments of [Lapo et al., 2015](https://doi.org/10.1002/2015WR017590)).
 
-[<img src="../data/radiometer_snow_covered_lapoetal_2015.jpg" width="800"/>](../data/radiometer_snow_covered_lapoetal_2015.jpg)
+![radiometer_snow_covered_lapoetal_2015](../data/radiometer_snow_covered_lapoetal_2015.jpg)
 
 Use the precipitation dataset from Lab 2 to examine both incoming and outgoing radiation measurements during and after times with precipitation.
 Find a time in the dataset when you think snow covered the radiometer and explain why this occurred.
