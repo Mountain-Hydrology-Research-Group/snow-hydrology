@@ -8,7 +8,7 @@
 These tutorials can help you get started using python, or use them as reference material for more advanced tasks as you learn throughout the quarter.
 
  * [Intro to Programming and Plotting with Python](http://swcarpentry.github.io/python-novice-gapminder/) (This is a good place to start!)
- * [Whirlwind Tour of Python, free PDF book](https://www.oreilly.com/programming/free/files/a-whirlwind-tour-of-python.pdf), and [jupyter notebooks](https://github.com/jakevdp/WhirlwindTourOfPython) (This is more extensive and includes more advanced details.)
+ * [Whirlwind Tour of Python, free PDF book](https://jakevdp.github.io/WhirlwindTourOfPython/), and [jupyter notebooks](https://github.com/jakevdp/WhirlwindTourOfPython) (This is more extensive and includes more advanced details.)
  * [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/) (Even more advanced details by the same author.)
 
 If you're a MATLAB user, [NumPy for Matlab users](https://docs.scipy.org/doc/numpy-1.14.0/user/numpy-for-matlab-users.html) is another great resource.
@@ -18,7 +18,8 @@ If you're a MATLAB user, [NumPy for Matlab users](https://docs.scipy.org/doc/num
 
 These are some popular python libraries for visualization and ploting.
 
- * [Matplotlib](https://matplotlib.org/) (we'll use this most often)
+ * [Matplotlib](https://matplotlib.org/) (we'll use this most often, most common python plotting library)
+ * [Altair](https://altair-viz.github.io) (this plotting library can be convenient for certain use cases) 
  * [Plotting with pandas](https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html) (pandas uses matplotlib)
  * [Seaborn](https://seaborn.pydata.org/)
  * [Bokeh](https://bokeh.pydata.org/en/latest/index.html) for making interactive plots in jupyter notebooks
