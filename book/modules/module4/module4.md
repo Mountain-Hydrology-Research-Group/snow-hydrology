@@ -36,7 +36,6 @@ Additionally, we had "in-situ" sensors stay in the snowpack for the entire winte
 
 In Labs 4, we will work with data collected by both methods.
 
-```note
 ## Lab 4: Snowpack temperatures and snowpack internal energy, introduction to air temperatures
 
 * [Lab 4-0 (Brownian Motion)](lab4/lab4-0.ipynb)
@@ -46,11 +45,8 @@ In Labs 4, we will work with data collected by both methods.
 * [Lab 4-4](lab4-4.ipynb)
 * [SoS dataset](../data/sos_full_dataset_30min.nc)
 * [SoS snow pit dataset](../data/KettlePondsSnowPits.nc)
-```
 
-```tip
-Check out [Eli Schwat's github repo on altair plotting of our datasets](https://github.com/elischwat/altair_demo).  It makes some of the homework plots, particularly from Module 6, much more tidy.   
-```
+Check out [Eli Schwat's github repo on altair plotting of our datasets](https://github.com/elischwat/altair_demo).  It makes some of the homework plots, particularly from Module 6, much more tidy.
 
 ## Homework 4
 

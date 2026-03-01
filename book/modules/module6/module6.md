@@ -177,7 +177,6 @@ These variables are time series and should change at each timestep you calculate
 You can and should treat r as a constant, for simplicity.
 
 ## Labs
-```note
 Note that these labs use quite a few files. For lab6-3, you must download files from the links included in the notebook.
 * [Lab 6-1](lab6-1.ipynb) - Examining blowing snow thresholds with SOS tower measurements.
 * [Lab 6-2](lab6-2.ipynb)
@@ -190,7 +189,6 @@ Note that these labs use quite a few files. For lab6-3, you must download files 
 * [Elevation hillshade dataset](../data/eastriver_snowdepth_2023april01.tif)
 * [East river polygon](../data/east_polygon.json)
 * [Elevation transects](../data/transects.geojson)
-```
 
 ## Homework 6
 For this assignment, you will implement the two blowing snow sublimation models described above (the "flux-divergence" model and the "particle" model) for two blowing snow events, 12--14 December 2022 and 21-22 December 2022. 

@@ -59,13 +59,11 @@ where T<sub>ss</sub> is the temperature of the snow surface (in Kelvin).
 
 These equations will be useful in completing the labs and homeworks in this module. 
 
-```note
 ## Lab 3: Plotting radiation and energy balance data at Kettle Ponds.
 
 * [Lab 3-1](lab3-1.ipynb)
 * [Lab 3-2](lab3-2.ipynb)
 * [SoS dataset](../data/sos_full_dataset_30min.nc)
-```
 
 ## Homework 3
 Radiometers are used to measure the radiation components of the surface energy balance.

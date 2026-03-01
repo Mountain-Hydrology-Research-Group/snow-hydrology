@@ -24,13 +24,11 @@ Because of the relatively few inputs required by this model, it is easy to set u
 In the Labs and homework for this module, we will run openAMUNDSEN across the upper East River Valley, and run some experiments to better understand how rain-on-snow events affect the snowpack energy balance. Some examples of outputs from openAMUNDSEN are included in the image below.
 ![distributed modeling image](../data/module8_webpage_image.png)
 
-```note
 * [Lab 8-1](lab8-1.ipynb) - Predicting streamflow with the SWE-regression method
 * [Lab 8-2](lab8-2.ipynb) - Predicting melt rate and streamflow with a distributed model
 * [SoS dataset](../data/sos_full_dataset_30min.nc)
 * [openAMUNDSEN Inputs](../data/openamundsen.zip)
 * [openAMUNDSEN Configuration File](lab8/open_amundsen_config.yml)
-```
 
 
 ## Preparation for class
