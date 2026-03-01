@@ -6,3 +6,5 @@ scipy
 seaborn
 openpyxl
 statsmodels
+xarray
+rioxarray
