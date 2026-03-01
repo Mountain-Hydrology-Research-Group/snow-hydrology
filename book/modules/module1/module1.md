@@ -21,7 +21,7 @@ We may not have a lab of this quality, but you can print and build your own hexo
 
 ## Lab 1: Plotting Data and Calculating the Energy of Phase Changes in Python
 
-Download the lab and data files to your computer. Then, upload them to your JupyterHub [following the instructions here](/resources/b-learning-jupyter.html#jupyterhub). Note, if you took CEWA 565 Data Analysis Class or are otherwise already familiar with Python, you can skip Lab 1-1 and go to Lab 1-2.
+Download the lab and data files to your computer. Then, upload them to your JupyterHub [following the instructions here](/resources/b-learning-jupyter.md#jupyterhub). Note, if you took CEWA 565 Data Analysis Class or are otherwise already familiar with Python, you can skip Lab 1-1 and go to Lab 1-2.
 
 * Download this data file for the lab activities: [Skykomish peak flows](../data/Skykomish_peak_flow_12134500_skykomish_river_near_gold_bar.xlsx)
 * [Lab 1-1: Plotting Data in Python](lab1-1.ipynb)
