@@ -4,8 +4,8 @@ _site/
 # MyST build outputs
 _build
  
- **.DS_Store
+**.DS_Store
 
- myst.yml
+myst.yml
 
- **.ipynb_checkpoints/**
+**.ipynb_checkpoints/**

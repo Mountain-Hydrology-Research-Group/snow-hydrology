@@ -11,3 +11,6 @@ rioxarray
 altair
 act-atmos
 netcdf4
+contextily
+metpy
+dataretrieval
