@@ -12,6 +12,8 @@ In the homework assignment below, we will find that blowing snow sublimation is 
 
 At the Kettle Ponds field site, we will estimate the rate with two simple methods,  which provide opportunity for future improvement.
 
+![GIF of snow dunes forming at the Kettle Ponds field site](lidar_timeseries.gif)
+
 ## Flux Divergence Model - Estimating blowing snow sublimation with EC measurements
 
 In the atmospheric boundary layer, the conservation of water equation often simplifies to 
