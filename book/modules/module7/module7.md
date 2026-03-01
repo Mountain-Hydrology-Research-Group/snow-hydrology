@@ -29,11 +29,11 @@ M<sub>f</sub> is calleed the "degree day factor" (mm/˚C/day), and is a fitted p
 In Lab 7-3, we use this method and test its performance in the East River Valley. We will set T<sub>0</sub>=0˚C.
 
 ## Labs
-* [Lab 7-1](lab7/lab7-1.ipynb) - Observations of snowpack ripening and melt initiation
-* [Lab 7-2](lab7/lab7-2.ipynb) - Observations of the snowpack energy balance during ripening
-* [Lab 7-3](lab7/lab7-3.ipynb) - Predicting snowmelt rates with the Temperature-Index method
-* [SoS dataset](../sos_full_dataset_30min.nc)
-* [Precipitation dataset](../kettle_ponds_precip.csv)
+* [Lab 7-1](lab7-1.ipynb) - Observations of snowpack ripening and melt initiation
+* [Lab 7-2](lab7-2.ipynb) - Observations of the snowpack energy balance during ripening
+* [Lab 7-3](lab7-3.ipynb) - Predicting snowmelt rates with the Temperature-Index method
+* [SoS dataset](../data/sos_full_dataset_30min.nc)
+* [Precipitation dataset](../data/kettle_ponds_precip.csv)
 
 ## Homework 7
 On Tuesday February 25th, we will hold a discussion on the paper linked below.
