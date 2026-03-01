@@ -50,7 +50,7 @@ By the end of the course, students should be able to
 
 ### Computing Resources
 
-For lab activities and assignments, we will be using a [JupyterHub](../resources/b-learning-jupyter.html) computing environment, and programming with [python](../resources/a-learning-python.html). 
+For lab activities and assignments, we will be using a [JupyterHub](../resources/b-learning-jupyter.md) computing environment, and programming with [python](../resources/a-learning-python.md). 
 
 The JupyterHub for this course can be accessed [here](https://jupyter.rttl.uw.edu/2025-winter-cewa-568-a) with a UW net id.
 
@@ -63,7 +63,7 @@ The first half (~50 minutes) of each class period is reserved for lecture discus
 
 ### Labs
 After a 5 minute break, 50 minutes of class will be spent working collaboratively on labs, homeworks, and projects.
-Lab content (jupyter notebooks and data files) can be downloaded directly from the class website and uploaded to your jupyter hub ([GitHub Option](../resources/b-learning-jupyter.html#working-with-files-on-our-jupyterhub))
+Lab content (jupyter notebooks and data files) can be downloaded directly from the class website and uploaded to your jupyter hub ([GitHub Option](../resources/b-learning-jupyter.md#working-with-files-on-our-jupyterhub))
 
 In addition to the classroom space, we will use Slack to communicate with each other about lab exercises and projects.
 Contact the instructor if you need to be added to the Slack workspace.
@@ -91,7 +91,7 @@ Final projects will be completed in pairs (or individually on request), and the 
 The topic should involve analyzing field measurements to answer a snow-hydrology related question.
 During the final week of class, students will present their research projects to the class.
 Final reports will be due on the final day of class, **March 13 2025, by 11:59pm**. 
-Further details are provided in the schedule below and on the [Course Project page](b-project.html).
+Further details are provided in the schedule below and on the [Course Project page](b-project.md).
 
 ### Grading Policy
 
@@ -100,7 +100,7 @@ Further details are provided in the schedule below and on the [Course Project pa
 * **Homework assignments: 65%**
   * Each of the 8 homework assignments are worth 10 points (for a total of 80 points), however your lowest assignment will be dropped, and the overall homework grade will be evaluated out of 7 assignments and 70 points total.
 * **Final Project: 30%**
-  * See the [CEWA 565 course project page](/overview/b-project.html) for grading rubric.
+  * See the [CEWA 565 course project page](/overview/b-project.md) for grading rubric.
 
 
 ## Schedule of topics and assignments
