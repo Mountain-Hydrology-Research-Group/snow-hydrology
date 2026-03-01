@@ -9,28 +9,28 @@ Please look through the background and lab material before beginning the homewor
 
 Very few substances exist in all three phases in nature.  We experience water vapor, water, and ice so frequently that we forget how unique they are.
 
-![Phase diagram](data/Phase_diagram_of_water.svg.png) 
+![Phase diagram](../data/Phase_diagram_of_water.svg.png) 
 
 To understand how water changes phase within the atmosphere and within a snowpack, we need to understand basic chemistry and molecular physics. 
 [Popular Science video with ads on growing snowflakes with Ken Libbrecht](https://www.youtube.com/watch?v=ao2Jfm35XeE) 
 
-We may not have a lab of this quality, but you can print and build your own hexogonal snow crystal out of [paper](data/CutOutIceCrystalPrism_Aug25.jpg).  
+We may not have a lab of this quality, but you can print and build your own hexogonal snow crystal out of [paper](../data/CutOutIceCrystalPrism_Aug25.jpg).  
 
 ---
 
-```note
+
 ## Lab 1: Plotting Data and Calculating the Energy of Phase Changes in Python
 
-Download the lab and data files to your computer. Then, upload them to your JupyterHub [following the instructions here](../resources/b-learning-jupyter.html#jupyterhub). Note, if you took CEWA 565 Data Analysis Class or are otherwise already familiar with Python, you can skip Lab 1-1 and go to Lab 1-2.
+Download the lab and data files to your computer. Then, upload them to your JupyterHub [following the instructions here](../../resources/b-learning-jupyter.html#jupyterhub). Note, if you took CEWA 565 Data Analysis Class or are otherwise already familiar with Python, you can skip Lab 1-1 and go to Lab 1-2.
 
-* Download this data file for the lab activities: [Skykomish peak flows](data/Skykomish_peak_flow_12134500_skykomish_river_near_gold_bar.xlsx)
-* [Lab 1-1: Plotting Data in Python](lab1/lab1-1.ipynb)
-* [Lab 1-2: Phase Changes](lab1/lab1-2.ipynb)
+* Download this data file for the lab activities: [Skykomish peak flows](../data/Skykomish_peak_flow_12134500_skykomish_river_near_gold_bar.xlsx)
+* [Lab 1-1: Plotting Data in Python](lab1-1.ipynb)
+* [Lab 1-2: Phase Changes](lab1-2.ipynb)
 
 Some extra helpful activities:
-* [Numpy Tutorial](lab1/numpy-tutorial.ipynb)
-* [Some more python tips](lab1/some-python-tips.ipynb)
-```
+* [Numpy Tutorial](numpy-tutorial.ipynb)
+* [Some more python tips](some-python-tips.ipynb)
+
 
 ---
 
