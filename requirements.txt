@@ -9,3 +9,5 @@ statsmodels
 xarray
 rioxarray
 altair
+act-atmos
+netcdf4
