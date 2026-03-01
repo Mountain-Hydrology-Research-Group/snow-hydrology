@@ -8,3 +8,4 @@ openpyxl
 statsmodels
 xarray
 rioxarray
+altair
