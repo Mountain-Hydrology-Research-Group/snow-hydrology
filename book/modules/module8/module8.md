@@ -13,7 +13,7 @@ $$ Q = a + SWE*b $$
 
 where SWE is snowpack SWE measured at a site or from as now course, Q is streamflow/discharge, and a and b are fitted parameters to the linear relationship betwen SWE and Q. Q is often measured as the *total streamflow during the melt season*, such as total streamflow between April and July (aka AMJJ total streamflow). Linear regressions can do a surprisinngly good job at predicting streamflow year after year (see below, borrowed from Singh and Singh'S *Snow and Glacier Hydrology* textbook).
 
-![streamflow regression plot](../modules/data/singh_and_singh_streamflow_regressions.png)
+![streamflow regression plot](../data/singh_and_singh_streamflow_regressions.png)
 
 ## Distributed Modeling - Full Energy Balance Models
 Another method for predicting the water output from a snowpack is by numerically simulating the full energy balance of the snowpack. Full energy balance models represent the snowpack energy balance at a point, predicting the ripening process, the onset of snowmelt, and the transport of meltwater through the snowpack. Energy balance models can be expanded to run across a large area (such as a catchment) by running separate energy balance models at multiple points within the area. One way to scale the energy balance across an area is to run a separate energy balance for each grid cell in a digial elevation model (DEM).
@@ -22,13 +22,13 @@ Another method for predicting the water output from a snowpack is by numerically
 Because of the relatively few inputs required by this model, it is easy to set up and run. The model spatially interpolates provided point measurements of meteorology and,takes into account terrain slope and aspect when calculating incoming shortwave radiation across the modeled landscape.
 
 In the Labs and homework for this module, we will run openAMUNDSEN across the upper East River Valley, and run some experiments to better understand how rain-on-snow events affect the snowpack energy balance. Some examples of outputs from openAMUNDSEN are included in the image below.
-![distributed modeling image](../modules/data/module8_webpage_image.png)
+![distributed modeling image](../data/module8_webpage_image.png)
 
 ```note
-* [Lab 8-1](lab8/lab8-1.ipynb) - Predicting streamflow with the SWE-regression method
-* [Lab 8-2](lab8/lab8-2.ipynb) - Predicting melt rate and streamflow with a distributed model
-* [SoS dataset](data/sos_full_dataset_30min.nc)
-* [openAMUNDSEN Inputs](data/openamundsen.zip)
+* [Lab 8-1](lab8-1.ipynb) - Predicting streamflow with the SWE-regression method
+* [Lab 8-2](lab8-2.ipynb) - Predicting melt rate and streamflow with a distributed model
+* [SoS dataset](../data/sos_full_dataset_30min.nc)
+* [openAMUNDSEN Inputs](../data/openamundsen.zip)
 * [openAMUNDSEN Configuration File](lab8/open_amundsen_config.yml)
 ```
 

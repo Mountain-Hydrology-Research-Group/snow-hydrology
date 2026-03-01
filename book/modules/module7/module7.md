@@ -1,6 +1,6 @@
 # 7) Snow melt
 
-![snowmelt sequence](../modules/data/KPsnowmelt_2023.png)
+![snowmelt sequence](../data/KPsnowmelt_2023.png)
 
 ## Background
 
@@ -33,8 +33,8 @@ In Lab 7-3, we use this method and test its performance in the East River Valley
 * [Lab 7-1](lab7/lab7-1.ipynb) - Observations of snowpack ripening and melt initiation
 * [Lab 7-2](lab7/lab7-2.ipynb) - Observations of the snowpack energy balance during ripening
 * [Lab 7-3](lab7/lab7-3.ipynb) - Predicting snowmelt rates with the Temperature-Index method
-* [SoS dataset](data/sos_full_dataset_30min.nc)
-* [Precipitation dataset](data/kettle_ponds_precip.csv)
+* [SoS dataset](../sos_full_dataset_30min.nc)
+* [Precipitation dataset](../kettle_ponds_precip.csv)
 ```
 
 ## Homework 7

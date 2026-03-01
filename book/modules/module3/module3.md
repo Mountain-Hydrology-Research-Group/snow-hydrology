@@ -1,7 +1,7 @@
 # 3) Snowpack Energy Balance – Radiation + Albedo, Dust on Snow
 
 ## Energy Balance Equation
-![Photo of April 2023 dust event at Kettle Ponds](data/Dust_on_SOS.png)
+![Photo of April 2023 dust event at Kettle Ponds](../data/Dust_on_SOS.png)
 
 The balance of energy over a snow surface is a phenomenon studied by both biologists, hydrologists, boundary layer meteorologists, and snow scientists. Many fields use the surface energy balance (SEB) to estimate evaporation and transpiration of water from the earth's surface. Meteorologists study the SEB's radiative effects on the atmosphere.
 
@@ -15,7 +15,7 @@ Energy fluxes are on both sides of the equation are measured in units of Watts p
 
 $$\frac{d}{dt} (U \Delta z) = LW_{in} + LW_{out} + SW_{in} + SW_{out} - H_L - H_s + E_{melt} + G$$
 
-![Energy balance diagram](data/energy_balance_diagram.png)
+![Energy balance diagram](../data/energy_balance_diagram.png)
 
 where $U$ is the internal energy of the snow pack and ∆z is the snowpack depth, the first and second terms on the right represent incoming and outgoing longwave radiation (AKA infrared radiation). 
 The third and fourth terms represent incoming and outgoing shortwave radiation (ultraviolet, visible, and near-infrared radiation).
@@ -62,21 +62,21 @@ These equations will be useful in completing the labs and homeworks in this modu
 ```note
 ## Lab 3: Plotting radiation and energy balance data at Kettle Ponds.
 
-* [Lab 3-1](lab3/lab3-1.ipynb)
-* [Lab 3-2](lab3/lab3-2.ipynb)
-* [SoS dataset](data/sos_full_dataset_30min.nc)
+* [Lab 3-1](lab3-1.ipynb)
+* [Lab 3-2](lab3-2.ipynb)
+* [SoS dataset](../data/sos_full_dataset_30min.nc)
 ```
 
 ## Homework 3
 Radiometers are used to measure the radiation components of the surface energy balance.
 One type of instrument, a "net radiometer" or "four-stream radiometer", measures incoming and outgoing longwave and shortwave radiation using four sensors built into a single instrument. An image of a type of radiometer used by the Sublimation of Snow Campaign, the [Hukseflux NR01](https://www.hukseflux.com/products/pyranometers-solar-radiation-sensors/net-radiometers/nr01-net-radiometer), is shown below.
 
-[<img src="data/huskeflux_nr01.png" width="400"/>](data/huskeflux_nr01.png)
+[<img src="../data/huskeflux_nr01.png" width="400"/>](../data/huskeflux_nr01.png)
 
 ### Problem 1: Comparing solar radiation sensors
 A common problem in snow energy balance studies is that snow accumulates on the upward pointing radiometers (see image below, compliments of [Lapo et al., 2015](https://doi.org/10.1002/2015WR017590)).
 
-[<img src="data/radiometer_snow_covered_lapoetal_2015.jpg" width="800"/>](data/radiometer_snow_covered_lapoetal_2015.jpg)
+[<img src="../data/radiometer_snow_covered_lapoetal_2015.jpg" width="800"/>](../data/radiometer_snow_covered_lapoetal_2015.jpg)
 
 Use the precipitation dataset from Lab 2 to examine both incoming and outgoing radiation measurements during and after times with precipitation.
 Find a time in the dataset when you think snow covered the radiometer and explain why this occurred.

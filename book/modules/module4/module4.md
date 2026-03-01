@@ -28,11 +28,11 @@ Also, if it turns out that snow density and snow depth do NOT change slowly, we 
 
 During the SOS campaign, vertical profiles of snowpack temperature were collected using two different methods. Snowpits were dug between January and March, and snowpack temperatures were measured with thermometers by hand.
 
-![Snowpit](data/snowpit_pic.jpg).
+![Snowpit](../data/snowpit_pic.jpg).
 
 Additionally, we had "in-situ" sensors stay in the snowpack for the entire winter season. These "thermistor arrays" had temperature sensors spaced every 10 centimeters, between 0.4m and 1.6m.
 
-![Thermistor array](data/thermistor_array.png)
+![Thermistor array](../data/thermistor_array.png)
 
 In Labs 4, we will work with data collected by both methods.
 
@@ -40,12 +40,12 @@ In Labs 4, we will work with data collected by both methods.
 ## Lab 4: Snowpack temperatures and snowpack internal energy, introduction to air temperatures
 
 * [Lab 4-0 (Brownian Motion)](lab4/lab4-0.ipynb)
-* [Lab 4-1](lab4/lab4-1.ipynb)
-* [Lab 4-2](lab4/lab4-2.ipynb)
-* [Lab 4-3](lab4/lab4-3.ipynb)
-* [Lab 4-4](lab4/lab4-4.ipynb)
-* [SoS dataset](data/sos_full_dataset_30min.nc)
-* [SoS snow pit dataset](data/KettlePondsSnowPits.nc)
+* [Lab 4-1](lab4-1.ipynb)
+* [Lab 4-2](lab4-2.ipynb)
+* [Lab 4-3](lab4-3.ipynb)
+* [Lab 4-4](lab4-4.ipynb)
+* [SoS dataset](../data/sos_full_dataset_30min.nc)
+* [SoS snow pit dataset](../data/KettlePondsSnowPits.nc)
 ```
 
 ```tip

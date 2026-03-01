@@ -4,7 +4,7 @@ I highly recommend watching Dr. Matthew Sturm's Lecture on blowing snow, snow du
 
 This link to his [lecture on blowing snow](https://youtu.be/rBlDG9Tp8rM?si=dqCCF-sW0NXQYG5i&t=3658) begins at the part talking about snow dunes/landforms, but the entire lecture (from the beginning) is worth your time.
 
-![Credits to Matthew Sturm's lecture (above) for this photo](data/sturm_bls_image.png)
+![Credits to Matthew Sturm's lecture (above) for this photo](../data/sturm_bls_image.png)
 
 For our homework, we will try to do something not covered closely in the video - estimating the sublimation rate of blowing snow.
 
@@ -179,17 +179,17 @@ You can and should treat r as a constant, for simplicity.
 ## Labs
 ```note
 Note that these labs use quite a few files. For lab6-3, you must download files from the links included in the notebook.
-* [Lab 6-1](lab6/lab6-1.ipynb) - Examining blowing snow thresholds with SOS tower measurements.
-* [Lab 6-2](lab6/lab6-2.ipynb)
-* [Lab 6-3](lab6/lab6-3.ipynb)
-* [SoS dataset](data/sos_full_dataset_30min.nc) - Data collected by the Sublimation of Snow Campaign at Kettle Ponds
-* [30-minute precipitation dataset](data/kettle_ponds_precip_30min.csv) - Data collected by the SAIL campaign at Kettle Ponds
-* [Lidar particle dataset](data/lidar_l2_particles.nc)
-* [Elevation dataset](data/east_river_elevation.tif)
-* [Elevation hillshade dataset](data/east_river_hillshade.tif)
-* [Elevation hillshade dataset](data/eastriver_snowdepth_2023april01.tif)
-* [East river polygon](data/east_polygon.json)
-* [Elevation transects](data/transects.geojson)
+* [Lab 6-1](lab6-1.ipynb) - Examining blowing snow thresholds with SOS tower measurements.
+* [Lab 6-2](lab6-2.ipynb)
+* [Lab 6-3](lab6-3.ipynb)
+* [SoS dataset](../data/sos_full_dataset_30min.nc) - Data collected by the Sublimation of Snow Campaign at Kettle Ponds
+* [30-minute precipitation dataset](../data/kettle_ponds_precip_30min.csv) - Data collected by the SAIL campaign at Kettle Ponds
+* [Lidar particle dataset](../data/lidar_l2_particles.nc)
+* [Elevation dataset](../data/east_river_elevation.tif)
+* [Elevation hillshade dataset](../data/east_river_hillshade.tif)
+* [Elevation hillshade dataset](../data/eastriver_snowdepth_2023april01.tif)
+* [East river polygon](../data/east_polygon.json)
+* [Elevation transects](../data/transects.geojson)
 ```
 
 ## Homework 6
@@ -201,7 +201,7 @@ For this assignment, you will implement the two blowing snow sublimation models 
     > Note that estimates of S<sub>particle, flux</sub> are very sensitive to snowflake/ice particle radius (r). 
     > For this assignment, I want you use to use r as a fitting parameter - i.e., modify values of r until your estimates of S<sub>particle, flux</sub> are within a reasonable range of w'ρᵥ' measurements.
     > The image below shows the measured distribution of blowing snow particle sizes throughout the early December blowing snow event. I found that for the particle model to produce reasonable results, a very small snowflake size is necessary. Try values between 10<sup>-5</sup> to 10<sup>-3</sup>.
-    > ![particle size distribution](data/snowflake_size_distribution.png)
+    > ![particle size distribution](../data/snowflake_size_distribution.png)
 
 3. With respect to your plots from Question 2, answer the following questions. What do the two model results tell you about blowing snow sublimation during the events? Which of the two models seems to produce more reasonable results? Which model do you believe more?
 
@@ -218,7 +218,7 @@ The function that I provide on the module page - particle_sublimation_rate - req
 
 **2. Using Metpy Units**
 
-I HIGHLY recommend using the `metpy.units.units` object to assign units to all of your variables for these calculations. Look in earlier labs for examples of usage. As a reminder, you can import the units object and us it like this:
+I highly recommend using the `metpy.units.units` object to assign units to all of your variables for these calculations. Look in earlier labs for examples of usage. As a reminder, you can import the units object and us it like this:
 from metpy.units import units
 
 ```

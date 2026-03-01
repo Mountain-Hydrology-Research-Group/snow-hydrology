@@ -65,10 +65,10 @@ This week we will be using data from these sensors to study turbulent transfer o
 
 ```note
 ## Lab 5: Turbulent fluxes
-* [Lab 5-1](lab5/lab5-1.ipynb)          
-* [Lab 5-2](lab5/lab5-2.ipynb)
-* [Lab 5-3](lab5/lab5-3.ipynb)
-* [SoS dataset](data/sos_full_dataset_30min.nc)
+* [Lab 5-1](lab5-1.ipynb)          
+* [Lab 5-2](lab5-2.ipynb)
+* [Lab 5-3](lab5-3.ipynb)
+* [SoS dataset](../data/sos_full_dataset_30min.nc)
 ```
 
 
