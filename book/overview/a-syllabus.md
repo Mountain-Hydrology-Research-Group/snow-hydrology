@@ -50,7 +50,7 @@ By the end of the course, students should be able to
 
 ### Computing Resources
 
-For lab activities and assignments, we will be using a [JupyterHub](../resources/b-learning-jupyter.md) computing environment, and programming with [python](../resources/a-learning-python.md). 
+For lab activities and assignments, we will be using a [JupyterHub](/resources/b-learning-jupyter.md) computing environment, and programming with [python](/resources/a-learning-python.md). 
 
 The JupyterHub for this course can be accessed [here](https://jupyter.rttl.uw.edu/2025-winter-cewa-568-a) with a UW net id.
 
@@ -63,7 +63,7 @@ The first half (~50 minutes) of each class period is reserved for lecture discus
 
 ### Labs
 After a 5 minute break, 50 minutes of class will be spent working collaboratively on labs, homeworks, and projects.
-Lab content (jupyter notebooks and data files) can be downloaded directly from the class website and uploaded to your jupyter hub ([GitHub Option](../resources/b-learning-jupyter.md#working-with-files-on-our-jupyterhub))
+Lab content (jupyter notebooks and data files) can be downloaded directly from the class website and uploaded to your jupyter hub ([GitHub Option](/resources/b-learning-jupyter.md#working-with-files-on-our-jupyterhub))
 
 In addition to the classroom space, we will use Slack to communicate with each other about lab exercises and projects.
 Contact the instructor if you need to be added to the Slack workspace.
