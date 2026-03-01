@@ -17,7 +17,7 @@ allowfullscreen
 
 Click on the photo above to see a short Youtube video of a snow pillow being installed at Kettle ponds in the East River Basin. Look at the map below to see where these snow pillows are located relative to the meteorological towers at Kettle Ponds.
 
-![Here is a map of where the Kettle Ponds pillows are located](data/KettlePondsPillowlidarmap.png)
+![Here is a map of where the Kettle Ponds pillows are located](../data/KettlePondsPillowlidarmap.png)
 
 Above, we see an aerial photo, with each tower and corresponding snow pillow labeled.  We also see a lidar map of snow depth, with the snow pillow locations shown with circles, and a webcam photo taken from the downwind tower towards the central and upwind towers. This map will be useful in the lab and homework below, and in future modules.
 
@@ -29,12 +29,12 @@ We will download SNOTEL data and use pre-downloaded SOS data.
 
 Working through labs 2-1, 2-2, and 2-3 will prepare you to complete Homework 2. 
 
-* [Lab 2-1](lab2/lab2-1.ipynb)
-* [Lab 2-2](lab2/lab2-2.ipynb)
-* [Lab 2-3](lab2/lab2-3.ipynb)
-* [SoS dataset](data/sos_full_dataset_30min.nc) - Data collected by the Sublimation of Snow Campaign at Kettle Ponds
-* [Precipitation dataset](data/kettle_ponds_precip.csv) - Data collected by the SPLASH campaign at Kettle Ponds
-* [East River Polygon](data/east_polygon.json) - A shapefile containing a polygon outlining the East River Polygon
+* [Lab 2-1](lab2-1.ipynb)
+* [Lab 2-2](lab2-2.ipynb)
+* [Lab 2-3](lab2-3.ipynb)
+* [SoS dataset](../data/sos_full_dataset_30min.nc) - Data collected by the Sublimation of Snow Campaign at Kettle Ponds
+* [Precipitation dataset](../data/kettle_ponds_precip.csv) - Data collected by the SPLASH campaign at Kettle Ponds
+* [East River Polygon](../data/east_polygon.json) - A shapefile containing a polygon outlining the East River Polygon
 
 ---
 
@@ -72,7 +72,7 @@ Plot the observed density and the predicted density time series, and tweak the p
 > ```
 > Your final figure should look something like this 
 > 
-> ![Snow density, modeled + measured](data/snow_density_model_example.png)
+> ![Snow density, modeled + measured](../data/snow_density_model_example.png)
 
 
 ### Problem 2
