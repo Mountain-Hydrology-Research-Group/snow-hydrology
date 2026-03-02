@@ -74,7 +74,7 @@ One type of instrument, a "net radiometer" or "four-stream radiometer", measures
 ### Problem 1: Comparing solar radiation sensors
 A common problem in snow energy balance studies is that snow accumulates on the upward pointing radiometers (see image below, compliments of [Lapo et al., 2015](https://doi.org/10.1002/2015WR017590)).
 
-![radiometer_snow_covered_lapoetal_2015](../data/radiometer_snow_covered_lapoetal_2015.jpg)
+![radiometer_snow_covered_lapoetal_2015](../data/radiometer_snow_covered_lapoetal_2015.png)
 
 Use the precipitation dataset from Lab 2 to examine both incoming and outgoing radiation measurements during and after times with precipitation.
 Find a time in the dataset when you think snow covered the radiometer and explain why this occurred.
