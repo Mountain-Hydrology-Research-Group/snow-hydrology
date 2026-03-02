@@ -67,5 +67,4 @@ parts:
      - file: modules/module1/numpy-tutorial
      - file: modules/module1/some-python-tips
    - file: resources/b-learning-jupyter.md
-   - file: resources/c-learning-other.md
    - file: resources/instructor_resources.md
