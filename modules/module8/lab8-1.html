@@ -1,0 +1,1232 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab 8-1: Predicting streamflow with the SWE regression method</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/module8/lab8-1';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 8-2: Modeling a snowpack with a gridded, numerical model - openAMUNDSEN" href="lab8-2.html" />
+    <link rel="prev" title="8) Snow-dominated watershed hydrology" href="module8.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Snow Hydrology
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/a-syllabus.html">Syllabus: CEWA 568</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/b-project.html">Course Project: CEWA 568</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../module1/module1.html">1) Properties of Snow</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../module2/module2.html">2) Measurement Strategies, Basics of the Snowpack Mass and Energy Balances, and Snowpack Dynamics</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module3/module3.html">3) Snowpack Energy Balance – Radiation + Albedo, Dust on Snow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-1.html">Lab 3-1: Surface Energy Balance at Kettle Ponds - Radiation Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-2.html">Lab 3-2: Plotting the Surface Energy Balance at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module4/module4.html">4) Temperatures: snowpack and atmospheric stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-0.html">Intuition about the heat equation - Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-1.html">Lab 4-1: Snowpack temperature profiles</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-2.html">Lab 4-2: Snowpack internal energy - completing the snowpack energy balance</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-3.html">Lab 4-3: Snowpack temperature and density profiles - snowpit data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-4.html">Lab 4-4: Atmospheric temperatures and stability</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module5/module5.html">5) Turbulent transport - momentum, heat, and moisture fluxes above the snow covered earth</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-1.html">Lab 5-1: Turbulent fluxes and measures of stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-2.html">Lab 5-2: Water vapor fluxes at Kettle Ponds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-3.html">Lab 5-3: Mixing length theory at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module6/module6.html">6) Blowing snow transport and sublimation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-1.html">Lab 6-1: Blowing snow fluxes, wind speed, and shear velocity</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-2.html">Lab 6-2: Blowing snow - snow redistribution on the landscape scale</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-3.html">Lab 6-3: Blowing snow - snow redistribution on the site scale</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module7/module7.html">7) Snow melt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-1.html">Lab 7-1: Snowpack ripening and melt initiation - Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-2.html">Lab 7-2: Snowpack ripening and melt initiation - Energy Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-3.html">Lab 7-3 - Predicting snowmelt rates with the Temperature-Index method</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="module8.html">8) Snow-dominated watershed hydrology</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lab 8-1: Predicting streamflow with the SWE regression method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab8-2.html">Lab 8-2: Modeling a snowpack with a gridded, numerical model - openAMUNDSEN</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/a-learning-python.html">Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module1/numpy-tutorial.html">NumPy and the ndarray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1/some-python-tips.html">More python tips</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/b-learning-jupyter.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/instructor_resources.html">Resources for Instructors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/edit/main/book/modules/module8/lab8-1.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/issues/new?title=Issue%20on%20page%20%2Fmodules/module8/lab8-1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/modules/module8/lab8-1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 8-1: Predicting streamflow with the SWE regression method</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-usgs-streamflow-data">Download USGS Streamflow data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-snotel-swe-data">Download SNOTEL SWE data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combine-swe-and-streamflow-data">Combine SWE and Streamflow data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-a-linear-regression">Perform a linear regression.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incorporate-kettle-ponds-data">Incorporate Kettle Ponds data</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-8-1-predicting-streamflow-with-the-swe-regression-method">
+<h1>Lab 8-1: Predicting streamflow with the SWE regression method<a class="headerlink" href="#lab-8-1-predicting-streamflow-with-the-swe-regression-method" title="Link to this heading">#</a></h1>
+<p>In this lab, we will use SWE measurements from the East River Valley (SNOTEL sites, plus the Kettle Ponds measurements) as well as USGS streamflow measurments from gage number 09112200. We will fit a linear regression to the streamflow-SWE relationship and use it to predict streamflow based on SWE measurements at Kettle Ponds.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># info for this package here: https://doi-usgs.github.io/dataRetrieval/reference/readNWISdv.html</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">dataretrieval.nwis</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nwis</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">metloom.pointdata</span><span class="w"> </span><span class="kn">import</span> <span class="n">SnotelPointData</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">altair</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">alt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">linregress</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">metpy.units</span><span class="w"> </span><span class="kn">import</span> <span class="n">units</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#pip install dataretrieval</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;1990-01-01&#39;</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;2024-01-10&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="download-usgs-streamflow-data">
+<h2>Download USGS Streamflow data<a class="headerlink" href="#download-usgs-streamflow-data" title="Link to this heading">#</a></h2>
+<p>We can download the streamflow gage data directly from a USGS gage.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">usgs_site_code</span> <span class="o">=</span> <span class="s1">&#39;09112200&#39;</span> <span class="c1"># Replace with the desired USGS site number</span>
+
+<span class="c1"># 00060 is the parameter code for streamflow,</span>
+<span class="c1"># this function will return mean daily values of discharge in cubic feet per second</span>
+<span class="n">streamflow_df</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">nwis</span><span class="o">.</span><span class="n">get_dv</span><span class="p">(</span><span class="n">sites</span><span class="o">=</span><span class="n">usgs_site_code</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end_date</span><span class="p">,</span> <span class="n">parameterCd</span><span class="o">=</span><span class="s1">&#39;00060&#39;</span><span class="p">)</span> 
+<span class="n">streamflow_df</span> <span class="o">=</span> <span class="n">streamflow_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;00060_Mean&#39;</span><span class="p">:</span> <span class="s1">&#39;mean_daily_streamflow&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Streamflow-SWE relationships are usually created for <em>total spring</em> streamflow, so we calculate here the total stream flow betwen April-July.
+Calculate the total April-July streamflow for each year. Note that the streamflow data came in CFS (cubic feet per second) so to get total streamflow for each day, we multiple the mean daily CFS value by the number of seconds in a day. Because these numbers end up being quite large, we convert from cubic feet to acre-feet. An acre-foot is the amount of water that covers an acre of land in a foot of water; it’s a common unit used in water resources.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seconds_in_a_day</span> <span class="o">=</span> <span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">24</span>
+<span class="n">streamflow_df</span><span class="p">[</span><span class="s1">&#39;daily_total_streamflow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">streamflow_df</span><span class="p">[</span><span class="s1">&#39;mean_daily_streamflow&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">seconds_in_a_day</span>
+
+<span class="n">streamflow_df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">streamflow_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span>
+<span class="n">streamflow_df</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">streamflow_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span>
+<span class="n">df_amjj</span> <span class="o">=</span> <span class="n">streamflow_df</span><span class="p">[</span><span class="n">streamflow_df</span><span class="o">.</span><span class="n">month</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">])]</span>
+<span class="n">df_amjj</span> <span class="o">=</span> <span class="n">df_amjj</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)[[</span><span class="s1">&#39;daily_total_streamflow&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># Note that 1 cubic foot is equal to 2.30e-5 acre feet. Let&#39;s convert</span>
+<span class="n">df_amjj</span><span class="p">[</span><span class="s1">&#39;daily_total_streamflow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_amjj</span><span class="p">[</span><span class="s1">&#39;daily_total_streamflow&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">2.30e-5</span>
+<span class="n">df_amjj</span> <span class="o">=</span> <span class="n">df_amjj</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;daily_total_streamflow&#39;</span><span class="p">:</span> <span class="s1">&#39;Seasonal total streamflow (acre-feet)&#39;</span><span class="p">})</span>
+<span class="n">df_amjj</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Seasonal total streamflow (acre-feet)</th>
+    </tr>
+    <tr>
+      <th>year</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1994</th>
+      <td>160166.33280</td>
+    </tr>
+    <tr>
+      <th>1995</th>
+      <td>312791.24160</td>
+    </tr>
+    <tr>
+      <th>1996</th>
+      <td>236762.95680</td>
+    </tr>
+    <tr>
+      <th>1997</th>
+      <td>288948.81600</td>
+    </tr>
+    <tr>
+      <th>1998</th>
+      <td>153918.57600</td>
+    </tr>
+    <tr>
+      <th>1999</th>
+      <td>200737.00800</td>
+    </tr>
+    <tr>
+      <th>2000</th>
+      <td>143599.04640</td>
+    </tr>
+    <tr>
+      <th>2001</th>
+      <td>138869.51040</td>
+    </tr>
+    <tr>
+      <th>2002</th>
+      <td>70821.42336</td>
+    </tr>
+    <tr>
+      <th>2003</th>
+      <td>157178.18016</td>
+    </tr>
+    <tr>
+      <th>2004</th>
+      <td>125839.44000</td>
+    </tr>
+    <tr>
+      <th>2005</th>
+      <td>193059.65952</td>
+    </tr>
+    <tr>
+      <th>2006</th>
+      <td>178399.09152</td>
+    </tr>
+    <tr>
+      <th>2007</th>
+      <td>120273.29280</td>
+    </tr>
+    <tr>
+      <th>2008</th>
+      <td>254830.77792</td>
+    </tr>
+    <tr>
+      <th>2009</th>
+      <td>234487.21536</td>
+    </tr>
+    <tr>
+      <th>2010</th>
+      <td>165854.29536</td>
+    </tr>
+    <tr>
+      <th>2011</th>
+      <td>275356.16928</td>
+    </tr>
+    <tr>
+      <th>2012</th>
+      <td>66996.65952</td>
+    </tr>
+    <tr>
+      <th>2013</th>
+      <td>112420.27584</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>226375.46496</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>164703.11040</td>
+    </tr>
+    <tr>
+      <th>2016</th>
+      <td>150986.26368</td>
+    </tr>
+    <tr>
+      <th>2017</th>
+      <td>242269.48800</td>
+    </tr>
+    <tr>
+      <th>2018</th>
+      <td>80087.53824</td>
+    </tr>
+    <tr>
+      <th>2019</th>
+      <td>249610.99968</td>
+    </tr>
+    <tr>
+      <th>2020</th>
+      <td>112156.77312</td>
+    </tr>
+    <tr>
+      <th>2021</th>
+      <td>79424.01216</td>
+    </tr>
+    <tr>
+      <th>2022</th>
+      <td>149954.11200</td>
+    </tr>
+    <tr>
+      <th>2023</th>
+      <td>233700.28416</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="download-snotel-swe-data">
+<h2>Download SNOTEL SWE data<a class="headerlink" href="#download-snotel-swe-data" title="Link to this heading">#</a></h2>
+<p>We have downloaded SNOTEL data in pervious labs, so we don’t discuss this much here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">snotel_point_butte</span> <span class="o">=</span> <span class="n">SnotelPointData</span><span class="p">(</span><span class="s2">&quot;380:CO:SNTL&quot;</span><span class="p">,</span> <span class="s2">&quot;Butte&quot;</span><span class="p">)</span>
+<span class="n">SNOTEL_VARS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">snotel_point_butte</span><span class="o">.</span><span class="n">ALLOWED_VARIABLES</span><span class="o">.</span><span class="n">SWE</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">df_butte_longterm</span> <span class="o">=</span> <span class="n">snotel_point_butte</span><span class="o">.</span><span class="n">get_daily_data</span><span class="p">(</span>
+    <span class="n">datetime</span><span class="p">(</span><span class="n">df_amjj</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="n">df_amjj</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="n">SNOTEL_VARS</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Streamflow-SWE relationships usually use April 1st SWE, so we grab the April 1 SWE from the snotel station, for each year.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_april1_swe</span> <span class="o">=</span> <span class="n">df_butte_longterm</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">df_butte_longterm</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">month</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span><span class="n">df_butte_longterm</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">day</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="combine-swe-and-streamflow-data">
+<h2>Combine SWE and Streamflow data<a class="headerlink" href="#combine-swe-and-streamflow-data" title="Link to this heading">#</a></h2>
+<p>Join the two dataframes into one dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_april1_swe</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df_april1_swe</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">year</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_swe_and_streamflow</span> <span class="o">=</span> <span class="n">df_april1_swe</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_amjj</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that the tables are joined, we can look at the relationship between SWE and Streamflow across all years of data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df_swe_and_streamflow</span><span class="p">)</span><span class="o">.</span><span class="n">mark_point</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;SWE:Q&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;Seasonal total streamflow (acre-feet):Q&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-91136169f45d4fbf87d2828ef3bb4bb1.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-91136169f45d4fbf87d2828ef3bb4bb1.vega-embed details,
+  #altair-viz-91136169f45d4fbf87d2828ef3bb4bb1.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-91136169f45d4fbf87d2828ef3bb4bb1"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-91136169f45d4fbf87d2828ef3bb4bb1") {
+      outputDiv = document.getElementById("altair-viz-91136169f45d4fbf87d2828ef3bb4bb1");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.1.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.1.0"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-a07800b8b20a72984cb918f6c43d5755"}, "mark": {"type": "point"}, "encoding": {"x": {"field": "SWE", "type": "quantitative"}, "y": {"field": "Seasonal total streamflow (acre-feet)", "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-a07800b8b20a72984cb918f6c43d5755": [{"SWE": 11.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 160166.3328, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 20.6, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 312791.2416, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 21.0, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 236762.9568, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 19.1, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 288948.816, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 12.2, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 153918.576, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 10.2, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 200737.008, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 13.0, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 143599.0464, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 10.9, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 138869.5104, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 9.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 70821.42336, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 13.4, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 157178.18016, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 11.2, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 125839.44, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 17.9, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 193059.65952, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 15.2, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 178399.09152, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 11.1, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 120273.2928, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 21.9, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 254830.77792, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 16.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 234487.21536, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 12.0, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 165854.29536, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 17.0, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 275356.16928, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 6.5, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 66996.65952, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 8.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 112420.27584, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 16.2, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 226375.46496, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 11.1, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 164703.1104, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 13.1, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 150986.26368, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 21.0, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 242269.488, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 8.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 80087.53824, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 19.1, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 249610.99968, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 13.6, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 112156.77312, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 11.1, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 79424.01216, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 12.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 149954.112, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 20.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 233700.28416, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+</section>
+<section id="perform-a-linear-regression">
+<h2>Perform a linear regression.<a class="headerlink" href="#perform-a-linear-regression" title="Link to this heading">#</a></h2>
+<p>Fit a line to the columns ‘SWE’ ‘Seasonal total streamflow (acre-feet)’</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">linregress</span><span class="p">(</span><span class="n">df_swe_and_streamflow</span><span class="p">[</span><span class="s1">&#39;SWE&#39;</span><span class="p">],</span> <span class="n">df_swe_and_streamflow</span><span class="p">[</span><span class="s1">&#39;Seasonal total streamflow (acre-feet)&#39;</span><span class="p">])</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fit_line_x_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">fit_lin_y_values</span> <span class="o">=</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">fit_line_x_values</span>
+<span class="n">fit_line_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">fit_line_x_values</span><span class="p">,</span>
+    <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">fit_lin_y_values</span><span class="p">,</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df_swe_and_streamflow</span><span class="p">)</span><span class="o">.</span><span class="n">mark_point</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;SWE:Q&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;Seasonal total streamflow (acre-feet):Q&#39;</span><span class="p">)</span>
+<span class="p">)</span> <span class="o">+</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">fit_line_df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_line</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;x:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;y:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-793d1e6baa394155b1375e06a79d8389.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-793d1e6baa394155b1375e06a79d8389.vega-embed details,
+  #altair-viz-793d1e6baa394155b1375e06a79d8389.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-793d1e6baa394155b1375e06a79d8389"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-793d1e6baa394155b1375e06a79d8389") {
+      outputDiv = document.getElementById("altair-viz-793d1e6baa394155b1375e06a79d8389");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.1.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.1.0"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "layer": [{"data": {"name": "data-a07800b8b20a72984cb918f6c43d5755"}, "mark": {"type": "point"}, "encoding": {"x": {"field": "SWE", "type": "quantitative"}, "y": {"field": "Seasonal total streamflow (acre-feet)", "type": "quantitative"}}}, {"data": {"name": "data-3dad6119e1612cb0e9852e17a841ded3"}, "mark": {"type": "line", "color": "black"}, "encoding": {"x": {"field": "x", "title": "", "type": "quantitative"}, "y": {"field": "y", "title": "", "type": "quantitative"}}}], "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-a07800b8b20a72984cb918f6c43d5755": [{"SWE": 11.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 160166.3328, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 20.6, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 312791.2416, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 21.0, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 236762.9568, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 19.1, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 288948.816, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 12.2, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 153918.576, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 10.2, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 200737.008, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 13.0, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 143599.0464, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 10.9, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 138869.5104, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 9.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 70821.42336, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 13.4, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 157178.18016, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 11.2, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 125839.44, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 17.9, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 193059.65952, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 15.2, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 178399.09152, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 11.1, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 120273.2928, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 21.9, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 254830.77792, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 16.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 234487.21536, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 12.0, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 165854.29536, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 17.0, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 275356.16928, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 6.5, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 66996.65952, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 8.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 112420.27584, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 16.2, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 226375.46496, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 11.1, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 164703.1104, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 13.1, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 150986.26368, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 21.0, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 242269.488, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 8.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 80087.53824, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 19.1, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 249610.99968, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 13.6, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 112156.77312, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 11.1, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 79424.01216, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 12.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 149954.112, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 20.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 233700.28416, "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}], "data-3dad6119e1612cb0e9852e17a841ded3": [{"x": 0.0, "y": -18209.91868862891}, {"x": 0.2222222222222222, "y": -15184.541961890143}, {"x": 0.4444444444444444, "y": -12159.165235151377}, {"x": 0.6666666666666666, "y": -9133.788508412608}, {"x": 0.8888888888888888, "y": -6108.411781673842}, {"x": 1.1111111111111112, "y": -3083.0350549350715}, {"x": 1.3333333333333333, "y": -57.658328196306684}, {"x": 1.5555555555555554, "y": 2967.71839854246}, {"x": 1.7777777777777777, "y": 5993.0951252812265}, {"x": 2.0, "y": 9018.471852019997}, {"x": 2.2222222222222223, "y": 12043.848578758767}, {"x": 2.444444444444444, "y": 15069.22530549753}, {"x": 2.6666666666666665, "y": 18094.602032236297}, {"x": 2.888888888888889, "y": 21119.978758975063}, {"x": 3.1111111111111107, "y": 24145.35548571383}, {"x": 3.333333333333333, "y": 27170.732212452596}, {"x": 3.5555555555555554, "y": 30196.108939191363}, {"x": 3.7777777777777777, "y": 33221.48566593014}, {"x": 4.0, "y": 36246.8623926689}, {"x": 4.222222222222222, "y": 39272.23911940767}, {"x": 4.444444444444445, "y": 42297.615846146444}, {"x": 4.666666666666666, "y": 45322.992572885196}, {"x": 4.888888888888888, "y": 48348.36929962397}, {"x": 5.111111111111111, "y": 51373.74602636273}, {"x": 5.333333333333333, "y": 54399.1227531015}, {"x": 5.555555555555555, "y": 57424.49947984028}, {"x": 5.777777777777778, "y": 60449.876206579036}, {"x": 6.0, "y": 63475.25293331781}, {"x": 6.222222222222221, "y": 66500.62966005657}, {"x": 6.444444444444444, "y": 69526.00638679533}, {"x": 6.666666666666666, "y": 72551.3831135341}, {"x": 6.888888888888888, "y": 75576.75984027288}, {"x": 7.111111111111111, "y": 78602.13656701164}, {"x": 7.333333333333333, "y": 81627.51329375041}, {"x": 7.555555555555555, "y": 84652.89002048918}, {"x": 7.777777777777778, "y": 87678.26674722794}, {"x": 8.0, "y": 90703.64347396672}, {"x": 8.222222222222221, "y": 93729.02020070548}, {"x": 8.444444444444445, "y": 96754.39692744425}, {"x": 8.666666666666666, "y": 99779.77365418301}, {"x": 8.88888888888889, "y": 102805.1503809218}, {"x": 9.11111111111111, "y": 105830.52710766054}, {"x": 9.333333333333332, "y": 108855.9038343993}, {"x": 9.555555555555555, "y": 111881.28056113809}, {"x": 9.777777777777777, "y": 114906.65728787685}, {"x": 10.0, "y": 117932.03401461561}, {"x": 10.222222222222221, "y": 120957.41074135437}, {"x": 10.444444444444445, "y": 123982.78746809316}, {"x": 10.666666666666666, "y": 127008.16419483192}, {"x": 10.888888888888888, "y": 130033.54092157067}, {"x": 11.11111111111111, "y": 133058.91764830946}, {"x": 11.333333333333332, "y": 136084.29437504822}, {"x": 11.555555555555555, "y": 139109.67110178698}, {"x": 11.777777777777777, "y": 142135.04782852574}, {"x": 12.0, "y": 145160.42455526453}, {"x": 12.222222222222221, "y": 148185.8012820033}, {"x": 12.444444444444443, "y": 151211.17800874205}, {"x": 12.666666666666666, "y": 154236.55473548084}, {"x": 12.888888888888888, "y": 157261.93146221957}, {"x": 13.11111111111111, "y": 160287.30818895836}, {"x": 13.333333333333332, "y": 163312.68491569711}, {"x": 13.555555555555555, "y": 166338.0616424359}, {"x": 13.777777777777777, "y": 169363.43836917466}, {"x": 14.0, "y": 172388.81509591345}, {"x": 14.222222222222221, "y": 175414.19182265218}, {"x": 14.444444444444443, "y": 178439.56854939094}, {"x": 14.666666666666666, "y": 181464.94527612973}, {"x": 14.888888888888888, "y": 184490.3220028685}, {"x": 15.11111111111111, "y": 187515.69872960728}, {"x": 15.333333333333332, "y": 190541.07545634604}, {"x": 15.555555555555555, "y": 193566.4521830848}, {"x": 15.777777777777777, "y": 196591.82890982355}, {"x": 16.0, "y": 199617.20563656234}, {"x": 16.22222222222222, "y": 202642.5823633011}, {"x": 16.444444444444443, "y": 205667.95909003986}, {"x": 16.666666666666664, "y": 208693.33581677862}, {"x": 16.88888888888889, "y": 211718.7125435174}, {"x": 17.11111111111111, "y": 214744.08927025617}, {"x": 17.333333333333332, "y": 217769.46599699493}, {"x": 17.555555555555554, "y": 220794.8427237337}, {"x": 17.77777777777778, "y": 223820.2194504725}, {"x": 18.0, "y": 226845.59617721124}, {"x": 18.22222222222222, "y": 229870.97290395}, {"x": 18.444444444444443, "y": 232896.34963068875}, {"x": 18.666666666666664, "y": 235921.7263574275}, {"x": 18.88888888888889, "y": 238947.10308416633}, {"x": 19.11111111111111, "y": 241972.4798109051}, {"x": 19.333333333333332, "y": 244997.85653764385}, {"x": 19.555555555555554, "y": 248023.2332643826}, {"x": 19.777777777777775, "y": 251048.60999112137}, {"x": 20.0, "y": 254073.98671786013}, {"x": 20.22222222222222, "y": 257099.3634445989}, {"x": 20.444444444444443, "y": 260124.74017133765}, {"x": 20.666666666666664, "y": 263150.1168980764}, {"x": 20.88888888888889, "y": 266175.49362481525}, {"x": 21.11111111111111, "y": 269200.870351554}, {"x": 21.333333333333332, "y": 272226.24707829277}, {"x": 21.555555555555554, "y": 275251.62380503153}, {"x": 21.777777777777775, "y": 278277.0005317703}, {"x": 22.0, "y": 281302.37725850905}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+</section>
+<section id="incorporate-kettle-ponds-data">
+<h2>Incorporate Kettle Ponds data<a class="headerlink" href="#incorporate-kettle-ponds-data" title="Link to this heading">#</a></h2>
+<p>Now pull in SWE data from the Kettle Ponds and see how well the linear regression model works for the four SWE measurements at Kettle Ponds for Spring 2023.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sos_file</span> <span class="o">=</span> <span class="s2">&quot;../data/sos_full_dataset_30min.nc&quot;</span>
+<span class="n">sos_dataset</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">sos_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, we separate out the Kettle Ponds April 1 SWE measurements from the SOS dataset. We convert to inches because the SNOTEL data comes in inches. The Kettle Ponds SWE data is in millimeters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kps_swe_values</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="s1">&#39;20230401 0000&#39;</span><span class="p">)[[</span><span class="s1">&#39;SWE_p1_c&#39;</span><span class="p">,</span> <span class="s1">&#39;SWE_p2_c&#39;</span><span class="p">,</span> <span class="s1">&#39;SWE_p3_c&#39;</span><span class="p">,</span> <span class="s1">&#39;SWE_p4_c&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_array</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+<span class="n">kps_swe_values</span> <span class="o">=</span> <span class="p">(</span><span class="n">kps_swe_values</span> <span class="o">*</span> <span class="n">units</span><span class="p">(</span><span class="s2">&quot;mm&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">units</span><span class="p">(</span><span class="s2">&quot;inches&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">magnitude</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we use the slope and intercept created using Snotel and USGS data above, to estimate streamflow using Kettle Ponds April 1 SWE.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">streamflow_predictions_from_kps</span> <span class="o">=</span> <span class="n">kps_swe_values</span> <span class="o">*</span> <span class="n">slope</span> <span class="o">+</span> <span class="n">intercept</span>
+
+<span class="n">streamflow_predictions_from_kps</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;SWE&#39;</span><span class="p">:</span> <span class="n">kps_swe_values</span><span class="p">,</span>
+    <span class="s1">&#39;Seasonal total streamflow (acre-feet)&#39;</span><span class="p">:</span> <span class="n">streamflow_predictions_from_kps</span><span class="p">,</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, let’s plot:</p>
+<ol class="arabic simple">
+<li><p>the SWE-Streamflow relationship above from Snotel and USGS data, all years</p></li>
+<li><p>the SWE-Streamflow relationship above from Snotel and USGS data, just from 2023</p></li>
+<li><p>the regression line fit above, and</p></li>
+<li><p>the SWE-Streamflow relationship from four snow pillow measurements of April 1 SWE at Kettle Ponds.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1) the SWE-Streamflow relationship above from Snotel and USGS data, all years</span>
+<span class="n">swe_streamflow_snotel</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span>
+        <span class="n">df_swe_and_streamflow</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Measured SWE (SNOTEL) and Streamflow&#39;</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">mark_point</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;SWE:Q&#39;</span><span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;Seasonal total streamflow (acre-feet):Q&#39;</span><span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;label:N&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="c1"># 2) the SWE-Streamflow relationship above from Snotel and USGS data, just from 2023</span>
+<span class="n">swe_streamflow_snotel_2023</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span>
+        <span class="n">df_swe_and_streamflow</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2023</span><span class="p">:</span><span class="mi">2023</span><span class="p">]</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Measured SWE (SNOTEL) and Streamflow, 2023&#39;</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">mark_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="s1">&#39;square&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;SWE:Q&#39;</span><span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;Seasonal total streamflow (acre-feet):Q&#39;</span><span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;label:N&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;purple&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="c1"># 3) the regression line fit above, and</span>
+<span class="n">regression_line</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span>
+        <span class="n">fit_line_df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Regression line&#39;</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">mark_line</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;x:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;y:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;label:N&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="c1"># 4) the SWE-Streamflow relationship from four snow pillow measurements of April 1 SWE at Kettle Ponds.</span>
+<span class="n">swe_streamflow_kettleponds</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span>
+        <span class="n">streamflow_predictions_from_kps</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Measured SWE at Kettle Ponds, Predicted Streamflow&#39;</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">mark_point</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;SWE:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;April 1 SWE &#39;</span><span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;Seasonal total streamflow (acre-feet):Q&#39;</span><span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;label:N&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">swe_streamflow_snotel</span> 
+    <span class="o">+</span> <span class="n">swe_streamflow_snotel_2023</span>
+    <span class="o">+</span> <span class="n">regression_line</span>
+    <span class="o">+</span> <span class="n">swe_streamflow_kettleponds</span>
+<span class="p">)</span><span class="o">.</span><span class="n">resolve_scale</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;independent&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">configure_legend</span><span class="p">(</span><span class="n">labelLimit</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-bf59784725aa45b792db5beb4c3b7702.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-bf59784725aa45b792db5beb4c3b7702.vega-embed details,
+  #altair-viz-bf59784725aa45b792db5beb4c3b7702.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-bf59784725aa45b792db5beb4c3b7702"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-bf59784725aa45b792db5beb4c3b7702") {
+      outputDiv = document.getElementById("altair-viz-bf59784725aa45b792db5beb4c3b7702");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.1.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.1.0"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "legend": {"labelLimit": 300}}, "layer": [{"data": {"name": "data-dedde2767def00a9f54d7f3b543d817b"}, "mark": {"type": "point"}, "encoding": {"color": {"field": "label", "type": "nominal"}, "x": {"field": "SWE", "type": "quantitative"}, "y": {"field": "Seasonal total streamflow (acre-feet)", "type": "quantitative"}}}, {"data": {"name": "data-3eb59daa41dab09872bd7a3608e53a0b"}, "mark": {"type": "point", "shape": "square", "size": 200}, "encoding": {"color": {"field": "label", "scale": {"range": ["purple"]}, "title": "", "type": "nominal"}, "x": {"field": "SWE", "type": "quantitative"}, "y": {"field": "Seasonal total streamflow (acre-feet)", "type": "quantitative"}}}, {"data": {"name": "data-5f59138c89a134230838cfade8ad1d50"}, "mark": {"type": "line", "color": "black"}, "encoding": {"color": {"field": "label", "scale": {"range": ["black"]}, "title": "", "type": "nominal"}, "x": {"field": "x", "title": "", "type": "quantitative"}, "y": {"field": "y", "title": "", "type": "quantitative"}}}, {"data": {"name": "data-d2789566c60af7f78ced8705b50764b4"}, "mark": {"type": "point"}, "encoding": {"color": {"field": "label", "scale": {"range": ["red"]}, "title": "", "type": "nominal"}, "x": {"field": "SWE", "title": "April 1 SWE ", "type": "quantitative"}, "y": {"field": "Seasonal total streamflow (acre-feet)", "type": "quantitative"}}}], "resolve": {"scale": {"color": "independent"}}, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-dedde2767def00a9f54d7f3b543d817b": [{"SWE": 11.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 160166.3328, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 20.6, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 312791.2416, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 21.0, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 236762.9568, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 19.1, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 288948.816, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 12.2, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 153918.576, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 10.2, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 200737.008, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 13.0, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 143599.0464, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 10.9, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 138869.5104, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 9.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 70821.42336, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 13.4, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 157178.18016, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 11.2, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 125839.44, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 17.9, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 193059.65952, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 15.2, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 178399.09152, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 11.1, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 120273.2928, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 21.9, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 254830.77792, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 16.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 234487.21536, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 12.0, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 165854.29536, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 17.0, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 275356.16928, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 6.5, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 66996.65952, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 8.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 112420.27584, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 16.2, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 226375.46496, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 11.1, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 164703.1104, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 13.1, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 150986.26368, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 21.0, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 242269.488, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 8.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 80087.53824, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 19.1, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 249610.99968, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 13.6, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 112156.77312, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 11.1, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 79424.01216, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 12.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 149954.112, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}, {"SWE": 20.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 233700.28416, "label": "Measured SWE (SNOTEL) and Streamflow", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}], "data-3eb59daa41dab09872bd7a3608e53a0b": [{"SWE": 20.8, "SWE_units": "in", "datasource": "NRCS", "Seasonal total streamflow (acre-feet)": 233700.28416, "label": "Measured SWE (SNOTEL) and Streamflow, 2023", "type": "Feature", "geometry": {"type": "Point", "coordinates": [-106.95327, 38.89435, 10190.0]}}], "data-5f59138c89a134230838cfade8ad1d50": [{"x": 0.0, "y": -18209.91868862891, "label": "Regression line"}, {"x": 0.2222222222222222, "y": -15184.541961890143, "label": "Regression line"}, {"x": 0.4444444444444444, "y": -12159.165235151377, "label": "Regression line"}, {"x": 0.6666666666666666, "y": -9133.788508412608, "label": "Regression line"}, {"x": 0.8888888888888888, "y": -6108.411781673842, "label": "Regression line"}, {"x": 1.1111111111111112, "y": -3083.0350549350715, "label": "Regression line"}, {"x": 1.3333333333333333, "y": -57.658328196306684, "label": "Regression line"}, {"x": 1.5555555555555554, "y": 2967.71839854246, "label": "Regression line"}, {"x": 1.7777777777777777, "y": 5993.0951252812265, "label": "Regression line"}, {"x": 2.0, "y": 9018.471852019997, "label": "Regression line"}, {"x": 2.2222222222222223, "y": 12043.848578758767, "label": "Regression line"}, {"x": 2.444444444444444, "y": 15069.22530549753, "label": "Regression line"}, {"x": 2.6666666666666665, "y": 18094.602032236297, "label": "Regression line"}, {"x": 2.888888888888889, "y": 21119.978758975063, "label": "Regression line"}, {"x": 3.1111111111111107, "y": 24145.35548571383, "label": "Regression line"}, {"x": 3.333333333333333, "y": 27170.732212452596, "label": "Regression line"}, {"x": 3.5555555555555554, "y": 30196.108939191363, "label": "Regression line"}, {"x": 3.7777777777777777, "y": 33221.48566593014, "label": "Regression line"}, {"x": 4.0, "y": 36246.8623926689, "label": "Regression line"}, {"x": 4.222222222222222, "y": 39272.23911940767, "label": "Regression line"}, {"x": 4.444444444444445, "y": 42297.615846146444, "label": "Regression line"}, {"x": 4.666666666666666, "y": 45322.992572885196, "label": "Regression line"}, {"x": 4.888888888888888, "y": 48348.36929962397, "label": "Regression line"}, {"x": 5.111111111111111, "y": 51373.74602636273, "label": "Regression line"}, {"x": 5.333333333333333, "y": 54399.1227531015, "label": "Regression line"}, {"x": 5.555555555555555, "y": 57424.49947984028, "label": "Regression line"}, {"x": 5.777777777777778, "y": 60449.876206579036, "label": "Regression line"}, {"x": 6.0, "y": 63475.25293331781, "label": "Regression line"}, {"x": 6.222222222222221, "y": 66500.62966005657, "label": "Regression line"}, {"x": 6.444444444444444, "y": 69526.00638679533, "label": "Regression line"}, {"x": 6.666666666666666, "y": 72551.3831135341, "label": "Regression line"}, {"x": 6.888888888888888, "y": 75576.75984027288, "label": "Regression line"}, {"x": 7.111111111111111, "y": 78602.13656701164, "label": "Regression line"}, {"x": 7.333333333333333, "y": 81627.51329375041, "label": "Regression line"}, {"x": 7.555555555555555, "y": 84652.89002048918, "label": "Regression line"}, {"x": 7.777777777777778, "y": 87678.26674722794, "label": "Regression line"}, {"x": 8.0, "y": 90703.64347396672, "label": "Regression line"}, {"x": 8.222222222222221, "y": 93729.02020070548, "label": "Regression line"}, {"x": 8.444444444444445, "y": 96754.39692744425, "label": "Regression line"}, {"x": 8.666666666666666, "y": 99779.77365418301, "label": "Regression line"}, {"x": 8.88888888888889, "y": 102805.1503809218, "label": "Regression line"}, {"x": 9.11111111111111, "y": 105830.52710766054, "label": "Regression line"}, {"x": 9.333333333333332, "y": 108855.9038343993, "label": "Regression line"}, {"x": 9.555555555555555, "y": 111881.28056113809, "label": "Regression line"}, {"x": 9.777777777777777, "y": 114906.65728787685, "label": "Regression line"}, {"x": 10.0, "y": 117932.03401461561, "label": "Regression line"}, {"x": 10.222222222222221, "y": 120957.41074135437, "label": "Regression line"}, {"x": 10.444444444444445, "y": 123982.78746809316, "label": "Regression line"}, {"x": 10.666666666666666, "y": 127008.16419483192, "label": "Regression line"}, {"x": 10.888888888888888, "y": 130033.54092157067, "label": "Regression line"}, {"x": 11.11111111111111, "y": 133058.91764830946, "label": "Regression line"}, {"x": 11.333333333333332, "y": 136084.29437504822, "label": "Regression line"}, {"x": 11.555555555555555, "y": 139109.67110178698, "label": "Regression line"}, {"x": 11.777777777777777, "y": 142135.04782852574, "label": "Regression line"}, {"x": 12.0, "y": 145160.42455526453, "label": "Regression line"}, {"x": 12.222222222222221, "y": 148185.8012820033, "label": "Regression line"}, {"x": 12.444444444444443, "y": 151211.17800874205, "label": "Regression line"}, {"x": 12.666666666666666, "y": 154236.55473548084, "label": "Regression line"}, {"x": 12.888888888888888, "y": 157261.93146221957, "label": "Regression line"}, {"x": 13.11111111111111, "y": 160287.30818895836, "label": "Regression line"}, {"x": 13.333333333333332, "y": 163312.68491569711, "label": "Regression line"}, {"x": 13.555555555555555, "y": 166338.0616424359, "label": "Regression line"}, {"x": 13.777777777777777, "y": 169363.43836917466, "label": "Regression line"}, {"x": 14.0, "y": 172388.81509591345, "label": "Regression line"}, {"x": 14.222222222222221, "y": 175414.19182265218, "label": "Regression line"}, {"x": 14.444444444444443, "y": 178439.56854939094, "label": "Regression line"}, {"x": 14.666666666666666, "y": 181464.94527612973, "label": "Regression line"}, {"x": 14.888888888888888, "y": 184490.3220028685, "label": "Regression line"}, {"x": 15.11111111111111, "y": 187515.69872960728, "label": "Regression line"}, {"x": 15.333333333333332, "y": 190541.07545634604, "label": "Regression line"}, {"x": 15.555555555555555, "y": 193566.4521830848, "label": "Regression line"}, {"x": 15.777777777777777, "y": 196591.82890982355, "label": "Regression line"}, {"x": 16.0, "y": 199617.20563656234, "label": "Regression line"}, {"x": 16.22222222222222, "y": 202642.5823633011, "label": "Regression line"}, {"x": 16.444444444444443, "y": 205667.95909003986, "label": "Regression line"}, {"x": 16.666666666666664, "y": 208693.33581677862, "label": "Regression line"}, {"x": 16.88888888888889, "y": 211718.7125435174, "label": "Regression line"}, {"x": 17.11111111111111, "y": 214744.08927025617, "label": "Regression line"}, {"x": 17.333333333333332, "y": 217769.46599699493, "label": "Regression line"}, {"x": 17.555555555555554, "y": 220794.8427237337, "label": "Regression line"}, {"x": 17.77777777777778, "y": 223820.2194504725, "label": "Regression line"}, {"x": 18.0, "y": 226845.59617721124, "label": "Regression line"}, {"x": 18.22222222222222, "y": 229870.97290395, "label": "Regression line"}, {"x": 18.444444444444443, "y": 232896.34963068875, "label": "Regression line"}, {"x": 18.666666666666664, "y": 235921.7263574275, "label": "Regression line"}, {"x": 18.88888888888889, "y": 238947.10308416633, "label": "Regression line"}, {"x": 19.11111111111111, "y": 241972.4798109051, "label": "Regression line"}, {"x": 19.333333333333332, "y": 244997.85653764385, "label": "Regression line"}, {"x": 19.555555555555554, "y": 248023.2332643826, "label": "Regression line"}, {"x": 19.777777777777775, "y": 251048.60999112137, "label": "Regression line"}, {"x": 20.0, "y": 254073.98671786013, "label": "Regression line"}, {"x": 20.22222222222222, "y": 257099.3634445989, "label": "Regression line"}, {"x": 20.444444444444443, "y": 260124.74017133765, "label": "Regression line"}, {"x": 20.666666666666664, "y": 263150.1168980764, "label": "Regression line"}, {"x": 20.88888888888889, "y": 266175.49362481525, "label": "Regression line"}, {"x": 21.11111111111111, "y": 269200.870351554, "label": "Regression line"}, {"x": 21.333333333333332, "y": 272226.24707829277, "label": "Regression line"}, {"x": 21.555555555555554, "y": 275251.62380503153, "label": "Regression line"}, {"x": 21.777777777777775, "y": 278277.0005317703, "label": "Regression line"}, {"x": 22.0, "y": 281302.37725850905, "label": "Regression line"}], "data-d2789566c60af7f78ced8705b50764b4": [{"SWE": 20.097333908081055, "Seasonal total streamflow (acre-feet)": 255399.10954889943, "label": "Measured SWE at Kettle Ponds, Predicted Streamflow"}, {"SWE": 16.632539749145508, "Seasonal total streamflow (acre-feet)": 208228.72529767134, "label": "Measured SWE at Kettle Ponds, Predicted Streamflow"}, {"SWE": 16.935474395751953, "Seasonal total streamflow (acre-feet)": 212352.9367307182, "label": "Measured SWE at Kettle Ponds, Predicted Streamflow"}, {"SWE": 19.34203338623047, "Seasonal total streamflow (acre-feet)": 245116.30075664763, "label": "Measured SWE at Kettle Ponds, Predicted Streamflow"}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>We see that total spring streamflow predicted for 2023 using Snotel data is <em>overestimated</em> by the linear regression (the line is above the purple square).</p>
+<p>Total spring streamflow predicted with Kettle Ponds SWE ranges from about 200,000 – 260,000 acre-feet, a range that includes the actual streamflow value (the range of streamflow values, y-axis, associated with Kettle Ponds SWE (red dots), includes the actual streamflow value, the y-value associated with the purple box).</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./modules/module8"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="module8.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">8) Snow-dominated watershed hydrology</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab8-2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 8-2: Modeling a snowpack with a gridded, numerical model - openAMUNDSEN</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-usgs-streamflow-data">Download USGS Streamflow data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-snotel-swe-data">Download SNOTEL SWE data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combine-swe-and-streamflow-data">Combine SWE and Streamflow data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-a-linear-regression">Perform a linear regression.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incorporate-kettle-ponds-data">Incorporate Kettle Ponds data</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eli Schwat, Steven Pestana, Jessica D. Lundquist, and other contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

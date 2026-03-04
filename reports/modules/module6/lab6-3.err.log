@@ -1,0 +1,140 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/nbclient/client.py", line 1323, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+ds = xr.open_dataset('../data/dec22_l1_clip.nc')
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mKeyError[39m                                  Traceback (most recent call last)
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/xarray/backends/file_manager.py:219[39m, in [36mCachingFileManager._acquire_with_cache_info[39m[34m(self, needs_lock)[39m
+[32m    218[39m [38;5;28;01mtry[39;00m:
+[32m--> [39m[32m219[39m     file = [38;5;28;43mself[39;49m[43m.[49m[43m_cache[49m[43m[[49m[38;5;28;43mself[39;49m[43m.[49m[43m_key[49m[43m][49m
+[32m    220[39m [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m:
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/xarray/backends/lru_cache.py:56[39m, in [36mLRUCache.__getitem__[39m[34m(self, key)[39m
+[32m     55[39m [38;5;28;01mwith[39;00m [38;5;28mself[39m._lock:
+[32m---> [39m[32m56[39m     value = [38;5;28;43mself[39;49m[43m.[49m[43m_cache[49m[43m[[49m[43mkey[49m[43m][49m
+[32m     57[39m     [38;5;28mself[39m._cache.move_to_end(key)
+
+[31mKeyError[39m: [<class 'netCDF4._netCDF4.Dataset'>, ('/home/runner/work/snow-hydrology/snow-hydrology/book/modules/data/dec22_l1_clip.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), 'cf3c96c1-91b7-4749-a151-aed619437b74']
+
+During handling of the above exception, another exception occurred:
+
+[31mFileNotFoundError[39m                         Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 1[39m
+[32m----> [39m[32m1[39m ds = [43mxr[49m[43m.[49m[43mopen_dataset[49m[43m([49m[33;43m'[39;49m[33;43m../data/dec22_l1_clip.nc[39;49m[33;43m'[39;49m[43m)[49m
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/xarray/backends/api.py:607[39m, in [36mopen_dataset[39m[34m(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, create_default_indexes, inline_array, chunked_array_type, from_array_kwargs, backend_kwargs, **kwargs)[39m
+[32m    595[39m decoders = _resolve_decoders_kwargs(
+[32m    596[39m     decode_cf,
+[32m    597[39m     open_backend_dataset_parameters=backend.open_dataset_parameters,
+[32m   (...)[39m[32m    603[39m     decode_coords=decode_coords,
+[32m    604[39m )
+[32m    606[39m overwrite_encoded_chunks = kwargs.pop([33m"[39m[33moverwrite_encoded_chunks[39m[33m"[39m, [38;5;28;01mNone[39;00m)
+[32m--> [39m[32m607[39m backend_ds = [43mbackend[49m[43m.[49m[43mopen_dataset[49m[43m([49m
+[32m    608[39m [43m    [49m[43mfilename_or_obj[49m[43m,[49m
+[32m    609[39m [43m    [49m[43mdrop_variables[49m[43m=[49m[43mdrop_variables[49m[43m,[49m
+[32m    610[39m [43m    [49m[43m*[49m[43m*[49m[43mdecoders[49m[43m,[49m
+[32m    611[39m [43m    [49m[43m*[49m[43m*[49m[43mkwargs[49m[43m,[49m
+[32m    612[39m [43m[49m[43m)[49m
+[32m    613[39m ds = _dataset_from_backend_dataset(
+[32m    614[39m     backend_ds,
+[32m    615[39m     filename_or_obj,
+[32m   (...)[39m[32m    626[39m     **kwargs,
+[32m    627[39m )
+[32m    628[39m [38;5;28;01mreturn[39;00m ds
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/xarray/backends/netCDF4_.py:771[39m, in [36mNetCDF4BackendEntrypoint.open_dataset[39m[34m(self, filename_or_obj, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, use_cftime, decode_timedelta, group, mode, format, clobber, diskless, persist, auto_complex, lock, autoclose)[39m
+[32m    749[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mopen_dataset[39m(
+[32m    750[39m     [38;5;28mself[39m,
+[32m    751[39m     filename_or_obj: T_PathFileOrDataStore,
+[32m   (...)[39m[32m    768[39m     autoclose=[38;5;28;01mFalse[39;00m,
+[32m    769[39m ) -> Dataset:
+[32m    770[39m     filename_or_obj = _normalize_path(filename_or_obj)
+[32m--> [39m[32m771[39m     store = [43mNetCDF4DataStore[49m[43m.[49m[43mopen[49m[43m([49m
+[32m    772[39m [43m        [49m[43mfilename_or_obj[49m[43m,[49m
+[32m    773[39m [43m        [49m[43mmode[49m[43m=[49m[43mmode[49m[43m,[49m
+[32m    774[39m [43m        [49m[38;5;28;43mformat[39;49m[43m=[49m[38;5;28;43mformat[39;49m[43m,[49m
+[32m    775[39m [43m        [49m[43mgroup[49m[43m=[49m[43mgroup[49m[43m,[49m
+[32m    776[39m [43m        [49m[43mclobber[49m[43m=[49m[43mclobber[49m[43m,[49m
+[32m    777[39m [43m        [49m[43mdiskless[49m[43m=[49m[43mdiskless[49m[43m,[49m
+[32m    778[39m [43m        [49m[43mpersist[49m[43m=[49m[43mpersist[49m[43m,[49m
+[32m    779[39m [43m        [49m[43mauto_complex[49m[43m=[49m[43mauto_complex[49m[43m,[49m
+[32m    780[39m [43m        [49m[43mlock[49m[43m=[49m[43mlock[49m[43m,[49m
+[32m    781[39m [43m        [49m[43mautoclose[49m[43m=[49m[43mautoclose[49m[43m,[49m
+[32m    782[39m [43m    [49m[43m)[49m
+[32m    784[39m     store_entrypoint = StoreBackendEntrypoint()
+[32m    785[39m     [38;5;28;01mwith[39;00m close_on_error(store):
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/xarray/backends/netCDF4_.py:529[39m, in [36mNetCDF4DataStore.open[39m[34m(cls, filename, mode, format, group, clobber, diskless, persist, auto_complex, lock, lock_maker, autoclose)[39m
+[32m    525[39m [38;5;28;01melse[39;00m:
+[32m    526[39m     manager = CachingFileManager(
+[32m    527[39m         netCDF4.Dataset, filename, mode=mode, kwargs=kwargs, lock=lock
+[32m    528[39m     )
+[32m--> [39m[32m529[39m [38;5;28;01mreturn[39;00m [38;5;28;43mcls[39;49m[43m([49m[43mmanager[49m[43m,[49m[43m [49m[43mgroup[49m[43m=[49m[43mgroup[49m[43m,[49m[43m [49m[43mmode[49m[43m=[49m[43mmode[49m[43m,[49m[43m [49m[43mlock[49m[43m=[49m[43mlock[49m[43m,[49m[43m [49m[43mautoclose[49m[43m=[49m[43mautoclose[49m[43m)[49m
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/xarray/backends/netCDF4_.py:429[39m, in [36mNetCDF4DataStore.__init__[39m[34m(self, manager, group, mode, lock, autoclose)[39m
+[32m    427[39m [38;5;28mself[39m._group = group
+[32m    428[39m [38;5;28mself[39m._mode = mode
+[32m--> [39m[32m429[39m [38;5;28mself[39m.format = [38;5;28;43mself[39;49m[43m.[49m[43mds[49m.data_model
+[32m    430[39m [38;5;28mself[39m._filename = [38;5;28mself[39m.ds.filepath()
+[32m    431[39m [38;5;28mself[39m.is_remote = is_remote_uri([38;5;28mself[39m._filename)
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/xarray/backends/netCDF4_.py:538[39m, in [36mNetCDF4DataStore.ds[39m[34m(self)[39m
+[32m    536[39m [38;5;129m@property[39m
+[32m    537[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mds[39m([38;5;28mself[39m):
+[32m--> [39m[32m538[39m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[43m.[49m[43m_acquire[49m[43m([49m[43m)[49m
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/xarray/backends/netCDF4_.py:532[39m, in [36mNetCDF4DataStore._acquire[39m[34m(self, needs_lock)[39m
+[32m    531[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_acquire[39m([38;5;28mself[39m, needs_lock=[38;5;28;01mTrue[39;00m):
+[32m--> [39m[32m532[39m [43m    [49m[38;5;28;43;01mwith[39;49;00m[43m [49m[38;5;28;43mself[39;49m[43m.[49m[43m_manager[49m[43m.[49m[43macquire_context[49m[43m([49m[43mneeds_lock[49m[43m)[49m[43m [49m[38;5;28;43;01mas[39;49;00m[43m [49m[43mroot[49m[43m:[49m
+[32m    533[39m [43m        [49m[43mds[49m[43m [49m[43m=[49m[43m [49m[43m_nc4_require_group[49m[43m([49m[43mroot[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[43m.[49m[43m_group[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[43m.[49m[43m_mode[49m[43m)[49m
+[32m    534[39m     [38;5;28;01mreturn[39;00m ds
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/contextlib.py:137[39m, in [36m_GeneratorContextManager.__enter__[39m[34m(self)[39m
+[32m    135[39m [38;5;28;01mdel[39;00m [38;5;28mself[39m.args, [38;5;28mself[39m.kwds, [38;5;28mself[39m.func
+[32m    136[39m [38;5;28;01mtry[39;00m:
+[32m--> [39m[32m137[39m     [38;5;28;01mreturn[39;00m [38;5;28mnext[39m([38;5;28mself[39m.gen)
+[32m    138[39m [38;5;28;01mexcept[39;00m [38;5;167;01mStopIteration[39;00m:
+[32m    139[39m     [38;5;28;01mraise[39;00m [38;5;167;01mRuntimeError[39;00m([33m"[39m[33mgenerator didn[39m[33m'[39m[33mt yield[39m[33m"[39m) [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;28;01mNone[39;00m
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/xarray/backends/file_manager.py:207[39m, in [36mCachingFileManager.acquire_context[39m[34m(self, needs_lock)[39m
+[32m    204[39m [38;5;129m@contextmanager[39m
+[32m    205[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34macquire_context[39m([38;5;28mself[39m, needs_lock: [38;5;28mbool[39m = [38;5;28;01mTrue[39;00m) -> Iterator[T_File]:
+[32m    206[39m [38;5;250m    [39m[33;03m"""Context manager for acquiring a file."""[39;00m
+[32m--> [39m[32m207[39m     file, cached = [38;5;28;43mself[39;49m[43m.[49m[43m_acquire_with_cache_info[49m[43m([49m[43mneeds_lock[49m[43m)[49m
+[32m    208[39m     [38;5;28;01mtry[39;00m:
+[32m    209[39m         [38;5;28;01myield[39;00m file
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/xarray/backends/file_manager.py:225[39m, in [36mCachingFileManager._acquire_with_cache_info[39m[34m(self, needs_lock)[39m
+[32m    223[39m     kwargs = kwargs.copy()
+[32m    224[39m     kwargs[[33m"[39m[33mmode[39m[33m"[39m] = [38;5;28mself[39m._mode
+[32m--> [39m[32m225[39m file = [38;5;28;43mself[39;49m[43m.[49m[43m_opener[49m[43m([49m[43m*[49m[38;5;28;43mself[39;49m[43m.[49m[43m_args[49m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mkwargs[49m[43m)[49m
+[32m    226[39m [38;5;28;01mif[39;00m [38;5;28mself[39m._mode == [33m"[39m[33mw[39m[33m"[39m:
+[32m    227[39m     [38;5;66;03m# ensure file doesn't get overridden when opened again[39;00m
+[32m    228[39m     [38;5;28mself[39m._mode = [33m"[39m[33ma[39m[33m"[39m
+
+[36mFile [39m[32msrc/netCDF4/_netCDF4.pyx:2521[39m, in [36mnetCDF4._netCDF4.Dataset.__init__[39m[34m()[39m
+
+[36mFile [39m[32msrc/netCDF4/_netCDF4.pyx:2158[39m, in [36mnetCDF4._netCDF4._ensure_nc_success[39m[34m()[39m
+
+[31mFileNotFoundError[39m: [Errno 2] No such file or directory: '/home/runner/work/snow-hydrology/snow-hydrology/book/modules/data/dec22_l1_clip.nc'
+

@@ -1,0 +1,1065 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab 5-3: Mixing length theory at Kettle Ponds</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/module5/lab5-3';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6) Blowing snow transport and sublimation" href="../module6/module6.html" />
+    <link rel="prev" title="Lab 5-2: Water vapor fluxes at Kettle Ponds" href="lab5-2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Snow Hydrology
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/a-syllabus.html">Syllabus: CEWA 568</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/b-project.html">Course Project: CEWA 568</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../module1/module1.html">1) Properties of Snow</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../module2/module2.html">2) Measurement Strategies, Basics of the Snowpack Mass and Energy Balances, and Snowpack Dynamics</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module3/module3.html">3) Snowpack Energy Balance – Radiation + Albedo, Dust on Snow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-1.html">Lab 3-1: Surface Energy Balance at Kettle Ponds - Radiation Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-2.html">Lab 3-2: Plotting the Surface Energy Balance at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module4/module4.html">4) Temperatures: snowpack and atmospheric stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-0.html">Intuition about the heat equation - Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-1.html">Lab 4-1: Snowpack temperature profiles</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-2.html">Lab 4-2: Snowpack internal energy - completing the snowpack energy balance</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-3.html">Lab 4-3: Snowpack temperature and density profiles - snowpit data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-4.html">Lab 4-4: Atmospheric temperatures and stability</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="module5.html">5) Turbulent transport - momentum, heat, and moisture fluxes above the snow covered earth</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lab5-1.html">Lab 5-1: Turbulent fluxes and measures of stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab5-2.html">Lab 5-2: Water vapor fluxes at Kettle Ponds</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lab 5-3: Mixing length theory at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module6/module6.html">6) Blowing snow transport and sublimation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-1.html">Lab 6-1: Blowing snow fluxes, wind speed, and shear velocity</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-2.html">Lab 6-2: Blowing snow - snow redistribution on the landscape scale</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-3.html">Lab 6-3: Blowing snow - snow redistribution on the site scale</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module7/module7.html">7) Snow melt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-1.html">Lab 7-1: Snowpack ripening and melt initiation - Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-2.html">Lab 7-2: Snowpack ripening and melt initiation - Energy Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-3.html">Lab 7-3 - Predicting snowmelt rates with the Temperature-Index method</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module8/module8.html">8) Snow-dominated watershed hydrology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-1.html">Lab 8-1: Predicting streamflow with the SWE regression method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-2.html">Lab 8-2: Modeling a snowpack with a gridded, numerical model - openAMUNDSEN</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/a-learning-python.html">Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module1/numpy-tutorial.html">NumPy and the ndarray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1/some-python-tips.html">More python tips</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/b-learning-jupyter.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/instructor_resources.html">Resources for Instructors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/edit/main/book/modules/module5/lab5-3.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/issues/new?title=Issue%20on%20page%20%2Fmodules/module5/lab5-3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/modules/module5/lab5-3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 5-3: Mixing length theory at Kettle Ponds</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 5-3: Mixing length theory at Kettle Ponds</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sos-data">SOS Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-velocity-profiles-during-different-stability-conditions">Plotting velocity profiles during different stability conditions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-log-profile-to-the-measured-velocity-profile">Fitting a log profile to the measured velocity profile</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-5-3-mixing-length-theory-at-kettle-ponds">
+<h1>Lab 5-3: Mixing length theory at Kettle Ponds<a class="headerlink" href="#lab-5-3-mixing-length-theory-at-kettle-ponds" title="Link to this heading">#</a></h1>
+<p>Written by Eli Schwat - February 2024.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">altair</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">alt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="sos-data">
+<h2>SOS Data<a class="headerlink" href="#sos-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sos_file</span> <span class="o">=</span> <span class="s2">&quot;../data/sos_full_dataset_30min.nc&quot;</span>
+<span class="n">sos_dataset</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">sos_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plotting-velocity-profiles-during-different-stability-conditions">
+<h2>Plotting velocity profiles during different stability conditions<a class="headerlink" href="#plotting-velocity-profiles-during-different-stability-conditions" title="Link to this heading">#</a></h2>
+<p>The dataset already has temperature gradients (that indicate stability) calculated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;temp_gradient_3m_c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20221101&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f10dfbb8750&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/fce2558da2fb629472b2831cd5ac5c20e3b4d848c0c0a00d1706b03f00034405.png" src="../../_images/fce2558da2fb629472b2831cd5ac5c20e3b4d848c0c0a00d1706b03f00034405.png" />
+</div>
+</div>
+<p>We can see that the atmosphere was stable except for the middle of the day</p>
+<p>Let’s look at velocity profiles at different times of the day. What do we expect them to look like?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wind_df</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[[</span>
+    <span class="s1">&#39;spd_1m_c&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;spd_2m_c&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;spd_3m_c&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;spd_5m_c&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;spd_10m_c&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;spd_15m_c&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;spd_20m_c&#39;</span><span class="p">,</span>  
+<span class="p">]]</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># Extract the number from the string in the &#39;column&#39;</span>
+<span class="n">wind_df</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wind_df</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(\d+)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+<span class="n">wind_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>variable</th>
+      <th>value</th>
+      <th>height</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-11-01 00:00:00</th>
+      <td>spd_1m_c</td>
+      <td>0.847002</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2022-11-01 00:30:00</th>
+      <td>spd_1m_c</td>
+      <td>1.782696</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2022-11-01 01:00:00</th>
+      <td>spd_1m_c</td>
+      <td>1.118848</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2022-11-01 01:30:00</th>
+      <td>spd_1m_c</td>
+      <td>1.762465</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2022-11-01 02:00:00</th>
+      <td>spd_1m_c</td>
+      <td>1.999188</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2023-06-19 15:30:00</th>
+      <td>spd_20m_c</td>
+      <td>3.620165</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>2023-06-19 16:00:00</th>
+      <td>spd_20m_c</td>
+      <td>5.240737</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>2023-06-19 16:30:00</th>
+      <td>spd_20m_c</td>
+      <td>4.676786</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>2023-06-19 17:00:00</th>
+      <td>spd_20m_c</td>
+      <td>4.952941</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>2023-06-19 17:30:00</th>
+      <td>spd_20m_c</td>
+      <td>3.563722</td>
+      <td>20</td>
+    </tr>
+  </tbody>
+</table>
+<p>77518 rows × 3 columns</p>
+</div></div></div>
+</div>
+<p>Let’s look at wind velocity profiles at 12pm (near neutral conditions)</p>
+<p>Here, we plot both in linear space (left plot) and log space (right plot)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span>
+    <span class="n">wind_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20221101 1200&#39;</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;value:Q&#39;</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">150</span><span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;height:Q&#39;</span><span class="p">))</span>
+    <span class="o">|</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;height:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-387f6ab60f6a4800a35f4ff8c9cd6b20.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-387f6ab60f6a4800a35f4ff8c9cd6b20.vega-embed details,
+  #altair-viz-387f6ab60f6a4800a35f4ff8c9cd6b20.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-387f6ab60f6a4800a35f4ff8c9cd6b20"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-387f6ab60f6a4800a35f4ff8c9cd6b20") {
+      outputDiv = document.getElementById("altair-viz-387f6ab60f6a4800a35f4ff8c9cd6b20");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.1.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.1.0"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "hconcat": [{"mark": {"type": "circle", "size": 50}, "encoding": {"x": {"field": "value", "type": "quantitative"}, "y": {"field": "height", "type": "quantitative"}}, "height": 150, "width": 150}, {"mark": {"type": "circle", "size": 50}, "encoding": {"x": {"field": "value", "type": "quantitative"}, "y": {"field": "height", "scale": {"type": "log"}, "type": "quantitative"}}, "height": 150, "width": 150}], "data": {"name": "data-ea4d569b067be5c6e0e574d2c266c0d4"}, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-ea4d569b067be5c6e0e574d2c266c0d4": [{"variable": "spd_1m_c", "value": 0.8520739674568176, "height": 1}, {"variable": "spd_2m_c", "value": 0.9133405685424805, "height": 2}, {"variable": "spd_3m_c", "value": 0.9224069714546204, "height": 3}, {"variable": "spd_5m_c", "value": 0.9718330502510071, "height": 5}, {"variable": "spd_10m_c", "value": 0.9930279850959778, "height": 10}, {"variable": "spd_15m_c", "value": 0.9963805079460144, "height": 15}, {"variable": "spd_20m_c", "value": 1.045749545097351, "height": 20}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>How about at 5pm during stable conditions?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span>
+    <span class="n">wind_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20221101 1700&#39;</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;value:Q&#39;</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">150</span><span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;height:Q&#39;</span><span class="p">))</span>
+    <span class="o">|</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;height:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-12b51ab82a9c4dda8d364dc116e979b1.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-12b51ab82a9c4dda8d364dc116e979b1.vega-embed details,
+  #altair-viz-12b51ab82a9c4dda8d364dc116e979b1.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-12b51ab82a9c4dda8d364dc116e979b1"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-12b51ab82a9c4dda8d364dc116e979b1") {
+      outputDiv = document.getElementById("altair-viz-12b51ab82a9c4dda8d364dc116e979b1");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.1.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.1.0"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "hconcat": [{"mark": {"type": "circle", "size": 50}, "encoding": {"x": {"field": "value", "type": "quantitative"}, "y": {"field": "height", "type": "quantitative"}}, "height": 150, "width": 150}, {"mark": {"type": "circle", "size": 50}, "encoding": {"x": {"field": "value", "type": "quantitative"}, "y": {"field": "height", "scale": {"type": "log"}, "type": "quantitative"}}, "height": 150, "width": 150}], "data": {"name": "data-8485976c6ab1f342dcbadf943e6f7969"}, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-8485976c6ab1f342dcbadf943e6f7969": [{"variable": "spd_1m_c", "value": 0.9981428980827332, "height": 1}, {"variable": "spd_2m_c", "value": 1.0778837203979492, "height": 2}, {"variable": "spd_3m_c", "value": 1.1047672033309937, "height": 3}, {"variable": "spd_5m_c", "value": 1.1833654642105103, "height": 5}, {"variable": "spd_10m_c", "value": 1.2687140703201294, "height": 10}, {"variable": "spd_15m_c", "value": 1.4507120847702026, "height": 15}, {"variable": "spd_20m_c", "value": 1.4670835733413696, "height": 20}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>We see that the wind profile is not quite logarithmic…it seems to depart from a logarithmic curve higher up.</p>
+<p>Why would the velocity profile depart from the log curve like it does above, during stable conditions?</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="fitting-a-log-profile-to-the-measured-velocity-profile">
+<h1>Fitting a log profile to the measured velocity profile<a class="headerlink" href="#fitting-a-log-profile-to-the-measured-velocity-profile" title="Link to this heading">#</a></h1>
+<p>Let’s fit a wind profile to the 1200 data</p>
+<div class="math notranslate nohighlight">
+\[ \overline{u} = \frac{u^*}{k}log(z / z_0)\]</div>
+<p>For this exercise, we will assume a z0 value, but we could calculate it if we wanted to.</p>
+<p>We will also extract a measured <span class="math notranslate nohighlight">\(u^*\)</span> value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sos_dataset</span><span class="p">[[</span>
+    <span class="s1">&#39;u*_3m_c&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;u*_5m_c&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;u*_10m_c&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;u*_15m_c&#39;</span><span class="p">,</span>
+<span class="p">]]</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20221101 1200&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u*_3m_c     0.046698
+u*_5m_c     0.066276
+u*_10m_c    0.101627
+u*_15m_c    0.110692
+Name: 2022-11-01 12:00:00, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ustar_df</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[[</span>
+    <span class="s1">&#39;u*_3m_c&#39;</span><span class="p">,</span>
+<span class="p">]]</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z0</span> <span class="o">=</span> <span class="mf">0.001</span>
+
+<span class="n">ustar</span> <span class="o">=</span> <span class="n">ustar_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20221101 1200&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">wind_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20221101 1200&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">],</span>
+    <span class="n">wind_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20221101 1200&#39;</span><span class="p">][</span><span class="s1">&#39;height&#39;</span><span class="p">],</span>
+    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;measured&#39;</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">ustar</span> <span class="o">/</span> <span class="mf">0.4</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">z0</span><span class="p">),</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fit&#39;</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function matplotlib.pyplot.legend(*args, **kwargs) -&gt; &#39;Legend&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/f1b4a30bb36806f21ce403d2d401acead3678894a83fd3f10604d04664f33cda.png" src="../../_images/f1b4a30bb36806f21ce403d2d401acead3678894a83fd3f10604d04664f33cda.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">wind_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20221101 1200&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">],</span>
+    <span class="n">wind_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20221101 1200&#39;</span><span class="p">][</span><span class="s1">&#39;height&#39;</span><span class="p">],</span>
+    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;measured&#39;</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">ustar</span> <span class="o">/</span> <span class="mf">0.4</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">z0</span><span class="p">),</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fit&#39;</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f10de945490&gt;
+</pre></div>
+</div>
+<img alt="../../_images/84d8d54bbb3bcfcd84f0d5d98a8808b62c7371b984fa7e608bd0a0449c5a4220.png" src="../../_images/84d8d54bbb3bcfcd84f0d5d98a8808b62c7371b984fa7e608bd0a0449c5a4220.png" />
+</div>
+</div>
+<p>How could we extract <span class="math notranslate nohighlight">\(z_0\)</span> and <span class="math notranslate nohighlight">\(u^*\)</span> from the data?</p>
+<div class="math notranslate nohighlight">
+\[ \overline{u} = \frac{u^*}{k}log(z / z_0)\]</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./modules/module5"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab5-2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 5-2: Water vapor fluxes at Kettle Ponds</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../module6/module6.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">6) Blowing snow transport and sublimation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 5-3: Mixing length theory at Kettle Ponds</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sos-data">SOS Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-velocity-profiles-during-different-stability-conditions">Plotting velocity profiles during different stability conditions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-log-profile-to-the-measured-velocity-profile">Fitting a log profile to the measured velocity profile</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eli Schwat, Steven Pestana, Jessica D. Lundquist, and other contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

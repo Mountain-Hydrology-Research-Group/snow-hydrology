@@ -1,0 +1,1052 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab 7-2: Snowpack ripening and melt initiation - Energy Balance</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/module7/lab7-2';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 7-3 - Predicting snowmelt rates with the Temperature-Index method" href="lab7-3.html" />
+    <link rel="prev" title="Lab 7-1: Snowpack ripening and melt initiation - Observations" href="lab7-1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Snow Hydrology
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/a-syllabus.html">Syllabus: CEWA 568</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/b-project.html">Course Project: CEWA 568</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../module1/module1.html">1) Properties of Snow</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../module2/module2.html">2) Measurement Strategies, Basics of the Snowpack Mass and Energy Balances, and Snowpack Dynamics</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module3/module3.html">3) Snowpack Energy Balance – Radiation + Albedo, Dust on Snow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-1.html">Lab 3-1: Surface Energy Balance at Kettle Ponds - Radiation Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-2.html">Lab 3-2: Plotting the Surface Energy Balance at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module4/module4.html">4) Temperatures: snowpack and atmospheric stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-0.html">Intuition about the heat equation - Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-1.html">Lab 4-1: Snowpack temperature profiles</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-2.html">Lab 4-2: Snowpack internal energy - completing the snowpack energy balance</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-3.html">Lab 4-3: Snowpack temperature and density profiles - snowpit data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-4.html">Lab 4-4: Atmospheric temperatures and stability</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module5/module5.html">5) Turbulent transport - momentum, heat, and moisture fluxes above the snow covered earth</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-1.html">Lab 5-1: Turbulent fluxes and measures of stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-2.html">Lab 5-2: Water vapor fluxes at Kettle Ponds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-3.html">Lab 5-3: Mixing length theory at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module6/module6.html">6) Blowing snow transport and sublimation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-1.html">Lab 6-1: Blowing snow fluxes, wind speed, and shear velocity</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-2.html">Lab 6-2: Blowing snow - snow redistribution on the landscape scale</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-3.html">Lab 6-3: Blowing snow - snow redistribution on the site scale</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="module7.html">7) Snow melt</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lab7-1.html">Lab 7-1: Snowpack ripening and melt initiation - Observations</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lab 7-2: Snowpack ripening and melt initiation - Energy Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab7-3.html">Lab 7-3 - Predicting snowmelt rates with the Temperature-Index method</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module8/module8.html">8) Snow-dominated watershed hydrology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-1.html">Lab 8-1: Predicting streamflow with the SWE regression method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-2.html">Lab 8-2: Modeling a snowpack with a gridded, numerical model - openAMUNDSEN</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/a-learning-python.html">Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module1/numpy-tutorial.html">NumPy and the ndarray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1/some-python-tips.html">More python tips</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/b-learning-jupyter.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/instructor_resources.html">Resources for Instructors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/edit/main/book/modules/module7/lab7-2.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/issues/new?title=Issue%20on%20page%20%2Fmodules/module7/lab7-2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/modules/module7/lab7-2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 7-2: Snowpack ripening and melt initiation - Energy Balance</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-data">Open data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-snow-temperature-data-for-vertical-profiles-repeated-from-lab-4-1">Extract snow temperature data for vertical profiles (repeated from Lab 4-1)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-components-of-the-energy-balance">Calculate components of the energy balance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-heat-flux">ground heat flux</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net-radiation">net radiation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#turbulent-fluxes">turbulent fluxes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-energy-change">internal energy change</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-energy-balance-during-snowpack-ripening">Plot energy balance during snowpack ripening!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-energy-balance-over-larger-time-period">Plot energy balance over larger time period.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melting-and-snow-pillow-measurements">Melting and Snow Pillow Measurements</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-7-2-snowpack-ripening-and-melt-initiation-energy-balance">
+<h1>Lab 7-2: Snowpack ripening and melt initiation - Energy Balance<a class="headerlink" href="#lab-7-2-snowpack-ripening-and-melt-initiation-energy-balance" title="Link to this heading">#</a></h1>
+<p>Written by Eli Schwat February 2025.</p>
+<p>In this lab, we will calculate all components of the energy balance and examine if energy balance calculations can identify the onset of melt.</p>
+<p>This lab repeats code introduced in Labs 3-2, 4-1, and 4-2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">altair</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">alt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="open-data">
+<h2>Open data<a class="headerlink" href="#open-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># tower measurements</span>
+<span class="n">sos_file</span> <span class="o">=</span> <span class="s2">&quot;../data/sos_full_dataset_30min.nc&quot;</span>
+<span class="n">sos_dataset</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">sos_file</span><span class="p">)</span>
+
+<span class="c1">#precip measurements</span>
+<span class="n">precip_file</span> <span class="o">=</span> <span class="s2">&quot;../data/kettle_ponds_precip.csv&quot;</span>
+<span class="n">precip_dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">precip_file</span><span class="p">)</span>
+<span class="n">precip_dataset</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">precip_dataset</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+<span class="n">precip_dataset</span> <span class="o">=</span> <span class="n">precip_dataset</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sos_dataset</span><span class="p">[[</span><span class="s1">&#39;w_h2o__2m_c_raw&#39;</span><span class="p">,</span> <span class="s1">&#39;w_h2o__10m_c_raw&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20221221&#39;</span><span class="p">:</span> <span class="s1">&#39;20221223&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;time&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/91952e2a2da9f77566fe6dd291e867a14ddf5a84db619d9f476b0beca5f4ee98.png" src="../../_images/91952e2a2da9f77566fe6dd291e867a14ddf5a84db619d9f476b0beca5f4ee98.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tsnow_vars</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">sos_dataset</span> <span class="k">if</span> <span class="s1">&#39;Tsnow_&#39;</span> <span class="ow">in</span> <span class="n">v</span> <span class="ow">and</span> <span class="n">v</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_d&#39;</span><span class="p">)]</span>
+<span class="n">snow_depth_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SnowDepth_d&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">snow_depth_vars</span><span class="p">,</span> <span class="n">tsnow_vars</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;SnowDepth_d&#39;] [&#39;Tsnow_0_4m_d&#39;, &#39;Tsnow_0_5m_d&#39;, &#39;Tsnow_0_6m_d&#39;, &#39;Tsnow_0_7m_d&#39;, &#39;Tsnow_0_8m_d&#39;, &#39;Tsnow_0_9m_d&#39;, &#39;Tsnow_1_0m_d&#39;, &#39;Tsnow_1_1m_d&#39;, &#39;Tsnow_1_2m_d&#39;, &#39;Tsnow_1_3m_d&#39;, &#39;Tsnow_1_4m_d&#39;, &#39;Tsnow_1_5m_d&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="extract-snow-temperature-data-for-vertical-profiles-repeated-from-lab-4-1">
+<h3>Extract snow temperature data for vertical profiles (repeated from Lab 4-1)<a class="headerlink" href="#extract-snow-temperature-data-for-vertical-profiles-repeated-from-lab-4-1" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Transform the NetCDF dataset to be a &quot;tidy&quot; dataset of snow depths</span>
+<span class="n">snow_temp_dataset</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[</span>
+    <span class="n">tsnow_vars</span> <span class="o">+</span> <span class="n">snow_depth_vars</span>
+<span class="p">]</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;SnowDepth_d&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Calculate the depth of the snow sensor (relative to the snow surface)</span>
+<span class="c1"># using the snow depth measurements and the known above-ground height</span>
+<span class="c1"># of the snow sensors, which is built into the variable name</span>
+<span class="n">snow_temp_dataset</span><span class="p">[</span><span class="s1">&#39;height_agl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">snow_temp_dataset</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">snow_temp_dataset</span> <span class="o">=</span> <span class="n">snow_temp_dataset</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">snow_temp_dataset</span><span class="p">[</span><span class="s1">&#39;depth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">snow_temp_dataset</span><span class="p">[</span><span class="s1">&#39;height_agl&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">snow_temp_dataset</span><span class="p">[</span><span class="s1">&#39;SnowDepth_d&#39;</span><span class="p">]</span>
+
+<span class="c1"># remove measurements NOT in the snowpack</span>
+<span class="n">snow_temp_dataset</span> <span class="o">=</span> <span class="n">snow_temp_dataset</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;depth &lt; 0&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add surface temperature data (depth=0)</span>
+<span class="n">surface_temps_dataset</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Tsurf_d&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+<span class="n">surface_temps_dataset</span> <span class="o">=</span> <span class="n">surface_temps_dataset</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Tsurf_d&#39;</span><span class="p">:</span> <span class="s1">&#39;value&#39;</span><span class="p">})</span>
+<span class="n">surface_temps_dataset</span><span class="p">[</span><span class="s1">&#39;depth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Combine snow surface and in-snow temperature data</span>
+<span class="n">snow_temp_dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">snow_temp_dataset</span><span class="p">,</span> <span class="n">surface_temps_dataset</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="calculate-components-of-the-energy-balance">
+<h2>Calculate components of the energy balance<a class="headerlink" href="#calculate-components-of-the-energy-balance" title="Link to this heading">#</a></h2>
+<p>The snowpack energy balance equation <em>without</em> snow melt is:</p>
+<div class="math notranslate nohighlight">
+\[ \frac{d}{dt} (U \Delta z) = R_{net} - H_L - H_s + G\]</div>
+<p>where ∆z is the snowpack depth.</p>
+<section id="ground-heat-flux">
+<h3>ground heat flux<a class="headerlink" href="#ground-heat-flux" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ground_heat_flux</span> <span class="o">=</span>  <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Gsoil_d&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="net-radiation">
+<h3>net radiation<a class="headerlink" href="#net-radiation" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">net_radiation</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Rsw_in_9m_d&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Rsw_out_9m_d&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Rlw_in_9m_d&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Rlw_out_9m_d&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="turbulent-fluxes">
+<h3>turbulent fluxes<a class="headerlink" href="#turbulent-fluxes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">latent_heat_sublimation</span> <span class="o">=</span> <span class="mi">2590</span> <span class="c1">#J/g</span>
+<span class="n">latent_heat_flux</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;w_h2o__3m_c&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">latent_heat_sublimation</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">specific_heat_capacity_air</span> <span class="o">=</span> <span class="mf">1.005</span> <span class="c1"># J/K/g</span>
+<span class="n">air_density</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># g/m^3                                       </span>
+<span class="n">sensible_heat_flux</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;w_tc__3m_c&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">specific_heat_capacity_air</span> <span class="o">*</span> <span class="n">air_density</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="internal-energy-change">
+<h3>internal energy change<a class="headerlink" href="#internal-energy-change" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">metpy.units</span><span class="w"> </span><span class="kn">import</span> <span class="n">units</span>
+<span class="n">rho_s</span> <span class="o">=</span> <span class="mi">300</span> <span class="o">*</span> <span class="n">units</span> <span class="p">(</span><span class="s2">&quot;kg/m^3&quot;</span><span class="p">)</span>
+<span class="n">c_p_ice</span> <span class="o">=</span> <span class="mi">2090</span> <span class="o">*</span> <span class="n">units</span> <span class="p">(</span><span class="s2">&quot;J/kg/K&quot;</span><span class="p">)</span> <span class="c1"># specific heat capacity of ice</span>
+<span class="n">delta_t</span> <span class="o">=</span> <span class="mi">30</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="n">units</span><span class="p">(</span><span class="s2">&quot;second&quot;</span><span class="p">)</span> <span class="c1"># our timestep is 30 minutes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">snow_temp_dataset_deeperthan10cm</span> <span class="o">=</span> <span class="n">snow_temp_dataset</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;depth &lt;= -0.10&quot;</span><span class="p">)</span>
+<span class="c1"># Estimate the average snowpack temperature by averaging all in-snow temperatuer measurements for each timestamp</span>
+<span class="n">snow_internal_energy_df</span> <span class="o">=</span> <span class="n">snow_temp_dataset_deeperthan10cm</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">snow_temp_dataset_deeperthan10cm</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+<span class="p">)[[</span><span class="s1">&#39;value&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;snowpack_temp&#39;</span>
+<span class="p">})</span>
+
+<span class="c1"># add snow depth to our dataset</span>
+<span class="n">snow_internal_energy_df</span> <span class="o">=</span> <span class="n">snow_internal_energy_df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;SnowDepth_d&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_series</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="c1"># calculate depth-averaged temp and density</span>
+<span class="n">T_snowpack</span> <span class="o">=</span> <span class="n">snow_internal_energy_df</span><span class="p">[</span><span class="s1">&#39;snowpack_temp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">*</span> <span class="n">units</span><span class="p">(</span><span class="s1">&#39;degC&#39;</span><span class="p">)</span>
+<span class="n">Depth_snowpack</span> <span class="o">=</span> <span class="n">snow_internal_energy_df</span><span class="p">[</span><span class="s1">&#39;SnowDepth_d&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">*</span> <span class="n">units</span><span class="p">(</span><span class="s1">&#39;meters&#39;</span><span class="p">)</span>
+
+<span class="c1"># calculate dT/dt</span>
+<span class="n">dT_dt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span>
+    <span class="n">snow_internal_energy_df</span><span class="p">[</span><span class="s1">&#39;snowpack_temp&#39;</span><span class="p">],</span>
+    <span class="mi">30</span><span class="o">*</span><span class="mi">60</span>
+<span class="p">)</span> <span class="o">*</span> <span class="n">units</span><span class="p">(</span><span class="s1">&#39;K / second&#39;</span><span class="p">)</span>
+
+<span class="c1"># calculate internal energy change term</span>
+<span class="n">dU_dt</span> <span class="o">=</span> <span class="n">rho_s</span> <span class="o">*</span> <span class="n">c_p_ice</span> <span class="o">*</span> <span class="n">Depth_snowpack</span> <span class="o">*</span> <span class="n">dT_dt</span>
+<span class="n">snow_internal_energy_df</span><span class="p">[</span><span class="s1">&#39;internal_energy_change&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dU_dt</span><span class="o">.</span><span class="n">magnitude</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="plot-energy-balance-during-snowpack-ripening">
+<h2>Plot energy balance during snowpack ripening!<a class="headerlink" href="#plot-energy-balance-during-snowpack-ripening" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_slice</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;20230407&#39;</span><span class="p">,</span> <span class="s1">&#39;20230412&#39;</span><span class="p">)</span>
+<span class="n">ground_heat_flux</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;G&#39;</span><span class="p">)</span>
+<span class="n">net_radiation</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$LW_</span><span class="si">{in}</span><span class="s1"> - LW_</span><span class="si">{out}</span><span class="s1"> + SW_</span><span class="si">{in}</span><span class="s1"> - SW_</span><span class="si">{out}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">latent_heat_flux</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$H_L$&#39;</span><span class="p">)</span>
+<span class="n">sensible_heat_flux</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$H_s$&#39;</span><span class="p">)</span>
+<span class="n">snow_internal_energy_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">time_slice</span><span class="p">][</span><span class="s1">&#39;internal_energy_change&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\frac</span><span class="si">{d}{dt}</span><span class="s1"> (U \Delta z)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Snow Surface Energy Balance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Energy flux (W/m^2)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pandas/plotting/_matplotlib/core.py:981: UserWarning: This axis already has a converter set and is updating to a potentially incompatible converter
+  return ax.plot(*args, **kwds)
+</pre></div>
+</div>
+<img alt="../../_images/170ba7db110a9f934d771db1fa5af327204e9e7e87f51151866f697213245660.png" src="../../_images/170ba7db110a9f934d771db1fa5af327204e9e7e87f51151866f697213245660.png" />
+</div>
+</div>
+<p>Nothing specific seems to indicate melting here…</p>
+<p>Let’s zoom in on the snowpack internal energy storage change term.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">snow_internal_energy_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">time_slice</span><span class="p">][</span><span class="s1">&#39;internal_energy_change&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;time&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/e10a92af8aa4866d805e8458eb2e3cd77ebdb6cc3dc51f30f97a2eaaf4d6bb19.png" src="../../_images/e10a92af8aa4866d805e8458eb2e3cd77ebdb6cc3dc51f30f97a2eaaf4d6bb19.png" />
+</div>
+</div>
+<p>There’s a spike at the beginning of the time series that is making interpretation of the remaining data difficult. Let’s apply a rolling-median window to remove the spike.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">snow_internal_energy_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">time_slice</span><span class="p">][</span><span class="s1">&#39;internal_energy_change&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;time&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/c928d89eddd264ce8e350b94726f3baae33c6b761819c7c092f19be9c4484f30.png" src="../../_images/c928d89eddd264ce8e350b94726f3baae33c6b761819c7c092f19be9c4484f30.png" />
+</div>
+</div>
+<p>OK this is cool -  it looks like changes in internal energy flatten out/stop happening around the time of snowmelt, which is consistent with our observations of ripening using the snow temperature profiles. Let’s examine the internal energy storage term for the whole month of April</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_slice</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;20230401&#39;</span><span class="p">,</span> <span class="s1">&#39;20230430&#39;</span><span class="p">)</span>
+<span class="n">snow_internal_energy_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">time_slice</span><span class="p">][</span><span class="s1">&#39;internal_energy_change&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;time&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/899a3e09c87c8916ecce6d5a601d1d9683540607b6ee0c634ed0b1260e53cb9c.png" src="../../_images/899a3e09c87c8916ecce6d5a601d1d9683540607b6ee0c634ed0b1260e53cb9c.png" />
+</div>
+</div>
+<p>So it looks like the snowpack internal energy storage does <em>mostly</em> cease to fluctuate after April 10th. Brief fluctuations later in the month could be a result of new snowfall that is below 0˚C, but quickly ripens.</p>
+<p>We know from Lab 7-1 that snowmelt started on the afternoon of the 9th, but in the plot of the energy balance terms above, we don’t really see anything special going on the 9th.</p>
+<p>Because we did not calculate the <span class="math notranslate nohighlight">\(E_{melt}\)</span> term in the energy balance equation, if we calculate the residual, some of the residual should include the energy devoted to snowmelt. So, once snowmelt starts, the residual term should increase.</p>
+<p>Below, we calculate the energy balance residual and plot it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">energy_residual</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">net_radiation</span> <span class="o">+</span> <span class="n">ground_heat_flux</span> <span class="o">+</span> <span class="n">latent_heat_flux</span> <span class="o">+</span> <span class="n">sensible_heat_flux</span> 
+    <span class="o">-</span> <span class="n">snow_internal_energy_df</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()[</span><span class="s1">&#39;internal_energy_change&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">energy_residual</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fde32651990&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/3be067180c7f7d998dc23ecb34559af86660fa20150b4744d7c5305ffdf371c4.png" src="../../_images/3be067180c7f7d998dc23ecb34559af86660fa20150b4744d7c5305ffdf371c4.png" />
+</div>
+</div>
+<p>What do we see with the energy balance residual here?</p>
+<p>Well, it does seem that the residual increases quite a bit around April 9th.</p>
+<p>We also notice that the residual term seems to follow a similar pattern to the net radiation term. This just goes to show that the energy balance at our site is dominated by radiation.</p>
+</section>
+<section id="plot-energy-balance-over-larger-time-period">
+<h2>Plot energy balance over larger time period.<a class="headerlink" href="#plot-energy-balance-over-larger-time-period" title="Link to this heading">#</a></h2>
+<p>Let’s focus on the really significant terms in our energy balance. From the plot above, we see we can pretty much ignore ground heat flux and internal energy change.</p>
+<p>Let’s start looking at the radiation components separately as well.</p>
+<p>First let’s look at the days during ripening.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_slice</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;20230401&#39;</span><span class="p">,</span> <span class="s1">&#39;20230412&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Rsw_in_9m_d&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Rsw_out_9m_d&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$SW_</span><span class="si">{net}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="p">(</span><span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Rlw_in_9m_d&#39;</span><span class="p">]</span><span class="o">-</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Rlw_out_9m_d&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$LW_</span><span class="si">{net}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">latent_heat_flux</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$H_L$&#39;</span><span class="p">)</span>
+<span class="n">sensible_heat_flux</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$H_s$&#39;</span><span class="p">)</span>
+<span class="n">ground_heat_flux</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$G$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Snow Surface Energy Balance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Energy flux (W/m^2)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Energy flux (W/m^2)&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/f4ffd65e8cdc775cae4d504df4264b5dd787dbc334eefa1d4299f0116df4677d.png" src="../../_images/f4ffd65e8cdc775cae4d504df4264b5dd787dbc334eefa1d4299f0116df4677d.png" />
+</div>
+</div>
+<p>We can see that albedo (SW_out / SW_in) seems to decrease quite a bit starting April 8-9. This has a big effect on increasing the residual term - see below, compare April 1–2 (sunny days) to April 8-9 (also sunny days).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">energy_residual</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Energy balance </span><span class="se">\n</span><span class="s1"> residual (W/m^2)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Energy balance \n residual (W/m^2)&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/1793952894d77bc22c33de4f151486d83aadc71e179d6bae97b041ec8e5c20ba.png" src="../../_images/1793952894d77bc22c33de4f151486d83aadc71e179d6bae97b041ec8e5c20ba.png" />
+</div>
+</div>
+<p>Remember the lab when we calculated albedo? Dust was deposited on the snow at this time. So the increase in net radiation contributed significantly to the snowpack ripening process, which we can observe in the energy balance residual above (again, some of this residual is going to snow melt).</p>
+<p>Let’s look at just net radiation for March and April</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_slice</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;20230301&#39;</span><span class="p">,</span> <span class="s1">&#39;20230430&#39;</span><span class="p">)</span>
+<span class="n">net_radiation</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$LW_</span><span class="si">{in}</span><span class="s1"> - LW_</span><span class="si">{out}</span><span class="s1"> + SW_</span><span class="si">{in}</span><span class="s1"> - SW_</span><span class="si">{out}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Net radiation (W/m^2)&#39;</span><span class="p">)</span>
+
+<span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Qsoil_d&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Soil moisture&#39;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2023-04-08&#39;</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;April 8&#39;</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+<span class="n">lines</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="n">lines2</span><span class="p">,</span> <span class="n">labels2</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">lines</span> <span class="o">+</span> <span class="n">lines2</span><span class="p">,</span> <span class="n">labels</span> <span class="o">+</span> <span class="n">labels2</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fde325ee110&gt;
+</pre></div>
+</div>
+<img alt="../../_images/c27cbafdda1169cb5354c37d90c2822e03cadcf8ee398ceaadd22de54f3d05af.png" src="../../_images/c27cbafdda1169cb5354c37d90c2822e03cadcf8ee398ceaadd22de54f3d05af.png" />
+</div>
+</div>
+<p>We see that net radiation doesn’t get very large until around when the dust was deposited, the snowpack ripened, and melt began.</p>
+</section>
+<section id="melting-and-snow-pillow-measurements">
+<h2>Melting and Snow Pillow Measurements<a class="headerlink" href="#melting-and-snow-pillow-measurements" title="Link to this heading">#</a></h2>
+<p>In Lundquist et al. (2024), strange behavior was observed for the four snow pillows at Kettle Ponds, where SWE measurements diverged after the initiation of melt. Let’s look at snow pillow SWE, soil moisture (to identify the start of melt), blowing snow flux, and precipitation to see what processes could explain differences between snow pillows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_slice</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;20230401&#39;</span><span class="p">,</span> <span class="s1">&#39;20230430&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Qsoil_d&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Soil moisture</span><span class="se">\n</span><span class="s1">(m^3/m^3)&#39;</span><span class="p">)</span>
+<span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;SWE_p1_c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tower uw&#39;</span><span class="p">)</span>
+<span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;SWE_p2_c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tower ue&#39;</span><span class="p">)</span>
+<span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;SWE_p3_c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tower c&#39;</span><span class="p">)</span>
+<span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;SWE_p4_c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tower d&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Snow pillow</span><span class="se">\n</span><span class="s1">SWE (mm)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;SF_avg_1m_ue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;SF_avg_2m_ue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Blowing snow</span><span class="se">\n</span><span class="s1">flux (g/m^2/s)&#39;</span><span class="p">)</span>
+<span class="n">precip_dataset</span><span class="p">[</span><span class="s1">&#39;acc_prec&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulative</span><span class="se">\n</span><span class="s1">Precip. (mm)&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1e0265471c3ba806df95bf973aa4312bde717b81ad9e395353ee8973e57c11d2.png" src="../../_images/1e0265471c3ba806df95bf973aa4312bde717b81ad9e395353ee8973e57c11d2.png" />
+</div>
+</div>
+<p>We can see, as in the Lundquist et al. paper, the snow pillow SWE increases at some snow pillows (d and uw) but not at the other two. While precip could explain this, as there was some precip during the month, the fact that two of the snow pillows do not show any increases, suggests that melt water may have to do the SWE increase.
+Lundquist et al. hypothesized that “meltwater flowed through the snowpack and refroze, resulting in increasing snow water equivalent (SWE) at the UW and D snow pillows”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;SWE_p1_c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;20230401&#39;</span><span class="p">,</span> <span class="s1">&#39;20230618&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tower uw&#39;</span><span class="p">)</span>
+<span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;SWE_p2_c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;20230401&#39;</span><span class="p">,</span> <span class="s1">&#39;20230618&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tower ue&#39;</span><span class="p">)</span>
+<span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;SWE_p3_c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;20230401&#39;</span><span class="p">,</span> <span class="s1">&#39;20230618&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tower c&#39;</span><span class="p">)</span>
+<span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;SWE_p4_c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;20230401&#39;</span><span class="p">,</span> <span class="s1">&#39;20230618&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tower d&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fde32118a10&gt;
+</pre></div>
+</div>
+<img alt="../../_images/9aa82823f338c3d5df0629a7241b8a12ad5b0f346fd1494c401d50a586b9c748.png" src="../../_images/9aa82823f338c3d5df0629a7241b8a12ad5b0f346fd1494c401d50a586b9c748.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./modules/module7"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab7-1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 7-1: Snowpack ripening and melt initiation - Observations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab7-3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 7-3 - Predicting snowmelt rates with the Temperature-Index method</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-data">Open data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-snow-temperature-data-for-vertical-profiles-repeated-from-lab-4-1">Extract snow temperature data for vertical profiles (repeated from Lab 4-1)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-components-of-the-energy-balance">Calculate components of the energy balance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-heat-flux">ground heat flux</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net-radiation">net radiation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#turbulent-fluxes">turbulent fluxes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-energy-change">internal energy change</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-energy-balance-during-snowpack-ripening">Plot energy balance during snowpack ripening!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-energy-balance-over-larger-time-period">Plot energy balance over larger time period.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melting-and-snow-pillow-measurements">Melting and Snow Pillow Measurements</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eli Schwat, Steven Pestana, Jessica D. Lundquist, and other contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

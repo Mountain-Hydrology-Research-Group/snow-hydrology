@@ -1,0 +1,1454 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab 4-4: Atmospheric temperatures and stability</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/module4/lab4-4';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="5) Turbulent transport - momentum, heat, and moisture fluxes above the snow covered earth" href="../module5/module5.html" />
+    <link rel="prev" title="Lab 4-3: Snowpack temperature and density profiles - snowpit data" href="lab4-3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Snow Hydrology
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/a-syllabus.html">Syllabus: CEWA 568</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/b-project.html">Course Project: CEWA 568</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../module1/module1.html">1) Properties of Snow</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../module2/module2.html">2) Measurement Strategies, Basics of the Snowpack Mass and Energy Balances, and Snowpack Dynamics</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module3/module3.html">3) Snowpack Energy Balance – Radiation + Albedo, Dust on Snow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-1.html">Lab 3-1: Surface Energy Balance at Kettle Ponds - Radiation Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-2.html">Lab 3-2: Plotting the Surface Energy Balance at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="module4.html">4) Temperatures: snowpack and atmospheric stability</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lab4-0.html">Intuition about the heat equation - Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4-1.html">Lab 4-1: Snowpack temperature profiles</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="lab4-2.html">Lab 4-2: Snowpack internal energy - completing the snowpack energy balance</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="lab4-3.html">Lab 4-3: Snowpack temperature and density profiles - snowpit data</a></li>
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lab 4-4: Atmospheric temperatures and stability</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module5/module5.html">5) Turbulent transport - momentum, heat, and moisture fluxes above the snow covered earth</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-1.html">Lab 5-1: Turbulent fluxes and measures of stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-2.html">Lab 5-2: Water vapor fluxes at Kettle Ponds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-3.html">Lab 5-3: Mixing length theory at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module6/module6.html">6) Blowing snow transport and sublimation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-1.html">Lab 6-1: Blowing snow fluxes, wind speed, and shear velocity</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-2.html">Lab 6-2: Blowing snow - snow redistribution on the landscape scale</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-3.html">Lab 6-3: Blowing snow - snow redistribution on the site scale</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module7/module7.html">7) Snow melt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-1.html">Lab 7-1: Snowpack ripening and melt initiation - Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-2.html">Lab 7-2: Snowpack ripening and melt initiation - Energy Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-3.html">Lab 7-3 - Predicting snowmelt rates with the Temperature-Index method</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module8/module8.html">8) Snow-dominated watershed hydrology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-1.html">Lab 8-1: Predicting streamflow with the SWE regression method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-2.html">Lab 8-2: Modeling a snowpack with a gridded, numerical model - openAMUNDSEN</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/a-learning-python.html">Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module1/numpy-tutorial.html">NumPy and the ndarray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1/some-python-tips.html">More python tips</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/b-learning-jupyter.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/instructor_resources.html">Resources for Instructors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/edit/main/book/modules/module4/lab4-4.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/issues/new?title=Issue%20on%20page%20%2Fmodules/module4/lab4-4.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/modules/module4/lab4-4.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 4-4: Atmospheric temperatures and stability</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sos-data">SOS Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability">Stability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-profiles">Temperature Profiles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-temperature-data">Extract temperature data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-potential-temperature-data">Extract potential temperature data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-temperature-and-potential-temperatures-directly">Compare temperature and potential temperatures directly.</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-4-4-atmospheric-temperatures-and-stability">
+<h1>Lab 4-4: Atmospheric temperatures and stability<a class="headerlink" href="#lab-4-4-atmospheric-temperatures-and-stability" title="Link to this heading">#</a></h1>
+<p>Written by Daniel Hogan - April, 2023.</p>
+<p>Modified by Jessica Lundquist - April, 2023.</p>
+<p>Modified by Eli Schwat - January 2024.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">altair</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">alt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="sos-data">
+<h2>SOS Data<a class="headerlink" href="#sos-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sos_file</span> <span class="o">=</span> <span class="s2">&quot;../data/sos_full_dataset_30min.nc&quot;</span>
+<span class="n">sos_dataset</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">sos_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="stability">
+<h2>Stability<a class="headerlink" href="#stability" title="Link to this heading">#</a></h2>
+<p>Stability is characterized with many different methods. One of the simpler methods is to characterize the “static stability” - the stabiliy of the atmopshere due to stratification alone. This is done by using the gradient in potential temperature,</p>
+<div class="math notranslate nohighlight">
+\[\frac{d \theta}{dz}\]</div>
+<p>Let’s calculate the static stability of the atmosphere throughout the entire season. We will use a finite difference approximation to the derivative above using measurements at the snow surface and at 5 meters. We will also ignore the fact that the snow depth is fluctuating.</p>
+<div class="math notranslate nohighlight">
+\[ \frac{d \theta}{d z} = \frac{\Delta \theta}{\Delta z} = \frac{\theta_{5m} - \theta_{surf}}{5}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T_vars</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Tsurfpot_c&#39;</span><span class="p">,</span> <span class="s1">&#39;Tpot_5m_c&#39;</span><span class="p">,</span> 
+<span class="p">]</span>
+<span class="n">stability_df</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[</span>
+    <span class="n">T_vars</span>
+    
+<span class="p">]</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+<span class="n">stability_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="n">stability_df</span><span class="p">[</span><span class="s1">&#39;static_stability&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">stability_df</span><span class="p">[</span><span class="s1">&#39;Tpot_5m_c&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">stability_df</span><span class="p">[</span><span class="s1">&#39;Tsurfpot_c&#39;</span><span class="p">])</span><span class="o">/</span><span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stability_df</span><span class="p">[</span><span class="s1">&#39;static_stability&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;time&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/147ba76facecacc513a9a7fb0c79ba33aa7cc1bb6b210078184fad3e811624a7.png" src="../../_images/147ba76facecacc513a9a7fb0c79ba33aa7cc1bb6b210078184fad3e811624a7.png" />
+</div>
+</div>
+<p>We see that the stability was positive (stable) during the winter and spring, when there was snow. When the snow dissapears, unstable conditions prevail!</p>
+</section>
+<section id="temperature-profiles">
+<h2>Temperature Profiles<a class="headerlink" href="#temperature-profiles" title="Link to this heading">#</a></h2>
+<section id="extract-temperature-data">
+<h3>Extract temperature data<a class="headerlink" href="#extract-temperature-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T_vars</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Tsurf_c&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;T_1m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;T_2m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;T_3m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;T_4m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;T_5m_c&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;T_6m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;T_7m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;T_8m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;T_9m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;T_10m_c&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;T_11m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;T_12m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;T_13m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;T_14m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;T_15m_c&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;T_16m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;T_17m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;T_18m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;T_19m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;T_20m_c&#39;</span>
+<span class="p">]</span>
+<span class="n">air_temp_df</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[</span>
+    <span class="n">T_vars</span>
+    
+<span class="p">]</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">air_temp_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>variable</th>
+      <th>value</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-11-01 00:00:00</th>
+      <td>Tsurf_c</td>
+      <td>-9.308777</td>
+    </tr>
+    <tr>
+      <th>2022-11-01 00:30:00</th>
+      <td>Tsurf_c</td>
+      <td>-9.023499</td>
+    </tr>
+    <tr>
+      <th>2022-11-01 01:00:00</th>
+      <td>Tsurf_c</td>
+      <td>-9.931488</td>
+    </tr>
+    <tr>
+      <th>2022-11-01 01:30:00</th>
+      <td>Tsurf_c</td>
+      <td>-9.524658</td>
+    </tr>
+    <tr>
+      <th>2022-11-01 02:00:00</th>
+      <td>Tsurf_c</td>
+      <td>-9.457214</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2023-06-19 15:30:00</th>
+      <td>T_20m_c</td>
+      <td>18.424438</td>
+    </tr>
+    <tr>
+      <th>2023-06-19 16:00:00</th>
+      <td>T_20m_c</td>
+      <td>18.387238</td>
+    </tr>
+    <tr>
+      <th>2023-06-19 16:30:00</th>
+      <td>T_20m_c</td>
+      <td>18.592438</td>
+    </tr>
+    <tr>
+      <th>2023-06-19 17:00:00</th>
+      <td>T_20m_c</td>
+      <td>18.708826</td>
+    </tr>
+    <tr>
+      <th>2023-06-19 17:30:00</th>
+      <td>T_20m_c</td>
+      <td>18.713923</td>
+    </tr>
+  </tbody>
+</table>
+<p>232554 rows × 2 columns</p>
+</div></div></div>
+</div>
+<p>Assign a height variable based on the variable name</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var_to_height</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Tsurf_c&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">&#39;T_1m_c&#39;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;T_2m_c&#39;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s1">&#39;T_3m_c&#39;</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s1">&#39;T_4m_c&#39;</span> <span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s1">&#39;T_5m_c&#39;</span> <span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s1">&#39;T_6m_c&#39;</span> <span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="s1">&#39;T_7m_c&#39;</span> <span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="s1">&#39;T_8m_c&#39;</span> <span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="s1">&#39;T_9m_c&#39;</span> <span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+    <span class="s1">&#39;T_10m_c&#39;</span> <span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s1">&#39;T_11m_c&#39;</span> <span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+    <span class="s1">&#39;T_12m_c&#39;</span> <span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="s1">&#39;T_13m_c&#39;</span> <span class="p">:</span> <span class="mi">13</span><span class="p">,</span>
+    <span class="s1">&#39;T_14m_c&#39;</span> <span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+    <span class="s1">&#39;T_15m_c&#39;</span> <span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="s1">&#39;T_16m_c&#39;</span> <span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+    <span class="s1">&#39;T_17m_c&#39;</span> <span class="p">:</span> <span class="mi">17</span><span class="p">,</span>
+    <span class="s1">&#39;T_18m_c&#39;</span> <span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+    <span class="s1">&#39;T_19m_c&#39;</span> <span class="p">:</span> <span class="mi">19</span><span class="p">,</span>
+    <span class="s1">&#39;T_20m_c&#39;</span> <span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">air_temp_df</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">air_temp_df</span><span class="o">.</span><span class="n">variable</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">var_to_height</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+<span class="n">air_temp_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>variable</th>
+      <th>value</th>
+      <th>height</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-11-01 00:00:00</th>
+      <td>Tsurf_c</td>
+      <td>-9.308777</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2022-11-01 00:30:00</th>
+      <td>Tsurf_c</td>
+      <td>-9.023499</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2022-11-01 01:00:00</th>
+      <td>Tsurf_c</td>
+      <td>-9.931488</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2022-11-01 01:30:00</th>
+      <td>Tsurf_c</td>
+      <td>-9.524658</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2022-11-01 02:00:00</th>
+      <td>Tsurf_c</td>
+      <td>-9.457214</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2023-06-19 15:30:00</th>
+      <td>T_20m_c</td>
+      <td>18.424438</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>2023-06-19 16:00:00</th>
+      <td>T_20m_c</td>
+      <td>18.387238</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>2023-06-19 16:30:00</th>
+      <td>T_20m_c</td>
+      <td>18.592438</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>2023-06-19 17:00:00</th>
+      <td>T_20m_c</td>
+      <td>18.708826</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>2023-06-19 17:30:00</th>
+      <td>T_20m_c</td>
+      <td>18.713923</td>
+      <td>20</td>
+    </tr>
+  </tbody>
+</table>
+<p>232554 rows × 3 columns</p>
+</div></div></div>
+</div>
+<p>Let’s look at temp profiles over a spring day, when no snow cover was at the site. We take 3-hourly averages so we can look at fewer profiles</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">src</span> <span class="o">=</span> <span class="n">air_temp_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20230606&#39;</span><span class="p">]</span>
+<span class="n">src</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;180min&#39;</span><span class="p">),</span> <span class="s1">&#39;height&#39;</span><span class="p">])[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">src</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>height</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2023-06-06 00:00:00</td>
+      <td>0</td>
+      <td>-3.008687</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2023-06-06 00:00:00</td>
+      <td>1</td>
+      <td>2.047014</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2023-06-06 00:00:00</td>
+      <td>2</td>
+      <td>2.389058</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2023-06-06 00:00:00</td>
+      <td>3</td>
+      <td>2.577938</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2023-06-06 00:00:00</td>
+      <td>4</td>
+      <td>2.714737</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>163</th>
+      <td>2023-06-06 21:00:00</td>
+      <td>16</td>
+      <td>8.828940</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>2023-06-06 21:00:00</td>
+      <td>17</td>
+      <td>8.885409</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>2023-06-06 21:00:00</td>
+      <td>18</td>
+      <td>8.868728</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>2023-06-06 21:00:00</td>
+      <td>19</td>
+      <td>8.874654</td>
+    </tr>
+    <tr>
+      <th>167</th>
+      <td>2023-06-06 21:00:00</td>
+      <td>20</td>
+      <td>8.913239</td>
+    </tr>
+  </tbody>
+</table>
+<p>168 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span>
+    <span class="n">src</span>
+<span class="p">)</span><span class="o">.</span><span class="n">mark_line</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;value:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Temperature (C)&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;height:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Height (m)&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;hoursminutes(time):O&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;rainbow&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Order</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">)</span> <span class="c1"># we need this to make sure the lines are connected in the right order (i.e, connecting points in order of their height)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-b70a2d3dcd6a4216a32596bef1d8ea14.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-b70a2d3dcd6a4216a32596bef1d8ea14.vega-embed details,
+  #altair-viz-b70a2d3dcd6a4216a32596bef1d8ea14.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-b70a2d3dcd6a4216a32596bef1d8ea14"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-b70a2d3dcd6a4216a32596bef1d8ea14") {
+      outputDiv = document.getElementById("altair-viz-b70a2d3dcd6a4216a32596bef1d8ea14");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.1.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.1.0"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-dab9bc2586771e73698d8676bd78dead"}, "mark": {"type": "line"}, "encoding": {"color": {"field": "time", "scale": {"scheme": "rainbow"}, "timeUnit": "hoursminutes", "type": "ordinal"}, "order": {"field": "height", "type": "quantitative"}, "x": {"field": "value", "title": "Temperature (C)", "type": "quantitative"}, "y": {"field": "height", "title": "Height (m)", "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-dab9bc2586771e73698d8676bd78dead": [{"time": "2023-06-06T00:00:00", "height": 0, "value": -3.0086872577667236}, {"time": "2023-06-06T00:00:00", "height": 1, "value": 2.0470144748687744}, {"time": "2023-06-06T00:00:00", "height": 2, "value": 2.3890576362609863}, {"time": "2023-06-06T00:00:00", "height": 3, "value": 2.5779378414154053}, {"time": "2023-06-06T00:00:00", "height": 4, "value": 2.7147371768951416}, {"time": "2023-06-06T00:00:00", "height": 5, "value": 2.8877601623535156}, {"time": "2023-06-06T00:00:00", "height": 6, "value": 2.966176748275757}, {"time": "2023-06-06T00:00:00", "height": 7, "value": 3.1028025150299072}, {"time": "2023-06-06T00:00:00", "height": 8, "value": 3.2033560276031494}, {"time": "2023-06-06T00:00:00", "height": 9, "value": 3.3211405277252197}, {"time": "2023-06-06T00:00:00", "height": 10, "value": 3.4349725246429443}, {"time": "2023-06-06T00:00:00", "height": 11, "value": 3.454418897628784}, {"time": "2023-06-06T00:00:00", "height": 12, "value": 3.5356037616729736}, {"time": "2023-06-06T00:00:00", "height": 13, "value": 3.609916925430298}, {"time": "2023-06-06T00:00:00", "height": 14, "value": 3.7320144176483154}, {"time": "2023-06-06T00:00:00", "height": 15, "value": 3.7511510848999023}, {"time": "2023-06-06T00:00:00", "height": 16, "value": 3.8268606662750244}, {"time": "2023-06-06T00:00:00", "height": 17, "value": 3.9456329345703125}, {"time": "2023-06-06T00:00:00", "height": 18, "value": 3.998380422592163}, {"time": "2023-06-06T00:00:00", "height": 19, "value": 4.0695319175720215}, {"time": "2023-06-06T00:00:00", "height": 20, "value": 4.186992168426514}, {"time": "2023-06-06T03:00:00", "height": 0, "value": -4.626271724700928}, {"time": "2023-06-06T03:00:00", "height": 1, "value": 1.0536164045333862}, {"time": "2023-06-06T03:00:00", "height": 2, "value": 1.4637380838394165}, {"time": "2023-06-06T03:00:00", "height": 3, "value": 1.644622802734375}, {"time": "2023-06-06T03:00:00", "height": 4, "value": 1.7602605819702148}, {"time": "2023-06-06T03:00:00", "height": 5, "value": 1.9178552627563477}, {"time": "2023-06-06T03:00:00", "height": 6, "value": 1.97195565700531}, {"time": "2023-06-06T03:00:00", "height": 7, "value": 2.0826146602630615}, {"time": "2023-06-06T03:00:00", "height": 8, "value": 2.154451608657837}, {"time": "2023-06-06T03:00:00", "height": 9, "value": 2.2408173084259033}, {"time": "2023-06-06T03:00:00", "height": 10, "value": 2.334327459335327}, {"time": "2023-06-06T03:00:00", "height": 11, "value": 2.3516855239868164}, {"time": "2023-06-06T03:00:00", "height": 12, "value": 2.433440923690796}, {"time": "2023-06-06T03:00:00", "height": 13, "value": 2.502657890319824}, {"time": "2023-06-06T03:00:00", "height": 14, "value": 2.61714768409729}, {"time": "2023-06-06T03:00:00", "height": 15, "value": 2.6272504329681396}, {"time": "2023-06-06T03:00:00", "height": 16, "value": 2.6751153469085693}, {"time": "2023-06-06T03:00:00", "height": 17, "value": 2.7601921558380127}, {"time": "2023-06-06T03:00:00", "height": 18, "value": 2.770456314086914}, {"time": "2023-06-06T03:00:00", "height": 19, "value": 2.813349485397339}, {"time": "2023-06-06T03:00:00", "height": 20, "value": 2.86745285987854}, {"time": "2023-06-06T06:00:00", "height": 0, "value": 3.2050933837890625}, {"time": "2023-06-06T06:00:00", "height": 1, "value": 4.954836368560791}, {"time": "2023-06-06T06:00:00", "height": 2, "value": 4.961788654327393}, {"time": "2023-06-06T06:00:00", "height": 3, "value": 5.055632591247559}, {"time": "2023-06-06T06:00:00", "height": 4, "value": 4.965000152587891}, {"time": "2023-06-06T06:00:00", "height": 5, "value": 5.006473064422607}, {"time": "2023-06-06T06:00:00", "height": 6, "value": 5.002892971038818}, {"time": "2023-06-06T06:00:00", "height": 7, "value": 5.025251388549805}, {"time": "2023-06-06T06:00:00", "height": 8, "value": 5.043363571166992}, {"time": "2023-06-06T06:00:00", "height": 9, "value": 5.071658134460449}, {"time": "2023-06-06T06:00:00", "height": 10, "value": 5.1139960289001465}, {"time": "2023-06-06T06:00:00", "height": 11, "value": 5.079448223114014}, {"time": "2023-06-06T06:00:00", "height": 12, "value": 5.119758129119873}, {"time": "2023-06-06T06:00:00", "height": 13, "value": 5.132455825805664}, {"time": "2023-06-06T06:00:00", "height": 14, "value": 5.182837009429932}, {"time": "2023-06-06T06:00:00", "height": 15, "value": 5.163451194763184}, {"time": "2023-06-06T06:00:00", "height": 16, "value": 5.164371013641357}, {"time": "2023-06-06T06:00:00", "height": 17, "value": 5.221432209014893}, {"time": "2023-06-06T06:00:00", "height": 18, "value": 5.218137741088867}, {"time": "2023-06-06T06:00:00", "height": 19, "value": 5.215027332305908}, {"time": "2023-06-06T06:00:00", "height": 20, "value": 5.251234531402588}, {"time": "2023-06-06T09:00:00", "height": 0, "value": 23.74652099609375}, {"time": "2023-06-06T09:00:00", "height": 1, "value": 14.189387321472168}, {"time": "2023-06-06T09:00:00", "height": 2, "value": 13.777881622314453}, {"time": "2023-06-06T09:00:00", "height": 3, "value": 13.821038246154785}, {"time": "2023-06-06T09:00:00", "height": 4, "value": 13.430572509765625}, {"time": "2023-06-06T09:00:00", "height": 5, "value": 13.381381034851074}, {"time": "2023-06-06T09:00:00", "height": 6, "value": 13.284594535827637}, {"time": "2023-06-06T09:00:00", "height": 7, "value": 13.242546081542969}, {"time": "2023-06-06T09:00:00", "height": 8, "value": 13.202580451965332}, {"time": "2023-06-06T09:00:00", "height": 9, "value": 13.16310977935791}, {"time": "2023-06-06T09:00:00", "height": 10, "value": 13.143662452697754}, {"time": "2023-06-06T09:00:00", "height": 11, "value": 13.063347816467285}, {"time": "2023-06-06T09:00:00", "height": 12, "value": 13.05313777923584}, {"time": "2023-06-06T09:00:00", "height": 13, "value": 13.045886993408203}, {"time": "2023-06-06T09:00:00", "height": 14, "value": 13.021912574768066}, {"time": "2023-06-06T09:00:00", "height": 15, "value": 12.972722053527832}, {"time": "2023-06-06T09:00:00", "height": 16, "value": 12.934032440185547}, {"time": "2023-06-06T09:00:00", "height": 17, "value": 12.967305183410645}, {"time": "2023-06-06T09:00:00", "height": 18, "value": 12.959933280944824}, {"time": "2023-06-06T09:00:00", "height": 19, "value": 12.894054412841797}, {"time": "2023-06-06T09:00:00", "height": 20, "value": 12.886219024658203}, {"time": "2023-06-06T12:00:00", "height": 0, "value": 25.862661361694336}, {"time": "2023-06-06T12:00:00", "height": 1, "value": 16.605615615844727}, {"time": "2023-06-06T12:00:00", "height": 2, "value": 16.192110061645508}, {"time": "2023-06-06T12:00:00", "height": 3, "value": 16.016389846801758}, {"time": "2023-06-06T12:00:00", "height": 4, "value": 15.859204292297363}, {"time": "2023-06-06T12:00:00", "height": 5, "value": 15.82223129272461}, {"time": "2023-06-06T12:00:00", "height": 6, "value": 15.715149879455566}, {"time": "2023-06-06T12:00:00", "height": 7, "value": 15.664399147033691}, {"time": "2023-06-06T12:00:00", "height": 8, "value": 15.621147155761719}, {"time": "2023-06-06T12:00:00", "height": 9, "value": 15.595394134521484}, {"time": "2023-06-06T12:00:00", "height": 10, "value": 15.579358100891113}, {"time": "2023-06-06T12:00:00", "height": 11, "value": 15.481253623962402}, {"time": "2023-06-06T12:00:00", "height": 12, "value": 15.445881843566895}, {"time": "2023-06-06T12:00:00", "height": 13, "value": 15.456547737121582}, {"time": "2023-06-06T12:00:00", "height": 14, "value": 15.450779914855957}, {"time": "2023-06-06T12:00:00", "height": 15, "value": 15.377552032470703}, {"time": "2023-06-06T12:00:00", "height": 16, "value": 15.340359687805176}, {"time": "2023-06-06T12:00:00", "height": 17, "value": 15.381247520446777}, {"time": "2023-06-06T12:00:00", "height": 18, "value": 15.366065979003906}, {"time": "2023-06-06T12:00:00", "height": 19, "value": 15.303618431091309}, {"time": "2023-06-06T12:00:00", "height": 20, "value": 15.279656410217285}, {"time": "2023-06-06T15:00:00", "height": 0, "value": 14.93109130859375}, {"time": "2023-06-06T15:00:00", "height": 1, "value": 13.078117370605469}, {"time": "2023-06-06T15:00:00", "height": 2, "value": 13.00041675567627}, {"time": "2023-06-06T15:00:00", "height": 3, "value": 12.93761157989502}, {"time": "2023-06-06T15:00:00", "height": 4, "value": 12.878531455993652}, {"time": "2023-06-06T15:00:00", "height": 5, "value": 12.90096664428711}, {"time": "2023-06-06T15:00:00", "height": 6, "value": 12.844996452331543}, {"time": "2023-06-06T15:00:00", "height": 7, "value": 12.848532676696777}, {"time": "2023-06-06T15:00:00", "height": 8, "value": 12.84103012084961}, {"time": "2023-06-06T15:00:00", "height": 9, "value": 12.839737892150879}, {"time": "2023-06-06T15:00:00", "height": 10, "value": 12.856427192687988}, {"time": "2023-06-06T15:00:00", "height": 11, "value": 12.775979042053223}, {"time": "2023-06-06T15:00:00", "height": 12, "value": 12.76622486114502}, {"time": "2023-06-06T15:00:00", "height": 13, "value": 12.780274391174316}, {"time": "2023-06-06T15:00:00", "height": 14, "value": 12.811198234558105}, {"time": "2023-06-06T15:00:00", "height": 15, "value": 12.758343696594238}, {"time": "2023-06-06T15:00:00", "height": 16, "value": 12.737141609191895}, {"time": "2023-06-06T15:00:00", "height": 17, "value": 12.779210090637207}, {"time": "2023-06-06T15:00:00", "height": 18, "value": 12.752735137939453}, {"time": "2023-06-06T15:00:00", "height": 19, "value": 12.730278015136719}, {"time": "2023-06-06T15:00:00", "height": 20, "value": 12.734946250915527}, {"time": "2023-06-06T18:00:00", "height": 0, "value": 7.618418216705322}, {"time": "2023-06-06T18:00:00", "height": 1, "value": 10.601313591003418}, {"time": "2023-06-06T18:00:00", "height": 2, "value": 10.821743965148926}, {"time": "2023-06-06T18:00:00", "height": 3, "value": 10.928462028503418}, {"time": "2023-06-06T18:00:00", "height": 4, "value": 10.984660148620605}, {"time": "2023-06-06T18:00:00", "height": 5, "value": 11.07619571685791}, {"time": "2023-06-06T18:00:00", "height": 6, "value": 11.072129249572754}, {"time": "2023-06-06T18:00:00", "height": 7, "value": 11.121745109558105}, {"time": "2023-06-06T18:00:00", "height": 8, "value": 11.143670082092285}, {"time": "2023-06-06T18:00:00", "height": 9, "value": 11.176831245422363}, {"time": "2023-06-06T18:00:00", "height": 10, "value": 11.216468811035156}, {"time": "2023-06-06T18:00:00", "height": 11, "value": 11.162518501281738}, {"time": "2023-06-06T18:00:00", "height": 12, "value": 11.18777084350586}, {"time": "2023-06-06T18:00:00", "height": 13, "value": 11.201571464538574}, {"time": "2023-06-06T18:00:00", "height": 14, "value": 11.252883911132812}, {"time": "2023-06-06T18:00:00", "height": 15, "value": 11.213934898376465}, {"time": "2023-06-06T18:00:00", "height": 16, "value": 11.212215423583984}, {"time": "2023-06-06T18:00:00", "height": 17, "value": 11.259703636169434}, {"time": "2023-06-06T18:00:00", "height": 18, "value": 11.23569107055664}, {"time": "2023-06-06T18:00:00", "height": 19, "value": 11.233189582824707}, {"time": "2023-06-06T18:00:00", "height": 20, "value": 11.24795913696289}, {"time": "2023-06-06T21:00:00", "height": 0, "value": 3.6590373516082764}, {"time": "2023-06-06T21:00:00", "height": 1, "value": 7.630006313323975}, {"time": "2023-06-06T21:00:00", "height": 2, "value": 8.003256797790527}, {"time": "2023-06-06T21:00:00", "height": 3, "value": 8.180275917053223}, {"time": "2023-06-06T21:00:00", "height": 4, "value": 8.322746276855469}, {"time": "2023-06-06T21:00:00", "height": 5, "value": 8.460521697998047}, {"time": "2023-06-06T21:00:00", "height": 6, "value": 8.505542755126953}, {"time": "2023-06-06T21:00:00", "height": 7, "value": 8.58390998840332}, {"time": "2023-06-06T21:00:00", "height": 8, "value": 8.632115364074707}, {"time": "2023-06-06T21:00:00", "height": 9, "value": 8.682110786437988}, {"time": "2023-06-06T21:00:00", "height": 10, "value": 8.744864463806152}, {"time": "2023-06-06T21:00:00", "height": 11, "value": 8.711645126342773}, {"time": "2023-06-06T21:00:00", "height": 12, "value": 8.753311157226562}, {"time": "2023-06-06T21:00:00", "height": 13, "value": 8.776375770568848}, {"time": "2023-06-06T21:00:00", "height": 14, "value": 8.846631050109863}, {"time": "2023-06-06T21:00:00", "height": 15, "value": 8.812657356262207}, {"time": "2023-06-06T21:00:00", "height": 16, "value": 8.828940391540527}, {"time": "2023-06-06T21:00:00", "height": 17, "value": 8.885409355163574}, {"time": "2023-06-06T21:00:00", "height": 18, "value": 8.868727684020996}, {"time": "2023-06-06T21:00:00", "height": 19, "value": 8.874653816223145}, {"time": "2023-06-06T21:00:00", "height": 20, "value": 8.913239479064941}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>We see that during the night, temperatures are cooler at the surface (stable conditions) and during the day, temperatures are warmer at the surface (unstable conditions). This is the canonical understanding of the daily near-surface temperature cycle.</p>
+<p>Let’s look at the same thing on a winter day, when it was sunny, but snow was on the ground.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">src</span> <span class="o">=</span> <span class="n">air_temp_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20230202&#39;</span><span class="p">]</span>
+<span class="n">src</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;180min&#39;</span><span class="p">),</span> <span class="s1">&#39;height&#39;</span><span class="p">])[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span>
+    <span class="n">src</span>
+<span class="p">)</span><span class="o">.</span><span class="n">mark_line</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;value:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Temperature (C)&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;height:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Height (m)&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;hoursminutes(time):O&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;rainbow&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Order</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-3ac5a98bddb94c0a9465167dc2a445ca.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-3ac5a98bddb94c0a9465167dc2a445ca.vega-embed details,
+  #altair-viz-3ac5a98bddb94c0a9465167dc2a445ca.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-3ac5a98bddb94c0a9465167dc2a445ca"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-3ac5a98bddb94c0a9465167dc2a445ca") {
+      outputDiv = document.getElementById("altair-viz-3ac5a98bddb94c0a9465167dc2a445ca");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.1.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.1.0"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-dc8538380dd417ab4f21a0dbfc85299b"}, "mark": {"type": "line"}, "encoding": {"color": {"field": "time", "scale": {"scheme": "rainbow"}, "timeUnit": "hoursminutes", "type": "ordinal"}, "order": {"field": "height", "type": "quantitative"}, "x": {"field": "value", "title": "Temperature (C)", "type": "quantitative"}, "y": {"field": "height", "title": "Height (m)", "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-dc8538380dd417ab4f21a0dbfc85299b": [{"time": "2023-02-02T00:00:00", "height": 0, "value": -25.30287742614746}, {"time": "2023-02-02T00:00:00", "height": 1, "value": -18.60975456237793}, {"time": "2023-02-02T00:00:00", "height": 2, "value": -16.345611572265625}, {"time": "2023-02-02T00:00:00", "height": 3, "value": -15.880732536315918}, {"time": "2023-02-02T00:00:00", "height": 4, "value": -15.603958129882812}, {"time": "2023-02-02T00:00:00", "height": 5, "value": -15.336348533630371}, {"time": "2023-02-02T00:00:00", "height": 6, "value": -15.181788444519043}, {"time": "2023-02-02T00:00:00", "height": 7, "value": -14.944209098815918}, {"time": "2023-02-02T00:00:00", "height": 8, "value": -14.791823387145996}, {"time": "2023-02-02T00:00:00", "height": 9, "value": -14.605873107910156}, {"time": "2023-02-02T00:00:00", "height": 10, "value": -14.423065185546875}, {"time": "2023-02-02T00:00:00", "height": 11, "value": -14.341228485107422}, {"time": "2023-02-02T00:00:00", "height": 12, "value": -14.224384307861328}, {"time": "2023-02-02T00:00:00", "height": 13, "value": -14.100139617919922}, {"time": "2023-02-02T00:00:00", "height": 14, "value": -13.925055503845215}, {"time": "2023-02-02T00:00:00", "height": 15, "value": -13.89338207244873}, {"time": "2023-02-02T00:00:00", "height": 16, "value": -13.819735527038574}, {"time": "2023-02-02T00:00:00", "height": 17, "value": -13.706879615783691}, {"time": "2023-02-02T00:00:00", "height": 18, "value": -13.691876411437988}, {"time": "2023-02-02T00:00:00", "height": 19, "value": -13.623318672180176}, {"time": "2023-02-02T00:00:00", "height": 20, "value": -13.5391206741333}, {"time": "2023-02-02T03:00:00", "height": 0, "value": -25.852781295776367}, {"time": "2023-02-02T03:00:00", "height": 1, "value": -17.47914695739746}, {"time": "2023-02-02T03:00:00", "height": 2, "value": -15.508719444274902}, {"time": "2023-02-02T03:00:00", "height": 3, "value": -15.121649742126465}, {"time": "2023-02-02T03:00:00", "height": 4, "value": -14.894271850585938}, {"time": "2023-02-02T03:00:00", "height": 5, "value": -14.696961402893066}, {"time": "2023-02-02T03:00:00", "height": 6, "value": -14.611050605773926}, {"time": "2023-02-02T03:00:00", "height": 7, "value": -14.450881004333496}, {"time": "2023-02-02T03:00:00", "height": 8, "value": -14.37369441986084}, {"time": "2023-02-02T03:00:00", "height": 9, "value": -14.258122444152832}, {"time": "2023-02-02T03:00:00", "height": 10, "value": -14.147018432617188}, {"time": "2023-02-02T03:00:00", "height": 11, "value": -14.130846977233887}, {"time": "2023-02-02T03:00:00", "height": 12, "value": -14.070526123046875}, {"time": "2023-02-02T03:00:00", "height": 13, "value": -13.995766639709473}, {"time": "2023-02-02T03:00:00", "height": 14, "value": -13.862075805664062}, {"time": "2023-02-02T03:00:00", "height": 15, "value": -13.856250762939453}, {"time": "2023-02-02T03:00:00", "height": 16, "value": -13.806056022644043}, {"time": "2023-02-02T03:00:00", "height": 17, "value": -13.709698677062988}, {"time": "2023-02-02T03:00:00", "height": 18, "value": -13.708191871643066}, {"time": "2023-02-02T03:00:00", "height": 19, "value": -13.6494722366333}, {"time": "2023-02-02T03:00:00", "height": 20, "value": -13.577744483947754}, {"time": "2023-02-02T06:00:00", "height": 0, "value": -25.946191787719727}, {"time": "2023-02-02T06:00:00", "height": 1, "value": -18.47017478942871}, {"time": "2023-02-02T06:00:00", "height": 2, "value": -16.56239891052246}, {"time": "2023-02-02T06:00:00", "height": 3, "value": -16.243806838989258}, {"time": "2023-02-02T06:00:00", "height": 4, "value": -16.092857360839844}, {"time": "2023-02-02T06:00:00", "height": 5, "value": -15.958515167236328}, {"time": "2023-02-02T06:00:00", "height": 6, "value": -15.939826011657715}, {"time": "2023-02-02T06:00:00", "height": 7, "value": -15.809590339660645}, {"time": "2023-02-02T06:00:00", "height": 8, "value": -15.743477821350098}, {"time": "2023-02-02T06:00:00", "height": 9, "value": -15.687713623046875}, {"time": "2023-02-02T06:00:00", "height": 10, "value": -15.597548484802246}, {"time": "2023-02-02T06:00:00", "height": 11, "value": -15.613839149475098}, {"time": "2023-02-02T06:00:00", "height": 12, "value": -15.618648529052734}, {"time": "2023-02-02T06:00:00", "height": 13, "value": -15.536580085754395}, {"time": "2023-02-02T06:00:00", "height": 14, "value": -15.466590881347656}, {"time": "2023-02-02T06:00:00", "height": 15, "value": -15.468159675598145}, {"time": "2023-02-02T06:00:00", "height": 16, "value": -15.445804595947266}, {"time": "2023-02-02T06:00:00", "height": 17, "value": -15.368365287780762}, {"time": "2023-02-02T06:00:00", "height": 18, "value": -15.383070945739746}, {"time": "2023-02-02T06:00:00", "height": 19, "value": -15.334522247314453}, {"time": "2023-02-02T06:00:00", "height": 20, "value": -15.290321350097656}, {"time": "2023-02-02T09:00:00", "height": 0, "value": -14.211649894714355}, {"time": "2023-02-02T09:00:00", "height": 1, "value": -13.042678833007812}, {"time": "2023-02-02T09:00:00", "height": 2, "value": -12.614302635192871}, {"time": "2023-02-02T09:00:00", "height": 3, "value": -11.983269691467285}, {"time": "2023-02-02T09:00:00", "height": 4, "value": -12.371925354003906}, {"time": "2023-02-02T09:00:00", "height": 5, "value": -12.452983856201172}, {"time": "2023-02-02T09:00:00", "height": 6, "value": -12.466480255126953}, {"time": "2023-02-02T09:00:00", "height": 7, "value": -12.445870399475098}, {"time": "2023-02-02T09:00:00", "height": 8, "value": -12.416241645812988}, {"time": "2023-02-02T09:00:00", "height": 9, "value": -12.427051544189453}, {"time": "2023-02-02T09:00:00", "height": 10, "value": -12.382926940917969}, {"time": "2023-02-02T09:00:00", "height": 11, "value": -12.429335594177246}, {"time": "2023-02-02T09:00:00", "height": 12, "value": -12.458521842956543}, {"time": "2023-02-02T09:00:00", "height": 13, "value": -12.420186042785645}, {"time": "2023-02-02T09:00:00", "height": 14, "value": -12.382209777832031}, {"time": "2023-02-02T09:00:00", "height": 15, "value": -12.381474494934082}, {"time": "2023-02-02T09:00:00", "height": 16, "value": -12.401897430419922}, {"time": "2023-02-02T09:00:00", "height": 17, "value": -12.353663444519043}, {"time": "2023-02-02T09:00:00", "height": 18, "value": -12.34920597076416}, {"time": "2023-02-02T09:00:00", "height": 19, "value": -12.381614685058594}, {"time": "2023-02-02T09:00:00", "height": 20, "value": -12.324844360351562}, {"time": "2023-02-02T12:00:00", "height": 0, "value": -6.53339147567749}, {"time": "2023-02-02T12:00:00", "height": 1, "value": -8.494229316711426}, {"time": "2023-02-02T12:00:00", "height": 2, "value": -8.457011222839355}, {"time": "2023-02-02T12:00:00", "height": 3, "value": -7.7176055908203125}, {"time": "2023-02-02T12:00:00", "height": 4, "value": -8.338698387145996}, {"time": "2023-02-02T12:00:00", "height": 5, "value": -8.537955284118652}, {"time": "2023-02-02T12:00:00", "height": 6, "value": -8.587773323059082}, {"time": "2023-02-02T12:00:00", "height": 7, "value": -8.597750663757324}, {"time": "2023-02-02T12:00:00", "height": 8, "value": -8.53389835357666}, {"time": "2023-02-02T12:00:00", "height": 9, "value": -8.583404541015625}, {"time": "2023-02-02T12:00:00", "height": 10, "value": -8.476334571838379}, {"time": "2023-02-02T12:00:00", "height": 11, "value": -8.54788589477539}, {"time": "2023-02-02T12:00:00", "height": 12, "value": -8.568418502807617}, {"time": "2023-02-02T12:00:00", "height": 13, "value": -8.462246894836426}, {"time": "2023-02-02T12:00:00", "height": 14, "value": -8.486348152160645}, {"time": "2023-02-02T12:00:00", "height": 15, "value": -8.417830467224121}, {"time": "2023-02-02T12:00:00", "height": 16, "value": -8.481915473937988}, {"time": "2023-02-02T12:00:00", "height": 17, "value": -8.426486015319824}, {"time": "2023-02-02T12:00:00", "height": 18, "value": -8.352853775024414}, {"time": "2023-02-02T12:00:00", "height": 19, "value": -8.434704780578613}, {"time": "2023-02-02T12:00:00", "height": 20, "value": -8.330918312072754}, {"time": "2023-02-02T15:00:00", "height": 0, "value": -17.560203552246094}, {"time": "2023-02-02T15:00:00", "height": 1, "value": -9.755650520324707}, {"time": "2023-02-02T15:00:00", "height": 2, "value": -8.130800247192383}, {"time": "2023-02-02T15:00:00", "height": 3, "value": -7.546690464019775}, {"time": "2023-02-02T15:00:00", "height": 4, "value": -7.511449813842773}, {"time": "2023-02-02T15:00:00", "height": 5, "value": -7.3871750831604}, {"time": "2023-02-02T15:00:00", "height": 6, "value": -7.312342166900635}, {"time": "2023-02-02T15:00:00", "height": 7, "value": -7.194820404052734}, {"time": "2023-02-02T15:00:00", "height": 8, "value": -7.121543884277344}, {"time": "2023-02-02T15:00:00", "height": 9, "value": -7.054928302764893}, {"time": "2023-02-02T15:00:00", "height": 10, "value": -6.956422328948975}, {"time": "2023-02-02T15:00:00", "height": 11, "value": -6.976388931274414}, {"time": "2023-02-02T15:00:00", "height": 12, "value": -6.93967866897583}, {"time": "2023-02-02T15:00:00", "height": 13, "value": -6.873741149902344}, {"time": "2023-02-02T15:00:00", "height": 14, "value": -6.782407283782959}, {"time": "2023-02-02T15:00:00", "height": 15, "value": -6.782032012939453}, {"time": "2023-02-02T15:00:00", "height": 16, "value": -6.753421306610107}, {"time": "2023-02-02T15:00:00", "height": 17, "value": -6.666967868804932}, {"time": "2023-02-02T15:00:00", "height": 18, "value": -6.673123836517334}, {"time": "2023-02-02T15:00:00", "height": 19, "value": -6.621804714202881}, {"time": "2023-02-02T15:00:00", "height": 20, "value": -6.554321765899658}, {"time": "2023-02-02T18:00:00", "height": 0, "value": -23.028244018554688}, {"time": "2023-02-02T18:00:00", "height": 1, "value": -13.287432670593262}, {"time": "2023-02-02T18:00:00", "height": 2, "value": -10.949589729309082}, {"time": "2023-02-02T18:00:00", "height": 3, "value": -10.440516471862793}, {"time": "2023-02-02T18:00:00", "height": 4, "value": -10.125268936157227}, {"time": "2023-02-02T18:00:00", "height": 5, "value": -9.883063316345215}, {"time": "2023-02-02T18:00:00", "height": 6, "value": -9.77407455444336}, {"time": "2023-02-02T18:00:00", "height": 7, "value": -9.615437507629395}, {"time": "2023-02-02T18:00:00", "height": 8, "value": -9.525809288024902}, {"time": "2023-02-02T18:00:00", "height": 9, "value": -9.410311698913574}, {"time": "2023-02-02T18:00:00", "height": 10, "value": -9.28188705444336}, {"time": "2023-02-02T18:00:00", "height": 11, "value": -9.238338470458984}, {"time": "2023-02-02T18:00:00", "height": 12, "value": -9.14928913116455}, {"time": "2023-02-02T18:00:00", "height": 13, "value": -9.052645683288574}, {"time": "2023-02-02T18:00:00", "height": 14, "value": -8.896904945373535}, {"time": "2023-02-02T18:00:00", "height": 15, "value": -8.870711326599121}, {"time": "2023-02-02T18:00:00", "height": 16, "value": -8.796060562133789}, {"time": "2023-02-02T18:00:00", "height": 17, "value": -8.677494049072266}, {"time": "2023-02-02T18:00:00", "height": 18, "value": -8.660504341125488}, {"time": "2023-02-02T18:00:00", "height": 19, "value": -8.580561637878418}, {"time": "2023-02-02T18:00:00", "height": 20, "value": -8.488354682922363}, {"time": "2023-02-02T21:00:00", "height": 0, "value": -23.922147750854492}, {"time": "2023-02-02T21:00:00", "height": 1, "value": -17.028779983520508}, {"time": "2023-02-02T21:00:00", "height": 2, "value": -15.554503440856934}, {"time": "2023-02-02T21:00:00", "height": 3, "value": -15.11563777923584}, {"time": "2023-02-02T21:00:00", "height": 4, "value": -14.798827171325684}, {"time": "2023-02-02T21:00:00", "height": 5, "value": -14.474827766418457}, {"time": "2023-02-02T21:00:00", "height": 6, "value": -14.213805198669434}, {"time": "2023-02-02T21:00:00", "height": 7, "value": -13.823452949523926}, {"time": "2023-02-02T21:00:00", "height": 8, "value": -13.509840965270996}, {"time": "2023-02-02T21:00:00", "height": 9, "value": -13.160083770751953}, {"time": "2023-02-02T21:00:00", "height": 10, "value": -12.823811531066895}, {"time": "2023-02-02T21:00:00", "height": 11, "value": -12.615898132324219}, {"time": "2023-02-02T21:00:00", "height": 12, "value": -12.381969451904297}, {"time": "2023-02-02T21:00:00", "height": 13, "value": -12.140168190002441}, {"time": "2023-02-02T21:00:00", "height": 14, "value": -11.858692169189453}, {"time": "2023-02-02T21:00:00", "height": 15, "value": -11.722328186035156}, {"time": "2023-02-02T21:00:00", "height": 16, "value": -11.548321723937988}, {"time": "2023-02-02T21:00:00", "height": 17, "value": -11.340174674987793}, {"time": "2023-02-02T21:00:00", "height": 18, "value": -11.239436149597168}, {"time": "2023-02-02T21:00:00", "height": 19, "value": -11.103839874267578}, {"time": "2023-02-02T21:00:00", "height": 20, "value": -10.954658508300781}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>What’s different about this?</p>
+<p>Remember, however, that there is some natural cooling in the atmosphere due to the adiabatic lapse rate, on the order of 0.2˚C / 20 m.</p>
+</section>
+<section id="extract-potential-temperature-data">
+<h3>Extract potential temperature data<a class="headerlink" href="#extract-potential-temperature-data" title="Link to this heading">#</a></h3>
+<p>Do things look different if instead of T we plotted θ?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T_vars</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Tsurfpot_c&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;Tpot_1m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;Tpot_2m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;Tpot_3m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;Tpot_4m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;Tpot_5m_c&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;Tpot_6m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;Tpot_7m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;Tpot_8m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;Tpot_9m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;Tpot_10m_c&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;Tpot_11m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;Tpot_12m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;Tpot_13m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;Tpot_14m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;Tpot_15m_c&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;Tpot_16m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;Tpot_17m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;Tpot_18m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;Tpot_19m_c&#39;</span><span class="p">,</span> <span class="s1">&#39;Tpot_20m_c&#39;</span>
+<span class="p">]</span>
+<span class="n">air_pottemp_df</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[</span>
+    <span class="n">T_vars</span>
+    
+<span class="p">]</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">var_to_height</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Tsurfpot_c&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">&#39;Tpot_1m_c&#39;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;Tpot_2m_c&#39;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s1">&#39;Tpot_3m_c&#39;</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s1">&#39;Tpot_4m_c&#39;</span> <span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s1">&#39;Tpot_5m_c&#39;</span> <span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s1">&#39;Tpot_6m_c&#39;</span> <span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="s1">&#39;Tpot_7m_c&#39;</span> <span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="s1">&#39;Tpot_8m_c&#39;</span> <span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="s1">&#39;Tpot_9m_c&#39;</span> <span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+    <span class="s1">&#39;Tpot_10m_c&#39;</span> <span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s1">&#39;Tpot_11m_c&#39;</span> <span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+    <span class="s1">&#39;Tpot_12m_c&#39;</span> <span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="s1">&#39;Tpot_13m_c&#39;</span> <span class="p">:</span> <span class="mi">13</span><span class="p">,</span>
+    <span class="s1">&#39;Tpot_14m_c&#39;</span> <span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+    <span class="s1">&#39;Tpot_15m_c&#39;</span> <span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="s1">&#39;Tpot_16m_c&#39;</span> <span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+    <span class="s1">&#39;Tpot_17m_c&#39;</span> <span class="p">:</span> <span class="mi">17</span><span class="p">,</span>
+    <span class="s1">&#39;Tpot_18m_c&#39;</span> <span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+    <span class="s1">&#39;Tpot_19m_c&#39;</span> <span class="p">:</span> <span class="mi">19</span><span class="p">,</span>
+    <span class="s1">&#39;Tpot_20m_c&#39;</span> <span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">air_pottemp_df</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">air_pottemp_df</span><span class="o">.</span><span class="n">variable</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">var_to_height</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">src</span> <span class="o">=</span> <span class="n">air_pottemp_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20230202&#39;</span><span class="p">]</span>
+<span class="n">src</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;180min&#39;</span><span class="p">),</span> <span class="s1">&#39;height&#39;</span><span class="p">])[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span>
+    <span class="n">src</span>
+<span class="p">)</span><span class="o">.</span><span class="n">mark_line</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;value:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Potential temperature (C)&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;height:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Height (m)&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;hoursminutes(time):O&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;rainbow&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Order</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-5af708b0ad7b4c8c88a6ce856f44b3a4.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-5af708b0ad7b4c8c88a6ce856f44b3a4.vega-embed details,
+  #altair-viz-5af708b0ad7b4c8c88a6ce856f44b3a4.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-5af708b0ad7b4c8c88a6ce856f44b3a4"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-5af708b0ad7b4c8c88a6ce856f44b3a4") {
+      outputDiv = document.getElementById("altair-viz-5af708b0ad7b4c8c88a6ce856f44b3a4");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.1.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.1.0"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-ef466cba4c4b8cbdb55081e573ec87c0"}, "mark": {"type": "line"}, "encoding": {"color": {"field": "time", "scale": {"scheme": "rainbow"}, "timeUnit": "hoursminutes", "type": "ordinal"}, "order": {"field": "height", "type": "quantitative"}, "x": {"field": "value", "title": "Potential temperature (C)", "type": "quantitative"}, "y": {"field": "height", "title": "Height (m)", "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-ef466cba4c4b8cbdb55081e573ec87c0": [{"time": "2023-02-02T00:00:00", "height": 0, "value": -1.2072499990463257}, {"time": "2023-02-02T00:00:00", "height": 1, "value": 6.14666223526001}, {"time": "2023-02-02T00:00:00", "height": 2, "value": 8.641200065612793}, {"time": "2023-02-02T00:00:00", "height": 3, "value": 9.16150951385498}, {"time": "2023-02-02T00:00:00", "height": 4, "value": 9.475433349609375}, {"time": "2023-02-02T00:00:00", "height": 5, "value": 9.77934741973877}, {"time": "2023-02-02T00:00:00", "height": 6, "value": 9.95917797088623}, {"time": "2023-02-02T00:00:00", "height": 7, "value": 10.230168342590332}, {"time": "2023-02-02T00:00:00", "height": 8, "value": 10.407669067382812}, {"time": "2023-02-02T00:00:00", "height": 9, "value": 10.621994018554688}, {"time": "2023-02-02T00:00:00", "height": 10, "value": 10.832916259765625}, {"time": "2023-02-02T00:00:00", "height": 11, "value": 10.933024406433105}, {"time": "2023-02-02T00:00:00", "height": 12, "value": 11.071533203125}, {"time": "2023-02-02T00:00:00", "height": 13, "value": 11.21821117401123}, {"time": "2023-02-02T00:00:00", "height": 14, "value": 11.420710563659668}, {"time": "2023-02-02T00:00:00", "height": 15, "value": 11.46575927734375}, {"time": "2023-02-02T00:00:00", "height": 16, "value": 11.556904792785645}, {"time": "2023-02-02T00:00:00", "height": 17, "value": 11.691121101379395}, {"time": "2023-02-02T00:00:00", "height": 18, "value": 11.717869758605957}, {"time": "2023-02-02T00:00:00", "height": 19, "value": 11.803451538085938}, {"time": "2023-02-02T00:00:00", "height": 20, "value": 11.906208992004395}, {"time": "2023-02-02T03:00:00", "height": 0, "value": -1.8573760986328125}, {"time": "2023-02-02T03:00:00", "height": 1, "value": 7.338831424713135}, {"time": "2023-02-02T03:00:00", "height": 2, "value": 9.510711669921875}, {"time": "2023-02-02T03:00:00", "height": 3, "value": 9.945602416992188}, {"time": "2023-02-02T03:00:00", "height": 4, "value": 10.205317497253418}, {"time": "2023-02-02T03:00:00", "height": 5, "value": 10.432052612304688}, {"time": "2023-02-02T03:00:00", "height": 6, "value": 10.536580085754395}, {"time": "2023-02-02T03:00:00", "height": 7, "value": 10.722590446472168}, {"time": "2023-02-02T03:00:00", "height": 8, "value": 10.81756591796875}, {"time": "2023-02-02T03:00:00", "height": 9, "value": 10.954646110534668}, {"time": "2023-02-02T03:00:00", "height": 10, "value": 11.08685302734375}, {"time": "2023-02-02T03:00:00", "height": 11, "value": 11.11487865447998}, {"time": "2023-02-02T03:00:00", "height": 12, "value": 11.19134521484375}, {"time": "2023-02-02T03:00:00", "height": 13, "value": 11.283686637878418}, {"time": "2023-02-02T03:00:00", "height": 14, "value": 11.440719604492188}, {"time": "2023-02-02T03:00:00", "height": 15, "value": 11.45738697052002}, {"time": "2023-02-02T03:00:00", "height": 16, "value": 11.522781372070312}, {"time": "2023-02-02T03:00:00", "height": 17, "value": 11.638850212097168}, {"time": "2023-02-02T03:00:00", "height": 18, "value": 11.650787353515625}, {"time": "2023-02-02T03:00:00", "height": 19, "value": 11.725570678710938}, {"time": "2023-02-02T03:00:00", "height": 20, "value": 11.814605712890625}, {"time": "2023-02-02T06:00:00", "height": 0, "value": -2.118677854537964}, {"time": "2023-02-02T06:00:00", "height": 1, "value": 6.08831787109375}, {"time": "2023-02-02T06:00:00", "height": 2, "value": 8.190312385559082}, {"time": "2023-02-02T06:00:00", "height": 3, "value": 8.5498046875}, {"time": "2023-02-02T06:00:00", "height": 4, "value": 8.72552490234375}, {"time": "2023-02-02T06:00:00", "height": 5, "value": 8.883056640625}, {"time": "2023-02-02T06:00:00", "height": 6, "value": 8.913716316223145}, {"time": "2023-02-02T06:00:00", "height": 7, "value": 9.066752433776855}, {"time": "2023-02-02T06:00:00", "height": 8, "value": 9.149459838867188}, {"time": "2023-02-02T06:00:00", "height": 9, "value": 9.22081470489502}, {"time": "2023-02-02T06:00:00", "height": 10, "value": 9.329915046691895}, {"time": "2023-02-02T06:00:00", "height": 11, "value": 9.322260856628418}, {"time": "2023-02-02T06:00:00", "height": 12, "value": 9.327189445495605}, {"time": "2023-02-02T06:00:00", "height": 13, "value": 9.427424430847168}, {"time": "2023-02-02T06:00:00", "height": 14, "value": 9.514419555664062}, {"time": "2023-02-02T06:00:00", "height": 15, "value": 9.52289867401123}, {"time": "2023-02-02T06:00:00", "height": 16, "value": 9.557647705078125}, {"time": "2023-02-02T06:00:00", "height": 17, "value": 9.65282154083252}, {"time": "2023-02-02T06:00:00", "height": 18, "value": 9.646906852722168}, {"time": "2023-02-02T06:00:00", "height": 19, "value": 9.71039867401123}, {"time": "2023-02-02T06:00:00", "height": 20, "value": 9.769124031066895}, {"time": "2023-02-02T09:00:00", "height": 0, "value": 10.550745964050293}, {"time": "2023-02-02T09:00:00", "height": 1, "value": 11.842076301574707}, {"time": "2023-02-02T09:00:00", "height": 2, "value": 12.321772575378418}, {"time": "2023-02-02T09:00:00", "height": 3, "value": 13.023463249206543}, {"time": "2023-02-02T09:00:00", "height": 4, "value": 12.607975959777832}, {"time": "2023-02-02T09:00:00", "height": 5, "value": 12.529484748840332}, {"time": "2023-02-02T09:00:00", "height": 6, "value": 12.524993896484375}, {"time": "2023-02-02T09:00:00", "height": 7, "value": 12.55792236328125}, {"time": "2023-02-02T09:00:00", "height": 8, "value": 12.600723266601562}, {"time": "2023-02-02T09:00:00", "height": 9, "value": 12.59917163848877}, {"time": "2023-02-02T09:00:00", "height": 10, "value": 12.657856941223145}, {"time": "2023-02-02T09:00:00", "height": 11, "value": 12.617324829101562}, {"time": "2023-02-02T09:00:00", "height": 12, "value": 12.595637321472168}, {"time": "2023-02-02T09:00:00", "height": 13, "value": 12.647990226745605}, {"time": "2023-02-02T09:00:00", "height": 14, "value": 12.699946403503418}, {"time": "2023-02-02T09:00:00", "height": 15, "value": 12.7110595703125}, {"time": "2023-02-02T09:00:00", "height": 16, "value": 12.699009895324707}, {"time": "2023-02-02T09:00:00", "height": 17, "value": 12.76221752166748}, {"time": "2023-02-02T09:00:00", "height": 18, "value": 12.777420043945312}, {"time": "2023-02-02T09:00:00", "height": 19, "value": 12.752217292785645}, {"time": "2023-02-02T09:00:00", "height": 20, "value": 12.824813842773438}, {"time": "2023-02-02T12:00:00", "height": 0, "value": 18.994802474975586}, {"time": "2023-02-02T12:00:00", "height": 1, "value": 16.856775283813477}, {"time": "2023-02-02T12:00:00", "height": 2, "value": 16.908044815063477}, {"time": "2023-02-02T12:00:00", "height": 3, "value": 17.728769302368164}, {"time": "2023-02-02T12:00:00", "height": 4, "value": 17.05866050720215}, {"time": "2023-02-02T12:00:00", "height": 5, "value": 16.85077476501465}, {"time": "2023-02-02T12:00:00", "height": 6, "value": 16.8066349029541}, {"time": "2023-02-02T12:00:00", "height": 7, "value": 16.806182861328125}, {"time": "2023-02-02T12:00:00", "height": 8, "value": 16.886642456054688}, {"time": "2023-02-02T12:00:00", "height": 9, "value": 16.84284019470215}, {"time": "2023-02-02T12:00:00", "height": 10, "value": 16.9706974029541}, {"time": "2023-02-02T12:00:00", "height": 11, "value": 16.90275001525879}, {"time": "2023-02-02T12:00:00", "height": 12, "value": 16.890716552734375}, {"time": "2023-02-02T12:00:00", "height": 13, "value": 17.017587661743164}, {"time": "2023-02-02T12:00:00", "height": 14, "value": 17.00164222717285}, {"time": "2023-02-02T12:00:00", "height": 15, "value": 17.087244033813477}, {"time": "2023-02-02T12:00:00", "height": 16, "value": 17.027475357055664}, {"time": "2023-02-02T12:00:00", "height": 17, "value": 17.098739624023438}, {"time": "2023-02-02T12:00:00", "height": 18, "value": 17.189956665039062}, {"time": "2023-02-02T12:00:00", "height": 19, "value": 17.11069679260254}, {"time": "2023-02-02T12:00:00", "height": 20, "value": 17.235000610351562}, {"time": "2023-02-02T15:00:00", "height": 0, "value": 6.859395503997803}, {"time": "2023-02-02T15:00:00", "height": 1, "value": 15.419703483581543}, {"time": "2023-02-02T15:00:00", "height": 2, "value": 17.210311889648438}, {"time": "2023-02-02T15:00:00", "height": 3, "value": 17.86078453063965}, {"time": "2023-02-02T15:00:00", "height": 4, "value": 17.909866333007812}, {"time": "2023-02-02T15:00:00", "height": 5, "value": 18.05653953552246}, {"time": "2023-02-02T15:00:00", "height": 6, "value": 18.149032592773438}, {"time": "2023-02-02T15:00:00", "height": 7, "value": 18.288339614868164}, {"time": "2023-02-02T15:00:00", "height": 8, "value": 18.379165649414062}, {"time": "2023-02-02T15:00:00", "height": 9, "value": 18.462671279907227}, {"time": "2023-02-02T15:00:00", "height": 10, "value": 18.5811767578125}, {"time": "2023-02-02T15:00:00", "height": 11, "value": 18.56982421875}, {"time": "2023-02-02T15:00:00", "height": 12, "value": 18.620580673217773}, {"time": "2023-02-02T15:00:00", "height": 13, "value": 18.70339012145996}, {"time": "2023-02-02T15:00:00", "height": 14, "value": 18.814050674438477}, {"time": "2023-02-02T15:00:00", "height": 15, "value": 18.824981689453125}, {"time": "2023-02-02T15:00:00", "height": 16, "value": 18.86688232421875}, {"time": "2023-02-02T15:00:00", "height": 17, "value": 18.972213745117188}, {"time": "2023-02-02T15:00:00", "height": 18, "value": 18.976003646850586}, {"time": "2023-02-02T15:00:00", "height": 19, "value": 19.042816162109375}, {"time": "2023-02-02T15:00:00", "height": 20, "value": 19.127349853515625}, {"time": "2023-02-02T18:00:00", "height": 0, "value": 0.7049713134765625}, {"time": "2023-02-02T18:00:00", "height": 1, "value": 11.380416870117188}, {"time": "2023-02-02T18:00:00", "height": 2, "value": 13.950465202331543}, {"time": "2023-02-02T18:00:00", "height": 3, "value": 14.51823902130127}, {"time": "2023-02-02T18:00:00", "height": 4, "value": 14.87382984161377}, {"time": "2023-02-02T18:00:00", "height": 5, "value": 15.149459838867188}, {"time": "2023-02-02T18:00:00", "height": 6, "value": 15.279210090637207}, {"time": "2023-02-02T18:00:00", "height": 7, "value": 15.463374137878418}, {"time": "2023-02-02T18:00:00", "height": 8, "value": 15.57194995880127}, {"time": "2023-02-02T18:00:00", "height": 9, "value": 15.70885181427002}, {"time": "2023-02-02T18:00:00", "height": 10, "value": 15.859929084777832}, {"time": "2023-02-02T18:00:00", "height": 11, "value": 15.918086051940918}, {"time": "2023-02-02T18:00:00", "height": 12, "value": 16.026031494140625}, {"time": "2023-02-02T18:00:00", "height": 13, "value": 16.1423282623291}, {"time": "2023-02-02T18:00:00", "height": 14, "value": 16.323394775390625}, {"time": "2023-02-02T18:00:00", "height": 15, "value": 16.36252784729004}, {"time": "2023-02-02T18:00:00", "height": 16, "value": 16.45477867126465}, {"time": "2023-02-02T18:00:00", "height": 17, "value": 16.595138549804688}, {"time": "2023-02-02T18:00:00", "height": 18, "value": 16.62418556213379}, {"time": "2023-02-02T18:00:00", "height": 19, "value": 16.722259521484375}, {"time": "2023-02-02T18:00:00", "height": 20, "value": 16.83376121520996}, {"time": "2023-02-02T21:00:00", "height": 0, "value": -0.3912200927734375}, {"time": "2023-02-02T21:00:00", "height": 1, "value": 7.163126468658447}, {"time": "2023-02-02T21:00:00", "height": 2, "value": 8.786849975585938}, {"time": "2023-02-02T21:00:00", "height": 3, "value": 9.277359008789062}, {"time": "2023-02-02T21:00:00", "height": 4, "value": 9.63432788848877}, {"time": "2023-02-02T21:00:00", "height": 5, "value": 9.999201774597168}, {"time": "2023-02-02T21:00:00", "height": 6, "value": 10.295120239257812}, {"time": "2023-02-02T21:00:00", "height": 7, "value": 10.732681274414062}, {"time": "2023-02-02T21:00:00", "height": 8, "value": 11.086257934570312}, {"time": "2023-02-02T21:00:00", "height": 9, "value": 11.479395866394043}, {"time": "2023-02-02T21:00:00", "height": 10, "value": 11.857823371887207}, {"time": "2023-02-02T21:00:00", "height": 11, "value": 12.09575366973877}, {"time": "2023-02-02T21:00:00", "height": 12, "value": 12.362156867980957}, {"time": "2023-02-02T21:00:00", "height": 13, "value": 12.63721752166748}, {"time": "2023-02-02T21:00:00", "height": 14, "value": 12.95573902130127}, {"time": "2023-02-02T21:00:00", "height": 15, "value": 13.115382194519043}, {"time": "2023-02-02T21:00:00", "height": 16, "value": 13.316258430480957}, {"time": "2023-02-02T21:00:00", "height": 17, "value": 13.554534912109375}, {"time": "2023-02-02T21:00:00", "height": 18, "value": 13.675196647644043}, {"time": "2023-02-02T21:00:00", "height": 19, "value": 13.834065437316895}, {"time": "2023-02-02T21:00:00", "height": 20, "value": 14.007807731628418}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>It’s pretty similar. That’s because we aren’t looking at temperatures over a very large range of pressures!</p>
+</section>
+<section id="compare-temperature-and-potential-temperatures-directly">
+<h3>Compare temperature and potential temperatures directly.<a class="headerlink" href="#compare-temperature-and-potential-temperatures-directly" title="Link to this heading">#</a></h3>
+<p>Let’s overlay some of the profiles above to see if the gradients are indeed similar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">src</span> <span class="o">=</span> <span class="n">air_temp_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20230202&#39;</span><span class="p">]</span>
+<span class="n">src</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;180min&#39;</span><span class="p">),</span> <span class="s1">&#39;height&#39;</span><span class="p">])[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">temp_chart</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span>
+    <span class="n">src</span><span class="p">[</span><span class="n">src</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;2023-02-02 00:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-02-02 12:00:00&#39;</span><span class="p">])]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">mark_line</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;value:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Temperature (C) (solid lines)&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;height:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Height (m)&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;hoursminutes(time):O&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;rainbow&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Order</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">src</span> <span class="o">=</span> <span class="n">air_pottemp_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20230202&#39;</span><span class="p">]</span>
+<span class="n">src</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;180min&#39;</span><span class="p">),</span> <span class="s1">&#39;height&#39;</span><span class="p">])[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">pottemp_chart</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span>
+    <span class="n">src</span><span class="p">[</span><span class="n">src</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;2023-02-02 00:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-02-02 12:00:00&#39;</span><span class="p">])]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">mark_line</span><span class="p">(</span><span class="n">strokeDash</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;value:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Potential temperature (C) (dashed lines)&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;height:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Height (m)&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;hoursminutes(time):O&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;rainbow&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Order</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+
+<span class="p">(</span><span class="n">temp_chart</span> <span class="o">+</span> <span class="n">pottemp_chart</span><span class="p">)</span><span class="o">.</span><span class="n">resolve_scale</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;independent&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2809/2739847647.py:4: FutureWarning: The behavior of &#39;isin&#39; with dtype=datetime64[ns] and castable values (e.g. strings) is deprecated. In a future version, these will not be considered matching by isin. Explicitly cast to the appropriate dtype before calling isin instead.
+  src[src.time.isin([&#39;2023-02-02 00:00:00&#39;, &#39;2023-02-02 12:00:00&#39;])]
+/tmp/ipykernel_2809/2739847647.py:15: FutureWarning: The behavior of &#39;isin&#39; with dtype=datetime64[ns] and castable values (e.g. strings) is deprecated. In a future version, these will not be considered matching by isin. Explicitly cast to the appropriate dtype before calling isin instead.
+  src[src.time.isin([&#39;2023-02-02 00:00:00&#39;, &#39;2023-02-02 12:00:00&#39;])]
+</pre></div>
+</div>
+<div class="output text_html">
+<style>
+  #altair-viz-cb1178d4ed4849c68500abc085b16c6f.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-cb1178d4ed4849c68500abc085b16c6f.vega-embed details,
+  #altair-viz-cb1178d4ed4849c68500abc085b16c6f.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-cb1178d4ed4849c68500abc085b16c6f"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-cb1178d4ed4849c68500abc085b16c6f") {
+      outputDiv = document.getElementById("altair-viz-cb1178d4ed4849c68500abc085b16c6f");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.1.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.1.0"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "layer": [{"data": {"name": "data-80a9df65dbb6086f1062a739b8725869"}, "mark": {"type": "line"}, "encoding": {"color": {"field": "time", "scale": {"scheme": "rainbow"}, "timeUnit": "hoursminutes", "type": "ordinal"}, "order": {"field": "height", "type": "quantitative"}, "x": {"field": "value", "title": "Temperature (C) (solid lines)", "type": "quantitative"}, "y": {"field": "height", "title": "Height (m)", "type": "quantitative"}}}, {"data": {"name": "data-67fa81ef92941728e50d019ed30a9934"}, "mark": {"type": "line", "strokeDash": [3, 3]}, "encoding": {"color": {"field": "time", "scale": {"scheme": "rainbow"}, "timeUnit": "hoursminutes", "type": "ordinal"}, "order": {"field": "height", "type": "quantitative"}, "x": {"field": "value", "title": "Potential temperature (C) (dashed lines)", "type": "quantitative"}, "y": {"field": "height", "title": "Height (m)", "type": "quantitative"}}}], "resolve": {"scale": {"x": "independent"}}, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-80a9df65dbb6086f1062a739b8725869": [{"time": "2023-02-02T00:00:00", "height": 0, "value": -25.30287742614746}, {"time": "2023-02-02T00:00:00", "height": 1, "value": -18.60975456237793}, {"time": "2023-02-02T00:00:00", "height": 2, "value": -16.345611572265625}, {"time": "2023-02-02T00:00:00", "height": 3, "value": -15.880732536315918}, {"time": "2023-02-02T00:00:00", "height": 4, "value": -15.603958129882812}, {"time": "2023-02-02T00:00:00", "height": 5, "value": -15.336348533630371}, {"time": "2023-02-02T00:00:00", "height": 6, "value": -15.181788444519043}, {"time": "2023-02-02T00:00:00", "height": 7, "value": -14.944209098815918}, {"time": "2023-02-02T00:00:00", "height": 8, "value": -14.791823387145996}, {"time": "2023-02-02T00:00:00", "height": 9, "value": -14.605873107910156}, {"time": "2023-02-02T00:00:00", "height": 10, "value": -14.423065185546875}, {"time": "2023-02-02T00:00:00", "height": 11, "value": -14.341228485107422}, {"time": "2023-02-02T00:00:00", "height": 12, "value": -14.224384307861328}, {"time": "2023-02-02T00:00:00", "height": 13, "value": -14.100139617919922}, {"time": "2023-02-02T00:00:00", "height": 14, "value": -13.925055503845215}, {"time": "2023-02-02T00:00:00", "height": 15, "value": -13.89338207244873}, {"time": "2023-02-02T00:00:00", "height": 16, "value": -13.819735527038574}, {"time": "2023-02-02T00:00:00", "height": 17, "value": -13.706879615783691}, {"time": "2023-02-02T00:00:00", "height": 18, "value": -13.691876411437988}, {"time": "2023-02-02T00:00:00", "height": 19, "value": -13.623318672180176}, {"time": "2023-02-02T00:00:00", "height": 20, "value": -13.5391206741333}, {"time": "2023-02-02T12:00:00", "height": 0, "value": -6.53339147567749}, {"time": "2023-02-02T12:00:00", "height": 1, "value": -8.494229316711426}, {"time": "2023-02-02T12:00:00", "height": 2, "value": -8.457011222839355}, {"time": "2023-02-02T12:00:00", "height": 3, "value": -7.7176055908203125}, {"time": "2023-02-02T12:00:00", "height": 4, "value": -8.338698387145996}, {"time": "2023-02-02T12:00:00", "height": 5, "value": -8.537955284118652}, {"time": "2023-02-02T12:00:00", "height": 6, "value": -8.587773323059082}, {"time": "2023-02-02T12:00:00", "height": 7, "value": -8.597750663757324}, {"time": "2023-02-02T12:00:00", "height": 8, "value": -8.53389835357666}, {"time": "2023-02-02T12:00:00", "height": 9, "value": -8.583404541015625}, {"time": "2023-02-02T12:00:00", "height": 10, "value": -8.476334571838379}, {"time": "2023-02-02T12:00:00", "height": 11, "value": -8.54788589477539}, {"time": "2023-02-02T12:00:00", "height": 12, "value": -8.568418502807617}, {"time": "2023-02-02T12:00:00", "height": 13, "value": -8.462246894836426}, {"time": "2023-02-02T12:00:00", "height": 14, "value": -8.486348152160645}, {"time": "2023-02-02T12:00:00", "height": 15, "value": -8.417830467224121}, {"time": "2023-02-02T12:00:00", "height": 16, "value": -8.481915473937988}, {"time": "2023-02-02T12:00:00", "height": 17, "value": -8.426486015319824}, {"time": "2023-02-02T12:00:00", "height": 18, "value": -8.352853775024414}, {"time": "2023-02-02T12:00:00", "height": 19, "value": -8.434704780578613}, {"time": "2023-02-02T12:00:00", "height": 20, "value": -8.330918312072754}], "data-67fa81ef92941728e50d019ed30a9934": [{"time": "2023-02-02T00:00:00", "height": 0, "value": -1.2072499990463257}, {"time": "2023-02-02T00:00:00", "height": 1, "value": 6.14666223526001}, {"time": "2023-02-02T00:00:00", "height": 2, "value": 8.641200065612793}, {"time": "2023-02-02T00:00:00", "height": 3, "value": 9.16150951385498}, {"time": "2023-02-02T00:00:00", "height": 4, "value": 9.475433349609375}, {"time": "2023-02-02T00:00:00", "height": 5, "value": 9.77934741973877}, {"time": "2023-02-02T00:00:00", "height": 6, "value": 9.95917797088623}, {"time": "2023-02-02T00:00:00", "height": 7, "value": 10.230168342590332}, {"time": "2023-02-02T00:00:00", "height": 8, "value": 10.407669067382812}, {"time": "2023-02-02T00:00:00", "height": 9, "value": 10.621994018554688}, {"time": "2023-02-02T00:00:00", "height": 10, "value": 10.832916259765625}, {"time": "2023-02-02T00:00:00", "height": 11, "value": 10.933024406433105}, {"time": "2023-02-02T00:00:00", "height": 12, "value": 11.071533203125}, {"time": "2023-02-02T00:00:00", "height": 13, "value": 11.21821117401123}, {"time": "2023-02-02T00:00:00", "height": 14, "value": 11.420710563659668}, {"time": "2023-02-02T00:00:00", "height": 15, "value": 11.46575927734375}, {"time": "2023-02-02T00:00:00", "height": 16, "value": 11.556904792785645}, {"time": "2023-02-02T00:00:00", "height": 17, "value": 11.691121101379395}, {"time": "2023-02-02T00:00:00", "height": 18, "value": 11.717869758605957}, {"time": "2023-02-02T00:00:00", "height": 19, "value": 11.803451538085938}, {"time": "2023-02-02T00:00:00", "height": 20, "value": 11.906208992004395}, {"time": "2023-02-02T12:00:00", "height": 0, "value": 18.994802474975586}, {"time": "2023-02-02T12:00:00", "height": 1, "value": 16.856775283813477}, {"time": "2023-02-02T12:00:00", "height": 2, "value": 16.908044815063477}, {"time": "2023-02-02T12:00:00", "height": 3, "value": 17.728769302368164}, {"time": "2023-02-02T12:00:00", "height": 4, "value": 17.05866050720215}, {"time": "2023-02-02T12:00:00", "height": 5, "value": 16.85077476501465}, {"time": "2023-02-02T12:00:00", "height": 6, "value": 16.8066349029541}, {"time": "2023-02-02T12:00:00", "height": 7, "value": 16.806182861328125}, {"time": "2023-02-02T12:00:00", "height": 8, "value": 16.886642456054688}, {"time": "2023-02-02T12:00:00", "height": 9, "value": 16.84284019470215}, {"time": "2023-02-02T12:00:00", "height": 10, "value": 16.9706974029541}, {"time": "2023-02-02T12:00:00", "height": 11, "value": 16.90275001525879}, {"time": "2023-02-02T12:00:00", "height": 12, "value": 16.890716552734375}, {"time": "2023-02-02T12:00:00", "height": 13, "value": 17.017587661743164}, {"time": "2023-02-02T12:00:00", "height": 14, "value": 17.00164222717285}, {"time": "2023-02-02T12:00:00", "height": 15, "value": 17.087244033813477}, {"time": "2023-02-02T12:00:00", "height": 16, "value": 17.027475357055664}, {"time": "2023-02-02T12:00:00", "height": 17, "value": 17.098739624023438}, {"time": "2023-02-02T12:00:00", "height": 18, "value": 17.189956665039062}, {"time": "2023-02-02T12:00:00", "height": 19, "value": 17.11069679260254}, {"time": "2023-02-02T12:00:00", "height": 20, "value": 17.235000610351562}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./modules/module4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab4-3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 4-3: Snowpack temperature and density profiles - snowpit data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../module5/module5.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">5) Turbulent transport - momentum, heat, and moisture fluxes above the snow covered earth</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sos-data">SOS Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability">Stability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-profiles">Temperature Profiles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-temperature-data">Extract temperature data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-potential-temperature-data">Extract potential temperature data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-temperature-and-potential-temperatures-directly">Compare temperature and potential temperatures directly.</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eli Schwat, Steven Pestana, Jessica D. Lundquist, and other contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

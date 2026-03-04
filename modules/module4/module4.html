@@ -1,0 +1,712 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4) Temperatures: snowpack and atmospheric stability</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/module4/module4';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Intuition about the heat equation - Brownian Motion" href="lab4-0.html" />
+    <link rel="prev" title="Lab 3-2: Plotting the Surface Energy Balance at Kettle Ponds" href="../module3/lab3-2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Snow Hydrology
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/a-syllabus.html">Syllabus: CEWA 568</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/b-project.html">Course Project: CEWA 568</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../module1/module1.html">1) Properties of Snow</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../module2/module2.html">2) Measurement Strategies, Basics of the Snowpack Mass and Energy Balances, and Snowpack Dynamics</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module3/module3.html">3) Snowpack Energy Balance – Radiation + Albedo, Dust on Snow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-1.html">Lab 3-1: Surface Energy Balance at Kettle Ponds - Radiation Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-2.html">Lab 3-2: Plotting the Surface Energy Balance at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">4) Temperatures: snowpack and atmospheric stability</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="lab4-0.html">Intuition about the heat equation - Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4-1.html">Lab 4-1: Snowpack temperature profiles</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="lab4-2.html">Lab 4-2: Snowpack internal energy - completing the snowpack energy balance</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="lab4-3.html">Lab 4-3: Snowpack temperature and density profiles - snowpit data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="lab4-4.html">Lab 4-4: Atmospheric temperatures and stability</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module5/module5.html">5) Turbulent transport - momentum, heat, and moisture fluxes above the snow covered earth</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-1.html">Lab 5-1: Turbulent fluxes and measures of stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-2.html">Lab 5-2: Water vapor fluxes at Kettle Ponds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-3.html">Lab 5-3: Mixing length theory at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module6/module6.html">6) Blowing snow transport and sublimation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-1.html">Lab 6-1: Blowing snow fluxes, wind speed, and shear velocity</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-2.html">Lab 6-2: Blowing snow - snow redistribution on the landscape scale</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-3.html">Lab 6-3: Blowing snow - snow redistribution on the site scale</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module7/module7.html">7) Snow melt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-1.html">Lab 7-1: Snowpack ripening and melt initiation - Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-2.html">Lab 7-2: Snowpack ripening and melt initiation - Energy Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-3.html">Lab 7-3 - Predicting snowmelt rates with the Temperature-Index method</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module8/module8.html">8) Snow-dominated watershed hydrology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-1.html">Lab 8-1: Predicting streamflow with the SWE regression method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-2.html">Lab 8-2: Modeling a snowpack with a gridded, numerical model - openAMUNDSEN</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/a-learning-python.html">Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module1/numpy-tutorial.html">NumPy and the ndarray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1/some-python-tips.html">More python tips</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/b-learning-jupyter.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/instructor_resources.html">Resources for Instructors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/edit/main/book/modules/module4/module4.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/issues/new?title=Issue%20on%20page%20%2Fmodules/module4/module4.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/modules/module4/module4.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>4) Temperatures: snowpack and atmospheric stability</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperatures-in-the-snowpack-expanding-the-snowpack-energy-balance-equation">Temperatures in the snowpack - expanding the snowpack energy balance equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-4-snowpack-temperatures-and-snowpack-internal-energy-introduction-to-air-temperatures">Lab 4: Snowpack temperatures and snowpack internal energy, introduction to air temperatures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-4">Homework 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-snowpack-temperature-profiles">Problem 1: Snowpack temperature profiles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-snowpack-internal-energy">Problem 2: Snowpack internal energy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-the-snowpack-energy-balance-no-coding-or-plotting">Problem 3: The snowpack energy balance (no coding or plotting)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-kinetic-growth-metamorphism-no-coding-or-plotting">Problem 4: Kinetic Growth Metamorphism (no coding or plotting)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-5-behavior-of-temperatures-above-below-the-snowpack-no-coding-or-plotting">Problem 5: Behavior of temperatures above/below the snowpack (no coding or plotting)</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="temperatures-snowpack-and-atmospheric-stability">
+<h1>4) Temperatures: snowpack and atmospheric stability<a class="headerlink" href="#temperatures-snowpack-and-atmospheric-stability" title="Link to this heading">#</a></h1>
+<section id="temperatures-in-the-snowpack-expanding-the-snowpack-energy-balance-equation">
+<h2>Temperatures in the snowpack - expanding the snowpack energy balance equation<a class="headerlink" href="#temperatures-in-the-snowpack-expanding-the-snowpack-energy-balance-equation" title="Link to this heading">#</a></h2>
+<p>From Module 3, we know the snow energy balance can be written</p>
+<div class="math notranslate nohighlight">
+\[\frac{d}{dt} (U \Delta z) = LW_{in} + LW_{out} + SW_{in} + SW_{out} - H_L - H_s + E_{melt} + G\]</div>
+<p>where <span class="math notranslate nohighlight">\(U\)</span> is the internal energy of the snow pack and ∆z is the snowpack depth. See Module 3 for a description of the other terms.  The internal energy (<span class="math notranslate nohighlight">\(U\)</span>) of the snowpack is a function of the temperature, density, and specific heat capacity of the snowpack. Mass has internal energy, so generally one would consider a <em>volume</em> of snow to have internal energy, but in our case, we are interested in energy fluxes, and so we use the depth of the snowpack. This is best explained by doing some dimensional analysis. The internal energy of snow, per kilogram, is approximately</p>
+<div class="math notranslate nohighlight">
+\[ U =c_p^{ice} \langle \rho_s T_s \rangle \]</div>
+<p>where the angle brackets indicate depth-averaging of the snow temperature and snow density. This equation has units</p>
+<div class="math notranslate nohighlight">
+\[U = [kg m^{-3}] [J K^{-1} kg^{-1}] [K] = J m^{-3} \]</div>
+<p>We want the units to be J m^-2, so we simply multiply by the depth of the snowpack (∆z), and take the derivative with respect to time</p>
+<div class="math notranslate nohighlight">
+\[\frac{d}{dt} (U \Delta z) = \frac{d}{dt} \big( c_p^{ice} \Delta z \langle \rho_s  T_s \rangle \big)\]</div>
+<p>which is in units of W m^-2 as desired (remember, 1 Watt = 1 Joule / second).
+Generally, we assume that snow density and depth are changing slowly, at least more slowly than the snowpack temperature, and thus we could pull those terms out of the time derivative to get</p>
+<div class="math notranslate nohighlight">
+\[ c_p^{ice} \Delta z \langle \rho_s \rangle \frac{d}{dt} \langle T_s \rangle = LW_{in} + LW_{out} + SW_{in} + SW_{out} - H_L - H_s + E_{melt} + G\]</div>
+<p>Note that the equation above implies that to accurately measure the internal energy of snow, we need measurements of temperature and density throughout the depth of the snow.
+Also, if it turns out that snow density and snow depth do NOT change slowly, we need to include those terms within the time derivative, which complicates things.</p>
+<p>During the SOS campaign, vertical profiles of snowpack temperature were collected using two different methods. Snowpits were dug between January and March, and snowpack temperatures were measured with thermometers by hand.</p>
+<p><img alt="Snowpit" src="../../_images/snowpit_pic.jpg" />.</p>
+<p>Additionally, we had “in-situ” sensors stay in the snowpack for the entire winter season. These “thermistor arrays” had temperature sensors spaced every 10 centimeters, between 0.4m and 1.6m.</p>
+<p><img alt="Thermistor array" src="../../_images/thermistor_array.png" /></p>
+<p>In Labs 4, we will work with data collected by both methods.</p>
+</section>
+<section id="lab-4-snowpack-temperatures-and-snowpack-internal-energy-introduction-to-air-temperatures">
+<h2>Lab 4: Snowpack temperatures and snowpack internal energy, introduction to air temperatures<a class="headerlink" href="#lab-4-snowpack-temperatures-and-snowpack-internal-energy-introduction-to-air-temperatures" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#lab4/lab4-0.ipynb"><span class="xref myst">Lab 4-0 (Brownian Motion)</span></a></p></li>
+<li><p><a class="reference internal" href="lab4-1.html"><span class="std std-doc">Lab 4-1</span></a></p></li>
+<li><p><a class="reference internal" href="lab4-2.html"><span class="std std-doc">Lab 4-2</span></a></p></li>
+<li><p><a class="reference internal" href="lab4-3.html"><span class="std std-doc">Lab 4-3</span></a></p></li>
+<li><p><a class="reference internal" href="lab4-4.html"><span class="std std-doc">Lab 4-4</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/df52a5c89eea2fe67ab1a7f9c594dc98/sos_full_dataset_30min.nc"><span class="xref download myst">SoS dataset</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/2906a84716510223c701f5bd3a4ba8b6/KettlePondsSnowPits.nc"><span class="xref download myst">SoS snow pit dataset</span></a></p></li>
+</ul>
+<p>Check out <a class="reference external" href="https://github.com/elischwat/altair_demo">Eli Schwat’s github repo on altair plotting of our datasets</a>.  It makes some of the homework plots, particularly from Module 6, much more tidy.</p>
+</section>
+<section id="homework-4">
+<h2>Homework 4<a class="headerlink" href="#homework-4" title="Link to this heading">#</a></h2>
+<section id="problem-1-snowpack-temperature-profiles">
+<h3>Problem 1: Snowpack temperature profiles<a class="headerlink" href="#problem-1-snowpack-temperature-profiles" title="Link to this heading">#</a></h3>
+<p>In Lab4-1, we plotted vertical profiles of snowpack temperature on multiple, sequential days.
+Replicate these plots for all days from the first half of April (April 1–15).
+Find 4-5 days during this period where some significant behavior in the snowpack temperatures changes.
+Isolate the plots to only these 3-5 days. What is going on here? Why are the snowpack temperatures acting the way they are?
+Note: Please do not include plots for 15 days in your homework. Once you have found the “interesting behavior”, only include plots that show these 3-5 days.</p>
+</section>
+<section id="problem-2-snowpack-internal-energy">
+<h3>Problem 2: Snowpack internal energy<a class="headerlink" href="#problem-2-snowpack-internal-energy" title="Link to this heading">#</a></h3>
+<p>In Lab 4-2, we estimated the “change in snowpack internal energy” term by using an estimate of constant snowpack density.
+In Lab 4-3, we examined actual measurements of snow density from snowpits.
+In Lab 2-3, we examined estimates of snow density from snow-pillow SWE and snow depth measurements.
+Combining your knowledge from these labs, complete the following steps:</p>
+<ul class="simple">
+<li><p>A. Using the snowpit dataset, calculate the depth-averaged snowpack density for each snowpit-day (i.e. you should have one density value for day in the snowpit dataset).</p></li>
+<li><p>B. Using the main sos dataset, calculate the daily-averaged, depth-averaged snowpack density (we did this in Lab 2-3).</p></li>
+<li><p>C. Plot the two time series of daily snowpack density from the two different datasets on the same plot.</p></li>
+<li><p>D. Describe the differences between the two. Describe how changes in snowpack density will result in a different estimate of the “change in snowpack internal energy term”, assuming all other measurements stay the same. According to the equation below (copied from Lab 4-2), will increasing/decreasing density cause an estimate of the change-in-internal-energy term to increase or decrease?</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \frac{d}{dt} (\Delta z U) = \rho_s c_p^{ice} \Delta z \frac{d}{dt} \langle T_s \rangle \]</div>
+</section>
+<section id="problem-3-the-snowpack-energy-balance-no-coding-or-plotting">
+<h3>Problem 3: The snowpack energy balance (no coding or plotting)<a class="headerlink" href="#problem-3-the-snowpack-energy-balance-no-coding-or-plotting" title="Link to this heading">#</a></h3>
+<p>According to your answer to Problem 2D, do you think that snow pit measurements of density will help “close” the snowpack energy balance, relative to estimates of density from snow pillows and snow depth senosrs (by close, I mean decrease the “residual” observed in the energy balance, as shown at the end of Lab 4-2). If someone is trying to “close” the snowpack energy balance, do you think that acquiring snow-pit measurements of snow density should be a high priority?</p>
+</section>
+<section id="problem-4-kinetic-growth-metamorphism-no-coding-or-plotting">
+<h3>Problem 4: Kinetic Growth Metamorphism (no coding or plotting)<a class="headerlink" href="#problem-4-kinetic-growth-metamorphism-no-coding-or-plotting" title="Link to this heading">#</a></h3>
+<p>In Week 2, we discussed how kinetic growth of crystals occurs when the within-snowpack temperature gradient exceeds 0.2˚C/cm. When this occurs, depth hoar is likely to grow.
+Using the two days of snow pit temperature profiles examined in Lab 4-3, estimate, by eye, the maximum temperature gradient observed in the snow pit, and report your estimate.
+If kinetic growth of crystals favored on either day? Where does the maximum temperature gradient occur?</p>
+</section>
+<section id="problem-5-behavior-of-temperatures-above-below-the-snowpack-no-coding-or-plotting">
+<h3>Problem 5: Behavior of temperatures above/below the snowpack (no coding or plotting)<a class="headerlink" href="#problem-5-behavior-of-temperatures-above-below-the-snowpack-no-coding-or-plotting" title="Link to this heading">#</a></h3>
+<p>In Lab 4-1, we first plotted a time series of temperatures measured by all the thermistors on tower d for February 15 - 18.
+Based on the behavior of the temperatures, can you determine which of the thermistors is above the snow surface and which is below the surface?
+Estimate the snow depth based on those plots, and explain how you came to this conclusion.</p>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./modules/module4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../module3/lab3-2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 3-2: Plotting the Surface Energy Balance at Kettle Ponds</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab4-0.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Intuition about the heat equation - Brownian Motion</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperatures-in-the-snowpack-expanding-the-snowpack-energy-balance-equation">Temperatures in the snowpack - expanding the snowpack energy balance equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-4-snowpack-temperatures-and-snowpack-internal-energy-introduction-to-air-temperatures">Lab 4: Snowpack temperatures and snowpack internal energy, introduction to air temperatures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-4">Homework 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-snowpack-temperature-profiles">Problem 1: Snowpack temperature profiles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-snowpack-internal-energy">Problem 2: Snowpack internal energy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-the-snowpack-energy-balance-no-coding-or-plotting">Problem 3: The snowpack energy balance (no coding or plotting)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-kinetic-growth-metamorphism-no-coding-or-plotting">Problem 4: Kinetic Growth Metamorphism (no coding or plotting)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-5-behavior-of-temperatures-above-below-the-snowpack-no-coding-or-plotting">Problem 5: Behavior of temperatures above/below the snowpack (no coding or plotting)</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eli Schwat, Steven Pestana, Jessica D. Lundquist, and other contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

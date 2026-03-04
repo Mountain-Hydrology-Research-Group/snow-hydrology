@@ -1,0 +1,1702 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab 8-2: Modeling a snowpack with a gridded, numerical model - openAMUNDSEN</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/module8/lab8-2';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Python" href="../../resources/a-learning-python.html" />
+    <link rel="prev" title="Lab 8-1: Predicting streamflow with the SWE regression method" href="lab8-1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Snow Hydrology
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/a-syllabus.html">Syllabus: CEWA 568</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/b-project.html">Course Project: CEWA 568</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../module1/module1.html">1) Properties of Snow</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../module2/module2.html">2) Measurement Strategies, Basics of the Snowpack Mass and Energy Balances, and Snowpack Dynamics</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module3/module3.html">3) Snowpack Energy Balance – Radiation + Albedo, Dust on Snow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-1.html">Lab 3-1: Surface Energy Balance at Kettle Ponds - Radiation Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-2.html">Lab 3-2: Plotting the Surface Energy Balance at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module4/module4.html">4) Temperatures: snowpack and atmospheric stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-0.html">Intuition about the heat equation - Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-1.html">Lab 4-1: Snowpack temperature profiles</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-2.html">Lab 4-2: Snowpack internal energy - completing the snowpack energy balance</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-3.html">Lab 4-3: Snowpack temperature and density profiles - snowpit data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-4.html">Lab 4-4: Atmospheric temperatures and stability</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module5/module5.html">5) Turbulent transport - momentum, heat, and moisture fluxes above the snow covered earth</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-1.html">Lab 5-1: Turbulent fluxes and measures of stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-2.html">Lab 5-2: Water vapor fluxes at Kettle Ponds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-3.html">Lab 5-3: Mixing length theory at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module6/module6.html">6) Blowing snow transport and sublimation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-1.html">Lab 6-1: Blowing snow fluxes, wind speed, and shear velocity</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-2.html">Lab 6-2: Blowing snow - snow redistribution on the landscape scale</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-3.html">Lab 6-3: Blowing snow - snow redistribution on the site scale</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module7/module7.html">7) Snow melt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-1.html">Lab 7-1: Snowpack ripening and melt initiation - Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-2.html">Lab 7-2: Snowpack ripening and melt initiation - Energy Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-3.html">Lab 7-3 - Predicting snowmelt rates with the Temperature-Index method</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="module8.html">8) Snow-dominated watershed hydrology</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lab8-1.html">Lab 8-1: Predicting streamflow with the SWE regression method</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lab 8-2: Modeling a snowpack with a gridded, numerical model - openAMUNDSEN</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/a-learning-python.html">Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module1/numpy-tutorial.html">NumPy and the ndarray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1/some-python-tips.html">More python tips</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/b-learning-jupyter.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/instructor_resources.html">Resources for Instructors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/edit/main/book/modules/module8/lab8-2.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/issues/new?title=Issue%20on%20page%20%2Fmodules/module8/lab8-2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/modules/module8/lab8-2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 8-2: Modeling a snowpack with a gridded, numerical model - openAMUNDSEN</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 8-2: Modeling a snowpack with a gridded, numerical model - openAMUNDSEN</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-model">Run Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-results">Examine results</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-results">Point Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-measured-and-modeled-swe">Compare measured and modeled SWE</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-energy-balance-terms">Calculate energy balance terms</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modeled">Modeled</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#measured">Measured</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compare">Compare</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gridded-results">Gridded results</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-8-2-modeling-a-snowpack-with-a-gridded-numerical-model-openamundsen">
+<h1>Lab 8-2: Modeling a snowpack with a gridded, numerical model - openAMUNDSEN<a class="headerlink" href="#lab-8-2-modeling-a-snowpack-with-a-gridded-numerical-model-openamundsen" title="Link to this heading">#</a></h1>
+<p>From the documents:</p>
+<blockquote>
+<div><p>openAMUNDSEN is a fully distributed model, designed primarily for resolving the mass and energy balance of snow and ice covered surfaces in mountain regions. Typically, it is applied in areas ranging from the point scale to the regional scale (i.e., up to some hundreds to thousands of square kilometers), using a spatial resolution of 10–100 m and a temporal resolution of 1–3 h, however its potential applications are very versatile.</p>
+</div></blockquote>
+<p>You can learn more about the model here <a class="reference external" href="http://doc.openamundsen.org">http://doc.openamundsen.org</a>.</p>
+<p>We run the model the entire upper East River Basin. We provide as inputs precipitation and meteorological (air temp, <span class="math notranslate nohighlight">\(SW_{in}\)</span>, etc) conditions measured at Kettle Ponds as well a 50-meter resolution digital elevation model (DEM) of the upper East River Basin.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">openamundsen</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting openamundsen
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading openamundsen-1.1.6-py3-none-any.whl.metadata (15 kB)
+Collecting cerberus (from openamundsen)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading cerberus-1.3.8-py3-none-any.whl.metadata (5.5 kB)
+Collecting loguru (from openamundsen)
+  Downloading loguru-0.7.3-py3-none-any.whl.metadata (22 kB)
+Collecting munch (from openamundsen)
+  Downloading munch-4.0.0-py2.py3-none-any.whl.metadata (5.9 kB)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: netCDF4 in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from openamundsen) (1.7.4)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting numba&gt;=0.50.1 (from openamundsen)
+  Downloading numba-0.64.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.9 kB)
+Requirement already satisfied: numpy in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from openamundsen) (2.4.2)
+Requirement already satisfied: pandas&gt;=1.1.0 in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from openamundsen) (2.3.3)
+Collecting pwlf (from openamundsen)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading pwlf-2.5.2-py3-none-any.whl.metadata (6.4 kB)
+Requirement already satisfied: pyproj in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from openamundsen) (3.7.2)
+Collecting setuptools_scm (from openamundsen)
+  Downloading setuptools_scm-9.2.2-py3-none-any.whl.metadata (7.7 kB)
+Requirement already satisfied: setuptools&gt;=61 in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from openamundsen) (79.0.1)
+Requirement already satisfied: scipy in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from openamundsen) (1.17.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting ruamel.yaml&gt;=0.15.0 (from openamundsen)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading ruamel_yaml-0.19.1-py3-none-any.whl.metadata (16 kB)
+Requirement already satisfied: rasterio&gt;=1.1.0 in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from openamundsen) (1.4.4)
+Requirement already satisfied: xarray&gt;=0.14.0 in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from openamundsen) (2026.2.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting llvmlite&lt;0.47,&gt;=0.46.0dev0 (from numba&gt;=0.50.1-&gt;openamundsen)
+  Downloading llvmlite-0.46.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (5.0 kB)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from pandas&gt;=1.1.0-&gt;openamundsen) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from pandas&gt;=1.1.0-&gt;openamundsen) (2026.1.post1)
+Requirement already satisfied: tzdata&gt;=2022.7 in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from pandas&gt;=1.1.0-&gt;openamundsen) (2025.3)
+Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&gt;=1.1.0-&gt;openamundsen) (1.17.0)
+Requirement already satisfied: affine in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from rasterio&gt;=1.1.0-&gt;openamundsen) (2.4.0)
+Requirement already satisfied: attrs in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from rasterio&gt;=1.1.0-&gt;openamundsen) (25.4.0)
+Requirement already satisfied: certifi in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from rasterio&gt;=1.1.0-&gt;openamundsen) (2026.2.25)
+Requirement already satisfied: click!=8.2.*,&gt;=4.0 in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from rasterio&gt;=1.1.0-&gt;openamundsen) (8.3.1)
+Requirement already satisfied: cligj&gt;=0.5 in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from rasterio&gt;=1.1.0-&gt;openamundsen) (0.7.2)
+Requirement already satisfied: click-plugins in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from rasterio&gt;=1.1.0-&gt;openamundsen) (1.1.1.2)
+Requirement already satisfied: pyparsing in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from rasterio&gt;=1.1.0-&gt;openamundsen) (3.3.2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: packaging&gt;=24.1 in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from xarray&gt;=0.14.0-&gt;openamundsen) (26.0)
+Requirement already satisfied: cftime in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from netCDF4-&gt;openamundsen) (1.6.5)
+Downloading openamundsen-1.1.6-py3-none-any.whl (133 kB)
+Downloading numba-0.64.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (3.7 MB)
+?25l   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/3.7 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">3.7/3.7 MB</span> <span class=" -Color -Color-Red">146.2 MB/s</span>  <span class=" -Color -Color-Yellow">0:00:00</span>
+?25hDownloading llvmlite-0.46.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (56.3 MB)
+?25l   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/56.3 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">55.8/56.3 MB</span> <span class=" -Color -Color-Red">279.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">56.3/56.3 MB</span> <span class=" -Color -Color-Red">208.1 MB/s</span>  <span class=" -Color -Color-Yellow">0:00:00</span>
+?25hDownloading ruamel_yaml-0.19.1-py3-none-any.whl (118 kB)
+Downloading cerberus-1.3.8-py3-none-any.whl (30 kB)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading loguru-0.7.3-py3-none-any.whl (61 kB)
+Downloading munch-4.0.0-py2.py3-none-any.whl (9.9 kB)
+Downloading pwlf-2.5.2-py3-none-any.whl (17 kB)
+Downloading setuptools_scm-9.2.2-py3-none-any.whl (62 kB)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: setuptools_scm, ruamel.yaml, munch, loguru, llvmlite, cerberus, pwlf, numba, openamundsen
+?25l
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1/9</span> [ruamel.yaml]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">4/9</span> [llvmlite]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">4/9</span> [llvmlite]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">4/9</span> [llvmlite]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">4/9</span> [llvmlite]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">5/9</span> [cerberus]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━ <span class=" -Color -Color-Green">7/9</span> [numba]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━ <span class=" -Color -Color-Green">7/9</span> [numba]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━ <span class=" -Color -Color-Green">7/9</span> [numba]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━ <span class=" -Color -Color-Green">7/9</span> [numba]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━ <span class=" -Color -Color-Green">7/9</span> [numba]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━ <span class=" -Color -Color-Green">7/9</span> [numba]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━ <span class=" -Color -Color-Green">7/9</span> [numba]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━ <span class=" -Color -Color-Green">7/9</span> [numba]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━ <span class=" -Color -Color-Green">7/9</span> [numba]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━ <span class=" -Color -Color-Green">7/9</span> [numba]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━ <span class=" -Color -Color-Green">7/9</span> [numba]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━ <span class=" -Color -Color-Green">7/9</span> [numba]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">9/9</span> [openamundsen]
+?25h
+Successfully installed cerberus-1.3.8 llvmlite-0.46.0 loguru-0.7.3 munch-4.0.0 numba-0.64.0 openamundsen-1.1.6 pwlf-2.5.2 ruamel.yaml-0.19.1 setuptools_scm-9.2.2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">openamundsen</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">oa</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">rix</span>
+
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">metpy.units</span><span class="w"> </span><span class="kn">import</span> <span class="n">units</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">metpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">constants</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">altair</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">alt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="run-model">
+<h1>Run Model<a class="headerlink" href="#run-model" title="Link to this heading">#</a></h1>
+<p>The model requires the following files to run:</p>
+<ul class="simple">
+<li><p>a csv file of inputs (<code class="docutils literal notranslate"><span class="pre">1.csv</span></code>),</p></li>
+<li><p>a csv of the locations of the input measurements (<code class="docutils literal notranslate"><span class="pre">stations.csv</span></code>),</p></li>
+<li><p>a DEM of the model domain (<code class="docutils literal notranslate"><span class="pre">dem_uppereastriver_50.asc</span></code>, also files with the same name ending with extensions <code class="docutils literal notranslate"><span class="pre">.prj</span></code> and <code class="docutils literal notranslate"><span class="pre">.asc.aux.xml</span></code>)</p></li>
+<li><p>a gridded mask indicating where to run the model (<code class="docutils literal notranslate"><span class="pre">roi_uppereastriver_50.asc|.prj</span></code>)
+All of these files are within a compressed directory, which you can download form the Module 8 web page.</p></li>
+</ul>
+<p>To get the model ready to run, download the compressed directory of model inputs by clicking the link <code class="docutils literal notranslate"><span class="pre">openAMUNDSEN</span> <span class="pre">Inputs</span></code> on the Module 8 webpage.
+Once downloaded, unzip this directory and place it in a directory <code class="docutils literal notranslate"><span class="pre">../data/</span></code> such that there exists a directory <code class="docutils literal notranslate"><span class="pre">../data/openamundsen/</span></code>.
+Then, download the `openAMUNDSEN Configuration File`` (also linked on the Module 8 web page), and place it in the same directory as this notebook file.</p>
+<p>Once you follow the steps above, the following command should show you a bunch of model input files:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">../</span><span class="n">data</span><span class="o">/</span><span class="n">openamundsen</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.csv                              dem_uppereastriver_50.prj  stations.csv
+dem_uppereastriver_50.asc          roi_uppereastriver_50.asc
+dem_uppereastriver_50.asc.aux.xml  roi_uppereastriver_50.prj
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here is how we run the model.</p>
+<ol class="arabic simple">
+<li><p>read the config and set up a model object.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="n">oa</span><span class="o">.</span><span class="n">read_config</span><span class="p">(</span><span class="s1">&#39;open_amundsen_config.yml&#39;</span><span class="p">)</span>  <span class="c1"># read in configuration file</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">oa</span><span class="o">.</span><span class="n">OpenAmundsen</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>  <span class="c1"># create OpenAmundsen object and populate unspecified parameters with default values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Initialize the model.</p></li>
+</ol>
+<p>If there are any problems with your inputs, errors will be thrown here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>  <span class="c1"># read in input data files, initialize state variables etc.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:32</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Initializing model grid</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:32</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Grid has dimensions 337x280</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:32</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Reading DEM (../data/openamundsen/dem_uppereastriver_50.asc)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:32</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:32</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=0° (1/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:38</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=10° (2/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:38</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=20° (3/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:39</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=30° (4/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:39</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=40° (5/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:39</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=50° (6/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:39</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=60° (7/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:39</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=70° (8/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:39</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=80° (9/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:39</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=90° (10/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:40</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=100° (11/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:40</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=110° (12/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:40</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=120° (13/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:40</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=130° (14/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:40</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=140° (15/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:40</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=150° (16/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:40</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=160° (17/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:40</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=170° (18/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:41</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=180° (19/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:41</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=190° (20/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:41</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=200° (21/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:41</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=210° (22/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:41</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=220° (23/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:41</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=230° (24/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:41</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=240° (25/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:42</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=250° (26/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:42</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=260° (27/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:42</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=270° (28/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:42</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=280° (29/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:42</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=290° (30/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:42</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=300° (31/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:42</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=310° (32/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:42</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=320° (33/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:43</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=330° (34/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:43</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=340° (35/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:43</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating sky view factor for azimuth=350° (36/36)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:43</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Reading ROI (../data/openamundsen/roi_uppereastriver_50.asc)</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:43</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Reading meteo file: ../data/openamundsen/1.csv</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:43</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Correcting station precipitation with method: wmo</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:43</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Calculating terrain parameters</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Run the model. This will take about two minutes with our current configuration.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>  <span class="c1"># run the model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:43</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Starting model run</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:43</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-16 00:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:56</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-16 03:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:56</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-16 06:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:56</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-16 09:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:56</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-16 12:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:57</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-16 15:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:57</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-16 18:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:57</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-16 21:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:57</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-17 00:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:57</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-17 03:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:57</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-17 06:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:57</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-17 09:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:57</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-17 12:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:58</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-17 15:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:58</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-17 18:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:58</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-17 21:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:58</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-18 00:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:58</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-18 03:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:58</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-18 06:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:58</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-18 09:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:58</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-18 12:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:59</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-18 15:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:59</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-18 18:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:59</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-18 21:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:59</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-19 00:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:59</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-19 03:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:59</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-19 06:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:59</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-19 09:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:15:59</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-19 12:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:00</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-19 15:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:00</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-19 18:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:00</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-19 21:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:00</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-20 00:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:00</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-20 03:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:00</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-20 06:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:00</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-20 09:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:00</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-20 12:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:01</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-20 15:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:01</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-20 18:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:01</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-20 21:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:01</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-21 00:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:01</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-21 03:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:01</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-21 06:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:01</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-21 09:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:01</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-21 12:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:01</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-21 15:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:02</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-21 18:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:02</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-21 21:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:02</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-22 00:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:02</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-22 03:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:02</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-22 06:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:02</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-22 09:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:02</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-22 12:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:02</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-22 15:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:03</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-22 18:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:03</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-22 21:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:03</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-23 00:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:03</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-23 03:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:03</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-23 06:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:03</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-23 09:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:03</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-23 12:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:03</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-23 15:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:04</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-23 18:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:04</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-23 21:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:04</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-24 00:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:04</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-24 03:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:04</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-24 06:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:04</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-24 09:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:04</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-24 12:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:04</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-24 15:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:05</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-24 18:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:05</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-24 21:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:05</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-25 00:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:05</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-25 03:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:05</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-25 06:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:05</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-25 09:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:05</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-25 12:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:05</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-25 15:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:06</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-25 18:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:06</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-25 21:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:06</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-26 00:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:06</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-26 03:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:06</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-26 06:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:06</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-26 09:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:06</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-26 12:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:06</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-26 15:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:07</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-26 18:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:07</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-26 21:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:07</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-27 00:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:07</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-27 03:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:07</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-27 06:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:07</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-27 09:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:07</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-27 12:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:07</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-27 15:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:08</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-27 18:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:08</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-27 21:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:08</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-28 00:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:08</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-28 03:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:08</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-28 06:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:08</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-28 09:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:08</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-28 12:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:08</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-28 15:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:09</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-28 18:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:09</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-28 21:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:09</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-29 00:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:09</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-29 03:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:09</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-29 06:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:09</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-29 09:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:09</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-29 12:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:09</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-29 15:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:10</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-29 18:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:10</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-29 21:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:10</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-30 00:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:10</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-30 03:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:10</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-30 06:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:10</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-30 09:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:10</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-30 12:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:11</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-30 15:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:11</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-30 18:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:11</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-11-30 21:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:11</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-12-01 00:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:11</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-12-01 03:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:11</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-12-01 06:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:11</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-12-01 09:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:11</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-12-01 12:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:12</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-12-01 15:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:12</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-12-01 18:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:12</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-12-01 21:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:12</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-12-02 00:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:12</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-12-02 03:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:12</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-12-02 06:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:12</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-12-02 09:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:13</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-12-02 12:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:13</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-12-02 15:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:13</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-12-02 18:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:13</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-12-02 21:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:13</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-12-03 00:00</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2026-03-04 21:16:13</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Bold">Processing time step 2022-12-03 03:00</span>
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>  <span class="c1"># run the model</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/openamundsen/model.py:216,</span> in <span class="ni">OpenAmundsen.run</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span> <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dates</span><span class="p">)):</span>
+<span class="ne">--&gt; </span><span class="mi">216</span>     <span class="bp">self</span><span class="o">.</span><span class="n">run_single</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span> <span class="n">time_diff</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span> <span class="n">logger</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s2">&quot;Model run finished. Runtime: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">time_diff</span><span class="p">))</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/openamundsen/model.py:252,</span> in <span class="ni">OpenAmundsen.run_single</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">249</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_meteo_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">251</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_meteo_data</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">252</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_interface</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">253</span> <span class="bp">self</span><span class="o">.</span><span class="n">point_output</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">254</span> <span class="bp">self</span><span class="o">.</span><span class="n">gridded_output</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/openamundsen/model.py:316,</span> in <span class="ni">OpenAmundsen._model_interface</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">311</span> <span class="k">def</span><span class="w"> </span><span class="nf">_model_interface</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">312</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">313</span><span class="sd">     Interface for calling the different submodules. This method is called</span>
+<span class="g g-Whitespace">    </span><span class="mi">314</span><span class="sd">     in every time step after the meteorological fields have been prepared.</span>
+<span class="g g-Whitespace">    </span><span class="mi">315</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">316</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_irradiance</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">318</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_require_land_cover</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">319</span>         <span class="bp">self</span><span class="o">.</span><span class="n">land_cover</span><span class="o">.</span><span class="n">lai</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/openamundsen/model.py:823,</span> in <span class="ni">OpenAmundsen._irradiance</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">820</span>     <span class="n">roi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">roi</span>
+<span class="g g-Whitespace">    </span><span class="mi">821</span>     <span class="n">m</span><span class="o">.</span><span class="n">sw_in</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">sw_in_clearsky</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span> <span class="o">*</span> <span class="n">m</span><span class="o">.</span><span class="n">cloud_factor</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">823</span> <span class="n">modules</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">longwave_irradiance</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/openamundsen/modules/radiation/irradiance.py:298,</span> in <span class="ni">longwave_irradiance</span><span class="nt">(model)</span>
+<span class="g g-Whitespace">    </span><span class="mi">291</span> <span class="n">rock_emission_factor</span> <span class="o">=</span> <span class="mf">0.01</span>  <span class="c1"># (K W-1 m2) temperature of emitting rocks during daytime is assumed to be higher than the air temperature by this factor multiplied by the incoming shortwave radiation (Greuell et al., 1997) # noqa: E501</span>
+<span class="g g-Whitespace">    </span><span class="mi">293</span> <span class="c1"># Incoming longwave radiation from the clear sky</span>
+<span class="g g-Whitespace">    </span><span class="mi">294</span> <span class="n">lw_in_clearsky</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">295</span>     <span class="n">clear_sky_emissivity</span>
+<span class="g g-Whitespace">    </span><span class="mi">296</span>     <span class="o">*</span> <span class="n">constants</span><span class="o">.</span><span class="n">STEFAN_BOLTZMANN</span>
+<span class="g g-Whitespace">    </span><span class="mi">297</span>     <span class="o">*</span> <span class="n">m</span><span class="o">.</span><span class="n">temp</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span> <span class="o">**</span> <span class="mi">4</span>
+<span class="ne">--&gt; </span><span class="mi">298</span>     <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">svf</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">299</span>     <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">cloud_fraction</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">300</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">302</span> <span class="c1"># Incoming longwave radiation from clouds</span>
+<span class="g g-Whitespace">    </span><span class="mi">303</span> <span class="n">lw_in_clouds</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">304</span>     <span class="n">cloud_emissivity</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span>     <span class="o">*</span> <span class="n">constants</span><span class="o">.</span><span class="n">STEFAN_BOLTZMANN</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">308</span>     <span class="o">*</span> <span class="n">m</span><span class="o">.</span><span class="n">cloud_fraction</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span> <span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/munch/__init__.py:91,</span> in <span class="ni">Munch.__getattr__</span><span class="nt">(self, k)</span>
+<span class="g g-Whitespace">     </span><span class="mi">88</span>     <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">90</span> <span class="c1"># only called if k not found in normal places</span>
+<span class="ne">---&gt; </span><span class="mi">91</span> <span class="k">def</span><span class="w"> </span><span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span><span class="w">     </span><span class="sd">&quot;&quot;&quot; Gets key if it exists, otherwise throws AttributeError.</span>
+<span class="g g-Whitespace">     </span><span class="mi">93</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span><span class="sd">         nb. __getattr__ is only called if key is not found in normal places.</span>
+<span class="sd">   (...)    112         True</span>
+<span class="g g-Whitespace">    </span><span class="mi">113</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">114</span>     <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span>         <span class="c1"># Throws exception if not in prototype chain</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="examine-results">
+<h1>Examine results<a class="headerlink" href="#examine-results" title="Link to this heading">#</a></h1>
+<p>Now, let’s open up the model results and check them out! There are two types of model result output files.</p>
+<p><strong>Point data</strong> results are results <em>at Kettle Ponds</em>. We configured the model (in the yml file) to save results at the Kettle Ponds location. You can add additional points at which to save model results. Point results have the full suite of model outputs, for each 3-hour timestep. By default, all outputs are saved for point data results.</p>
+<p><strong>Gridded data</strong> results are results for the entire watershed, i.e. modeled values at each grid cell, where grid cells are 4. By default, limited gridded model results are saved to file because the size of the outputs are large. We configured the model (in the yml file) to only save the snow melt variable. If you are interested in checking out other gridded results, look in the configuration file, under the section <code class="docutils literal notranslate"><span class="pre">grids:</span> <span class="pre">variables:</span></code>, and add variables there, and then rerun the model.</p>
+<p>We will look at model results and compare them to measurements from the Kettle Ponds site. So let’s open up the measured SOS data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">measured</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;../data/sos_full_dataset_30min.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="point-results">
+<h2>Point Results<a class="headerlink" href="#point-results" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We grab the point `kps` right off the bat b/c it&#39;s the only point with data inside this dataset.</span>
+<span class="n">modeled</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;openamundsen_results/output_timeseries.nc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">point</span><span class="o">=</span><span class="s1">&#39;kps&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Resample the 30-minute measurements to match the 3-hour model results. Resampling using a pandas dataframe is way faster than using an xarray dataset, so we convert to dataframe, perform the resampling, then convert back to an xarray dataset. We also trim the measurements to match the time period of the model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">measured</span> <span class="o">=</span> <span class="n">measured</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;3h&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span>
+<span class="n">measured</span> <span class="o">=</span> <span class="n">measured</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">modeled</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">modeled</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="compare-measured-and-modeled-swe">
+<h3>Compare measured and modeled SWE<a class="headerlink" href="#compare-measured-and-modeled-swe" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">measured</span><span class="p">[</span><span class="s1">&#39;SWE_p3_c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;20221110&#39;</span><span class="p">,</span> <span class="s1">&#39;20230630&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Measured tow&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">modeled</span><span class="o">.</span><span class="n">swe</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;20221110&#39;</span><span class="p">,</span> <span class="s1">&#39;20230630&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Modeled&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that modeled SWE divergences from meausred SWE at the beginning of April.
+Let’s examine the measured and modeled energy balances during the first half of April.</p>
+<section id="calculate-energy-balance-terms">
+<h4>Calculate energy balance terms<a class="headerlink" href="#calculate-energy-balance-terms" title="Link to this heading">#</a></h4>
+<p>We will focus on the following energy balance terms: <span class="math notranslate nohighlight">\(R_{net}\)</span>, <span class="math notranslate nohighlight">\(H_L\)</span>, <span class="math notranslate nohighlight">\(H_s\)</span>, and <span class="math notranslate nohighlight">\(P\)</span>, where <span class="math notranslate nohighlight">\(P\)</span> is the precipitation energy flux. We found in previous labs that the ground heat flux <span class="math notranslate nohighlight">\(G\)</span> and internal energy <span class="math notranslate nohighlight">\(dU/dt\)</span> terms are generally small, so we omit them here for simplicity.
+<span class="math notranslate nohighlight">\(P\)</span> is generally small because the snowfall is usually pretty close in temperature to the snowpack, but for the homework assignment, we will model a rain-on-snow event, where <span class="math notranslate nohighlight">\(P\)</span> can be large (i.e. rain is warmer than the snowpack, so rainfall results in warming of the snowpack).</p>
+</section>
+<section id="modeled">
+<h4>Modeled<a class="headerlink" href="#modeled" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Net Radiation</span>
+<span class="n">modeled</span><span class="p">[</span><span class="s1">&#39;Rnet&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">modeled</span><span class="p">[</span><span class="s1">&#39;sw_in&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">modeled</span><span class="p">[</span><span class="s1">&#39;sw_out&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">modeled</span><span class="p">[</span><span class="s1">&#39;lw_in&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">modeled</span><span class="p">[</span><span class="s1">&#39;lw_out&#39;</span><span class="p">]</span>
+
+<span class="c1"># Precipitation energy flux</span>
+<span class="n">temp_difference</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">modeled</span><span class="o">.</span><span class="n">temp</span> <span class="o">-</span> <span class="n">modeled</span><span class="o">.</span><span class="n">surface_temp</span>
+<span class="p">)</span> <span class="o">*</span> <span class="n">units</span><span class="p">(</span><span class="s2">&quot;kelvin&quot;</span><span class="p">)</span>
+<span class="n">precip_per_3hours</span> <span class="o">=</span> <span class="n">modeled</span><span class="o">.</span><span class="n">precip</span> <span class="o">*</span> <span class="n">units</span><span class="p">(</span><span class="s2">&quot;kg/m^2&quot;</span><span class="p">)</span>
+<span class="n">seconds_in_3hours</span> <span class="o">=</span> <span class="mi">10800</span> <span class="o">*</span> <span class="n">units</span><span class="p">(</span><span class="s1">&#39;seconds&#39;</span><span class="p">)</span>
+<span class="n">precip_rate</span> <span class="o">=</span> <span class="n">precip_per_3hours</span> <span class="o">/</span> <span class="n">seconds_in_3hours</span>
+<span class="n">modeled</span><span class="p">[</span><span class="s1">&#39;P&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">precip_rate</span> <span class="o">*</span> <span class="n">constants</span><span class="o">.</span><span class="n">water_specific_heat</span> <span class="o">*</span> <span class="n">temp_difference</span><span class="p">)</span>
+
+<span class="c1"># Note that HL and Hs, in the modeled modeled, are already in units of W/m^2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">modeled</span><span class="p">[</span><span class="s1">&#39;sens_heat_flux&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">modeled</span><span class="p">[</span><span class="s1">&#39;lat_heat_flux&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="measured">
+<h4>Measured<a class="headerlink" href="#measured" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">measured</span><span class="p">[</span><span class="s1">&#39;Rnet&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">measured</span><span class="p">[</span><span class="s1">&#39;Rsw_in_9m_d&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">measured</span><span class="p">[</span><span class="s1">&#39;Rsw_out_9m_d&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">measured</span><span class="p">[</span><span class="s1">&#39;Rlw_in_9m_d&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">measured</span><span class="p">[</span><span class="s1">&#39;Rlw_out_9m_d&#39;</span><span class="p">]</span>
+
+<span class="c1"># Precipitation energy flux, use modeled precip b/c that&#39;s an input, and we don&#39;t have the precip dataset loaded, so this is convenient</span>
+<span class="n">temp_difference</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">measured</span><span class="p">[</span><span class="s1">&#39;T_3m_c&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">measured</span><span class="p">[</span><span class="s1">&#39;Tsurf_c&#39;</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">*</span> <span class="n">units</span><span class="p">(</span><span class="s2">&quot;kelvin&quot;</span><span class="p">)</span>
+<span class="n">precip_per_3hours</span> <span class="o">=</span> <span class="n">modeled</span><span class="o">.</span><span class="n">precip</span> <span class="o">*</span> <span class="n">units</span><span class="p">(</span><span class="s2">&quot;kg/m^2&quot;</span><span class="p">)</span>
+<span class="n">seconds_in_3hours</span> <span class="o">=</span> <span class="mi">10800</span> <span class="o">*</span> <span class="n">units</span><span class="p">(</span><span class="s1">&#39;seconds&#39;</span><span class="p">)</span>
+<span class="n">precip_rate</span> <span class="o">=</span> <span class="n">precip_per_3hours</span> <span class="o">/</span> <span class="n">seconds_in_3hours</span>
+<span class="n">measured</span><span class="p">[</span><span class="s1">&#39;P&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">precip_rate</span> <span class="o">*</span> <span class="n">constants</span><span class="o">.</span><span class="n">water_specific_heat</span> <span class="o">*</span> <span class="n">temp_difference</span><span class="p">)</span>
+
+<span class="c1"># convert measured sensible and latent heat fluxes to W/m^2. See Lab5-1.</span>
+<span class="c1"># Note that while the modeled sensible and latent heat fluxes are **into** the snowpack,</span>
+<span class="c1">#   our measurements of heat flux are **upwards/away** from the snowpack. So we negate </span>
+<span class="c1">#   the measured values to match the modeled values.</span>
+<span class="n">latent_heat_sublimation</span> <span class="o">=</span> <span class="mi">2590</span> <span class="c1">#J/g</span>
+<span class="n">measured</span><span class="p">[</span><span class="s1">&#39;lat_heat_flux&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">measured</span><span class="p">[</span><span class="s1">&#39;w_h2o__3m_c&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">latent_heat_sublimation</span>
+
+<span class="n">specific_heat_capacity_air</span> <span class="o">=</span> <span class="mf">1.005</span> <span class="c1"># J/K/g</span>
+<span class="n">air_density</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># g/m^3                                       </span>
+<span class="n">measured</span><span class="p">[</span><span class="s1">&#39;sens_heat_flux&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">measured</span><span class="p">[</span><span class="s1">&#39;w_tc__3m_c&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">specific_heat_capacity_air</span> <span class="o">*</span> <span class="n">air_density</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="compare">
+<h4>Compare<a class="headerlink" href="#compare" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">((</span><span class="mf">12.8</span><span class="p">,</span> <span class="mf">4.8</span><span class="p">)),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">time_slice</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;20230401&#39;</span><span class="p">,</span> <span class="s1">&#39;20230415&#39;</span><span class="p">)</span>
+<span class="n">modeled</span><span class="p">[</span><span class="s1">&#39;Rnet&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Rnet&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">modeled</span><span class="p">[</span><span class="s1">&#39;sens_heat_flux&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Hs&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">modeled</span><span class="p">[</span><span class="s1">&#39;lat_heat_flux&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;HL&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">modeled</span><span class="p">[</span><span class="s1">&#39;P&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">measured</span><span class="p">[</span><span class="s1">&#39;Rnet&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Rnet&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">measured</span><span class="p">[</span><span class="s1">&#39;sens_heat_flux&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Hs&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">measured</span><span class="p">[</span><span class="s1">&#39;lat_heat_flux&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;HL&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">measured</span><span class="p">[</span><span class="s1">&#39;P&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Modeled&#39;</span><span class="p">);</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Measured&#39;</span><span class="p">);</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ok, so we see some interesting things here. Most obviously, modeled net radiation is smaller than measured net radiation, particularly starting on April 8th. What do we recall from previous labs about what happened around this date that the model doesn’t pick up on?</p>
+<p>Second, it appears that the latent and sensible heat fluxes are larger in the model-world than in the real world.</p>
+</section>
+</section>
+</section>
+<section id="gridded-results">
+<h2>Gridded results<a class="headerlink" href="#gridded-results" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modeled_gridded</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;openamundsen_results/output_grids.nc&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s check out melt rates at the four dates throughout May and June. The plot of modeled SWE (above) shows that modeled melt at Kettle Ponds occurs all throughout May, but higher altitude locations probably melted out later, in June.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+<span class="c1"># Plot for May 1</span>
+<span class="n">modeled_gridded</span><span class="p">[</span><span class="s1">&#39;melt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;2023-05-01T00:00:00.000000000&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;May 1 Melt Rate&#39;</span><span class="p">)</span>
+<span class="c1"># Plot for May 15</span>
+<span class="n">modeled_gridded</span><span class="p">[</span><span class="s1">&#39;melt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;2023-05-15T00:00:00.000000000&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;May 15 Melt Rate&#39;</span><span class="p">)</span>
+<span class="c1"># Plot for June 2</span>
+<span class="n">modeled_gridded</span><span class="p">[</span><span class="s1">&#39;melt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;2023-06-02T00:00:00.000000000&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;June 2 Melt Rate&#39;</span><span class="p">)</span>
+<span class="c1"># Plot for June 15</span>
+<span class="n">modeled_gridded</span><span class="p">[</span><span class="s1">&#39;melt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;2023-06-14T00:00:00.000000000&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;June 15 Melt Rate&#39;</span><span class="p">)</span>
+
+<span class="n">kps_loc</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">([</span><span class="n">Point</span><span class="p">(</span><span class="o">-</span><span class="mf">106.972983</span><span class="p">,</span> <span class="mf">38.941817</span><span class="p">,</span> <span class="mi">0</span><span class="p">)],</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Kettle Ponds&#39;</span><span class="p">],</span>
+    <span class="n">crs</span> <span class="o">=</span> <span class="s1">&#39;epsg:4326&#39;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">modeled_gridded</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">():</span>
+    <span class="c1"># Set all the plots to have the same x and y-axis limits, and set the aspect ratio to be equal</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">322500</span><span class="p">,</span> <span class="mi">337000</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">4305000</span><span class="p">,</span> <span class="mi">4322500</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+    <span class="c1"># plot the KPS location with a red dot</span>
+    <span class="n">kps_loc</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Cool! So we see on May 1 that melt was beginning at the lowest elevation parts of the basin (see the DEM for the upper East River Valley below).</p>
+<p>We also see that by May 15, melt was creeping up in elevation, mostly occuring in the low elevation, valley center.</p>
+<p>By June 2, the lowest parts of the valley had melted out completely and so no more melt could occur. Surrounding the lowest elevation areas, melt was most intense.</p>
+<p>By June 15, even more low parts of the valley had melted out, and a higher elevation band was melting out. These plots also show that for higher elevation areas in the basin, not much melt had ocurred by June 15th. Unfortunately, our Kettle Ponds measurements did not go past June 19, and we only ran the model till June 15th. To model the full snowpack at higher elevations, we would need to run the model up until a later date.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dem</span> <span class="o">=</span> <span class="n">rix</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="s2">&quot;../data/openamundsen/dem_uppereastriver_50.asc&quot;</span><span class="p">)</span>
+<span class="n">dem</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cbar_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s2">&quot;Elevation (m)&quot;</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./modules/module8"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab8-1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 8-1: Predicting streamflow with the SWE regression method</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../resources/a-learning-python.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Python</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 8-2: Modeling a snowpack with a gridded, numerical model - openAMUNDSEN</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-model">Run Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-results">Examine results</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-results">Point Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-measured-and-modeled-swe">Compare measured and modeled SWE</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-energy-balance-terms">Calculate energy balance terms</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modeled">Modeled</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#measured">Measured</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compare">Compare</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gridded-results">Gridded results</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eli Schwat, Steven Pestana, Jessica D. Lundquist, and other contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

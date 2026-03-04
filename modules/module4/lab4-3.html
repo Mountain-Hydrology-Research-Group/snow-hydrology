@@ -1,0 +1,2343 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab 4-3: Snowpack temperature and density profiles - snowpit data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/module4/lab4-3';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 4-4: Atmospheric temperatures and stability" href="lab4-4.html" />
+    <link rel="prev" title="Lab 4-2: Snowpack internal energy - completing the snowpack energy balance" href="lab4-2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Snow Hydrology
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/a-syllabus.html">Syllabus: CEWA 568</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/b-project.html">Course Project: CEWA 568</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../module1/module1.html">1) Properties of Snow</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../module2/module2.html">2) Measurement Strategies, Basics of the Snowpack Mass and Energy Balances, and Snowpack Dynamics</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module3/module3.html">3) Snowpack Energy Balance – Radiation + Albedo, Dust on Snow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-1.html">Lab 3-1: Surface Energy Balance at Kettle Ponds - Radiation Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-2.html">Lab 3-2: Plotting the Surface Energy Balance at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="module4.html">4) Temperatures: snowpack and atmospheric stability</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lab4-0.html">Intuition about the heat equation - Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4-1.html">Lab 4-1: Snowpack temperature profiles</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="lab4-2.html">Lab 4-2: Snowpack internal energy - completing the snowpack energy balance</a></li>
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lab 4-3: Snowpack temperature and density profiles - snowpit data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="lab4-4.html">Lab 4-4: Atmospheric temperatures and stability</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module5/module5.html">5) Turbulent transport - momentum, heat, and moisture fluxes above the snow covered earth</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-1.html">Lab 5-1: Turbulent fluxes and measures of stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-2.html">Lab 5-2: Water vapor fluxes at Kettle Ponds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-3.html">Lab 5-3: Mixing length theory at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module6/module6.html">6) Blowing snow transport and sublimation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-1.html">Lab 6-1: Blowing snow fluxes, wind speed, and shear velocity</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-2.html">Lab 6-2: Blowing snow - snow redistribution on the landscape scale</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-3.html">Lab 6-3: Blowing snow - snow redistribution on the site scale</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module7/module7.html">7) Snow melt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-1.html">Lab 7-1: Snowpack ripening and melt initiation - Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-2.html">Lab 7-2: Snowpack ripening and melt initiation - Energy Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-3.html">Lab 7-3 - Predicting snowmelt rates with the Temperature-Index method</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module8/module8.html">8) Snow-dominated watershed hydrology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-1.html">Lab 8-1: Predicting streamflow with the SWE regression method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-2.html">Lab 8-2: Modeling a snowpack with a gridded, numerical model - openAMUNDSEN</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/a-learning-python.html">Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module1/numpy-tutorial.html">NumPy and the ndarray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1/some-python-tips.html">More python tips</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/b-learning-jupyter.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/instructor_resources.html">Resources for Instructors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/edit/main/book/modules/module4/lab4-3.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/issues/new?title=Issue%20on%20page%20%2Fmodules/module4/lab4-3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/modules/module4/lab4-3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 4-3: Snowpack temperature and density profiles - snowpit data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 4-3: Snowpack temperature and density profiles - snowpit data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sos-data">SOS Data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#replicate-the-steps-from-lab-4-1-to-create-a-dataset-of-in-snow-temperature-measurements-including-snow-surface-temperatures">Replicate the steps from Lab 4-1 to create a dataset of in-snow temperature measurements (including snow surface temperatures)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#snowpit-measurements-a-first-look">Snowpit Measurements - a first look</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-density-and-temperature-profiles-from-the-two-days">Plot density and temperature profiles from the two days</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-temperature-measurements-from-snowpit-and-in-situ-thermistor-measurements">Combining temperature measurements from snowpit and in-situ thermistor measurements</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-4-3-snowpack-temperature-and-density-profiles-snowpit-data">
+<h1>Lab 4-3: Snowpack temperature and density profiles - snowpit data<a class="headerlink" href="#lab-4-3-snowpack-temperature-and-density-profiles-snowpit-data" title="Link to this heading">#</a></h1>
+<p>Written by Daniel Hogan - April, 2023.</p>
+<p>Modified by Jessica Lundquist - April, 2023.</p>
+<p>Modified by Eli Schwat - January 2024.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="sos-data">
+<h2>SOS Data<a class="headerlink" href="#sos-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sos_file</span> <span class="o">=</span> <span class="s2">&quot;../data/sos_full_dataset_30min.nc&quot;</span>
+<span class="n">sos_dataset</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">sos_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="replicate-the-steps-from-lab-4-1-to-create-a-dataset-of-in-snow-temperature-measurements-including-snow-surface-temperatures">
+<h1>Replicate the steps from Lab 4-1 to create a dataset of in-snow temperature measurements (including snow surface temperatures)<a class="headerlink" href="#replicate-the-steps-from-lab-4-1-to-create-a-dataset-of-in-snow-temperature-measurements-including-snow-surface-temperatures" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tsnow_vars</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">sos_dataset</span> <span class="k">if</span> <span class="s1">&#39;Tsnow_&#39;</span> <span class="ow">in</span> <span class="n">v</span> <span class="ow">and</span> <span class="n">v</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_d&#39;</span><span class="p">)]</span>
+<span class="n">snow_depth_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SnowDepth_d&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">snow_depth_vars</span><span class="p">,</span> <span class="n">tsnow_vars</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;SnowDepth_d&#39;] [&#39;Tsnow_0_4m_d&#39;, &#39;Tsnow_0_5m_d&#39;, &#39;Tsnow_0_6m_d&#39;, &#39;Tsnow_0_7m_d&#39;, &#39;Tsnow_0_8m_d&#39;, &#39;Tsnow_0_9m_d&#39;, &#39;Tsnow_1_0m_d&#39;, &#39;Tsnow_1_1m_d&#39;, &#39;Tsnow_1_2m_d&#39;, &#39;Tsnow_1_3m_d&#39;, &#39;Tsnow_1_4m_d&#39;, &#39;Tsnow_1_5m_d&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Transform the NetCDF dataset to be a &quot;tidy&quot; dataset of snow depths</span>
+<span class="n">snow_temp_dataset</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[</span>
+    <span class="n">tsnow_vars</span> <span class="o">+</span> <span class="n">snow_depth_vars</span>
+<span class="p">]</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;SnowDepth_d&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Calculate the depth of the snow sensor (relative to the snow surface)</span>
+<span class="c1"># using the snow depth measurements and the known above-ground height</span>
+<span class="c1"># of the snow sensors</span>
+<span class="n">snow_temp_dataset</span><span class="p">[</span><span class="s1">&#39;height_agl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">snow_temp_dataset</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">snow_temp_dataset</span> <span class="o">=</span> <span class="n">snow_temp_dataset</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">snow_temp_dataset</span><span class="p">[</span><span class="s1">&#39;depth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">snow_temp_dataset</span><span class="p">[</span><span class="s1">&#39;height_agl&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">snow_temp_dataset</span><span class="p">[</span><span class="s1">&#39;SnowDepth_d&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add surface temperature data (depth=0)</span>
+<span class="n">surface_temps_dataset</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Tsurf_d&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+<span class="n">surface_temps_dataset</span> <span class="o">=</span> <span class="n">surface_temps_dataset</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Tsurf_d&#39;</span><span class="p">:</span> <span class="s1">&#39;value&#39;</span><span class="p">})</span>
+<span class="n">surface_temps_dataset</span><span class="p">[</span><span class="s1">&#39;depth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">surface_temps_dataset</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>value</th>
+      <th>depth</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-11-01 00:00:00</th>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2022-11-01 00:30:00</th>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2022-11-01 01:00:00</th>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2022-11-01 01:30:00</th>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2022-11-01 02:00:00</th>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2023-06-19 15:30:00</th>
+      <td>23.838074</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2023-06-19 16:00:00</th>
+      <td>22.595795</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2023-06-19 16:30:00</th>
+      <td>21.681244</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2023-06-19 17:00:00</th>
+      <td>20.645264</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2023-06-19 17:30:00</th>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>11074 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">snow_temp_dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">snow_temp_dataset</span><span class="p">,</span> <span class="n">surface_temps_dataset</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Make sure we don’t have any measurements from above the snow surface</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">snow_temp_dataset</span> <span class="o">=</span> <span class="n">snow_temp_dataset</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;depth &lt;= 0&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="snowpit-measurements-a-first-look">
+<h1>Snowpit Measurements - a first look<a class="headerlink" href="#snowpit-measurements-a-first-look" title="Link to this heading">#</a></h1>
+<p>Open up the snowpit data and look at data from just two snowpits - on February 6 and 7, 2023</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">snowpit_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;../data/KettlePondsSnowPits.nc&quot;</span><span class="p">)</span>
+
+<span class="n">snowpit_ds</span> <span class="o">=</span> <span class="n">snowpit_ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;20230206&#39;</span><span class="p">,</span> <span class="s1">&#39;20230207&#39;</span><span class="p">))</span>
+<span class="n">snowpit_df</span> <span class="o">=</span> <span class="n">snowpit_ds</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># The timestamps in this dataset are in UTC. Let&#39;s convert to US/Mountain time, which our other dataset is conveniently already in.</span>
+<span class="c1"># After we convert, we remove the timezone info by calling `tz_localize(None)`. </span>
+<span class="n">snowpit_df</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">snowpit_df</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="s1">&#39;UTC&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="s1">&#39;US/Mountain&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># convert depth variables from cm to m</span>
+<span class="n">snowpit_df</span><span class="p">[</span><span class="s1">&#39;depth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">snowpit_df</span><span class="p">[</span><span class="s1">&#39;depth&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span>
+<span class="n">snowpit_df</span><span class="p">[</span><span class="s1">&#39;pit_total_snow_depth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">snowpit_df</span><span class="p">[</span><span class="s1">&#39;pit_total_snow_depth&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span>
+<span class="n">snowpit_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>depth</th>
+      <th>temperature</th>
+      <th>density</th>
+      <th>ir_surface_temp</th>
+      <th>thermometer_surface_temp</th>
+      <th>pit_total_snow_depth</th>
+      <th>id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.00</td>
+      <td>-0.6</td>
+      <td>NaN</td>
+      <td>-8.1</td>
+      <td>-9.5</td>
+      <td>1.04</td>
+      <td>KP21</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-8.1</td>
+      <td>-9.5</td>
+      <td>1.04</td>
+      <td>KP21</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.03</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-8.1</td>
+      <td>-9.5</td>
+      <td>1.04</td>
+      <td>KP21</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-8.1</td>
+      <td>-9.5</td>
+      <td>1.04</td>
+      <td>KP21</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-8.1</td>
+      <td>-9.5</td>
+      <td>1.04</td>
+      <td>KP21</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>287</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>1.53</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-7.3</td>
+      <td>-9.3</td>
+      <td>1.03</td>
+      <td>KP22</td>
+    </tr>
+    <tr>
+      <th>288</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>1.55</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-7.3</td>
+      <td>-9.3</td>
+      <td>1.03</td>
+      <td>KP22</td>
+    </tr>
+    <tr>
+      <th>289</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>1.59</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-7.3</td>
+      <td>-9.3</td>
+      <td>1.03</td>
+      <td>KP22</td>
+    </tr>
+    <tr>
+      <th>290</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>1.61</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-7.3</td>
+      <td>-9.3</td>
+      <td>1.03</td>
+      <td>KP22</td>
+    </tr>
+    <tr>
+      <th>291</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>1.65</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-7.3</td>
+      <td>-9.3</td>
+      <td>1.03</td>
+      <td>KP22</td>
+    </tr>
+  </tbody>
+</table>
+<p>292 rows × 8 columns</p>
+</div></div></div>
+</div>
+<p>Look at the times the snowpit data was collected</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">snowpit_df</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;DatetimeArray&gt;
+[&#39;2023-02-06 09:12:00&#39;, &#39;2023-02-07 10:01:00&#39;]
+Length: 2, dtype: datetime64[ns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">altair</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">alt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="plot-density-and-temperature-profiles-from-the-two-days">
+<h2>Plot density and temperature profiles from the two days<a class="headerlink" href="#plot-density-and-temperature-profiles-from-the-two-days" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">density_charts</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">snowpit_df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;density:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Density (kg/m^3)&#39;</span><span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;depth:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">),</span>
+        
+    <span class="p">)</span> <span class="o">+</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">snowpit_df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_rule</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;pit_total_snow_depth:Q&#39;</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">facet</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Facet</span><span class="p">(</span><span class="s1">&#39;time:T&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">temp_charts</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">snowpit_df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;temperature:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Temperature (˚C)&#39;</span><span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;depth:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">),</span>
+        
+    <span class="p">)</span> <span class="o">+</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">snowpit_df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_rule</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;pit_total_snow_depth:Q&#39;</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">facet</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Facet</span><span class="p">(</span><span class="s1">&#39;time:T&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">density_charts</span> <span class="o">&amp;</span> <span class="n">temp_charts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-6adf6363d04a4cd488203a5ff926dc6e.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-6adf6363d04a4cd488203a5ff926dc6e.vega-embed details,
+  #altair-viz-6adf6363d04a4cd488203a5ff926dc6e.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-6adf6363d04a4cd488203a5ff926dc6e"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-6adf6363d04a4cd488203a5ff926dc6e") {
+      outputDiv = document.getElementById("altair-viz-6adf6363d04a4cd488203a5ff926dc6e");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.1.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.1.0"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "vconcat": [{"facet": {"field": "time", "type": "temporal"}, "spec": {"layer": [{"mark": {"type": "circle"}, "encoding": {"x": {"field": "density", "title": "Density (kg/m^3)", "type": "quantitative"}, "y": {"field": "depth", "title": "Depth (m)", "type": "quantitative"}}}, {"mark": {"type": "rule"}, "encoding": {"y": {"field": "pit_total_snow_depth", "type": "quantitative"}}}], "height": 150, "width": 150}}, {"facet": {"field": "time", "type": "temporal"}, "spec": {"layer": [{"mark": {"type": "circle"}, "encoding": {"x": {"field": "temperature", "title": "Temperature (\u02daC)", "type": "quantitative"}, "y": {"field": "depth", "title": "Depth (m)", "type": "quantitative"}}}, {"mark": {"type": "rule"}, "encoding": {"y": {"field": "pit_total_snow_depth", "type": "quantitative"}}}], "height": 150, "width": 150}}], "data": {"name": "data-7224349655f1d6d38b896e0932dcc974"}, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-7224349655f1d6d38b896e0932dcc974": [{"time": "2023-02-06T09:12:00", "depth": 0.0, "temperature": -0.6, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.02, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.03, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.04, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.05, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.06, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.07, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.08, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.09, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.1, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.11, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.12, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.13, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.14, "temperature": -1.4, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.15, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.16, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.17, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.18, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.19, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.2, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.21, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.22, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.23, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.24, "temperature": -2.9, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.25, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.26, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.27, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.28, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.29, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.3, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.31, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.32, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.33, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.34, "temperature": -3.2, "density": 343.0, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.35, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.36, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.37, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.38, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.39, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.4, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.41, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.42, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.43, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.44, "temperature": -3.6, "density": 313.0, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.45, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.46, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.47, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.48, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.49, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.5, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.51, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.52, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.53, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.54, "temperature": -4.2, "density": 436.0, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.55, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.56, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.57, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.58, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.59, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.6, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.61, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.62, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.63, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.64, "temperature": -4.9, "density": 343.0, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.65, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.66, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.67, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.68, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.69, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.7, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.71, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.72, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.73, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.74, "temperature": -5.4, "density": 298.0, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.75, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.76, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.77, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.78, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.79, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.8, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.81, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.82, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.83, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.84, "temperature": -6.0, "density": 270.0, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.85, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.86, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.87, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.88, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.89, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.9, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.91, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.92, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.93, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.94, "temperature": -6.4, "density": 242.0, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.95, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.96, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.97, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.98, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.99, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 0.995, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.0, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.01, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.02, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.03, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.04, "temperature": -8.1, "density": 183.0, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.05, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.06, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.07, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.08, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.09, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.1, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.11, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.12, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.13, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.14, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.15, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.16, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.17, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.18, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.19, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.2, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.21, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.22, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.23, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.25, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.26, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.27, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.28, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.29, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.31, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.32, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.33, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.35, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.39, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.41, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.42, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.43, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.45, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.49, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.51, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.52, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.53, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.55, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.59, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.61, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-06T09:12:00", "depth": 1.65, "temperature": null, "density": null, "ir_surface_temp": -8.1, "thermometer_surface_temp": -9.5, "pit_total_snow_depth": 1.04, "id": "KP21"}, {"time": "2023-02-07T10:01:00", "depth": 0.0, "temperature": -0.6, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.02, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.03, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.04, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.05, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.06, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.07, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.08, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.09, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.1, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.11, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.12, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.13, "temperature": -1.5, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.14, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.15, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.16, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.17, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.18, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.19, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.2, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.21, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.22, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.23, "temperature": -2.1, "density": 386.0, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.24, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.25, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.26, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.27, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.28, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.29, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.3, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.31, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.32, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.33, "temperature": -2.6, "density": 309.0, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.34, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.35, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.36, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.37, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.38, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.39, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.4, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.41, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.42, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.43, "temperature": -3.1, "density": 413.0, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.44, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.45, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.46, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.47, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.48, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.49, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.5, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.51, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.52, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.53, "temperature": -3.6, "density": 350.0, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.54, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.55, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.56, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.57, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.58, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.59, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.6, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.61, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.62, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.63, "temperature": -4.4, "density": 326.0, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.64, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.65, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.66, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.67, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.68, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.69, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.7, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.71, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.72, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.73, "temperature": -5.7, "density": 302.0, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.74, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.75, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.76, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.77, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.78, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.79, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.8, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.81, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.82, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.83, "temperature": -7.6, "density": 270.0, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.84, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.85, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.86, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.87, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.88, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.89, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.9, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.91, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.92, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.93, "temperature": -11.7, "density": 223.0, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.94, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.95, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.96, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.97, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.98, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.99, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 0.995, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.0, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.01, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.02, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.03, "temperature": -9.3, "density": 203.0, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.04, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.05, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.06, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.07, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.08, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.09, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.1, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.11, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.12, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.13, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.14, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.15, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.16, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.17, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.18, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.19, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.2, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.21, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.22, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.23, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.25, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.26, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.27, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.28, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.29, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.31, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.32, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.33, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.35, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.39, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.41, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.42, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.43, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.45, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.49, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.51, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.52, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.53, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.55, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.59, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.61, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}, {"time": "2023-02-07T10:01:00", "depth": 1.65, "temperature": null, "density": null, "ir_surface_temp": -7.3, "thermometer_surface_temp": -9.3, "pit_total_snow_depth": 1.03, "id": "KP22"}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+</section>
+<section id="combining-temperature-measurements-from-snowpit-and-in-situ-thermistor-measurements">
+<h2>Combining temperature measurements from snowpit and in-situ thermistor measurements<a class="headerlink" href="#combining-temperature-measurements-from-snowpit-and-in-situ-thermistor-measurements" title="Link to this heading">#</a></h2>
+<p>Let’s compare the manual snowpit temperature data to the in-situ in-snow temperature data we have analyzed previously.</p>
+<p>This will involve some data wrangling, because notice that the manual snowpit data measures Depth relative to the soil-snow interface. With the in-snow temperature data used previously, we calculated depth relative to the snow-air interface.</p>
+<p>First, isolate the in-situ snow temperature measurements to the 30-minute period overlapping when the snowpits were taken.</p>
+<p>We saw above that the snowpits were dug during:</p>
+<ul class="simple">
+<li><p>2023-02-06 0900 - 0930</p></li>
+<li><p>2023-02-07 1000 - 1030</p></li>
+</ul>
+<p>Let’s grab those two 30minute averages from the snow temp dataset and combine them into one small dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">snow_temp_dataset_4_comparison</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span>
+    <span class="n">snow_temp_dataset</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20230206 0900&#39;</span><span class="p">],</span> <span class="c1"># this represents the average from 0900-0930</span>
+    <span class="n">snow_temp_dataset</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20230207 1000&#39;</span><span class="p">]</span>  <span class="c1"># this represents the average from 1000-1030</span>
+<span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">snow_temp_dataset_4_comparison</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>SnowDepth_d</th>
+      <th>variable</th>
+      <th>value</th>
+      <th>height_agl</th>
+      <th>depth</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2023-02-06 09:00:00</td>
+      <td>0.912619</td>
+      <td>Tsnow_0_4m_d</td>
+      <td>-3.447297</td>
+      <td>0.4</td>
+      <td>-0.512619</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2023-02-06 09:00:00</td>
+      <td>0.912619</td>
+      <td>Tsnow_0_5m_d</td>
+      <td>-4.041552</td>
+      <td>0.5</td>
+      <td>-0.412619</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2023-02-06 09:00:00</td>
+      <td>0.912619</td>
+      <td>Tsnow_0_6m_d</td>
+      <td>-4.684970</td>
+      <td>0.6</td>
+      <td>-0.312619</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2023-02-06 09:00:00</td>
+      <td>0.912619</td>
+      <td>Tsnow_0_7m_d</td>
+      <td>-4.825782</td>
+      <td>0.7</td>
+      <td>-0.212619</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2023-02-06 09:00:00</td>
+      <td>0.912619</td>
+      <td>Tsnow_0_8m_d</td>
+      <td>-4.882523</td>
+      <td>0.8</td>
+      <td>-0.112619</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2023-02-06 09:00:00</td>
+      <td>0.912619</td>
+      <td>Tsnow_0_9m_d</td>
+      <td>-5.438139</td>
+      <td>0.9</td>
+      <td>-0.012619</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2023-02-06 09:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-11.606720</td>
+      <td>NaN</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2023-02-07 10:00:00</td>
+      <td>0.890080</td>
+      <td>Tsnow_0_4m_d</td>
+      <td>-3.188019</td>
+      <td>0.4</td>
+      <td>-0.490080</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2023-02-07 10:00:00</td>
+      <td>0.890080</td>
+      <td>Tsnow_0_5m_d</td>
+      <td>-3.727944</td>
+      <td>0.5</td>
+      <td>-0.390080</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2023-02-07 10:00:00</td>
+      <td>0.890080</td>
+      <td>Tsnow_0_6m_d</td>
+      <td>-4.572083</td>
+      <td>0.6</td>
+      <td>-0.290080</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2023-02-07 10:00:00</td>
+      <td>0.890080</td>
+      <td>Tsnow_0_7m_d</td>
+      <td>-5.429698</td>
+      <td>0.7</td>
+      <td>-0.190080</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2023-02-07 10:00:00</td>
+      <td>0.890080</td>
+      <td>Tsnow_0_8m_d</td>
+      <td>-7.319589</td>
+      <td>0.8</td>
+      <td>-0.090080</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2023-02-07 10:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-15.121002</td>
+      <td>NaN</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Check those measurements out quickly to make sure we grabbed the right stuff</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">snow_temp_dataset_4_comparison</span><span class="p">)</span><span class="o">.</span><span class="n">mark_line</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;value:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Temperature (˚C)&#39;</span><span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;depth:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">),</span>
+        
+    <span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">facet</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Facet</span><span class="p">(</span><span class="s1">&#39;time:T&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-fe86a0939b81418b88243cb8d56389b3.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-fe86a0939b81418b88243cb8d56389b3.vega-embed details,
+  #altair-viz-fe86a0939b81418b88243cb8d56389b3.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-fe86a0939b81418b88243cb8d56389b3"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-fe86a0939b81418b88243cb8d56389b3") {
+      outputDiv = document.getElementById("altair-viz-fe86a0939b81418b88243cb8d56389b3");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.1.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.1.0"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-bd2b363e21b9ed903568f15d031c3b4d"}, "facet": {"field": "time", "type": "temporal"}, "spec": {"mark": {"type": "line"}, "encoding": {"x": {"field": "value", "title": "Temperature (\u02daC)", "type": "quantitative"}, "y": {"field": "depth", "title": "Depth (m)", "type": "quantitative"}}, "height": 150, "width": 150}, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-bd2b363e21b9ed903568f15d031c3b4d": [{"time": "2023-02-06T09:00:00", "SnowDepth_d": 0.9126186370849609, "variable": "Tsnow_0_4m_d", "value": -3.4472973346710205, "height_agl": 0.4, "depth": -0.5126186370849609}, {"time": "2023-02-06T09:00:00", "SnowDepth_d": 0.9126186370849609, "variable": "Tsnow_0_5m_d", "value": -4.04155158996582, "height_agl": 0.5, "depth": -0.41261863708496094}, {"time": "2023-02-06T09:00:00", "SnowDepth_d": 0.9126186370849609, "variable": "Tsnow_0_6m_d", "value": -4.684970378875732, "height_agl": 0.6, "depth": -0.31261863708496096}, {"time": "2023-02-06T09:00:00", "SnowDepth_d": 0.9126186370849609, "variable": "Tsnow_0_7m_d", "value": -4.82578182220459, "height_agl": 0.7, "depth": -0.21261863708496098}, {"time": "2023-02-06T09:00:00", "SnowDepth_d": 0.9126186370849609, "variable": "Tsnow_0_8m_d", "value": -4.882523059844971, "height_agl": 0.8, "depth": -0.1126186370849609}, {"time": "2023-02-06T09:00:00", "SnowDepth_d": 0.9126186370849609, "variable": "Tsnow_0_9m_d", "value": -5.43813943862915, "height_agl": 0.9, "depth": -0.012618637084960915}, {"time": "2023-02-06T09:00:00", "SnowDepth_d": null, "variable": null, "value": -11.606719970703125, "height_agl": null, "depth": 0.0}, {"time": "2023-02-07T10:00:00", "SnowDepth_d": 0.890080451965332, "variable": "Tsnow_0_4m_d", "value": -3.188019037246704, "height_agl": 0.4, "depth": -0.490080451965332}, {"time": "2023-02-07T10:00:00", "SnowDepth_d": 0.890080451965332, "variable": "Tsnow_0_5m_d", "value": -3.7279443740844727, "height_agl": 0.5, "depth": -0.39008045196533203}, {"time": "2023-02-07T10:00:00", "SnowDepth_d": 0.890080451965332, "variable": "Tsnow_0_6m_d", "value": -4.572082996368408, "height_agl": 0.6, "depth": -0.29008045196533205}, {"time": "2023-02-07T10:00:00", "SnowDepth_d": 0.890080451965332, "variable": "Tsnow_0_7m_d", "value": -5.429697513580322, "height_agl": 0.7, "depth": -0.19008045196533208}, {"time": "2023-02-07T10:00:00", "SnowDepth_d": 0.890080451965332, "variable": "Tsnow_0_8m_d", "value": -7.319589138031006, "height_agl": 0.8, "depth": -0.09008045196533199}, {"time": "2023-02-07T10:00:00", "SnowDepth_d": null, "variable": null, "value": -15.121002197265625, "height_agl": null, "depth": 0.0}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>OK looks good.</p>
+<p>The depth of the snow on the two days, according to the snowpits measurements, was</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">snowpit_df</span><span class="p">[[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;pit_total_snow_depth&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>pit_total_snow_depth</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>1.04</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>1.03</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can adjust the in-site snow temperature measurements so that depth means the same thing across the datasets.
+We do this by adding the depth from the dataset <code class="docutils literal notranslate"><span class="pre">snow_temp_dataset_4_comparison</span></code> to the snow depth values according to the snow pit measurements (in the <code class="docutils literal notranslate"><span class="pre">snowpit_df</span></code> dataset).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">snow_temp_dataset_4_comparison</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="n">snow_temp_dataset_4_comparison</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;2023-02-06 09:00:00&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;depth&#39;</span>
+<span class="p">]</span> <span class="o">=</span> <span class="n">snow_temp_dataset_4_comparison</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="n">snow_temp_dataset_4_comparison</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;2023-02-06 09:00:00&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;depth&#39;</span>
+<span class="p">]</span> <span class="o">+</span> <span class="mf">1.04</span> <span class="c1"># in meters, the dataset had 104 (centimeters)</span>
+
+<span class="n">snow_temp_dataset_4_comparison</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="n">snow_temp_dataset_4_comparison</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;2023-02-07 10:00:00&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;depth&#39;</span>
+<span class="p">]</span> <span class="o">=</span> <span class="n">snow_temp_dataset_4_comparison</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="n">snow_temp_dataset_4_comparison</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;2023-02-07 10:00:00&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;depth&#39;</span>
+<span class="p">]</span> <span class="o">+</span> <span class="mf">1.03</span> <span class="c1"># in meters, the dataset had 104 (centimeters)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can plot the datasets together and see if they line up.</p>
+<p>To plot the datasets together, we combine the datasets into one dataset. We follow the following steps to do this:</p>
+<ol class="arabic simple">
+<li><p>Make sure the variable names across the two datasets are the same</p></li>
+<li><p>Add a variable to each of the separate datasets indicating their measurement type (i.e. snow pit or in-situ)</p></li>
+<li><p>Combine</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modifying the in situ measurements</span>
+<span class="c1">## Isolate the variables we want (timestemps, depth, and temperature)</span>
+<span class="n">in_situ_data</span> <span class="o">=</span> <span class="n">snow_temp_dataset_4_comparison</span><span class="p">[[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;depth&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">]]</span>
+<span class="c1">## Rename the &quot;value&quot; column, which has temperatures, to &quot;temperature&quot;</span>
+<span class="n">in_situ_data</span> <span class="o">=</span> <span class="n">in_situ_data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;temperature&#39;</span><span class="p">})</span>
+<span class="c1">## Create a new column to clarify which data this is</span>
+<span class="n">in_situ_data</span><span class="p">[</span><span class="s1">&#39;data_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;thermistor array&#39;</span>
+<span class="n">in_situ_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>depth</th>
+      <th>temperature</th>
+      <th>data_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2023-02-06 09:00:00</td>
+      <td>0.527381</td>
+      <td>-3.447297</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2023-02-06 09:00:00</td>
+      <td>0.627381</td>
+      <td>-4.041552</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2023-02-06 09:00:00</td>
+      <td>0.727381</td>
+      <td>-4.684970</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2023-02-06 09:00:00</td>
+      <td>0.827381</td>
+      <td>-4.825782</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2023-02-06 09:00:00</td>
+      <td>0.927381</td>
+      <td>-4.882523</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2023-02-06 09:00:00</td>
+      <td>1.027381</td>
+      <td>-5.438139</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2023-02-06 09:00:00</td>
+      <td>1.040000</td>
+      <td>-11.606720</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2023-02-07 10:00:00</td>
+      <td>0.539920</td>
+      <td>-3.188019</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2023-02-07 10:00:00</td>
+      <td>0.639920</td>
+      <td>-3.727944</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2023-02-07 10:00:00</td>
+      <td>0.739920</td>
+      <td>-4.572083</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2023-02-07 10:00:00</td>
+      <td>0.839920</td>
+      <td>-5.429698</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2023-02-07 10:00:00</td>
+      <td>0.939920</td>
+      <td>-7.319589</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2023-02-07 10:00:00</td>
+      <td>1.030000</td>
+      <td>-15.121002</td>
+      <td>thermistor array</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modifying the snowpit measurements</span>
+<span class="c1">## Isolate the variables we want - this is the only step we need to do for this one</span>
+<span class="n">snowpit_data</span> <span class="o">=</span> <span class="n">snowpit_df</span><span class="p">[[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;depth&#39;</span><span class="p">,</span> <span class="s1">&#39;temperature&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="c1">## Create a new column to clarify which data this is</span>
+<span class="n">snowpit_data</span><span class="p">[</span><span class="s1">&#39;data_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;snow pit&#39;</span>
+<span class="n">snowpit_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>depth</th>
+      <th>temperature</th>
+      <th>data_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.00</td>
+      <td>-0.6</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.14</td>
+      <td>-1.4</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.24</td>
+      <td>-2.9</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.34</td>
+      <td>-3.2</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.44</td>
+      <td>-3.6</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.54</td>
+      <td>-4.2</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.64</td>
+      <td>-4.9</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.74</td>
+      <td>-5.4</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.84</td>
+      <td>-6.0</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.94</td>
+      <td>-6.4</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>1.04</td>
+      <td>-8.1</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>0.00</td>
+      <td>-0.6</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>158</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>0.13</td>
+      <td>-1.5</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>168</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>0.23</td>
+      <td>-2.1</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>0.33</td>
+      <td>-2.6</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>188</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>0.43</td>
+      <td>-3.1</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>0.53</td>
+      <td>-3.6</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>208</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>0.63</td>
+      <td>-4.4</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>218</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>0.73</td>
+      <td>-5.7</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>228</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>0.83</td>
+      <td>-7.6</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>238</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>0.93</td>
+      <td>-11.7</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>249</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>1.03</td>
+      <td>-9.3</td>
+      <td>snow pit</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Combine the datasets!</span>
+<span class="n">temp_profile_comparison_dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">snowpit_data</span><span class="p">,</span> <span class="n">in_situ_data</span><span class="p">])</span>
+<span class="n">temp_profile_comparison_dataset</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>depth</th>
+      <th>temperature</th>
+      <th>data_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.000000</td>
+      <td>-0.600000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.140000</td>
+      <td>-1.400000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.240000</td>
+      <td>-2.900000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.340000</td>
+      <td>-3.200000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.440000</td>
+      <td>-3.600000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.540000</td>
+      <td>-4.200000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.640000</td>
+      <td>-4.900000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.740000</td>
+      <td>-5.400000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.840000</td>
+      <td>-6.000000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>0.940000</td>
+      <td>-6.400000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>2023-02-06 09:12:00</td>
+      <td>1.040000</td>
+      <td>-8.100000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>0.000000</td>
+      <td>-0.600000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>158</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>0.130000</td>
+      <td>-1.500000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>168</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>0.230000</td>
+      <td>-2.100000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>0.330000</td>
+      <td>-2.600000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>188</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>0.430000</td>
+      <td>-3.100000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>0.530000</td>
+      <td>-3.600000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>208</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>0.630000</td>
+      <td>-4.400000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>218</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>0.730000</td>
+      <td>-5.700000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>228</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>0.830000</td>
+      <td>-7.600000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>238</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>0.930000</td>
+      <td>-11.700000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>249</th>
+      <td>2023-02-07 10:01:00</td>
+      <td>1.030000</td>
+      <td>-9.300000</td>
+      <td>snow pit</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2023-02-06 09:00:00</td>
+      <td>0.527381</td>
+      <td>-3.447297</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2023-02-06 09:00:00</td>
+      <td>0.627381</td>
+      <td>-4.041552</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2023-02-06 09:00:00</td>
+      <td>0.727381</td>
+      <td>-4.684970</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2023-02-06 09:00:00</td>
+      <td>0.827381</td>
+      <td>-4.825782</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2023-02-06 09:00:00</td>
+      <td>0.927381</td>
+      <td>-4.882523</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2023-02-06 09:00:00</td>
+      <td>1.027381</td>
+      <td>-5.438139</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2023-02-06 09:00:00</td>
+      <td>1.040000</td>
+      <td>-11.606720</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2023-02-07 10:00:00</td>
+      <td>0.539920</td>
+      <td>-3.188019</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2023-02-07 10:00:00</td>
+      <td>0.639920</td>
+      <td>-3.727944</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2023-02-07 10:00:00</td>
+      <td>0.739920</td>
+      <td>-4.572083</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2023-02-07 10:00:00</td>
+      <td>0.839920</td>
+      <td>-5.429698</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2023-02-07 10:00:00</td>
+      <td>0.939920</td>
+      <td>-7.319589</td>
+      <td>thermistor array</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2023-02-07 10:00:00</td>
+      <td>1.030000</td>
+      <td>-15.121002</td>
+      <td>thermistor array</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">temp_profile_comparison_dataset</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span><span class="o">.</span><span class="n">mark_line</span><span class="p">(</span>
+        <span class="n">point</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;temperature:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Temperature (˚C)&#39;</span><span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;depth:Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;data_type:N&#39;</span><span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Order</span><span class="p">(</span><span class="s1">&#39;depth:Q&#39;</span><span class="p">)</span> <span class="c1"># this makes sure the lines are drawn, connecting dots vertically, in order of depth</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">facet</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Facet</span><span class="p">(</span><span class="s1">&#39;day(time):T&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-bf3cf0033578463c9ffb9c028990f4cd.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-bf3cf0033578463c9ffb9c028990f4cd.vega-embed details,
+  #altair-viz-bf3cf0033578463c9ffb9c028990f4cd.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-bf3cf0033578463c9ffb9c028990f4cd"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-bf3cf0033578463c9ffb9c028990f4cd") {
+      outputDiv = document.getElementById("altair-viz-bf3cf0033578463c9ffb9c028990f4cd");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.1.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.1.0"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-6fc4d841a61247e6779679d37e961a5d"}, "facet": {"field": "time", "timeUnit": "day", "type": "temporal"}, "spec": {"mark": {"type": "line", "point": true}, "encoding": {"color": {"field": "data_type", "type": "nominal"}, "order": {"field": "depth", "type": "quantitative"}, "x": {"field": "temperature", "title": "Temperature (\u02daC)", "type": "quantitative"}, "y": {"field": "depth", "title": "Depth (m)", "type": "quantitative"}}, "height": 150, "width": 150}, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-6fc4d841a61247e6779679d37e961a5d": [{"time": "2023-02-06T09:12:00", "depth": 0.0, "temperature": -0.6, "data_type": "snow pit"}, {"time": "2023-02-06T09:12:00", "depth": 0.14, "temperature": -1.4, "data_type": "snow pit"}, {"time": "2023-02-06T09:12:00", "depth": 0.24, "temperature": -2.9, "data_type": "snow pit"}, {"time": "2023-02-06T09:12:00", "depth": 0.34, "temperature": -3.2, "data_type": "snow pit"}, {"time": "2023-02-06T09:12:00", "depth": 0.44, "temperature": -3.6, "data_type": "snow pit"}, {"time": "2023-02-06T09:12:00", "depth": 0.54, "temperature": -4.2, "data_type": "snow pit"}, {"time": "2023-02-06T09:12:00", "depth": 0.64, "temperature": -4.9, "data_type": "snow pit"}, {"time": "2023-02-06T09:12:00", "depth": 0.74, "temperature": -5.4, "data_type": "snow pit"}, {"time": "2023-02-06T09:12:00", "depth": 0.84, "temperature": -6.0, "data_type": "snow pit"}, {"time": "2023-02-06T09:12:00", "depth": 0.94, "temperature": -6.4, "data_type": "snow pit"}, {"time": "2023-02-06T09:12:00", "depth": 1.04, "temperature": -8.1, "data_type": "snow pit"}, {"time": "2023-02-07T10:01:00", "depth": 0.0, "temperature": -0.6, "data_type": "snow pit"}, {"time": "2023-02-07T10:01:00", "depth": 0.13, "temperature": -1.5, "data_type": "snow pit"}, {"time": "2023-02-07T10:01:00", "depth": 0.23, "temperature": -2.1, "data_type": "snow pit"}, {"time": "2023-02-07T10:01:00", "depth": 0.33, "temperature": -2.6, "data_type": "snow pit"}, {"time": "2023-02-07T10:01:00", "depth": 0.43, "temperature": -3.1, "data_type": "snow pit"}, {"time": "2023-02-07T10:01:00", "depth": 0.53, "temperature": -3.6, "data_type": "snow pit"}, {"time": "2023-02-07T10:01:00", "depth": 0.63, "temperature": -4.4, "data_type": "snow pit"}, {"time": "2023-02-07T10:01:00", "depth": 0.73, "temperature": -5.7, "data_type": "snow pit"}, {"time": "2023-02-07T10:01:00", "depth": 0.83, "temperature": -7.6, "data_type": "snow pit"}, {"time": "2023-02-07T10:01:00", "depth": 0.93, "temperature": -11.7, "data_type": "snow pit"}, {"time": "2023-02-07T10:01:00", "depth": 1.03, "temperature": -9.3, "data_type": "snow pit"}, {"time": "2023-02-06T09:00:00", "depth": 0.5273813629150391, "temperature": -3.4472973346710205, "data_type": "thermistor array"}, {"time": "2023-02-06T09:00:00", "depth": 0.6273813629150391, "temperature": -4.04155158996582, "data_type": "thermistor array"}, {"time": "2023-02-06T09:00:00", "depth": 0.7273813629150391, "temperature": -4.684970378875732, "data_type": "thermistor array"}, {"time": "2023-02-06T09:00:00", "depth": 0.827381362915039, "temperature": -4.82578182220459, "data_type": "thermistor array"}, {"time": "2023-02-06T09:00:00", "depth": 0.9273813629150391, "temperature": -4.882523059844971, "data_type": "thermistor array"}, {"time": "2023-02-06T09:00:00", "depth": 1.027381362915039, "temperature": -5.43813943862915, "data_type": "thermistor array"}, {"time": "2023-02-06T09:00:00", "depth": 1.04, "temperature": -11.606719970703125, "data_type": "thermistor array"}, {"time": "2023-02-07T10:00:00", "depth": 0.539919548034668, "temperature": -3.188019037246704, "data_type": "thermistor array"}, {"time": "2023-02-07T10:00:00", "depth": 0.639919548034668, "temperature": -3.7279443740844727, "data_type": "thermistor array"}, {"time": "2023-02-07T10:00:00", "depth": 0.739919548034668, "temperature": -4.572082996368408, "data_type": "thermistor array"}, {"time": "2023-02-07T10:00:00", "depth": 0.839919548034668, "temperature": -5.429697513580322, "data_type": "thermistor array"}, {"time": "2023-02-07T10:00:00", "depth": 0.939919548034668, "temperature": -7.319589138031006, "data_type": "thermistor array"}, {"time": "2023-02-07T10:00:00", "depth": 1.03, "temperature": -15.121002197265625, "data_type": "thermistor array"}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>OK so the temperature profiles have some differences!
+The surface temperatures disagree pretty strongly.
+Their basic behavior underneath the snow surface is pretty similar though.
+Why do you think the surface temperature measurements might differ?
+Why might the temperature measurements within the snowpack (beneath the surface) differ?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">snowpit_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;../data/KettlePondsSnowPits.nc&quot;</span><span class="p">)</span>
+<span class="n">snowpit_df</span> <span class="o">=</span> <span class="n">snowpit_ds</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># The timestamps in this dataset are in UTC. Let&#39;s convert to US/Mountain time, which our other dataset is conveniently already in.</span>
+<span class="c1"># After we convert, we remove the timezone info by calling `tz_localize(None)`. </span>
+<span class="n">snowpit_df</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">snowpit_df</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="s1">&#39;UTC&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="s1">&#39;US/Mountain&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># convert depth variables from cm to m</span>
+<span class="n">snowpit_df</span><span class="p">[</span><span class="s1">&#39;pit_total_snow_depth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">snowpit_df</span><span class="p">[</span><span class="s1">&#39;pit_total_snow_depth&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span>
+<span class="n">snowpit_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>depth</th>
+      <th>temperature</th>
+      <th>density</th>
+      <th>ir_surface_temp</th>
+      <th>thermometer_surface_temp</th>
+      <th>pit_total_snow_depth</th>
+      <th>id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2023-01-06 10:48:00</td>
+      <td>0.0</td>
+      <td>-0.5</td>
+      <td>NaN</td>
+      <td>-4.3</td>
+      <td>-4.3</td>
+      <td>1.02</td>
+      <td>KP01</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2023-01-06 10:48:00</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-4.3</td>
+      <td>-4.3</td>
+      <td>1.02</td>
+      <td>KP01</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2023-01-06 10:48:00</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-4.3</td>
+      <td>-4.3</td>
+      <td>1.02</td>
+      <td>KP01</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2023-01-06 10:48:00</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-4.3</td>
+      <td>-4.3</td>
+      <td>1.02</td>
+      <td>KP01</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2023-01-06 10:48:00</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-4.3</td>
+      <td>-4.3</td>
+      <td>1.02</td>
+      <td>KP01</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>7003</th>
+      <td>2023-03-16 08:12:00</td>
+      <td>153.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-8.9</td>
+      <td>-6.6</td>
+      <td>1.65</td>
+      <td>KP48</td>
+    </tr>
+    <tr>
+      <th>7004</th>
+      <td>2023-03-16 08:12:00</td>
+      <td>155.0</td>
+      <td>-2.6</td>
+      <td>152.0</td>
+      <td>-8.9</td>
+      <td>-6.6</td>
+      <td>1.65</td>
+      <td>KP48</td>
+    </tr>
+    <tr>
+      <th>7005</th>
+      <td>2023-03-16 08:12:00</td>
+      <td>159.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-8.9</td>
+      <td>-6.6</td>
+      <td>1.65</td>
+      <td>KP48</td>
+    </tr>
+    <tr>
+      <th>7006</th>
+      <td>2023-03-16 08:12:00</td>
+      <td>161.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-8.9</td>
+      <td>-6.6</td>
+      <td>1.65</td>
+      <td>KP48</td>
+    </tr>
+    <tr>
+      <th>7007</th>
+      <td>2023-03-16 08:12:00</td>
+      <td>165.0</td>
+      <td>-6.6</td>
+      <td>91.0</td>
+      <td>-8.9</td>
+      <td>-6.6</td>
+      <td>1.65</td>
+      <td>KP48</td>
+    </tr>
+  </tbody>
+</table>
+<p>7008 rows × 8 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">snowpit_df</span> <span class="o">=</span> <span class="n">snowpit_df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;depth &lt;= 30&quot;</span><span class="p">)</span>
+<span class="n">snowpit_df</span> <span class="o">=</span> <span class="n">snowpit_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)[[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;depth&#39;</span><span class="p">,</span> <span class="s1">&#39;temperature&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">snowpit_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> 
+    <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;depth&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">temperature</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;depth&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">temperature</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="o">/</span>
+    <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;depth&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">depth</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;depth&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">depth</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2783/3371135051.py:1: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  snowpit_df.groupby(&#39;time&#39;).apply(
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(-0.1)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./modules/module4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab4-2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 4-2: Snowpack internal energy - completing the snowpack energy balance</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab4-4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 4-4: Atmospheric temperatures and stability</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 4-3: Snowpack temperature and density profiles - snowpit data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sos-data">SOS Data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#replicate-the-steps-from-lab-4-1-to-create-a-dataset-of-in-snow-temperature-measurements-including-snow-surface-temperatures">Replicate the steps from Lab 4-1 to create a dataset of in-snow temperature measurements (including snow surface temperatures)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#snowpit-measurements-a-first-look">Snowpit Measurements - a first look</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-density-and-temperature-profiles-from-the-two-days">Plot density and temperature profiles from the two days</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-temperature-measurements-from-snowpit-and-in-situ-thermistor-measurements">Combining temperature measurements from snowpit and in-situ thermistor measurements</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eli Schwat, Steven Pestana, Jessica D. Lundquist, and other contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

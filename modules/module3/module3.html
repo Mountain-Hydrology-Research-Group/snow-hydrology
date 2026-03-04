@@ -1,0 +1,737 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3) Snowpack Energy Balance – Radiation + Albedo, Dust on Snow</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/module3/module3';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 3-1: Surface Energy Balance at Kettle Ponds - Radiation Balance" href="lab3-1.html" />
+    <link rel="prev" title="CEWA 568 Snow Hydrology - Spring 2023" href="../module2/lab2-3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Snow Hydrology
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/a-syllabus.html">Syllabus: CEWA 568</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/b-project.html">Course Project: CEWA 568</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../module1/module1.html">1) Properties of Snow</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../module2/module2.html">2) Measurement Strategies, Basics of the Snowpack Mass and Energy Balances, and Snowpack Dynamics</a></li>
+
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">3) Snowpack Energy Balance – Radiation + Albedo, Dust on Snow</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="lab3-1.html">Lab 3-1: Surface Energy Balance at Kettle Ponds - Radiation Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3-2.html">Lab 3-2: Plotting the Surface Energy Balance at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module4/module4.html">4) Temperatures: snowpack and atmospheric stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-0.html">Intuition about the heat equation - Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-1.html">Lab 4-1: Snowpack temperature profiles</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-2.html">Lab 4-2: Snowpack internal energy - completing the snowpack energy balance</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-3.html">Lab 4-3: Snowpack temperature and density profiles - snowpit data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-4.html">Lab 4-4: Atmospheric temperatures and stability</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module5/module5.html">5) Turbulent transport - momentum, heat, and moisture fluxes above the snow covered earth</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-1.html">Lab 5-1: Turbulent fluxes and measures of stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-2.html">Lab 5-2: Water vapor fluxes at Kettle Ponds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-3.html">Lab 5-3: Mixing length theory at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module6/module6.html">6) Blowing snow transport and sublimation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-1.html">Lab 6-1: Blowing snow fluxes, wind speed, and shear velocity</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-2.html">Lab 6-2: Blowing snow - snow redistribution on the landscape scale</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-3.html">Lab 6-3: Blowing snow - snow redistribution on the site scale</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module7/module7.html">7) Snow melt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-1.html">Lab 7-1: Snowpack ripening and melt initiation - Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-2.html">Lab 7-2: Snowpack ripening and melt initiation - Energy Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-3.html">Lab 7-3 - Predicting snowmelt rates with the Temperature-Index method</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module8/module8.html">8) Snow-dominated watershed hydrology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-1.html">Lab 8-1: Predicting streamflow with the SWE regression method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-2.html">Lab 8-2: Modeling a snowpack with a gridded, numerical model - openAMUNDSEN</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/a-learning-python.html">Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module1/numpy-tutorial.html">NumPy and the ndarray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1/some-python-tips.html">More python tips</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/b-learning-jupyter.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/instructor_resources.html">Resources for Instructors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/edit/main/book/modules/module3/module3.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/issues/new?title=Issue%20on%20page%20%2Fmodules/module3/module3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/modules/module3/module3.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>3) Snowpack Energy Balance – Radiation + Albedo, Dust on Snow</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-balance-equation">Energy Balance Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radiation-terms">Radiation Terms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-plotting-radiation-and-energy-balance-data-at-kettle-ponds">Lab 3: Plotting radiation and energy balance data at Kettle Ponds.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-3">Homework 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-comparing-solar-radiation-sensors">Problem 1: Comparing solar radiation sensors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-clouds">Problem 2: Clouds</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-estimating-snow-surface-temperature-from-outgoing-longwave-radiation">Problem 3: Estimating snow surface temperature from outgoing longwave radiation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-dust-on-snow-and-albedo">Problem 4: Dust on snow and albedo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-5-snow-surface-energy-balance-intuition">Problem 5: Snow surface energy balance - Intuition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-6">Problem 6</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="snowpack-energy-balance-radiation-albedo-dust-on-snow">
+<h1>3) Snowpack Energy Balance – Radiation + Albedo, Dust on Snow<a class="headerlink" href="#snowpack-energy-balance-radiation-albedo-dust-on-snow" title="Link to this heading">#</a></h1>
+<section id="energy-balance-equation">
+<h2>Energy Balance Equation<a class="headerlink" href="#energy-balance-equation" title="Link to this heading">#</a></h2>
+<p><img alt="Photo of April 2023 dust event at Kettle Ponds" src="../../_images/Dust_on_SOS.png" /></p>
+<p>The balance of energy over a snow surface is a phenomenon studied by both biologists, hydrologists, boundary layer meteorologists, and snow scientists. Many fields use the surface energy balance (SEB) to estimate evaporation and transpiration of water from the earth’s surface. Meteorologists study the SEB’s radiative effects on the atmosphere.</p>
+<p>Because we are interested in the snowpack, we modify the more common “surface energy
+balance” and consider a “snowpack energy balance”.
+The snowpack energy balance states that the change of the internal energy of the snowpack is a result of incoming and outgoing sources of energy,</p>
+<div class="math notranslate nohighlight">
+\[∆ \text{Internal Energy} = \text{Incoming Energy} - \text{Outgoing Energy} \]</div>
+<p>Energy fluxes are on both sides of the equation are measured in units of Watts per meters squared (W/m^2). The full snowpack energy balance is written</p>
+<div class="math notranslate nohighlight">
+\[\frac{d}{dt} (U \Delta z) = LW_{in} + LW_{out} + SW_{in} + SW_{out} - H_L - H_s + E_{melt} + G\]</div>
+<p><img alt="Energy balance diagram" src="../../_images/energy_balance_diagram.png" /></p>
+<p>where <span class="math notranslate nohighlight">\(U\)</span> is the internal energy of the snow pack and ∆z is the snowpack depth, the first and second terms on the right represent incoming and outgoing longwave radiation (AKA infrared radiation).
+The third and fourth terms represent incoming and outgoing shortwave radiation (ultraviolet, visible, and near-infrared radiation).
+The fifth term is the vertical flux of latent heat <em>away</em> from the snowpack surface, i.e. the flux of water vapor away from the snowpack, either through sublimation or perhaps evaporation from melted water at the snowpack surface.
+The term is positive during sublimation when energy is lost from the snowpack.
+Occasionally, deposition occurs (i.e. the solid equivalent of condensation, also known as surface hoar formation), and the term is negative, and energy is gained by the snowpack.
+The fifth term is the vertical flux of sensible heat <em>away</em> from the snowpack surface. Generally, but not always, the air over a snowpack is warmer than the snowpack surface temperature, and so H<sub>s</sub> is negative and energy is gained by the snowpack from sensible heat flux. It can sometimes become positive, if the snow surface becomes warmer than the air above it. Note that positive sensible heat flux is the normal condition over a bare earth surface during mid day (the earth’s surface is warmer than the air above).
+The sixth term is the energy that is lost to the latent heat involved in the melting of snow.
+The seventh term is the energy transmitted from the earth upwards into the bottom of the snowpack.
+Because snow is such a good insulator (air is a good insulator, and snow has lots of air - think about a down coat), the bottom of the snowpack is often 0˚C. In this state, a very small amount of water at the bottom of the snowpack persists throughout the snow season. In this case, <span class="math notranslate nohighlight">\(G = 0\)</span> because there is no temperature gradient across the soil-snow interface.</p>
+<p>We will talk about the internal energy term in Lab 4.</p>
+<p>Snow scientists are generally most interested in snow melt (<span class="math notranslate nohighlight">\(E_{melt}\)</span>) and snow sublimation (<span class="math notranslate nohighlight">\(H_L\)</span>) and the majority of the energy available for snow melt or sublimation comes from the net radiation, the sum of the four radiation terms.</p>
+</section>
+<section id="radiation-terms">
+<h2>Radiation Terms<a class="headerlink" href="#radiation-terms" title="Link to this heading">#</a></h2>
+<p>Incoming shortwave radiation (<span class="math notranslate nohighlight">\(SW_{in}\)</span>) comes from the sun and is a function of time of year, time of day, cloud cover, atmospheric aerosols, and topographic position. We can predict/model SW radiation well, although in complex/mountainous terrain, topography matters a lot.</p>
+<p>Gasses in the atmosphere (“greenhouse gasses”), mostly water vapor, absorb shortwave radiation and heat up, such that <span class="math notranslate nohighlight">\(SW_{in}\)</span> at the earth’s surface is always lower than at the outermost edge of the atmosphere.
+Snow is highly reflective, returning 60-90% of the incoming SW radiation to the atmosphere, i.e. snow has a high <a class="reference external" href="https://mynasadata.larc.nasa.gov/mini-lessonactivity/what-albedo"><em>albedo</em> (<span class="math notranslate nohighlight">\(\alpha\)</span>)</a>.
+Albedo, <span class="math notranslate nohighlight">\(\alpha\)</span>, varies between zero and 1; a highly reflective surface reflects most of the incoming solar radiation (<span class="math notranslate nohighlight">\(\alpha\)</span> approaches 1) and non-reflective surfaces absorb most of the incoming solar radiation (<span class="math notranslate nohighlight">\(\alpha\)</span> approaches 1). Snow albedo varies between 0.6 and 0.9. although dirt, dust, and rocks on snow or glacier surfaces can decrease the surface-averaged albedo significantly.</p>
+<p>Longwave radiation is output by all mass in the universe, and the output LW radiation is proportional to the surface temperature of the mass, according to the <a class="reference external" href="https://en.wikipedia.org/wiki/Stefan%E2%80%93Boltzmann_law">Stefan–Boltzmann Law</a>, which states that energy radiated per unit surface area per unit time (i.e. energy flux at the surface) is equal to the fourth power of the black body’s (surface’s) temperature, and therefore the outgoing longwave radiation (i.e. the energy emitted by the earth into the atmosphere) is defined</p>
+<div class="math notranslate nohighlight">
+\[LW_{out} = \epsilon \sigma T^4\]</div>
+<p>where <span class="math notranslate nohighlight">\(\epsilon\)</span> is the Stefan–Boltzmann constant (<span class="math notranslate nohighlight">\(\sigma \approx 5.67 × 10^{−8} \space W⋅m^{-2}⋅K^{-4}\)</span>)
+and <span class="math notranslate nohighlight">\(\epsilon\)</span> is the emisivity of the surface emitting the radiation (<span class="math notranslate nohighlight">\(\epsilon\)</span> varies between zero and one). The snowpack surface <a class="reference external" href="https://www.jpl.nasa.gov/images/pia18833-nasa-spacecraft-maps-earths-global-emissivity">emissivity</a> is near 1, meaning that the snowpack surface (i.e. water molecules) absorb most of the incoming LW radiation, and reflect very little. <span class="math notranslate nohighlight">\(\epsilon\)</span> for the snowpack depends on snowpack properties, but a commonly assumed value is <span class="math notranslate nohighlight">\(\epsilon = 0.985\)</span>.
+Note that the Stefan-Boltzmann law implies that when gases in the atmosphere (i.e. clouds) absorb incoming shortwave/solar radiation and warm up, they increase their output of longwave radiation.
+This means that the presense of clouds both decrease incoming solar radiation at the snow surface and increase incoming longwave radiation at the snow surface.</p>
+<p>The reflective properties of the snow surface mean that the shortwave terms in the energy balance equation can be rewritten,</p>
+<div class="math notranslate nohighlight">
+\[SW_{in} + SW_{out} = (1 - \alpha) SW_{in}\]</div>
+<p>The Stefan-Boltzmann law implies that the longwave terms could be rewritten</p>
+<div class="math notranslate nohighlight">
+\[LW_{in} + LW_{out} = LW_{in} - \epsilon \sigma T_{ss}^4\]</div>
+<p>where T<sub>ss</sub> is the temperature of the snow surface (in Kelvin).</p>
+<p>These equations will be useful in completing the labs and homeworks in this module.</p>
+</section>
+<section id="lab-3-plotting-radiation-and-energy-balance-data-at-kettle-ponds">
+<h2>Lab 3: Plotting radiation and energy balance data at Kettle Ponds.<a class="headerlink" href="#lab-3-plotting-radiation-and-energy-balance-data-at-kettle-ponds" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="lab3-1.html"><span class="std std-doc">Lab 3-1</span></a></p></li>
+<li><p><a class="reference internal" href="lab3-2.html"><span class="std std-doc">Lab 3-2</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/df52a5c89eea2fe67ab1a7f9c594dc98/sos_full_dataset_30min.nc"><span class="xref download myst">SoS dataset</span></a></p></li>
+</ul>
+</section>
+<section id="homework-3">
+<h2>Homework 3<a class="headerlink" href="#homework-3" title="Link to this heading">#</a></h2>
+<p>Radiometers are used to measure the radiation components of the surface energy balance.
+One type of instrument, a “net radiometer” or “four-stream radiometer”, measures incoming and outgoing longwave and shortwave radiation using four sensors built into a single instrument. An image of a type of radiometer used by the Sublimation of Snow Campaign, the <a class="reference external" href="https://www.hukseflux.com/products/pyranometers-solar-radiation-sensors/net-radiometers/nr01-net-radiometer">Hukseflux NR01</a>, is shown below.</p>
+<p><img alt="huskeflux_nr01" src="../../_images/huskeflux_nr01.png" /></p>
+<section id="problem-1-comparing-solar-radiation-sensors">
+<h3>Problem 1: Comparing solar radiation sensors<a class="headerlink" href="#problem-1-comparing-solar-radiation-sensors" title="Link to this heading">#</a></h3>
+<p>A common problem in snow energy balance studies is that snow accumulates on the upward pointing radiometers (see image below, compliments of <a class="reference external" href="https://doi.org/10.1002/2015WR017590">Lapo et al., 2015</a>).</p>
+<p><img alt="radiometer_snow_covered_lapoetal_2015" src="../../_images/radiometer_snow_covered_lapoetal_2015.png" /></p>
+<p>Use the precipitation dataset from Lab 2 to examine both incoming and outgoing radiation measurements during and after times with precipitation.
+Find a time in the dataset when you think snow covered the radiometer and explain why this occurred.</p>
+<p>You may find that skimming the following paper is useful, but it’s not necessary. <a class="reference external" href="https://doi.org/10.1002/2015WR017590">Lapo et al., 2015</a> Karl Lapo is a graduated, former UW PhD student.</p>
+</section>
+<section id="problem-2-clouds">
+<h3>Problem 2: Clouds<a class="headerlink" href="#problem-2-clouds" title="Link to this heading">#</a></h3>
+<p>Identify two periods of variable cloud cover in the dataset, one during nighttime and one during daytime.
+You can use shortwave radiation measurements to identify what is day/night.
+Explain why and how you can use both shortwave and longwave measurements to identify variations in cloud cover.
+Explain what both shortwave and longwave radiation tell you about the cloud cover.</p>
+</section>
+<section id="problem-3-estimating-snow-surface-temperature-from-outgoing-longwave-radiation">
+<h3>Problem 3: Estimating snow surface temperature from outgoing longwave radiation<a class="headerlink" href="#problem-3-estimating-snow-surface-temperature-from-outgoing-longwave-radiation" title="Link to this heading">#</a></h3>
+<p>At Kettle Ponds, a dedicated instrument for measuring surface temperature (an Apogee infrared radiometer) is used to measure surface temperature (see variables <code class="docutils literal notranslate"><span class="pre">Tsurf_c</span></code>, <code class="docutils literal notranslate"><span class="pre">Tsurf_d</span></code>, <code class="docutils literal notranslate"><span class="pre">Tsurf_ue</span></code>, <code class="docutils literal notranslate"><span class="pre">Tsurf_uw</span></code>).
+One could also estimate surface temperature using the broadband longwave radiometers (which measure more than just infrared wavelengths, see variable  <code class="docutils literal notranslate"><span class="pre">Rlw_out_9m_d</span></code>).
+Use broadband longwave radiometer meausrements of outgoing longwave radiation (<code class="docutils literal notranslate"><span class="pre">Rlw_out_9m_d</span></code>) to estimate snow surface temperature using the Stefan-Boltzmann equation. For 3-7 days during any time in the dataset, plot your estimate of surface temperature along with the Apogee infrared radiometer estimate.
+Discuss how they differ and why they might differ.</p>
+</section>
+<section id="problem-4-dust-on-snow-and-albedo">
+<h3>Problem 4: Dust on snow and albedo<a class="headerlink" href="#problem-4-dust-on-snow-and-albedo" title="Link to this heading">#</a></h3>
+<p>The reflectivity of snow, AKA albedo (<span class="math notranslate nohighlight">\(\alpha\)</span>), is defined</p>
+<div class="math notranslate nohighlight">
+\[\alpha = \frac{SW_{out}}{SW_{in}}\]</div>
+<p>It is understood intuitively to most people in cold climates that snow is brightest right after new snowfall, and darkens as it ages.
+This is a result both of the rounding and growing of snow grains as well as the “dirtying” of snow through the deposition of atmospheric deposition particulates.
+In April, 2024, a substantial amount of dust was deposited on our site at Kettle Ponds (see the photo at the top of this page).
+Calculate and plot albedo during April the first half of April and identify the date on which you think dust was deposited. Explain how you come to this conclusion.</p>
+</section>
+<section id="problem-5-snow-surface-energy-balance-intuition">
+<h3>Problem 5: Snow surface energy balance - Intuition<a class="headerlink" href="#problem-5-snow-surface-energy-balance-intuition" title="Link to this heading">#</a></h3>
+<p>In Lab3-2, we plotted the average diurnal cycle of the snow surface energy balance (the final plot in that lab). Explain what you observe in this plot (you do not need to recreate the plot in your homework). What do each of the five terms represent? When is each term negative/positive and why?</p>
+</section>
+<section id="problem-6">
+<h3>Problem 6<a class="headerlink" href="#problem-6" title="Link to this heading">#</a></h3>
+<p>On your reading of Warren 2019.</p>
+<p>Explain why coarse-grained snow has lower albedo than-grained snow.</p>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./modules/module3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../module2/lab2-3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">CEWA 568 Snow Hydrology - Spring 2023</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab3-1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 3-1: Surface Energy Balance at Kettle Ponds - Radiation Balance</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-balance-equation">Energy Balance Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radiation-terms">Radiation Terms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-plotting-radiation-and-energy-balance-data-at-kettle-ponds">Lab 3: Plotting radiation and energy balance data at Kettle Ponds.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-3">Homework 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-comparing-solar-radiation-sensors">Problem 1: Comparing solar radiation sensors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-clouds">Problem 2: Clouds</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-estimating-snow-surface-temperature-from-outgoing-longwave-radiation">Problem 3: Estimating snow surface temperature from outgoing longwave radiation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-dust-on-snow-and-albedo">Problem 4: Dust on snow and albedo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-5-snow-surface-energy-balance-intuition">Problem 5: Snow surface energy balance - Intuition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-6">Problem 6</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eli Schwat, Steven Pestana, Jessica D. Lundquist, and other contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

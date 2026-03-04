@@ -1,0 +1,696 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>8) Snow-dominated watershed hydrology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/module8/module8';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 8-1: Predicting streamflow with the SWE regression method" href="lab8-1.html" />
+    <link rel="prev" title="Lab 7-3 - Predicting snowmelt rates with the Temperature-Index method" href="../module7/lab7-3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Snow Hydrology
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/a-syllabus.html">Syllabus: CEWA 568</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/b-project.html">Course Project: CEWA 568</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../module1/module1.html">1) Properties of Snow</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../module2/module2.html">2) Measurement Strategies, Basics of the Snowpack Mass and Energy Balances, and Snowpack Dynamics</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module3/module3.html">3) Snowpack Energy Balance – Radiation + Albedo, Dust on Snow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-1.html">Lab 3-1: Surface Energy Balance at Kettle Ponds - Radiation Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-2.html">Lab 3-2: Plotting the Surface Energy Balance at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module4/module4.html">4) Temperatures: snowpack and atmospheric stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-0.html">Intuition about the heat equation - Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-1.html">Lab 4-1: Snowpack temperature profiles</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-2.html">Lab 4-2: Snowpack internal energy - completing the snowpack energy balance</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-3.html">Lab 4-3: Snowpack temperature and density profiles - snowpit data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-4.html">Lab 4-4: Atmospheric temperatures and stability</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module5/module5.html">5) Turbulent transport - momentum, heat, and moisture fluxes above the snow covered earth</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-1.html">Lab 5-1: Turbulent fluxes and measures of stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-2.html">Lab 5-2: Water vapor fluxes at Kettle Ponds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-3.html">Lab 5-3: Mixing length theory at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module6/module6.html">6) Blowing snow transport and sublimation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-1.html">Lab 6-1: Blowing snow fluxes, wind speed, and shear velocity</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-2.html">Lab 6-2: Blowing snow - snow redistribution on the landscape scale</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-3.html">Lab 6-3: Blowing snow - snow redistribution on the site scale</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module7/module7.html">7) Snow melt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-1.html">Lab 7-1: Snowpack ripening and melt initiation - Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-2.html">Lab 7-2: Snowpack ripening and melt initiation - Energy Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-3.html">Lab 7-3 - Predicting snowmelt rates with the Temperature-Index method</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">8) Snow-dominated watershed hydrology</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="lab8-1.html">Lab 8-1: Predicting streamflow with the SWE regression method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab8-2.html">Lab 8-2: Modeling a snowpack with a gridded, numerical model - openAMUNDSEN</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/a-learning-python.html">Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module1/numpy-tutorial.html">NumPy and the ndarray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1/some-python-tips.html">More python tips</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/b-learning-jupyter.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/instructor_resources.html">Resources for Instructors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/edit/main/book/modules/module8/module8.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/issues/new?title=Issue%20on%20page%20%2Fmodules/module8/module8.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/modules/module8/module8.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>8) Snow-dominated watershed hydrology</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#streamflow-swe-regression-analysis">Streamflow-SWE Regression Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-modeling-full-energy-balance-models">Distributed Modeling - Full Energy Balance Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation-for-class">Preparation for class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-7-8">Homework 7/8</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="snow-dominated-watershed-hydrology">
+<h1>8) Snow-dominated watershed hydrology<a class="headerlink" href="#snow-dominated-watershed-hydrology" title="Link to this heading">#</a></h1>
+<p>For this module, we will model snow and snow melt processes across the entire upper East River Valley.</p>
+<p>“Snowpack-reservoirs” release their water during the melt season, and that water eventually makes its way to streams.
+One of the main goals of snow hydrologists is to predict the streamflow that will result from a melting snowpack.
+There a number of methods for doing this. One simple, tried and true method is regression analysis.</p>
+<section id="streamflow-swe-regression-analysis">
+<h2>Streamflow-SWE Regression Analysis<a class="headerlink" href="#streamflow-swe-regression-analysis" title="Link to this heading">#</a></h2>
+<p>A simple empirical regression equation is used to predict streamflow from snowpack SWE,</p>
+<div class="math notranslate nohighlight">
+\[ Q = a + SWE*b \]</div>
+<p>where SWE is snowpack SWE measured at a site or from as now course, Q is streamflow/discharge, and a and b are fitted parameters to the linear relationship betwen SWE and Q. Q is often measured as the <em>total streamflow during the melt season</em>, such as total streamflow between April and July (aka AMJJ total streamflow). Linear regressions can do a surprisinngly good job at predicting streamflow year after year (see below, borrowed from Singh and Singh’S <em>Snow and Glacier Hydrology</em> textbook).</p>
+<p><img alt="streamflow regression plot" src="../../_images/singh_and_singh_streamflow_regressions.png" /></p>
+</section>
+<section id="distributed-modeling-full-energy-balance-models">
+<h2>Distributed Modeling - Full Energy Balance Models<a class="headerlink" href="#distributed-modeling-full-energy-balance-models" title="Link to this heading">#</a></h2>
+<p>Another method for predicting the water output from a snowpack is by numerically simulating the full energy balance of the snowpack. Full energy balance models represent the snowpack energy balance at a point, predicting the ripening process, the onset of snowmelt, and the transport of meltwater through the snowpack. Energy balance models can be expanded to run across a large area (such as a catchment) by running separate energy balance models at multiple points within the area. One way to scale the energy balance across an area is to run a separate energy balance for each grid cell in a digial elevation model (DEM).</p>
+<p><a class="reference external" href="https://doc.openamundsen.org">openAMUNDSEN</a> is an open source “snow and hydroclimataological modeling framework written in Python” that simulates the snowpack energy and mass balance across a landscape. It requires as inputs a DEM and at least one point measurement meteorological time series inputs (air temperature, relative humidity, precipitation, incoming shortwave radiation, and wind speed).
+Because of the relatively few inputs required by this model, it is easy to set up and run. The model spatially interpolates provided point measurements of meteorology and,takes into account terrain slope and aspect when calculating incoming shortwave radiation across the modeled landscape.</p>
+<p>In the Labs and homework for this module, we will run openAMUNDSEN across the upper East River Valley, and run some experiments to better understand how rain-on-snow events affect the snowpack energy balance. Some examples of outputs from openAMUNDSEN are included in the image below.
+<img alt="distributed modeling image" src="../../_images/module8_webpage_image.png" /></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="lab8-1.html"><span class="std std-doc">Lab 8-1</span></a> - Predicting streamflow with the SWE-regression method</p></li>
+<li><p><a class="reference internal" href="lab8-2.html"><span class="std std-doc">Lab 8-2</span></a> - Predicting melt rate and streamflow with a distributed model</p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/df52a5c89eea2fe67ab1a7f9c594dc98/sos_full_dataset_30min.nc"><span class="xref download myst">SoS dataset</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/c2eea40897172727417940bd661eca71/openamundsen.zip"><span class="xref download myst">openAMUNDSEN Inputs</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/a21fb05163846fbb10a75086015313fc/open_amundsen_config.yml"><span class="xref download myst">openAMUNDSEN Configuration File</span></a></p></li>
+</ul>
+</section>
+<section id="preparation-for-class">
+<h2>Preparation for class<a class="headerlink" href="#preparation-for-class" title="Link to this heading">#</a></h2>
+<p>On Thursday March 6th, we will hold a discussion on the paper linked below.
+Please read the paper, take notes, and prepare some discussion points.</p>
+<p><a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2017GL073551">Li et al., 2017, How much runoff originates as snow in the western United States, and how will that change in the future?</a></p>
+</section>
+<section id="homework-7-8">
+<h2>Homework 7/8<a class="headerlink" href="#homework-7-8" title="Link to this heading">#</a></h2>
+<p><strong>Problem 1 - Temperature-Index Method</strong>
+For this problem, we will use the Temperature-Index method for predicting snow melt, discussed in Module 7 and introduced in Lab 7-3.</p>
+<p>a. Calculate M<sub>f</sub> using measurements from the Schofield Pass Snotel station and report your value. I.E. mimic Lab 7-3 but for measurements from a different Snotel station. Use the same date range, 1990-2024. Note that we downloaded and used Schofield pass data in Lab 2-1.</p>
+<p>b. Compare M<sub>f</sub> values calculated at the Butte and Schofield Pass Snotel stations. Explain why you think one is larger/smaller than the other.</p>
+<p>c. Choose an M<sub>f</sub> value calculated from either the Butte or Schofield Pass Snotel stations, and model snowpack ablation at Kettle Ponds. I.E. mimic the second half of Lab 7-3 where we modeled snowpack ablation for the Butte Snotel station, but model snowpack ablation at Kettle Ponds using air temperature measurements at Kettle Ponds. Your solution to this problem should include:</p>
+<ul class="simple">
+<li><p>A statement of which M<sub>f</sub> value you selected to model snowpack ablation at Kettle Ponds, and why.</p></li>
+<li><p>A plot of modeled and measured SWE during the ablation period (April 1 - June 1) (I.E. create a similar plot to the final plot generated in Lab 7-3).</p></li>
+</ul>
+<p>d. Explain why you think modeled and measured ablation from part c disagree. What do you know happened during the 2024 ablation period and how are those represented or not represented in the degree day factor, M<sub>f</sub>.</p>
+<p>e. We know that the melting of the snowpack is a result of the snowpack energy balance (see Module 4). Explain, for each term in the energy balance equation, if and how the temperature-index method incorporates the influence of that energy flux term. To help you get started, here’s one part of the answer, for the ground heat flux term: The ground heat flux is not represented in the temperature-index method, because the air temperature and the ground heat flux are not related. First of all, the ground heat flux out of the earth is approximately constant, Second, snow is a great insulator, so ground heat flux is unlikely to impact air temperature. Therefore, air temperature does not incorporate the influence of the ground heat flux on snowpack melt.</p>
+<p><strong>Problem 2 - Distributed Modeling - Explaining the results of Lab 8-2</strong></p>
+<p>a. Lab 8-2 demonstrated that the model of the snowpack in the upper East River Valley melted out about three weeks later than the actual snowpack at Kettle Ponds. Explain, using the two plots generated in Lab 8-2 (modeled vs. measured SWE and modeled vs. measured energy balance), why you think the modeled snowpack melted out later than the measured snowpack.</p>
+<p>b. Lab 8-2 demonstrated how the timing of snowmelt propagated spatially throughout the basin (see the 2x2 grid of snow melt plots towards the end of the lab). Explain how the spatial distribution of melt rates propagates throughout the basin, making sure to include the details of where melt starts first and why, and where it happens last and why. Explain why this spatio-temporal relationship exists.</p>
+<p><strong>Problem 3 - Distributed Modeling - Running experiments with the model: Rain-on-snow event vs <a class="reference external" href="https://youtu.be/8CBCsRZfNDs?si=MOyu350mbcknx90c">Hot-Wind event</a></strong></p>
+<p>For this problem, you will modify the inputs to the model that we ran in Lab 8-2, and rerun the model.
+You will modify meteorological inputs and rerun the model twice, performing two experiments, and then compare the model results from the two experiments to the model results created during Lab 8-2.</p>
+<p>Model experiment 1 - Hot-wind Event:</p>
+<ul class="simple">
+<li><p>Modify your inputs in the following way: between 2023-05-28 and 2023-05-29 (including all hours from both days), set the temperature column to a constant +15˚C (288.15 K, note the inputs are in units of Kelvin) and the wind speed column to a constant 10 m/s.</p></li>
+</ul>
+<p>Model experiment 2 - Rain-on-snow Event:</p>
+<ul class="simple">
+<li><p>Modify your inputs in the following way: between 2023-05-28 and 2023-05-29 (including all hours from both days), set the temperature column to a constant +15˚C (288.15 K, note the inputs are in units of Kelvin) and the precip column to a constant 10.</p></li>
+</ul>
+<p>You can modify the model inputs by directly editing the csv file (the inputs are in the file <code class="docutils literal notranslate"><span class="pre">1.csv</span></code>), or you can use pandas to read in the csv, modify it, and rewrite the csv to disc.</p>
+<p>I recommend the following steps for modifying inputs and saving model results:</p>
+<ol class="arabic simple">
+<li><p>Run the model as we did for Lab 8-2.</p></li>
+<li><p>When the model runs, a directory <code class="docutils literal notranslate"><span class="pre">open_amundsen_results</span></code> will be created automatically. Rename this directory to something else. I recommend a name that indicates these results are with the “actual/original” inputs, such as <code class="docutils literal notranslate"><span class="pre">open_amundsen_results_original</span></code></p></li>
+<li><p>Make a copy of the input file <code class="docutils literal notranslate"><span class="pre">1.csv</span></code>, to keep a copy of the original/actual input data. Rename it something like <code class="docutils literal notranslate"><span class="pre">1_original.csv</span></code>. Modify the <code class="docutils literal notranslate"><span class="pre">1.csv</span></code> file according to the instructions above for one of the model experiments. Note that the model will run using the file <code class="docutils literal notranslate"><span class="pre">1.csv</span></code>, so make sure to edit that one, not your copy (<code class="docutils literal notranslate"><span class="pre">1_original.csv</span></code>).</p></li>
+<li><p>Rerun the model, then rename the newly created <code class="docutils literal notranslate"><span class="pre">open_amundsen_results</span></code> directory. I recommend a name that indicates these are results associated with whichever model experiment you ran first, such as <code class="docutils literal notranslate"><span class="pre">open_amundsen_results_experiment_1</span></code>.</p></li>
+<li><p>Delete <code class="docutils literal notranslate"><span class="pre">1.csv</span></code>. Make a copy of <code class="docutils literal notranslate"><span class="pre">1_original.csv</span></code> and rename it to <code class="docutils literal notranslate"><span class="pre">1.csv</span></code>. Modify this file according to the instructions above for second model experiment.</p></li>
+<li><p>Rerun the model, then rename the newly created <code class="docutils literal notranslate"><span class="pre">open_amundsen_results</span></code> directory. I recommend a name that indicates these are results associated with whichever model experiment you ran second, such as <code class="docutils literal notranslate"><span class="pre">open_amundsen_results_experiment_2</span></code>.</p></li>
+</ol>
+<p>You should now have three unique sets of model results, and you can begin looking at the results and answering the following homework questions:</p>
+<p>a. Create a plot of modeled SWE from each of the three model results (original model run, the “warm rain” model results, and the “warm wind” model results) for the whole season. Your plot should include three lines (you don’t need to add measured SWE, although you can if you like). Make sure to label each of the three lines with appropriate labels, such as “original”, “warm rain experiment”, and “warm wind experiment”.</p>
+<p>b. Explain how the SWE estimates differ. Explain how the “warm rain” and the “warm wind” event affected the snowpack melt-out differently/similarly and if these results are consistent with your expectations.</p>
+<p>c. Create three plots, one plot using model results from each model run, that include energy balance terms for the time period May 25 - May 31. Include the following energy balance terms: Net radiation, sensible heat flux, latent heat flux, and precipitation energy flux. Note we created a plot like this in Lab 8-2.</p>
+<p>d. Explain how the energy balances differ across the three model runs, particularly during the time period with artifically modified inputs (May 28 - 30). Make sure to include a discussion of: 1) Which energy balance terms are most important in each of the three model runs and 2) What these model experiments tell you about rain-on-snow events.</p>
+<p>e. Based on your answers to d, answer the following: During a rain-on-snow event, which could theoretically include high winds, high air temperatures, and rainfall, what energy balance terms cause snow melt?</p>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./modules/module8"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../module7/lab7-3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 7-3 - Predicting snowmelt rates with the Temperature-Index method</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab8-1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 8-1: Predicting streamflow with the SWE regression method</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#streamflow-swe-regression-analysis">Streamflow-SWE Regression Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-modeling-full-energy-balance-models">Distributed Modeling - Full Energy Balance Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation-for-class">Preparation for class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-7-8">Homework 7/8</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eli Schwat, Steven Pestana, Jessica D. Lundquist, and other contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

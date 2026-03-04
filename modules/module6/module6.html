@@ -1,0 +1,846 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>6) Blowing snow transport and sublimation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/module6/module6';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 6-1: Blowing snow fluxes, wind speed, and shear velocity" href="lab6-1.html" />
+    <link rel="prev" title="Lab 5-3: Mixing length theory at Kettle Ponds" href="../module5/lab5-3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Snow Hydrology
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/a-syllabus.html">Syllabus: CEWA 568</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/b-project.html">Course Project: CEWA 568</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../module1/module1.html">1) Properties of Snow</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../module2/module2.html">2) Measurement Strategies, Basics of the Snowpack Mass and Energy Balances, and Snowpack Dynamics</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module3/module3.html">3) Snowpack Energy Balance – Radiation + Albedo, Dust on Snow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-1.html">Lab 3-1: Surface Energy Balance at Kettle Ponds - Radiation Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-2.html">Lab 3-2: Plotting the Surface Energy Balance at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module4/module4.html">4) Temperatures: snowpack and atmospheric stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-0.html">Intuition about the heat equation - Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-1.html">Lab 4-1: Snowpack temperature profiles</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-2.html">Lab 4-2: Snowpack internal energy - completing the snowpack energy balance</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-3.html">Lab 4-3: Snowpack temperature and density profiles - snowpit data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-4.html">Lab 4-4: Atmospheric temperatures and stability</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module5/module5.html">5) Turbulent transport - momentum, heat, and moisture fluxes above the snow covered earth</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-1.html">Lab 5-1: Turbulent fluxes and measures of stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-2.html">Lab 5-2: Water vapor fluxes at Kettle Ponds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-3.html">Lab 5-3: Mixing length theory at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">6) Blowing snow transport and sublimation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="lab6-1.html">Lab 6-1: Blowing snow fluxes, wind speed, and shear velocity</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="lab6-2.html">Lab 6-2: Blowing snow - snow redistribution on the landscape scale</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="lab6-3.html">Lab 6-3: Blowing snow - snow redistribution on the site scale</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module7/module7.html">7) Snow melt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-1.html">Lab 7-1: Snowpack ripening and melt initiation - Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-2.html">Lab 7-2: Snowpack ripening and melt initiation - Energy Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-3.html">Lab 7-3 - Predicting snowmelt rates with the Temperature-Index method</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module8/module8.html">8) Snow-dominated watershed hydrology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-1.html">Lab 8-1: Predicting streamflow with the SWE regression method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-2.html">Lab 8-2: Modeling a snowpack with a gridded, numerical model - openAMUNDSEN</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/a-learning-python.html">Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module1/numpy-tutorial.html">NumPy and the ndarray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1/some-python-tips.html">More python tips</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/b-learning-jupyter.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/instructor_resources.html">Resources for Instructors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/edit/main/book/modules/module6/module6.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/issues/new?title=Issue%20on%20page%20%2Fmodules/module6/module6.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/modules/module6/module6.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>6) Blowing snow transport and sublimation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flux-divergence-model-estimating-blowing-snow-sublimation-with-ec-measurements">Flux Divergence Model - Estimating blowing snow sublimation with EC measurements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-model-estimating-blowing-snow-sublimation-with-flowcapt-and-meteorological-measurements-aka-the-spherical-cow-model">Particle Model - Estimating blowing snow sublimation with FlowCapt and Meteorological measurements - AKA the Spherical Cow Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-snowflake-particle-density">Estimating snowflake particle density</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-snowflake-sublimation-by-assuming-snowflakes-are-spherical-ice-particles">Estimating snowflake sublimation (by assuming snowflakes are spherical ice particles)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-the-above">Combining the above</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#labs">Labs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-6">Homework 6</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes-to-help-with-the-homework">Notes to help with the homework.</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="blowing-snow-transport-and-sublimation">
+<h1>6) Blowing snow transport and sublimation<a class="headerlink" href="#blowing-snow-transport-and-sublimation" title="Link to this heading">#</a></h1>
+<p>I highly recommend watching Dr. Matthew Sturm’s Lecture on blowing snow, snow dunes, and other snow landforms.</p>
+<p>This link to his <a class="reference external" href="https://youtu.be/rBlDG9Tp8rM?si=dqCCF-sW0NXQYG5i&amp;amp;t=3658">lecture on blowing snow</a> begins at the part talking about snow dunes/landforms, but the entire lecture (from the beginning) is worth your time.</p>
+<p><img alt="Credits to Matthew Sturm's lecture (above) for this photo" src="../../_images/sturm_bls_image.png" /></p>
+<p>For our homework, we will try to do something not covered closely in the video - estimating the sublimation rate of blowing snow.</p>
+<p>In the homework assignment below, we will find that blowing snow sublimation is an important contributor to total sublimation at the Kettle Ponds site in Colorado. While blowing snow in alpine environments is a rather niche topic, note that blowing snow sublimation is a primary mass ablation process in polar regions, influencing sea level rise as well as the global energy surface energy balance (see <a class="reference external" href="https://tc.copernicus.org/articles/12/3499/2018/">Sharma et al. 2018</a> and <a class="reference external" href="https://link.springer.com/10.1007/s10546-021-00653-x">Sigmund et al. 2022</a>).</p>
+<p>At the Kettle Ponds field site, we will estimate the rate with two simple methods,  which provide opportunity for future improvement.</p>
+<p>For fun, check out this GIF of snow dunes migrating at the Kettle Ponds site. We’ll learn how to process this data in Lab 6-3.</p>
+<p><img alt="GIF of snow dunes forming at the Kettle Ponds field site" src="../../_images/lidar_timeseries1.gif" /></p>
+<section id="flux-divergence-model-estimating-blowing-snow-sublimation-with-ec-measurements">
+<h2>Flux Divergence Model - Estimating blowing snow sublimation with EC measurements<a class="headerlink" href="#flux-divergence-model-estimating-blowing-snow-sublimation-with-ec-measurements" title="Link to this heading">#</a></h2>
+<p>In the atmospheric boundary layer, the conservation of water equation often simplifies to</p>
+<div class="math notranslate nohighlight">
+\[S = \frac{\partial \overline{w'\rho_v'}}{\partial z}\]</div>
+<p>where <span class="math notranslate nohighlight">\(S\)</span> is a source term (grams of water vapor per m^3 of air), representing addition of water vapor to the atmosphere by blowing snow sublimation, and the derivative term represents the change in the vertical turbulent flux of water vapor with height above the snow surface.</p>
+<p>When the derivative term is positive, a higher EC (e.g. 10m) may measure larger w’ρᵥ’ than a lower EC (e.g. 3m). This was observed at Kettle Ponds during a blowing snow event on 21–22 December 2022 (Lundquist et al., 2024, DOI 10.1175/BAMS-D-23-0191.1).</p>
+<p>Using a finite different approximation to the derivative above, one could try a very rough estimation of the blowing snow sublimation rate.</p>
+<div class="math notranslate nohighlight">
+\[
+S = \frac{\partial \overline{w'\rho_v'}}{\partial z} 
+\approx \frac{\Delta \overline{w'\rho_v'}}{\Delta z} 
+ \quad \Bigg[ \frac{\text{g/m}^2\text{/2}}{\text{m}} \Bigg] \Rightarrow \Bigg[ 
+    \frac{\text{g}}{\text{m}^3} 
+\Bigg]
+\]</div>
+<p>and so, in our case, using measurements at 10 and 1 meters, we will approximate <span class="math notranslate nohighlight">\(S\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+S \approx \frac{
+    \overline{w'\rho_v'}_{z=10m} - \overline{w'\rho_v'}_{z=1m}
+}{\
+     10 - 1 \text{m}
+}
+\]</div>
+<p>Note that if we want to compare this estimation of the blowing snow sublimation rate (in g/m^3, a flux density) to the surface sublimation rate, we can multiply by the height of the blowing snow layer that we are estimating, in this case 9m, which gives us the blowing snow sublimation rate in the units of a flux (g/m^2/s)</p>
+<div class="math notranslate nohighlight">
+\[
+S_{\text{flux}} \approx \overline{w'\rho_v'}_{z=10m} - \overline{w'\rho_v'}_{z=1m}.
+\]</div>
+</section>
+<section id="particle-model-estimating-blowing-snow-sublimation-with-flowcapt-and-meteorological-measurements-aka-the-spherical-cow-model">
+<h2>Particle Model - Estimating blowing snow sublimation with FlowCapt and Meteorological measurements - AKA the Spherical Cow Model<a class="headerlink" href="#particle-model-estimating-blowing-snow-sublimation-with-flowcapt-and-meteorological-measurements-aka-the-spherical-cow-model" title="Link to this heading">#</a></h2>
+<p>We can also estimate blowing snow sublimation using a particle model, where we consider the physics of sublimation for <span class="math notranslate nohighlight">\(n\)</span> particles in the airspace at Kettle Ponds.
+For this model, we will keep things as simple as possible, but real blowing snow models
+(e.g. <a class="reference external" href="http://link.springer.com/10.1023/A:1002065615856">Déry and Yau 1999</a>, <a class="reference external" href="http://link.springer.com/10.1023/A:1002676804487">Bintanja 2000</a>) are based on the same equations or similar equations.</p>
+<p>We can conceptualize a blowing snow model by considering some simple facts about the airspace above a snow surface. The total blowing snow sublimation (subl.) is equal to the average sublimation rate of a single snowflake, multiplied by the number of snowflakes in the airspace:</p>
+<div class="math notranslate nohighlight">
+\[ 
+\text{BS Subl. Rate} \Bigg[ \frac{\text{g}}{\text{m}^3 s}\Bigg]
+ = 
+\text{Single Snowflake Subl. Rate} \Bigg[ \frac{\text{g}}{s}\Bigg]
+\cdot \text{Particle Density} \Bigg[ \frac{\text{n particles}}{\text{m}^3}\Bigg]
+\]</div>
+<p>We can use the SOS measurements at Kettle Ponds to estimate both terms on the right side of the equation.</p>
+<section id="estimating-snowflake-particle-density">
+<h3>Estimating snowflake particle density<a class="headerlink" href="#estimating-snowflake-particle-density" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>Milk production at a dairy farm was low, so the farmer wrote to the local university, asking for help from academia. A multidisciplinary team of professors was assembled, headed by a theoretical physicist, and two weeks of intensive on-site investigation took place. The scholars then returned to the university, notebooks crammed with data, where the task of writing the report was left to the team leader. Shortly thereafter the physicist returned to the farm, saying to the farmer, “I have the solution, but it works only in the case of spherical cows in a vacuum.”</p>
+<p><img alt="spherical cow" src="https://upload.wikimedia.org/wikipedia/commons/2/23/SphericalCow2.gif" />
+<a class="reference external" href="https://en.wikipedia.org/wiki/Spherical_cow">Credit to Wikipedia</a></p>
+</div></blockquote>
+<p>To calculate particle density, we assume that all blowing snow particles are traveling with the measured wind speed (U), and that all snowflakes have the same shape (spherical) and mass. With these assumptions, we can convert blowing snow flux (BS Flux) measured by the FlowCapt sensor into a blowing snow mass concentration (BS Mass Conc.),
+$<span class="math notranslate nohighlight">\(
+\text{BS Mass Conc.} \Bigg[ \frac{\text{g}}{\text{m}^3}\Bigg]
+= \text{BS Flux} \Bigg[ \frac{\text{g}}{\text{m}^2 s}\Bigg] 
+\div U \Bigg[ \frac{\text{m}}{\text{s}}\Bigg].
+\)</span><span class="math notranslate nohighlight">\(
+With the BS mass concentration, we can estimate the snowflake particle concentration, by dividing by the average snowflake mass. Assuming all snowflakes are spherical, 
+\)</span><span class="math notranslate nohighlight">\(
+\text{Snowflake Mass} \Bigg[\text{g}\Bigg] = \text{Volume}_{snowflake} * \rho_{ice} = \frac{4}{3}\pi r^3 \rho_{ice}
+\)</span>$
+where r is the radius of the spherical snowflake particles. Now we have</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Particle Density} \Bigg[ \frac{\text{n particles}}{\text{m}^3}\Bigg]
+= \text{BS Mass Conc.} \Bigg[ \frac{\text{g}}{\text{m}^3}\Bigg]
+\div \text{Snowflake Mass} \Bigg[\text{g}\Bigg]
+\]</div>
+</section>
+<section id="estimating-snowflake-sublimation-by-assuming-snowflakes-are-spherical-ice-particles">
+<h3>Estimating snowflake sublimation (by assuming snowflakes are spherical ice particles)<a class="headerlink" href="#estimating-snowflake-sublimation-by-assuming-snowflakes-are-spherical-ice-particles" title="Link to this heading">#</a></h3>
+<p>To estimate snowflake sublimation rates, we use the classic <a class="reference external" href="https://iopscience.iop.org/article/10.1088/0508-3443/17/4/316">Thorpe and Mason  (1966)</a> model. This model measures the rate of mass change due to sublimation (g/s) using the equation</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Single Snowflake Subl. Rate} \Bigg[ \frac{\text{g}}{s}\Bigg] =\frac{d m}{d t} = \dfrac{
+    2 \pi r ( q / q_s - 1)
+}{
+    \dfrac{L_s}{K T} \dfrac{1}{Nu} \Big( \dfrac{L_s M}{R T} - 1\Big) + \dfrac{1}{D q_s Sh}
+}
+\]</div>
+<p>where
+<span class="math notranslate nohighlight">\(r\)</span> is the sphere radius,
+<span class="math notranslate nohighlight">\(q\)</span> is absolute humidity in the environment,
+<span class="math notranslate nohighlight">\(q_s\)</span> is the absolute humidity at the ice sphere surface, when is assumed to be at saturation, and is therefore a function of temperature,
+<span class="math notranslate nohighlight">\(L_s\)</span> is the latent heat of sublimation,
+<span class="math notranslate nohighlight">\(K\)</span> is the themal conductivity of air,
+<span class="math notranslate nohighlight">\(T\)</span> is the temperature in the environment (in Kelvin),
+<span class="math notranslate nohighlight">\(M\)</span> is the molecular weight of water,
+<span class="math notranslate nohighlight">\(R\)</span> is the universal gas constant,
+<span class="math notranslate nohighlight">\(D\)</span> is the coefficient of molecular diffusion of water vapor in air,
+<span class="math notranslate nohighlight">\(Nu\)</span> is the Nusselt number and
+<span class="math notranslate nohighlight">\(Sh\)</span> is the Sherwood number, both of which describe the rate of mass and heat transfer due to ventilation of the ice sphere by air. This equation is the basis of most blowing snow models, although recent work has re-examined the assumptions underlying this equation. In particular, <a class="reference external" href="https://tc.copernicus.org/articles/12/3499/2018/">Sharma et al. (2018)</a> examined applicability of the Thorpe-Mason model.</p>
+</section>
+<section id="combining-the-above">
+<h3>Combining the above<a class="headerlink" href="#combining-the-above" title="Link to this heading">#</a></h3>
+<p>With the information above, we can now calculate the BS sublimation rate (See the first equation in the section <em>Estimating blowing snow sublimation with a simple particle model</em>).</p>
+<p>Note that, similar to the flux divergence model presented earlier, we can convert blowing snow sublimation rate in units of (g/m^3/s) to a blowing snow sublimation flux in units of (g/m^2/s) by multiplying by the depth over which we account for blowing snow sublimation. Because we only have blowing snow flux measurements (and therefore particle density estimate) up to 2 meters, you can either calculate this flux over the lowest 1 or 2 meters of the atmosphere, depending on if you incorporate blowing snow flux measurements from both FlowCapt sensors or from just the lower FlowCapt sensor.</p>
+<div class="math notranslate nohighlight">
+\[
+S_{particle, flux} \Bigg[ \frac{\text{g}}{\text{m}^2 s}\Bigg] = H \Bigg[ \text{m} \Bigg] \cdot \text{BS Subl. Rate} \Bigg[ \frac{\text{g}}{\text{m}^3 s}\Bigg]
+\]</div>
+<p>where H is one or two meters.</p>
+<p>Note that the 1m and 2m FlowCapt sensors measure blowing snow fluxes between 0–1 and 1–2 m above ground level, respectively.</p>
+<p>For the homework assignment, you will estimate blowing snow sublimation rates using the two methods described above. Below, I’ve provided some code to get you started on using the Thorpe-Mason equation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">particle_sublimation_rate</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">q_s</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">lambda_s</span><span class="p">,</span> <span class="n">k_T</span><span class="p">,</span> <span class="n">Nu</span><span class="p">,</span> <span class="n">M_w</span><span class="p">,</span> <span class="n">R_g</span><span class="p">,</span> <span class="n">k_v</span><span class="p">,</span> <span class="n">Sh</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Estimate particle sublimaton rate (g/s) using the Thorpe-Mason model.</span>
+<span class="sd">        See Thorpe and Mason, 1966, their Equation 10 (the first form, on the left side)</span>
+<span class="sd">        T - ambient air temperature (K)</span>
+<span class="sd">        q_s - saturation absolute humidity (g/m^3)</span>
+<span class="sd">        q - ambient air absolute humidity (g/m^3)</span>
+<span class="sd">        r - ice particle radius (m)</span>
+<span class="sd">        lambda_s - latent heat of sublimation (J/kg)</span>
+<span class="sd">        k_T - thermal conductivity for air (W/m/K)</span>
+<span class="sd">        Nu - Nusselt number, typical values for snowdrifts are 2--10 (dimensionless)</span>
+<span class="sd">        M_w - molecular weight of water vapour</span>
+<span class="sd">        R_g - universal gas constant (J/mol/K)</span>
+<span class="sd">        k_v - molecular diffusivity of h2o vapour in air (m2 s−1)</span>
+<span class="sd">        Sh - Sherwood number, typical values for snowdrifts are 2--10 (dimensionless)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dm_dt</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">r</span><span class="o">*</span> <span class="p">(</span><span class="n">q</span><span class="o">/</span><span class="n">q_s</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">)</span> <span class="o">/</span> <span class="p">(</span>
+        <span class="p">(</span><span class="n">lambda_s</span><span class="o">/</span><span class="p">(</span><span class="n">k_T</span> <span class="o">*</span> <span class="n">T</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">Nu</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">lambda_s</span> <span class="o">*</span> <span class="n">M_w</span> <span class="o">/</span> <span class="p">(</span><span class="n">R_g</span> <span class="o">*</span> <span class="n">T</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">k_v</span> <span class="o">*</span> <span class="n">q_s</span> <span class="o">*</span> <span class="n">Sh</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">to_base_units</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">dm_dt</span>
+</pre></div>
+</div>
+<p>And here are constants for the equation above that you should use.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">metpy.units</span><span class="w"> </span><span class="kn">import</span> <span class="n">units</span>
+<span class="n">lambda_s</span> <span class="o">=</span> <span class="mi">2838000</span><span class="o">*</span><span class="n">units</span><span class="p">(</span><span class="s2">&quot;J/kg&quot;</span><span class="p">)</span><span class="c1"># latent heat of sublimation (J kg−1)</span>
+<span class="n">k_T</span> <span class="o">=</span> <span class="mf">0.02288</span><span class="o">*</span><span class="n">units</span><span class="p">(</span><span class="s2">&quot;W/m/K&quot;</span><span class="p">)</span>    <span class="c1"># thermal conductivity air, for air at -10˚C  (W/m/K)</span>
+<span class="n">Nu</span> <span class="o">=</span> <span class="mi">8</span>                          <span class="c1"># Nusselt number, typical values for snowdrifts: 2 - 10</span>
+<span class="n">M_w</span> <span class="o">=</span> <span class="mf">0.018</span><span class="o">*</span><span class="n">units</span><span class="p">(</span><span class="s2">&quot;kg/mol&quot;</span><span class="p">)</span>     <span class="c1"># molecular weight of water vapour (kg/mol)</span>
+<span class="n">R_g</span> <span class="o">=</span> <span class="mf">8.3145</span><span class="o">*</span><span class="n">units</span><span class="p">(</span><span class="s2">&quot;J/mol/K&quot;</span><span class="p">)</span>   <span class="c1"># universal gas constant (J mol−1 K−1)</span>
+<span class="n">k_v</span> <span class="o">=</span> <span class="mf">24.9</span><span class="o">*</span><span class="mf">1e-6</span><span class="o">*</span><span class="n">units</span><span class="p">(</span><span class="s2">&quot;m^2/s&quot;</span><span class="p">)</span>  <span class="c1"># molecular diffusivity of h2o vapour in air (m2 s−1)</span>
+<span class="n">Sh</span> <span class="o">=</span> <span class="n">Nu</span>   
+</pre></div>
+</div>
+<p>This leaves you to gather
+<span class="math notranslate nohighlight">\(T\)</span>,
+<span class="math notranslate nohighlight">\(q_s\)</span>,
+<span class="math notranslate nohighlight">\(q\)</span>, and
+<span class="math notranslate nohighlight">\(r\)</span>
+.
+These variables are time series and should change at each timestep you calculate snowflake sublimation.
+You can and should treat r as a constant, for simplicity.</p>
+</section>
+</section>
+<section id="labs">
+<h2>Labs<a class="headerlink" href="#labs" title="Link to this heading">#</a></h2>
+<p>Note that these labs use quite a few files. For lab6-3, you must download files from the links included in the notebook.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="lab6-1.html"><span class="std std-doc">Lab 6-1</span></a> - Examining blowing snow thresholds with SOS tower measurements.</p></li>
+<li><p><a class="reference internal" href="lab6-2.html"><span class="std std-doc">Lab 6-2</span></a></p></li>
+<li><p><a class="reference internal" href="lab6-3.html"><span class="std std-doc">Lab 6-3</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/df52a5c89eea2fe67ab1a7f9c594dc98/sos_full_dataset_30min.nc"><span class="xref download myst">SoS dataset</span></a> - Data collected by the Sublimation of Snow Campaign at Kettle Ponds</p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/42f208ace25272c2fd2e6fa7daaab09c/kettle_ponds_precip_30min.csv"><span class="xref download myst">30-minute precipitation dataset</span></a> - Data collected by the SAIL campaign at Kettle Ponds</p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/7edbc63fe72d7182e814eeac0063ac45/lidar_l2_particles.nc"><span class="xref download myst">Lidar particle dataset</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/750a807fea1bd90d076fd0a7aa0aa686/east_river_elevation.tif"><span class="xref download myst">Elevation dataset</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/e0b301cf7f21191bff8c326ee4ed359c/east_river_hillshade.tif"><span class="xref download myst">Elevation hillshade dataset</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/496b9940ce753b57c3fd9ac1bd4a3ba1/eastriver_snowdepth_2023april01.tif"><span class="xref download myst">Snow depth dataset</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/323b4c01d9b8ac35fc6a72b54ea5aa3f/east_polygon.json"><span class="xref download myst">East river polygon</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/9a100e696929b5615a1730fd57ff2c2b/transects.geojson"><span class="xref download myst">Elevation transects</span></a></p></li>
+</ul>
+</section>
+<section id="homework-6">
+<h2>Homework 6<a class="headerlink" href="#homework-6" title="Link to this heading">#</a></h2>
+<p>For this assignment, you will implement the two blowing snow sublimation models described above (the “flux-divergence” model and the “particle” model) for two blowing snow events, 12–14 December 2022 and 21-22 December 2022.</p>
+<ol class="arabic">
+<li><p>For both case studies, plot time series of blowing snow flux from both FlowCapt sensors and w’ρᵥ’ at 1 and 10 meters. (Variables in the SOS dataset are <code class="docutils literal notranslate"><span class="pre">SF_avg_1m_ue</span></code>, <code class="docutils literal notranslate"><span class="pre">SF_avg_2m_ue</span></code>, <code class="docutils literal notranslate"><span class="pre">w_h2o__1m_c</span></code>, <code class="docutils literal notranslate"><span class="pre">w_h2o__10m_c</span></code>). Explain how blowing snow and turbulent water vapor fluxes vary with height during the two case studies, and why.</p></li>
+<li><p>Using the flux divergence model, calculate time series of S<sub>flux</sub> for the length of the two events. Using the particle model, calculate time series of S<sub>particle, flux</sub> for the length of the two events. Use the constants I provide above for the particle model. Choose your own value for snowflake/ice particle radius (r). For the two events, create a time series plot that includes lines for w’ρᵥ’ at 1 meter, w’ρᵥ’ at 10 meters, S<sub>flux</sub>, and S<sub>particle, flux</sub>.</p>
+<blockquote>
+<div><p>Note that estimates of S<sub>particle, flux</sub> are very sensitive to snowflake/ice particle radius (r).
+For this assignment, I want you use to use r as a fitting parameter - i.e., modify values of r until your estimates of S<sub>particle, flux</sub> are within a reasonable range of w’ρᵥ’ measurements.
+The image below shows the measured distribution of blowing snow particle sizes throughout the early December blowing snow event. I found that for the particle model to produce reasonable results, a very small snowflake size is necessary. Try values between 10<sup>-5</sup> to 10<sup>-3</sup>.
+<img alt="particle size distribution" src="../../_images/snowflake_size_distribution.png" /></p>
+</div></blockquote>
+</li>
+<li><p>With respect to your plots from Question 2, answer the following questions. What do the two model results tell you about blowing snow sublimation during the events? Which of the two models seems to produce more reasonable results? Which model do you believe more?</p></li>
+<li><p>Describe the shortcomings of the flux divergence model, as implemented here.</p></li>
+<li><p>Describe the shortcomings of the particle model, as implemented here. Include in your answer: your final choice for particle radius and how that compares to measurements of particle radii in the figure above.</p></li>
+</ol>
+<section id="notes-to-help-with-the-homework">
+<h3>Notes to help with the homework.<a class="headerlink" href="#notes-to-help-with-the-homework" title="Link to this heading">#</a></h3>
+<p><strong>1. Humidity Variables</strong></p>
+<p>The function that I provide on the module page - particle_sublimation_rate - requires, among many inputs, q and q_s. q is the ambient or actual/environmental absolute humidity and q_s is the saturation absolute humidity. absolute humidity can be calculated as the product of water vapor mixing ratio and dry air density. Both of these variables are available in the SOS dataset. For example, you can calculate q by multiplying <code class="docutils literal notranslate"><span class="pre">sos_dataset['mixingratio_1m_c']</span></code> * <code class="docutils literal notranslate"><span class="pre">sos_dataset['dryairdensity_1m_c']</span></code>. To calculate q_s, by that logic, you need a value for saturation mixing ratio. Saturation mixing ratio can be calculated using <a class="reference external" href="https://unidata.github.io/MetPy/latest/api/generated/metpy.calc.mixing_ratio_from_relative_humidity.html">this function</a>, providing pressure (<code class="docutils literal notranslate"><span class="pre">sos_dataset['P_10m_c']</span> <span class="pre">*</span> <span class="pre">units(&quot;millibars&quot;)</span></code>)  and temperature (<code class="docutils literal notranslate"><span class="pre">sos_dataset['T_1m_c']</span> <span class="pre">*</span> <span class="pre">units(&quot;degC&quot;)</span></code>) and providing a relative humidity value of 1 (i.e. 100% humidity, saturation).</p>
+<p><strong>2. Using Metpy Units</strong></p>
+<p>I highly recommend using the <code class="docutils literal notranslate"><span class="pre">metpy.units.units</span></code> object to assign units to all of your variables for these calculations. Look in earlier labs for examples of usage. As a reminder, you can import the units object and us it like this:
+from metpy.units import units</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">temp_in_c</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">units</span><span class="p">(</span><span class="s1">&#39;degC&#39;</span><span class="p">)</span> 
+<span class="n">temp_in_K</span> <span class="o">=</span> <span class="mf">283.15</span> <span class="o">*</span> <span class="n">units</span><span class="p">(</span><span class="s1">&#39;kelvin&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+<p><strong>3. Finding units in the sos data</strong></p>
+<p>The sos_dataset has units for each variable written inside the attributes for each variable. You can see this if you have a jupyter notebook cell display a variable from the xarray dataset like so:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sos_dataset['mixingratio_1m_c']</span></code></p>
+<p>or you can access them directly like so:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sos_dataset['mixingratio_1m_c'].attrs</span></code></p>
+<p>or</p>
+<p><code class="docutils literal notranslate"><span class="pre">sos_dataset['mixingratio_1m_c'].attrs['units']</span></code></p>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./modules/module6"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../module5/lab5-3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 5-3: Mixing length theory at Kettle Ponds</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab6-1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 6-1: Blowing snow fluxes, wind speed, and shear velocity</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flux-divergence-model-estimating-blowing-snow-sublimation-with-ec-measurements">Flux Divergence Model - Estimating blowing snow sublimation with EC measurements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-model-estimating-blowing-snow-sublimation-with-flowcapt-and-meteorological-measurements-aka-the-spherical-cow-model">Particle Model - Estimating blowing snow sublimation with FlowCapt and Meteorological measurements - AKA the Spherical Cow Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-snowflake-particle-density">Estimating snowflake particle density</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-snowflake-sublimation-by-assuming-snowflakes-are-spherical-ice-particles">Estimating snowflake sublimation (by assuming snowflakes are spherical ice particles)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-the-above">Combining the above</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#labs">Labs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-6">Homework 6</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes-to-help-with-the-homework">Notes to help with the homework.</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eli Schwat, Steven Pestana, Jessica D. Lundquist, and other contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

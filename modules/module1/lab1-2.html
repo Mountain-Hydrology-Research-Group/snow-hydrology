@@ -1,0 +1,930 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Phase Changes of Matter</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/module1/lab1-2';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2) Measurement Strategies, Basics of the Snowpack Mass and Energy Balances, and Snowpack Dynamics" href="../module2/module2.html" />
+    <link rel="prev" title="Lab 1-1" href="lab1-1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Snow Hydrology
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/a-syllabus.html">Syllabus: CEWA 568</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/b-project.html">Course Project: CEWA 568</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="module1.html">1) Properties of Snow</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../module2/module2.html">2) Measurement Strategies, Basics of the Snowpack Mass and Energy Balances, and Snowpack Dynamics</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module3/module3.html">3) Snowpack Energy Balance – Radiation + Albedo, Dust on Snow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-1.html">Lab 3-1: Surface Energy Balance at Kettle Ponds - Radiation Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-2.html">Lab 3-2: Plotting the Surface Energy Balance at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module4/module4.html">4) Temperatures: snowpack and atmospheric stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-0.html">Intuition about the heat equation - Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-1.html">Lab 4-1: Snowpack temperature profiles</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-2.html">Lab 4-2: Snowpack internal energy - completing the snowpack energy balance</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-3.html">Lab 4-3: Snowpack temperature and density profiles - snowpit data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-4.html">Lab 4-4: Atmospheric temperatures and stability</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module5/module5.html">5) Turbulent transport - momentum, heat, and moisture fluxes above the snow covered earth</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-1.html">Lab 5-1: Turbulent fluxes and measures of stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-2.html">Lab 5-2: Water vapor fluxes at Kettle Ponds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-3.html">Lab 5-3: Mixing length theory at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module6/module6.html">6) Blowing snow transport and sublimation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-1.html">Lab 6-1: Blowing snow fluxes, wind speed, and shear velocity</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-2.html">Lab 6-2: Blowing snow - snow redistribution on the landscape scale</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-3.html">Lab 6-3: Blowing snow - snow redistribution on the site scale</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module7/module7.html">7) Snow melt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-1.html">Lab 7-1: Snowpack ripening and melt initiation - Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-2.html">Lab 7-2: Snowpack ripening and melt initiation - Energy Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-3.html">Lab 7-3 - Predicting snowmelt rates with the Temperature-Index method</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module8/module8.html">8) Snow-dominated watershed hydrology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-1.html">Lab 8-1: Predicting streamflow with the SWE regression method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-2.html">Lab 8-2: Modeling a snowpack with a gridded, numerical model - openAMUNDSEN</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/a-learning-python.html">Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="numpy-tutorial.html">NumPy and the ndarray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="some-python-tips.html">More python tips</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/b-learning-jupyter.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/instructor_resources.html">Resources for Instructors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/edit/main/book/modules/module1/lab1-2.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/issues/new?title=Issue%20on%20page%20%2Fmodules/module1/lab1-2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/modules/module1/lab1-2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Phase Changes of Matter</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="phase-changes-of-matter">
+<h1>Phase Changes of Matter<a class="headerlink" href="#phase-changes-of-matter" title="Link to this heading">#</a></h1>
+<p>Snow scientists come from all different fields, bringing different perspectives to a subject that is complicated and research-worthy in chemistry, physics, materials science, geology, hydrology, and atmospheric science.</p>
+<p>One first step is to review the fundamental of physical chemistry and what makes the water molecule unique. Wikipedia is a good place to start to learn more about the <a class="reference external" href="https://en.wikipedia.org/wiki/Phase_diagram">phase diagram</a>.  To understand this in much more detail, you may want to check out <a class="reference external" href="https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Physical_Chemistry_(LibreTexts)/23%3A_Phase_Equilibria">LibreTexts in Chemistry</a>.</p>
+<p>It’s worthwhile to review the basics of thermodynamics (often included as part of a physical chemistry class).  In particular, we are interested in the internal energy of our snow, which is a mixture of ice, water, and air.</p>
+<p><em>Sensible Heat</em> can be defined as the sum of translational, vibrational, and rotational energies of molecules.  These movements increase with temperature; however, the relationship depends on molecular properties.</p>
+<p><em>Specific Heat</em> at a constant pressure c_p is defined as the energy required to raise the temperature of a substance by 1 degree celcius.</p>
+<p><em>Latent Heat</em> can be defined as the energy tied up in the phase of a system.  Intermolecular forces are strongest in solids and weakest in gases, and energy is required for molecules to move enough to escape the foreces of attraction between them.</p>
+<p>Let’s import some packages we’ll need, investigate the properties of water, ice, and snow, and make some basic calculations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">stats</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, let&#39;s consider the basic thermodynamics of heating water, ice, and air, without phase changes.</span>
+<span class="c1"># The following are defined at 1 atmosphere of pressure.</span>
+<span class="n">c_p_water</span> <span class="o">=</span> <span class="mf">4.2</span> <span class="c1">#kJ K-1 kg-1</span>
+<span class="n">c_p_ice</span> <span class="o">=</span> <span class="mf">2.1</span> <span class="c1">#kJ K-1 kg-1</span>
+<span class="n">c_p_air</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1">#kJ K-1 kg-1, note that this changes a lot with volume and pressure, we will neglect this for now</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For a first step at intuition, let’s ignore changes in pressure and resulting impacts on the gas phase for now.
+Create a plot of how the temperature of 1 kg of a substance would change for each of water, ice, and air (considered generally for now) as a function of kJ of energy input for 0 to 1,000.</p>
+<p>I’ve plotted for water and ice.  Add in air, with the understanding that when it heats it will expand, so this is a gross simplification at this point.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">energy</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cumdeltaT_water</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">energy</span><span class="p">,</span><span class="n">c_p_water</span><span class="p">)</span>
+<span class="n">cumdeltaT_ice</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">energy</span><span class="p">,</span><span class="n">c_p_ice</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cumdeltaT_ice</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  0.        ,   0.47619048,   0.95238095,   1.42857143,
+         1.9047619 ,   2.38095238,   2.85714286,   3.33333333,
+         3.80952381,   4.28571429,   4.76190476,   5.23809524,
+         5.71428571,   6.19047619,   6.66666667,   7.14285714,
+         7.61904762,   8.0952381 ,   8.57142857,   9.04761905,
+         9.52380952,  10.        ,  10.47619048,  10.95238095,
+        11.42857143,  11.9047619 ,  12.38095238,  12.85714286,
+        13.33333333,  13.80952381,  14.28571429,  14.76190476,
+        15.23809524,  15.71428571,  16.19047619,  16.66666667,
+        17.14285714,  17.61904762,  18.0952381 ,  18.57142857,
+        19.04761905,  19.52380952,  20.        ,  20.47619048,
+        20.95238095,  21.42857143,  21.9047619 ,  22.38095238,
+        22.85714286,  23.33333333,  23.80952381,  24.28571429,
+        24.76190476,  25.23809524,  25.71428571,  26.19047619,
+        26.66666667,  27.14285714,  27.61904762,  28.0952381 ,
+        28.57142857,  29.04761905,  29.52380952,  30.        ,
+        30.47619048,  30.95238095,  31.42857143,  31.9047619 ,
+        32.38095238,  32.85714286,  33.33333333,  33.80952381,
+        34.28571429,  34.76190476,  35.23809524,  35.71428571,
+        36.19047619,  36.66666667,  37.14285714,  37.61904762,
+        38.0952381 ,  38.57142857,  39.04761905,  39.52380952,
+        40.        ,  40.47619048,  40.95238095,  41.42857143,
+        41.9047619 ,  42.38095238,  42.85714286,  43.33333333,
+        43.80952381,  44.28571429,  44.76190476,  45.23809524,
+        45.71428571,  46.19047619,  46.66666667,  47.14285714,
+        47.61904762,  48.0952381 ,  48.57142857,  49.04761905,
+        49.52380952,  50.        ,  50.47619048,  50.95238095,
+        51.42857143,  51.9047619 ,  52.38095238,  52.85714286,
+        53.33333333,  53.80952381,  54.28571429,  54.76190476,
+        55.23809524,  55.71428571,  56.19047619,  56.66666667,
+        57.14285714,  57.61904762,  58.0952381 ,  58.57142857,
+        59.04761905,  59.52380952,  60.        ,  60.47619048,
+        60.95238095,  61.42857143,  61.9047619 ,  62.38095238,
+        62.85714286,  63.33333333,  63.80952381,  64.28571429,
+        64.76190476,  65.23809524,  65.71428571,  66.19047619,
+        66.66666667,  67.14285714,  67.61904762,  68.0952381 ,
+        68.57142857,  69.04761905,  69.52380952,  70.        ,
+        70.47619048,  70.95238095,  71.42857143,  71.9047619 ,
+        72.38095238,  72.85714286,  73.33333333,  73.80952381,
+        74.28571429,  74.76190476,  75.23809524,  75.71428571,
+        76.19047619,  76.66666667,  77.14285714,  77.61904762,
+        78.0952381 ,  78.57142857,  79.04761905,  79.52380952,
+        80.        ,  80.47619048,  80.95238095,  81.42857143,
+        81.9047619 ,  82.38095238,  82.85714286,  83.33333333,
+        83.80952381,  84.28571429,  84.76190476,  85.23809524,
+        85.71428571,  86.19047619,  86.66666667,  87.14285714,
+        87.61904762,  88.0952381 ,  88.57142857,  89.04761905,
+        89.52380952,  90.        ,  90.47619048,  90.95238095,
+        91.42857143,  91.9047619 ,  92.38095238,  92.85714286,
+        93.33333333,  93.80952381,  94.28571429,  94.76190476,
+        95.23809524,  95.71428571,  96.19047619,  96.66666667,
+        97.14285714,  97.61904762,  98.0952381 ,  98.57142857,
+        99.04761905,  99.52380952, 100.        , 100.47619048,
+       100.95238095, 101.42857143, 101.9047619 , 102.38095238,
+       102.85714286, 103.33333333, 103.80952381, 104.28571429,
+       104.76190476, 105.23809524, 105.71428571, 106.19047619,
+       106.66666667, 107.14285714, 107.61904762, 108.0952381 ,
+       108.57142857, 109.04761905, 109.52380952, 110.        ,
+       110.47619048, 110.95238095, 111.42857143, 111.9047619 ,
+       112.38095238, 112.85714286, 113.33333333, 113.80952381,
+       114.28571429, 114.76190476, 115.23809524, 115.71428571,
+       116.19047619, 116.66666667, 117.14285714, 117.61904762,
+       118.0952381 , 118.57142857, 119.04761905, 119.52380952,
+       120.        , 120.47619048, 120.95238095, 121.42857143,
+       121.9047619 , 122.38095238, 122.85714286, 123.33333333,
+       123.80952381, 124.28571429, 124.76190476, 125.23809524,
+       125.71428571, 126.19047619, 126.66666667, 127.14285714,
+       127.61904762, 128.0952381 , 128.57142857, 129.04761905,
+       129.52380952, 130.        , 130.47619048, 130.95238095,
+       131.42857143, 131.9047619 , 132.38095238, 132.85714286,
+       133.33333333, 133.80952381, 134.28571429, 134.76190476,
+       135.23809524, 135.71428571, 136.19047619, 136.66666667,
+       137.14285714, 137.61904762, 138.0952381 , 138.57142857,
+       139.04761905, 139.52380952, 140.        , 140.47619048,
+       140.95238095, 141.42857143, 141.9047619 , 142.38095238,
+       142.85714286, 143.33333333, 143.80952381, 144.28571429,
+       144.76190476, 145.23809524, 145.71428571, 146.19047619,
+       146.66666667, 147.14285714, 147.61904762, 148.0952381 ,
+       148.57142857, 149.04761905, 149.52380952, 150.        ,
+       150.47619048, 150.95238095, 151.42857143, 151.9047619 ,
+       152.38095238, 152.85714286, 153.33333333, 153.80952381,
+       154.28571429, 154.76190476, 155.23809524, 155.71428571,
+       156.19047619, 156.66666667, 157.14285714, 157.61904762,
+       158.0952381 , 158.57142857, 159.04761905, 159.52380952,
+       160.        , 160.47619048, 160.95238095, 161.42857143,
+       161.9047619 , 162.38095238, 162.85714286, 163.33333333,
+       163.80952381, 164.28571429, 164.76190476, 165.23809524,
+       165.71428571, 166.19047619, 166.66666667, 167.14285714,
+       167.61904762, 168.0952381 , 168.57142857, 169.04761905,
+       169.52380952, 170.        , 170.47619048, 170.95238095,
+       171.42857143, 171.9047619 , 172.38095238, 172.85714286,
+       173.33333333, 173.80952381, 174.28571429, 174.76190476,
+       175.23809524, 175.71428571, 176.19047619, 176.66666667,
+       177.14285714, 177.61904762, 178.0952381 , 178.57142857,
+       179.04761905, 179.52380952, 180.        , 180.47619048,
+       180.95238095, 181.42857143, 181.9047619 , 182.38095238,
+       182.85714286, 183.33333333, 183.80952381, 184.28571429,
+       184.76190476, 185.23809524, 185.71428571, 186.19047619,
+       186.66666667, 187.14285714, 187.61904762, 188.0952381 ,
+       188.57142857, 189.04761905, 189.52380952, 190.        ,
+       190.47619048, 190.95238095, 191.42857143, 191.9047619 ,
+       192.38095238, 192.85714286, 193.33333333, 193.80952381,
+       194.28571429, 194.76190476, 195.23809524, 195.71428571,
+       196.19047619, 196.66666667, 197.14285714, 197.61904762,
+       198.0952381 , 198.57142857, 199.04761905, 199.52380952,
+       200.        , 200.47619048, 200.95238095, 201.42857143,
+       201.9047619 , 202.38095238, 202.85714286, 203.33333333,
+       203.80952381, 204.28571429, 204.76190476, 205.23809524,
+       205.71428571, 206.19047619, 206.66666667, 207.14285714,
+       207.61904762, 208.0952381 , 208.57142857, 209.04761905,
+       209.52380952, 210.        , 210.47619048, 210.95238095,
+       211.42857143, 211.9047619 , 212.38095238, 212.85714286,
+       213.33333333, 213.80952381, 214.28571429, 214.76190476,
+       215.23809524, 215.71428571, 216.19047619, 216.66666667,
+       217.14285714, 217.61904762, 218.0952381 , 218.57142857,
+       219.04761905, 219.52380952, 220.        , 220.47619048,
+       220.95238095, 221.42857143, 221.9047619 , 222.38095238,
+       222.85714286, 223.33333333, 223.80952381, 224.28571429,
+       224.76190476, 225.23809524, 225.71428571, 226.19047619,
+       226.66666667, 227.14285714, 227.61904762, 228.0952381 ,
+       228.57142857, 229.04761905, 229.52380952, 230.        ,
+       230.47619048, 230.95238095, 231.42857143, 231.9047619 ,
+       232.38095238, 232.85714286, 233.33333333, 233.80952381,
+       234.28571429, 234.76190476, 235.23809524, 235.71428571,
+       236.19047619, 236.66666667, 237.14285714, 237.61904762,
+       238.0952381 , 238.57142857, 239.04761905, 239.52380952,
+       240.        , 240.47619048, 240.95238095, 241.42857143,
+       241.9047619 , 242.38095238, 242.85714286, 243.33333333,
+       243.80952381, 244.28571429, 244.76190476, 245.23809524,
+       245.71428571, 246.19047619, 246.66666667, 247.14285714,
+       247.61904762, 248.0952381 , 248.57142857, 249.04761905,
+       249.52380952, 250.        , 250.47619048, 250.95238095,
+       251.42857143, 251.9047619 , 252.38095238, 252.85714286,
+       253.33333333, 253.80952381, 254.28571429, 254.76190476,
+       255.23809524, 255.71428571, 256.19047619, 256.66666667,
+       257.14285714, 257.61904762, 258.0952381 , 258.57142857,
+       259.04761905, 259.52380952, 260.        , 260.47619048,
+       260.95238095, 261.42857143, 261.9047619 , 262.38095238,
+       262.85714286, 263.33333333, 263.80952381, 264.28571429,
+       264.76190476, 265.23809524, 265.71428571, 266.19047619,
+       266.66666667, 267.14285714, 267.61904762, 268.0952381 ,
+       268.57142857, 269.04761905, 269.52380952, 270.        ,
+       270.47619048, 270.95238095, 271.42857143, 271.9047619 ,
+       272.38095238, 272.85714286, 273.33333333, 273.80952381,
+       274.28571429, 274.76190476, 275.23809524, 275.71428571,
+       276.19047619, 276.66666667, 277.14285714, 277.61904762,
+       278.0952381 , 278.57142857, 279.04761905, 279.52380952,
+       280.        , 280.47619048, 280.95238095, 281.42857143,
+       281.9047619 , 282.38095238, 282.85714286, 283.33333333,
+       283.80952381, 284.28571429, 284.76190476, 285.23809524,
+       285.71428571, 286.19047619, 286.66666667, 287.14285714,
+       287.61904762, 288.0952381 , 288.57142857, 289.04761905,
+       289.52380952, 290.        , 290.47619048, 290.95238095,
+       291.42857143, 291.9047619 , 292.38095238, 292.85714286,
+       293.33333333, 293.80952381, 294.28571429, 294.76190476,
+       295.23809524, 295.71428571, 296.19047619, 296.66666667,
+       297.14285714, 297.61904762, 298.0952381 , 298.57142857,
+       299.04761905, 299.52380952, 300.        , 300.47619048,
+       300.95238095, 301.42857143, 301.9047619 , 302.38095238,
+       302.85714286, 303.33333333, 303.80952381, 304.28571429,
+       304.76190476, 305.23809524, 305.71428571, 306.19047619,
+       306.66666667, 307.14285714, 307.61904762, 308.0952381 ,
+       308.57142857, 309.04761905, 309.52380952, 310.        ,
+       310.47619048, 310.95238095, 311.42857143, 311.9047619 ,
+       312.38095238, 312.85714286, 313.33333333, 313.80952381,
+       314.28571429, 314.76190476, 315.23809524, 315.71428571,
+       316.19047619, 316.66666667, 317.14285714, 317.61904762,
+       318.0952381 , 318.57142857, 319.04761905, 319.52380952,
+       320.        , 320.47619048, 320.95238095, 321.42857143,
+       321.9047619 , 322.38095238, 322.85714286, 323.33333333,
+       323.80952381, 324.28571429, 324.76190476, 325.23809524,
+       325.71428571, 326.19047619, 326.66666667, 327.14285714,
+       327.61904762, 328.0952381 , 328.57142857, 329.04761905,
+       329.52380952, 330.        , 330.47619048, 330.95238095,
+       331.42857143, 331.9047619 , 332.38095238, 332.85714286,
+       333.33333333, 333.80952381, 334.28571429, 334.76190476,
+       335.23809524, 335.71428571, 336.19047619, 336.66666667,
+       337.14285714, 337.61904762, 338.0952381 , 338.57142857,
+       339.04761905, 339.52380952, 340.        , 340.47619048,
+       340.95238095, 341.42857143, 341.9047619 , 342.38095238,
+       342.85714286, 343.33333333, 343.80952381, 344.28571429,
+       344.76190476, 345.23809524, 345.71428571, 346.19047619,
+       346.66666667, 347.14285714, 347.61904762, 348.0952381 ,
+       348.57142857, 349.04761905, 349.52380952, 350.        ,
+       350.47619048, 350.95238095, 351.42857143, 351.9047619 ,
+       352.38095238, 352.85714286, 353.33333333, 353.80952381,
+       354.28571429, 354.76190476, 355.23809524, 355.71428571,
+       356.19047619, 356.66666667, 357.14285714, 357.61904762,
+       358.0952381 , 358.57142857, 359.04761905, 359.52380952,
+       360.        , 360.47619048, 360.95238095, 361.42857143,
+       361.9047619 , 362.38095238, 362.85714286, 363.33333333,
+       363.80952381, 364.28571429, 364.76190476, 365.23809524,
+       365.71428571, 366.19047619, 366.66666667, 367.14285714,
+       367.61904762, 368.0952381 , 368.57142857, 369.04761905,
+       369.52380952, 370.        , 370.47619048, 370.95238095,
+       371.42857143, 371.9047619 , 372.38095238, 372.85714286,
+       373.33333333, 373.80952381, 374.28571429, 374.76190476,
+       375.23809524, 375.71428571, 376.19047619, 376.66666667,
+       377.14285714, 377.61904762, 378.0952381 , 378.57142857,
+       379.04761905, 379.52380952, 380.        , 380.47619048,
+       380.95238095, 381.42857143, 381.9047619 , 382.38095238,
+       382.85714286, 383.33333333, 383.80952381, 384.28571429,
+       384.76190476, 385.23809524, 385.71428571, 386.19047619,
+       386.66666667, 387.14285714, 387.61904762, 388.0952381 ,
+       388.57142857, 389.04761905, 389.52380952, 390.        ,
+       390.47619048, 390.95238095, 391.42857143, 391.9047619 ,
+       392.38095238, 392.85714286, 393.33333333, 393.80952381,
+       394.28571429, 394.76190476, 395.23809524, 395.71428571,
+       396.19047619, 396.66666667, 397.14285714, 397.61904762,
+       398.0952381 , 398.57142857, 399.04761905, 399.52380952,
+       400.        , 400.47619048, 400.95238095, 401.42857143,
+       401.9047619 , 402.38095238, 402.85714286, 403.33333333,
+       403.80952381, 404.28571429, 404.76190476, 405.23809524,
+       405.71428571, 406.19047619, 406.66666667, 407.14285714,
+       407.61904762, 408.0952381 , 408.57142857, 409.04761905,
+       409.52380952, 410.        , 410.47619048, 410.95238095,
+       411.42857143, 411.9047619 , 412.38095238, 412.85714286,
+       413.33333333, 413.80952381, 414.28571429, 414.76190476,
+       415.23809524, 415.71428571, 416.19047619, 416.66666667,
+       417.14285714, 417.61904762, 418.0952381 , 418.57142857,
+       419.04761905, 419.52380952, 420.        , 420.47619048,
+       420.95238095, 421.42857143, 421.9047619 , 422.38095238,
+       422.85714286, 423.33333333, 423.80952381, 424.28571429,
+       424.76190476, 425.23809524, 425.71428571, 426.19047619,
+       426.66666667, 427.14285714, 427.61904762, 428.0952381 ,
+       428.57142857, 429.04761905, 429.52380952, 430.        ,
+       430.47619048, 430.95238095, 431.42857143, 431.9047619 ,
+       432.38095238, 432.85714286, 433.33333333, 433.80952381,
+       434.28571429, 434.76190476, 435.23809524, 435.71428571,
+       436.19047619, 436.66666667, 437.14285714, 437.61904762,
+       438.0952381 , 438.57142857, 439.04761905, 439.52380952,
+       440.        , 440.47619048, 440.95238095, 441.42857143,
+       441.9047619 , 442.38095238, 442.85714286, 443.33333333,
+       443.80952381, 444.28571429, 444.76190476, 445.23809524,
+       445.71428571, 446.19047619, 446.66666667, 447.14285714,
+       447.61904762, 448.0952381 , 448.57142857, 449.04761905,
+       449.52380952, 450.        , 450.47619048, 450.95238095,
+       451.42857143, 451.9047619 , 452.38095238, 452.85714286,
+       453.33333333, 453.80952381, 454.28571429, 454.76190476,
+       455.23809524, 455.71428571, 456.19047619, 456.66666667,
+       457.14285714, 457.61904762, 458.0952381 , 458.57142857,
+       459.04761905, 459.52380952, 460.        , 460.47619048,
+       460.95238095, 461.42857143, 461.9047619 , 462.38095238,
+       462.85714286, 463.33333333, 463.80952381, 464.28571429,
+       464.76190476, 465.23809524, 465.71428571, 466.19047619,
+       466.66666667, 467.14285714, 467.61904762, 468.0952381 ,
+       468.57142857, 469.04761905, 469.52380952, 470.        ,
+       470.47619048, 470.95238095, 471.42857143, 471.9047619 ,
+       472.38095238, 472.85714286, 473.33333333, 473.80952381,
+       474.28571429, 474.76190476, 475.23809524, 475.71428571])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new figure for a timeseries plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># Use the plot() function to plot the year on the x-axis, peak flow values on</span>
+<span class="c1"># the y-axis with an open circle representing each peak flow value.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">energy</span><span class="p">,</span> <span class="c1"># our x value</span>
+         <span class="n">cumdeltaT_water</span><span class="p">,</span> <span class="c1"># our y value</span>
+         <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="c1"># plot a solid line</span>
+         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span> <span class="c1"># make the line color blue</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">energy</span><span class="p">,</span> <span class="c1"># our x value</span>
+         <span class="n">cumdeltaT_ice</span><span class="p">,</span> <span class="c1"># our y value</span>
+         <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="c1"># plot a solid line</span>
+         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span> <span class="c1"># make the line color blue</span>
+        
+<span class="c1"># Label the axes and title.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Cumulative Energy Input (kJ)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature Change (deg C or deg K)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;(Fig. 1) Energy plot&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/47819f93bf599d82577f8f0c422fb04da1ea2a2f8c88aba7f040e082b1efbb9f.png" src="../../_images/47819f93bf599d82577f8f0c422fb04da1ea2a2f8c88aba7f040e082b1efbb9f.png" />
+</div>
+</div>
+<p>Now, let’s presume that the temperature started at -10 C, so after 10 degrees temperature change, the kg of ice starts melting, and after 110 degrees temperature change, the water started evaporating.  Remake a plot similar to above incorporating the latent heat.  The latent heat values below will be helpful.</p>
+<p>Note:  I liked this <a class="reference external" href="https://www.e-education.psu.edu/earth111/node/841">web page</a>, but I was sad they don’t use metric units.  If you find a better reference, please let me know.</p>
+<p>I also like this <a class="reference external" href="https://www.youtube.com/watch?v=WU7TfO-iaK8">Khan Academy video</a> for the basics if you forgot freshman chem.  For a faster review, <a class="reference external" href="https://www.youtube.com/watch?v=oc0ypeDELb0">Professor Dave Explains</a> it all in about 4 minutes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># latent heat of fusion for the ice-water transition</span>
+<span class="n">L_f</span> <span class="o">=</span> <span class="mi">334</span> <span class="c1">#kJ/kg</span>
+<span class="c1"># latent heat of vaporization for the water-vapor transition (evaporation)</span>
+<span class="n">L_v</span> <span class="o">=</span> <span class="mi">2256</span> <span class="c1">#kJ/kg</span>
+<span class="c1"># latent heat of vaporization for the ice-vapor transition (sublimation)</span>
+<span class="n">L_s</span> <span class="o">=</span> <span class="n">L_f</span> <span class="o">+</span> <span class="n">L_v</span> <span class="c1">#kJ/kg</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now consider the specific heat and latent heat of some other substances and compare them to water.  What is the importance of water being plentiful on our planet?</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./modules/module1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab1-1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 1-1</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../module2/module2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2) Measurement Strategies, Basics of the Snowpack Mass and Energy Balances, and Snowpack Dynamics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eli Schwat, Steven Pestana, Jessica D. Lundquist, and other contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

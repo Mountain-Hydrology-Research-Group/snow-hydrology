@@ -1,0 +1,58 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/nbclient/client.py", line 1323, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(8,3))
+
+# blue sine waves
+ax.fill_between(x,y2, np.zeros_like(y2), color='#377EB8', alpha=0.5, zorder=0)
+ax.fill_between(x,y3, np.zeros_like(y3), color='#377EB8', alpha=0.7)
+
+# white sine wave lines
+ax.plot(x,y2-0.3, c='#fff', lw=2,a zorder=2, alpha=0.7)
+ax.plot(x,y3-0.3, c='#fff', lw=2, zorder=2, alpha=0.7)
+
+# green hill pdf
+ax.fill_between(x_pdf,normal_pdf, np.zeros_like(normal_pdf), color='grey', alpha=0.7, zorder=2)
+ax.fill_between(x_pdf,normal_pdf, np.zeros_like(normal_pdf), color='white', alpha=1, zorder=1)
+
+# # grey hill pdf
+# ax.fill_between(x_pdf-2,normal_pdf2, np.zeros_like(normal_pdf), color='grey', alpha=0.7, zorder=2)
+
+# text
+ax.text(-1.4,6.5,'Snow Hydrology', size=28, weight='bold', color='#555555', zorder=4)
+# ax.text(0.9,5.1,'In Water Sciences', size=17, color='#555555', zorder=4)
+
+# set plot axes limits
+ax.set_ylim(-2,9)
+ax.set_xlim(-4,12)
+# turn off axes lines and labels
+ax.axis('off');
+
+# save figure
+plt.savefig('logo.svg')
+------------------
+
+
+  [36mCell[39m[36m [39m[32mIn[4][39m[32m, line 8[39m
+[31m    [39m[31max.plot(x,y2-0.3, c='#fff', lw=2,a zorder=2, alpha=0.7)[39m
+                                     ^
+[31mSyntaxError[39m[31m:[39m invalid syntax. Perhaps you forgot a comma?
+
+

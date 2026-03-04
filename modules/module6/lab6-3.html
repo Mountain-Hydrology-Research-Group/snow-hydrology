@@ -1,0 +1,1536 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab 6-3: Blowing snow - snow redistribution on the site scale</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/module6/lab6-3';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7) Snow melt" href="../module7/module7.html" />
+    <link rel="prev" title="Lab 6-2: Blowing snow - snow redistribution on the landscape scale" href="lab6-2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Snow Hydrology
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/a-syllabus.html">Syllabus: CEWA 568</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/b-project.html">Course Project: CEWA 568</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../module1/module1.html">1) Properties of Snow</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../module2/module2.html">2) Measurement Strategies, Basics of the Snowpack Mass and Energy Balances, and Snowpack Dynamics</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module3/module3.html">3) Snowpack Energy Balance – Radiation + Albedo, Dust on Snow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-1.html">Lab 3-1: Surface Energy Balance at Kettle Ponds - Radiation Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-2.html">Lab 3-2: Plotting the Surface Energy Balance at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module4/module4.html">4) Temperatures: snowpack and atmospheric stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-0.html">Intuition about the heat equation - Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-1.html">Lab 4-1: Snowpack temperature profiles</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-2.html">Lab 4-2: Snowpack internal energy - completing the snowpack energy balance</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-3.html">Lab 4-3: Snowpack temperature and density profiles - snowpit data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-4.html">Lab 4-4: Atmospheric temperatures and stability</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module5/module5.html">5) Turbulent transport - momentum, heat, and moisture fluxes above the snow covered earth</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-1.html">Lab 5-1: Turbulent fluxes and measures of stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-2.html">Lab 5-2: Water vapor fluxes at Kettle Ponds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-3.html">Lab 5-3: Mixing length theory at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="module6.html">6) Blowing snow transport and sublimation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lab6-1.html">Lab 6-1: Blowing snow fluxes, wind speed, and shear velocity</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="lab6-2.html">Lab 6-2: Blowing snow - snow redistribution on the landscape scale</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lab 6-3: Blowing snow - snow redistribution on the site scale</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module7/module7.html">7) Snow melt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-1.html">Lab 7-1: Snowpack ripening and melt initiation - Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-2.html">Lab 7-2: Snowpack ripening and melt initiation - Energy Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-3.html">Lab 7-3 - Predicting snowmelt rates with the Temperature-Index method</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module8/module8.html">8) Snow-dominated watershed hydrology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-1.html">Lab 8-1: Predicting streamflow with the SWE regression method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-2.html">Lab 8-2: Modeling a snowpack with a gridded, numerical model - openAMUNDSEN</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/a-learning-python.html">Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module1/numpy-tutorial.html">NumPy and the ndarray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1/some-python-tips.html">More python tips</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/b-learning-jupyter.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/instructor_resources.html">Resources for Instructors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/edit/main/book/modules/module6/lab6-3.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/issues/new?title=Issue%20on%20page%20%2Fmodules/module6/lab6-3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/modules/module6/lab6-3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 6-3: Blowing snow - snow redistribution on the site scale</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 6-3: Blowing snow - snow redistribution on the site scale</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#redistribution-of-the-snowpack-by-blowing-snow-infilling-of-depressions">Redistribution of the snowpack by blowing snow - infilling of depressions</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#blowing-snow-snow-dunes">Blowing snow - snow dunes</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="lab-6-3-blowing-snow-snow-redistribution-on-the-site-scale">
+<h1>Lab 6-3: Blowing snow - snow redistribution on the site scale<a class="headerlink" href="#lab-6-3-blowing-snow-snow-redistribution-on-the-site-scale" title="Link to this heading">#</a></h1>
+<p>Created by Eli Schwat - February 2025</p>
+<p>Credit to Ethan Gutmann and Marianne Cowherd, for sending me easy-to-use subset of the massive lidar archive.</p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">altair</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">alt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The files required for this lab are large, so they are not downloadable directly from the website.</p>
+<p>Download them from the following link:</p>
+<p><a class="reference external" href="https://drive.google.com/drive/folders/1I8DEuj2ddT1TKXhBvVBL1lHJvbd2D_S0?usp=sharing">https://drive.google.com/drive/folders/1I8DEuj2ddT1TKXhBvVBL1lHJvbd2D_S0?usp=sharing</a></p>
+</section>
+<section id="redistribution-of-the-snowpack-by-blowing-snow-infilling-of-depressions">
+<h1>Redistribution of the snowpack by blowing snow - infilling of depressions<a class="headerlink" href="#redistribution-of-the-snowpack-by-blowing-snow-infilling-of-depressions" title="Link to this heading">#</a></h1>
+<p>Below, we open a lidar dataset. The lidar was mounted at 10 meters above the ground, pointing at an angle towards the ground. The dataset contains values of “distance from the lidar”.</p>
+<p>To get the file below, it must be downloaded from a google drive location. It is too large to store in the website github repository. Download the file at the link below, and put it in the data directory.</p>
+<p><a class="reference external" href="https://drive.google.com/drive/folders/1xMURqS5y3tP0hofK9RQ5nYI8oh6E53QT?usp=share_link">https://drive.google.com/drive/folders/1xMURqS5y3tP0hofK9RQ5nYI8oh6E53QT?usp=share_link</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;../data/dec22_l1_clip.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/xarray/backends/file_manager.py:219,</span> in <span class="ni">CachingFileManager._acquire_with_cache_info</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">219</span>     <span class="n">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span> <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/xarray/backends/lru_cache.py:56,</span> in <span class="ni">LRUCache.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">56</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;/home/runner/work/snow-hydrology/snow-hydrology/book/modules/data/dec22_l1_clip.nc&#39;,), &#39;r&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False)), &#39;cf3c96c1-91b7-4749-a151-aed619437b74&#39;]
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;../data/dec22_l1_clip.nc&#39;</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/xarray/backends/api.py:607,</span> in <span class="ni">open_dataset</span><span class="nt">(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, create_default_indexes, inline_array, chunked_array_type, from_array_kwargs, backend_kwargs, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">595</span> <span class="n">decoders</span> <span class="o">=</span> <span class="n">_resolve_decoders_kwargs</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">596</span>     <span class="n">decode_cf</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">597</span>     <span class="n">open_backend_dataset_parameters</span><span class="o">=</span><span class="n">backend</span><span class="o">.</span><span class="n">open_dataset_parameters</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">603</span>     <span class="n">decode_coords</span><span class="o">=</span><span class="n">decode_coords</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">604</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">606</span> <span class="n">overwrite_encoded_chunks</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;overwrite_encoded_chunks&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">607</span> <span class="n">backend_ds</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">608</span>     <span class="n">filename_or_obj</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">609</span>     <span class="n">drop_variables</span><span class="o">=</span><span class="n">drop_variables</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">610</span>     <span class="o">**</span><span class="n">decoders</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">611</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">612</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">613</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">_dataset_from_backend_dataset</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">614</span>     <span class="n">backend_ds</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">615</span>     <span class="n">filename_or_obj</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">626</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">627</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">628</span> <span class="k">return</span> <span class="n">ds</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/xarray/backends/netCDF4_.py:771,</span> in <span class="ni">NetCDF4BackendEntrypoint.open_dataset</span><span class="nt">(self, filename_or_obj, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, use_cftime, decode_timedelta, group, mode, format, clobber, diskless, persist, auto_complex, lock, autoclose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">749</span> <span class="k">def</span><span class="w"> </span><span class="nf">open_dataset</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">750</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">751</span>     <span class="n">filename_or_obj</span><span class="p">:</span> <span class="n">T_PathFileOrDataStore</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">768</span>     <span class="n">autoclose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">769</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dataset</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">770</span>     <span class="n">filename_or_obj</span> <span class="o">=</span> <span class="n">_normalize_path</span><span class="p">(</span><span class="n">filename_or_obj</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">771</span>     <span class="n">store</span> <span class="o">=</span> <span class="n">NetCDF4DataStore</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">772</span>         <span class="n">filename_or_obj</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">773</span>         <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">774</span>         <span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">775</span>         <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">776</span>         <span class="n">clobber</span><span class="o">=</span><span class="n">clobber</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">777</span>         <span class="n">diskless</span><span class="o">=</span><span class="n">diskless</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">778</span>         <span class="n">persist</span><span class="o">=</span><span class="n">persist</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">779</span>         <span class="n">auto_complex</span><span class="o">=</span><span class="n">auto_complex</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">780</span>         <span class="n">lock</span><span class="o">=</span><span class="n">lock</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">781</span>         <span class="n">autoclose</span><span class="o">=</span><span class="n">autoclose</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">782</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">784</span>     <span class="n">store_entrypoint</span> <span class="o">=</span> <span class="n">StoreBackendEntrypoint</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">785</span>     <span class="k">with</span> <span class="n">close_on_error</span><span class="p">(</span><span class="n">store</span><span class="p">):</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/xarray/backends/netCDF4_.py:529,</span> in <span class="ni">NetCDF4DataStore.open</span><span class="nt">(cls, filename, mode, format, group, clobber, diskless, persist, auto_complex, lock, lock_maker, autoclose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">525</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">526</span>     <span class="n">manager</span> <span class="o">=</span> <span class="n">CachingFileManager</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">527</span>         <span class="n">netCDF4</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">lock</span><span class="o">=</span><span class="n">lock</span>
+<span class="g g-Whitespace">    </span><span class="mi">528</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">529</span> <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">manager</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">lock</span><span class="o">=</span><span class="n">lock</span><span class="p">,</span> <span class="n">autoclose</span><span class="o">=</span><span class="n">autoclose</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/xarray/backends/netCDF4_.py:429,</span> in <span class="ni">NetCDF4DataStore.__init__</span><span class="nt">(self, manager, group, mode, lock, autoclose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">427</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group</span> <span class="o">=</span> <span class="n">group</span>
+<span class="g g-Whitespace">    </span><span class="mi">428</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">mode</span>
+<span class="ne">--&gt; </span><span class="mi">429</span> <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ds</span><span class="o">.</span><span class="n">data_model</span>
+<span class="g g-Whitespace">    </span><span class="mi">430</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ds</span><span class="o">.</span><span class="n">filepath</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">431</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_remote</span> <span class="o">=</span> <span class="n">is_remote_uri</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filename</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/xarray/backends/netCDF4_.py:538,</span> in <span class="ni">NetCDF4DataStore.ds</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">536</span> <span class="nd">@property</span>
+<span class="g g-Whitespace">    </span><span class="mi">537</span> <span class="k">def</span><span class="w"> </span><span class="nf">ds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">538</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acquire</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/xarray/backends/netCDF4_.py:532,</span> in <span class="ni">NetCDF4DataStore._acquire</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">531</span> <span class="k">def</span><span class="w"> </span><span class="nf">_acquire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">needs_lock</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">532</span>     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_manager</span><span class="o">.</span><span class="n">acquire_context</span><span class="p">(</span><span class="n">needs_lock</span><span class="p">)</span> <span class="k">as</span> <span class="n">root</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">533</span>         <span class="n">ds</span> <span class="o">=</span> <span class="n">_nc4_require_group</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">534</span>     <span class="k">return</span> <span class="n">ds</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/contextlib.py:137,</span> in <span class="ni">_GeneratorContextManager.__enter__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">135</span> <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">137</span>     <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span> <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;generator didn&#39;t yield&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/xarray/backends/file_manager.py:207,</span> in <span class="ni">CachingFileManager.acquire_context</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">204</span> <span class="nd">@contextmanager</span>
+<span class="g g-Whitespace">    </span><span class="mi">205</span> <span class="k">def</span><span class="w"> </span><span class="nf">acquire_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">needs_lock</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T_File</span><span class="p">]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">206</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Context manager for acquiring a file.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">207</span>     <span class="n">file</span><span class="p">,</span> <span class="n">cached</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acquire_with_cache_info</span><span class="p">(</span><span class="n">needs_lock</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">208</span>     <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span>         <span class="k">yield</span> <span class="n">file</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/xarray/backends/file_manager.py:225,</span> in <span class="ni">CachingFileManager._acquire_with_cache_info</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span>     <span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span>
+<span class="ne">--&gt; </span><span class="mi">225</span> <span class="n">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opener</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">226</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">==</span> <span class="s2">&quot;w&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">227</span>     <span class="c1"># ensure file doesn&#39;t get overridden when opened again</span>
+<span class="g g-Whitespace">    </span><span class="mi">228</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span>
+
+<span class="nn">File src/netCDF4/_netCDF4.pyx:2521,</span> in <span class="ni">netCDF4._netCDF4.Dataset.__init__</span><span class="nt">()</span>
+
+<span class="nn">File src/netCDF4/_netCDF4.pyx:2158,</span> in <span class="ni">netCDF4._netCDF4._ensure_nc_success</span><span class="nt">()</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/home/runner/work/snow-hydrology/snow-hydrology/book/modules/data/dec22_l1_clip.nc&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;20221221 0000&#39;</span><span class="p">)[</span><span class="s1">&#39;surface&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/173c5dd41b22cc98d9f81dfa3cf816090272551c02ddb25bcdd1749e580716e4.png" src="../../_images/173c5dd41b22cc98d9f81dfa3cf816090272551c02ddb25bcdd1749e580716e4.png" />
+</div>
+</div>
+<p>Looking at a histogram of values, we can see that the distribution of values ranges from -14 to -9, which makes sense for the lidar mounted at 10m, pointed at an angle towards the ground.</p>
+<p>While values of “distance from the ground” are hard to interpret, if we subtract two snapshots from eachother, we will calculate the change in snow-surface elevation.</p>
+<p>Below, we do just this, calculating the difference in snow surface elevation between Dec 21 12am and Dec 23 12am, which according to Lundquist et al., 2024 (from earlier in the class), is the timing of a major blowing snow event that filled in a depression at the field site.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;20221221 0000&#39;</span><span class="p">)[</span><span class="s1">&#39;surface&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">13</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;terrain_r&#39;</span><span class="p">)</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;20221223 0000&#39;</span><span class="p">)[</span><span class="s1">&#39;surface&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">13</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;terrain_r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/d1102a10b0a6472b0294465ed1562fa2f4d9a24c1a53d864a3ea23b27504ef86.png" src="../../_images/d1102a10b0a6472b0294465ed1562fa2f4d9a24c1a53d864a3ea23b27504ef86.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;20221223 0000&#39;</span><span class="p">)[</span><span class="s1">&#39;surface&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;20221221 0000&#39;</span><span class="p">)[</span><span class="s1">&#39;surface&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;bwr&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x17a23ee60&gt;
+</pre></div>
+</div>
+<img alt="../../_images/049f729eef8d4fca7ff0b3428b09246bfb79b68e9d90ef0785cbf39542e83c40.png" src="../../_images/049f729eef8d4fca7ff0b3428b09246bfb79b68e9d90ef0785cbf39542e83c40.png" />
+</div>
+</div>
+<p>We can see the depression infilling over 48 hours above. This is also shown in Lundquist et al. (2024).</p>
+</section>
+<section id="blowing-snow-snow-dunes">
+<h1>Blowing snow - snow dunes<a class="headerlink" href="#blowing-snow-snow-dunes" title="Link to this heading">#</a></h1>
+<p>Below, we open some lidar data from March 23, a day on which we observed the formation and migration of snow dunes across the Kettle Ponds site.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;~/Downloads/mar23_l1_clip.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we look at a single snapshot, we see that the snow surface at Kettle Ponds in March was sloping.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">single_snapshot</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="mi">12</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">single_snapshot</span><span class="p">[</span><span class="s1">&#39;surface&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=-</span><span class="mi">9</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;seismic&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x17a511270&gt;
+</pre></div>
+</div>
+<img alt="../../_images/178274ca49b8641adbc4f6df6d23c06fc3fd93222f36335deb473b5737f0fd36.png" src="../../_images/178274ca49b8641adbc4f6df6d23c06fc3fd93222f36335deb473b5737f0fd36.png" />
+</div>
+</div>
+<p>It’s hard to see what’s going on with the snow surface here.</p>
+<p>What we want to look at is deviations around that mean sloping surface.</p>
+<p>We can calculate this. First, we calculate the mean across time for each pixel. Then we subtract that pixel-wise mean from a timestamp, which will reveal the snow surface topgraphy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate pixel-wise mean from the entire dataset</span>
+<span class="n">pixel_wise_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;surface&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="c1"># Select a specific time stamp from the dataset</span>
+<span class="n">specific_timestamp</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;surface&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="mi">19</span><span class="p">])</span>
+
+<span class="c1"># Subtract the pixel-wise mean from the specific timestamp</span>
+<span class="c1"># We call this the &quot;normalized&quot; dataset</span>
+<span class="n">normed</span> <span class="o">=</span> <span class="n">specific_timestamp</span> <span class="o">-</span> <span class="n">pixel_wise_mean</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/x_/2h52bcjx2px15bhmdpdd748h0000gn/T/ipykernel_18480/1597827072.py:2: RuntimeWarning: Mean of empty slice
+  pixel_wise_mean = np.nanmean(ds[&#39;surface&#39;], axis=(0))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">normed</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vmin</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;seismic&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x17a5d3640&gt;
+</pre></div>
+</div>
+<img alt="../../_images/214bba57967259619e8739f3d906916e60e7457abb92dc8cfdc848f00211bc2f.png" src="../../_images/214bba57967259619e8739f3d906916e60e7457abb92dc8cfdc848f00211bc2f.png" />
+</div>
+</div>
+<p>Woah! We can see snow dunes!</p>
+<p>How can we tell if these dunes are migrating? Let’s plot multiple snapshots, sequential in time, next to eachother.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">specific_timestamp_1</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;surface&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="mi">19</span><span class="p">])</span>
+<span class="n">normed_1</span> <span class="o">=</span> <span class="n">specific_timestamp_1</span> <span class="o">-</span> <span class="n">pixel_wise_mean</span>
+
+<span class="n">specific_timestamp_2</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;surface&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="mi">20</span><span class="p">])</span>
+<span class="n">normed_2</span> <span class="o">=</span> <span class="n">specific_timestamp_2</span> <span class="o">-</span> <span class="n">pixel_wise_mean</span>
+
+<span class="n">specific_timestamp_3</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;surface&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="mi">21</span><span class="p">])</span>
+<span class="n">normed_3</span> <span class="o">=</span> <span class="n">specific_timestamp_3</span> <span class="o">-</span> <span class="n">pixel_wise_mean</span>
+
+<span class="n">specific_timestamp_4</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;surface&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="mi">22</span><span class="p">])</span>
+<span class="n">normed_4</span> <span class="o">=</span> <span class="n">specific_timestamp_4</span> <span class="o">-</span> <span class="n">pixel_wise_mean</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">normed</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1f1f1f;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: inline-block;
+  opacity: 0;
+  height: 0;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: "►";
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: "▼";
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: "(";
+}
+
+.xr-dim-list:after {
+  content: ")";
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ",";
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;surface&#x27; (y: 700, x: 550)&gt; Size: 3MB
+array([[nan, nan, nan, ..., nan, nan, nan],
+       [nan, nan, nan, ..., nan, nan, nan],
+       [nan, nan, nan, ..., nan, nan, nan],
+       ...,
+       [nan, nan, nan, ..., nan, nan, nan],
+       [nan, nan, nan, ..., nan, nan, nan],
+       [nan, nan, nan, ..., nan, nan, nan]])
+Coordinates:
+  * y        (y) float64 6kB -49.95 -49.85 -49.75 -49.65 ... 19.75 19.85 19.95
+  * x        (x) float64 4kB -49.95 -49.85 -49.75 -49.65 ... 4.65 4.75 4.85 4.95
+    time     datetime64[ns] 8B 2023-03-16T05:00:00</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'surface'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>y</span>: 700</li><li><span class='xr-has-index'>x</span>: 550</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-d69bdd46-f9e3-4459-a783-899f7f260b4f' class='xr-array-in' type='checkbox' checked><label for='section-d69bdd46-f9e3-4459-a783-899f7f260b4f' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>nan nan nan nan nan nan nan nan ... nan nan nan nan nan nan nan nan</span></div><div class='xr-array-data'><pre>array([[nan, nan, nan, ..., nan, nan, nan],
+       [nan, nan, nan, ..., nan, nan, nan],
+       [nan, nan, nan, ..., nan, nan, nan],
+       ...,
+       [nan, nan, nan, ..., nan, nan, nan],
+       [nan, nan, nan, ..., nan, nan, nan],
+       [nan, nan, nan, ..., nan, nan, nan]])</pre></div></div></li><li class='xr-section-item'><input id='section-10da109b-1e5b-4b0d-8ebc-b1170d7dcbc1' class='xr-section-summary-in' type='checkbox'  checked><label for='section-10da109b-1e5b-4b0d-8ebc-b1170d7dcbc1' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-49.95 -49.85 ... 19.85 19.95</div><input id='attrs-d502a62e-92af-444e-89c5-ffd001266151' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d502a62e-92af-444e-89c5-ffd001266151' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f14dd892-b592-4318-8c6f-9a5706a1816d' class='xr-var-data-in' type='checkbox'><label for='data-f14dd892-b592-4318-8c6f-9a5706a1816d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m</dd><dt><span>description :</span></dt><dd>horizontal distance from center tower</dd></dl></div><div class='xr-var-data'><pre>array([-49.95, -49.85, -49.75, ...,  19.75,  19.85,  19.95])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-49.95 -49.85 -49.75 ... 4.85 4.95</div><input id='attrs-74762b8d-ec1e-48d5-947f-191625996636' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-74762b8d-ec1e-48d5-947f-191625996636' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-dcee25ce-91ef-437d-8b38-7e71356a166f' class='xr-var-data-in' type='checkbox'><label for='data-dcee25ce-91ef-437d-8b38-7e71356a166f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m</dd><dt><span>description :</span></dt><dd>horizontal distance from center tower</dd></dl></div><div class='xr-var-data'><pre>array([-49.95, -49.85, -49.75, ...,   4.75,   4.85,   4.95])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>time</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2023-03-16T05:00:00</div><input id='attrs-25afe880-6a28-4a22-a7c0-e3169713cf96' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-25afe880-6a28-4a22-a7c0-e3169713cf96' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-06655773-8a5a-4d84-ae33-db467a410115' class='xr-var-data-in' type='checkbox'><label for='data-06655773-8a5a-4d84-ae33-db467a410115' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(&#x27;2023-03-16T05:00:00.000000000&#x27;, dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-02240e51-df81-44f5-a1ce-747d1beb94a3' class='xr-section-summary-in' type='checkbox'  ><label for='section-02240e51-df81-44f5-a1ce-747d1beb94a3' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>y</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-c31df6b1-4653-4330-a3b0-8acb48d150bb' class='xr-index-data-in' type='checkbox'/><label for='index-c31df6b1-4653-4330-a3b0-8acb48d150bb' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([             -49.95,              -49.85,              -49.75,
+                    -49.65,              -49.55, -49.449999999999996,
+       -49.349999999999994,  -49.24999999999999,  -49.14999999999999,
+        -49.04999999999999,
+       ...
+         19.05000000000098,   19.15000000000099,  19.250000000000984,
+         19.35000000000098,  19.450000000000987,  19.550000000000995,
+         19.65000000000099,  19.750000000000984,  19.850000000000993,
+           19.950000000001],
+      dtype=&#x27;float64&#x27;, name=&#x27;y&#x27;, length=700))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>x</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-0794c2ca-f346-4fb5-bbc1-524b340d2252' class='xr-index-data-in' type='checkbox'/><label for='index-0794c2ca-f346-4fb5-bbc1-524b340d2252' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([             -49.95,              -49.85,              -49.75,
+                    -49.65,              -49.55, -49.449999999999996,
+       -49.349999999999994,  -49.24999999999999,  -49.14999999999999,
+        -49.04999999999999,
+       ...
+         4.050000000000767,   4.150000000000769,    4.25000000000077,
+        4.3500000000007715,   4.450000000000773,   4.550000000000774,
+         4.650000000000776,   4.750000000000777,   4.850000000000779,
+          4.95000000000078],
+      dtype=&#x27;float64&#x27;, name=&#x27;x&#x27;, length=550))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-961c8469-f2ca-4e0e-9b54-b2e1501dec20' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-961c8469-f2ca-4e0e-9b54-b2e1501dec20' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">normed_1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vmin</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;seismic&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">normed_2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vmin</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;seismic&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">normed_3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vmin</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;seismic&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">normed_4</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vmin</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;seismic&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()[</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x17a925390&gt;
+</pre></div>
+</div>
+<img alt="../../_images/09a35ec3cef0ed1c411079bbd8139b13d6d2bc58f7a97f7855deaef7961cf273.png" src="../../_images/09a35ec3cef0ed1c411079bbd8139b13d6d2bc58f7a97f7855deaef7961cf273.png" />
+</div>
+</div>
+<p>It’s still kind of hard to tell… let’s create a GIF from all timestamps in our dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">imageio</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ChatGPT wrote the function below... pretty cool</span>
+
+<span class="c1"># Define a function named create_gif_from_plots that takes two arguments: ds (lidar dataset) and output_gif (name of the output GIF file)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_gif_from_plots</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">output_gif</span><span class="p">):</span>
+    <span class="c1"># Create an empty list to store the filenames of the plot images</span>
+    <span class="n">filenames</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="c1"># Iterate over all time steps in the lidar dataset</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">time_step</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="p">):</span>
+        <span class="c1"># Normalize the data by subtracting the pixel-wise mean from the surface values at the current time step</span>
+        <span class="n">normed</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_step</span><span class="p">)[</span><span class="s1">&#39;surface&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;surface&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+        <span class="c1"># Create a new plot figure</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+        <span class="c1"># Plot the normalized data using a colormap and set the color range</span>
+        <span class="n">normed</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vmin</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;seismic&#39;</span><span class="p">)</span>
+        <span class="c1"># Set the title of the plot to indicate the current time step</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time step: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="c1"># Save the plot as an image file with a filename that includes the current time step index</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;plot_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">.png&#39;</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="c1"># Append the filename to the list of filenames</span>
+        <span class="n">filenames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="c1"># Close the plot figure to free up memory</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    
+    <span class="c1"># Create a GIF from the saved image files</span>
+    <span class="k">with</span> <span class="n">imageio</span><span class="o">.</span><span class="n">get_writer</span><span class="p">(</span><span class="n">output_gif</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+        <span class="c1"># Iterate over the filenames of the plot images</span>
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+            <span class="c1"># Read the image file</span>
+            <span class="n">image</span> <span class="o">=</span> <span class="n">imageio</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+            <span class="c1"># Append the image to the GIF writer</span>
+            <span class="n">writer</span><span class="o">.</span><span class="n">append_data</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="c1"># Optionally, remove the image files after creating the GIF</span>
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+<span class="c1"># Example usage</span>
+<span class="c1"># Call the create_gif_from_plots function with the lidar dataset &#39;ds&#39; as the argument</span>
+<span class="n">create_gif_from_plots</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="s1">&#39;lidar_timeseries.gif&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/x_/2h52bcjx2px15bhmdpdd748h0000gn/T/ipykernel_18480/60621161.py:11: RuntimeWarning: Mean of empty slice
+  normed = ds.sel(time=time_step)[&#39;surface&#39;] - np.nanmean(ds[&#39;surface&#39;], axis=(0))
+/var/folders/x_/2h52bcjx2px15bhmdpdd748h0000gn/T/ipykernel_18480/60621161.py:31: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
+  image = imageio.imread(filename)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+
+<span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s1">&#39;lidar_timeseries.gif&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><img src="lidar_timeseries.gif"/></div></div>
+</div>
+<p>Check out the gif - do you see the dune migration? Cool!</p>
+<p>What are the wind speeds during this day? What did the blowing snow fluxes look like?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sos_file</span> <span class="o">=</span> <span class="s2">&quot;../data/sos_full_dataset_30min.nc&quot;</span>
+<span class="n">sos_dataset</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">sos_file</span><span class="p">)</span>
+
+<span class="n">VARIABLES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;spd_1m_ue&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;spd_3m_ue&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;spd_10m_ue&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SF_avg_1m_ue&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SF_avg_2m_ue&#39;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="mi">19</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.datetime64(&#39;2023-03-16T05:00:00.000000000&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">sos_dataset</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;2023-03-16&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-03-17&#39;</span><span class="p">))[</span><span class="s1">&#39;spd_3m_ue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;spd_3m_ue&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sos_dataset</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;2023-03-16&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-03-17&#39;</span><span class="p">))[</span><span class="s1">&#39;spd_10m_ue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;spd_10m_ue&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">sos_dataset</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;2023-03-16&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-03-17&#39;</span><span class="p">))[</span><span class="s1">&#39;SF_avg_1m_ue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;SF_avg_ue_1m&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sos_dataset</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;2023-03-16&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-03-17&#39;</span><span class="p">))[</span><span class="s1">&#39;SF_avg_2m_ue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;SF_avg_ue_2m&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/a0917341c30dd6fc10f6c2015757d193fc8305232d7f28dc74deba22bcab575d.png" src="../../_images/a0917341c30dd6fc10f6c2015757d193fc8305232d7f28dc74deba22bcab575d.png" />
+</div>
+</div>
+<p>Same as above but using altair</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sos_df</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[[</span> 
+    <span class="s1">&#39;spd_3m_ue&#39;</span><span class="p">,</span> <span class="s1">&#39;spd_10m_ue&#39;</span><span class="p">,</span> <span class="s1">&#39;SF_avg_1m_ue&#39;</span><span class="p">,</span> <span class="s1">&#39;SF_avg_2m_ue&#39;</span>
+<span class="p">]]</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2023-03-16&#39;</span><span class="p">:</span> <span class="s1">&#39;2023-03-17&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">sos_df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_line</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;time:T&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;value:Q&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;key:N&#39;</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="n">base</span><span class="o">.</span><span class="n">transform_fold</span><span class="p">([</span><span class="s1">&#39;spd_3m_ue&#39;</span><span class="p">,</span> <span class="s1">&#39;spd_10m_ue&#39;</span><span class="p">])</span> <span class="o">&amp;</span>\
+<span class="n">base</span><span class="o">.</span><span class="n">transform_fold</span><span class="p">([</span><span class="s1">&#39;SF_avg_1m_ue&#39;</span><span class="p">,</span> <span class="s1">&#39;SF_avg_2m_ue&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-81f8b5af4a3d405799bd2f7d6581f457.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-81f8b5af4a3d405799bd2f7d6581f457.vega-embed details,
+  #altair-viz-81f8b5af4a3d405799bd2f7d6581f457.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-81f8b5af4a3d405799bd2f7d6581f457"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-81f8b5af4a3d405799bd2f7d6581f457") {
+      outputDiv = document.getElementById("altair-viz-81f8b5af4a3d405799bd2f7d6581f457");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "vconcat": [{"mark": {"type": "line"}, "encoding": {"color": {"field": "key", "type": "nominal"}, "x": {"field": "time", "type": "temporal"}, "y": {"field": "value", "type": "quantitative"}}, "height": 200, "transform": [{"fold": ["spd_3m_ue", "spd_10m_ue"]}], "width": 500}, {"mark": {"type": "line"}, "encoding": {"color": {"field": "key", "type": "nominal"}, "x": {"field": "time", "type": "temporal"}, "y": {"field": "value", "type": "quantitative"}}, "height": 200, "transform": [{"fold": ["SF_avg_1m_ue", "SF_avg_2m_ue"]}], "width": 500}], "data": {"name": "data-223dd7b19b7804959d91c5a8b9881f74"}, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-223dd7b19b7804959d91c5a8b9881f74": [{"time": "2023-03-16T00:00:00", "spd_3m_ue": 1.8358298540115356, "spd_10m_ue": 2.1822900772094727, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-16T00:30:00", "spd_3m_ue": 1.7029967308044434, "spd_10m_ue": 1.960832953453064, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-16T01:00:00", "spd_3m_ue": 3.0705864429473877, "spd_10m_ue": 3.6630842685699463, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.18799999356269836}, {"time": "2023-03-16T01:30:00", "spd_3m_ue": 4.337287425994873, "spd_10m_ue": 5.270294666290283, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.053333330899477005}, {"time": "2023-03-16T02:00:00", "spd_3m_ue": 4.85886812210083, "spd_10m_ue": 5.661303997039795, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.009999999776482582}, {"time": "2023-03-16T02:30:00", "spd_3m_ue": 4.87245512008667, "spd_10m_ue": 5.555708408355713, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0016666665906086564}, {"time": "2023-03-16T03:00:00", "spd_3m_ue": 5.595523834228516, "spd_10m_ue": 6.579353332519531, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.012000000104308128}, {"time": "2023-03-16T03:30:00", "spd_3m_ue": 5.491086959838867, "spd_10m_ue": 6.529242992401123, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0016666665906086564}, {"time": "2023-03-16T04:00:00", "spd_3m_ue": 6.434328556060791, "spd_10m_ue": 7.802628993988037, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.08399999886751175}, {"time": "2023-03-16T04:30:00", "spd_3m_ue": 6.119730472564697, "spd_10m_ue": 7.317498683929443, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.053333330899477005}, {"time": "2023-03-16T05:00:00", "spd_3m_ue": 5.754733562469482, "spd_10m_ue": 6.9775471687316895, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0833333358168602}, {"time": "2023-03-16T05:30:00", "spd_3m_ue": 6.565797328948975, "spd_10m_ue": 7.95191764831543, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.06666667014360428}, {"time": "2023-03-16T06:00:00", "spd_3m_ue": 6.954577922821045, "spd_10m_ue": 8.6131010055542, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.05666666850447655}, {"time": "2023-03-16T06:30:00", "spd_3m_ue": 7.280333995819092, "spd_10m_ue": 8.87752628326416, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.046666666865348816}, {"time": "2023-03-16T07:00:00", "spd_3m_ue": 5.898017406463623, "spd_10m_ue": 7.075250625610352, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.004999999888241291}, {"time": "2023-03-16T07:30:00", "spd_3m_ue": 5.313209056854248, "spd_10m_ue": 6.246145725250244, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.004999999888241291}, {"time": "2023-03-16T08:00:00", "spd_3m_ue": 5.361912250518799, "spd_10m_ue": 6.539741039276123, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.030000001192092896}, {"time": "2023-03-16T08:30:00", "spd_3m_ue": 4.989997863769531, "spd_10m_ue": 6.099039077758789, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-16T09:00:00", "spd_3m_ue": 5.305600166320801, "spd_10m_ue": 6.459257125854492, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.03999999910593033}, {"time": "2023-03-16T09:30:00", "spd_3m_ue": 5.387594223022461, "spd_10m_ue": 6.793234348297119, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.026666665449738503}, {"time": "2023-03-16T10:00:00", "spd_3m_ue": 5.9036126136779785, "spd_10m_ue": 7.317544460296631, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.046666666865348816}, {"time": "2023-03-16T10:30:00", "spd_3m_ue": 5.59379768371582, "spd_10m_ue": 6.850488185882568, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.019999999552965164}, {"time": "2023-03-16T11:00:00", "spd_3m_ue": 5.524720668792725, "spd_10m_ue": 6.648648738861084, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.009999999776482582}, {"time": "2023-03-16T11:30:00", "spd_3m_ue": 6.4402008056640625, "spd_10m_ue": 7.890441417694092, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.01666666753590107}, {"time": "2023-03-16T12:00:00", "spd_3m_ue": 5.897670745849609, "spd_10m_ue": 7.240245342254639, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.04999999701976776}, {"time": "2023-03-16T12:30:00", "spd_3m_ue": 5.760411739349365, "spd_10m_ue": 7.077561855316162, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.046666666865348816}, {"time": "2023-03-16T13:00:00", "spd_3m_ue": 6.225377559661865, "spd_10m_ue": 7.7309112548828125, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.06800000369548798}, {"time": "2023-03-16T13:30:00", "spd_3m_ue": 5.954124927520752, "spd_10m_ue": 7.318944931030273, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.03999999910593033}, {"time": "2023-03-16T14:00:00", "spd_3m_ue": 5.500265598297119, "spd_10m_ue": 6.75586462020874, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.011666666716337204}, {"time": "2023-03-16T14:30:00", "spd_3m_ue": 5.5564866065979, "spd_10m_ue": 6.846130847930908, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.009999999776482582}, {"time": "2023-03-16T15:00:00", "spd_3m_ue": 5.242542266845703, "spd_10m_ue": 6.4827752113342285, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.014999999664723873}, {"time": "2023-03-16T15:30:00", "spd_3m_ue": 6.200851917266846, "spd_10m_ue": 7.883347988128662, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.026666665449738503}, {"time": "2023-03-16T16:00:00", "spd_3m_ue": 6.18905782699585, "spd_10m_ue": 7.838886737823486, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.028333334252238274}, {"time": "2023-03-16T16:30:00", "spd_3m_ue": 5.6850905418396, "spd_10m_ue": 7.0826263427734375, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.006666666362434626}, {"time": "2023-03-16T17:00:00", "spd_3m_ue": 5.514097213745117, "spd_10m_ue": 6.792118072509766, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.00833333283662796}, {"time": "2023-03-16T17:30:00", "spd_3m_ue": 4.879852294921875, "spd_10m_ue": 5.831615924835205, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.003333333181217313}, {"time": "2023-03-16T18:00:00", "spd_3m_ue": 6.169601917266846, "spd_10m_ue": 7.569944381713867, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.046666666865348816}, {"time": "2023-03-16T18:30:00", "spd_3m_ue": 7.237308502197266, "spd_10m_ue": 8.94439697265625, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.10499999672174454}, {"time": "2023-03-16T19:00:00", "spd_3m_ue": 6.879339218139648, "spd_10m_ue": 8.551139831542969, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.06000000238418579}, {"time": "2023-03-16T19:30:00", "spd_3m_ue": 6.090906143188477, "spd_10m_ue": 7.615020275115967, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.018333332613110542}, {"time": "2023-03-16T20:00:00", "spd_3m_ue": 5.716522216796875, "spd_10m_ue": 7.331274032592773, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.00833333283662796}, {"time": "2023-03-16T20:30:00", "spd_3m_ue": 5.478769302368164, "spd_10m_ue": 7.1876068115234375, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.006666666362434626}, {"time": "2023-03-16T21:00:00", "spd_3m_ue": 4.660337448120117, "spd_10m_ue": 5.904809474945068, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0016666665906086564}, {"time": "2023-03-16T21:30:00", "spd_3m_ue": 4.071191310882568, "spd_10m_ue": 5.397884368896484, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-16T22:00:00", "spd_3m_ue": 3.8039958477020264, "spd_10m_ue": 5.390112400054932, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-16T22:30:00", "spd_3m_ue": 3.484736680984497, "spd_10m_ue": 4.705022811889648, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-16T23:00:00", "spd_3m_ue": 3.4200565814971924, "spd_10m_ue": 4.560501575469971, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-16T23:30:00", "spd_3m_ue": 3.5301058292388916, "spd_10m_ue": 4.553316593170166, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T00:00:00", "spd_3m_ue": 2.8532931804656982, "spd_10m_ue": 4.122066497802734, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T00:30:00", "spd_3m_ue": 2.9683282375335693, "spd_10m_ue": 3.8417751789093018, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T01:00:00", "spd_3m_ue": 3.1177148818969727, "spd_10m_ue": 4.2644877433776855, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T01:30:00", "spd_3m_ue": 3.193375587463379, "spd_10m_ue": 4.454357624053955, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T02:00:00", "spd_3m_ue": 3.209200859069824, "spd_10m_ue": 4.53510046005249, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T02:30:00", "spd_3m_ue": 2.206775665283203, "spd_10m_ue": 3.084012985229492, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T03:00:00", "spd_3m_ue": 2.409651041030884, "spd_10m_ue": 3.426050901412964, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T03:30:00", "spd_3m_ue": 3.285454511642456, "spd_10m_ue": 4.508471965789795, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T04:00:00", "spd_3m_ue": 3.3443596363067627, "spd_10m_ue": 4.543487071990967, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T04:30:00", "spd_3m_ue": 2.979496717453003, "spd_10m_ue": 3.9463186264038086, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T05:00:00", "spd_3m_ue": 3.976508378982544, "spd_10m_ue": 5.086170673370361, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T05:30:00", "spd_3m_ue": 2.8124802112579346, "spd_10m_ue": 3.4107348918914795, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T06:00:00", "spd_3m_ue": 0.6914803981781006, "spd_10m_ue": 0.735792875289917, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T06:30:00", "spd_3m_ue": 0.7597312927246094, "spd_10m_ue": 0.8321816325187683, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T07:00:00", "spd_3m_ue": 1.4954029321670532, "spd_10m_ue": 1.7897132635116577, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T07:30:00", "spd_3m_ue": 1.8427095413208008, "spd_10m_ue": 2.3822200298309326, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T08:00:00", "spd_3m_ue": 1.819319725036621, "spd_10m_ue": 2.3688204288482666, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T08:30:00", "spd_3m_ue": 1.7383917570114136, "spd_10m_ue": 2.2245147228240967, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T09:00:00", "spd_3m_ue": 1.769608497619629, "spd_10m_ue": 2.1153624057769775, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T09:30:00", "spd_3m_ue": 1.1286718845367432, "spd_10m_ue": 0.8342084884643555, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T10:00:00", "spd_3m_ue": 1.6241817474365234, "spd_10m_ue": 1.860609531402588, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T10:30:00", "spd_3m_ue": 1.5730180740356445, "spd_10m_ue": 1.9953702688217163, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T11:00:00", "spd_3m_ue": 1.8582321405410767, "spd_10m_ue": 2.197286367416382, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T11:30:00", "spd_3m_ue": 1.9110078811645508, "spd_10m_ue": 2.155611753463745, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T12:00:00", "spd_3m_ue": 1.6993547677993774, "spd_10m_ue": 1.8789311647415161, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T12:30:00", "spd_3m_ue": 4.571304798126221, "spd_10m_ue": 5.4380879402160645, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T13:00:00", "spd_3m_ue": 4.962218284606934, "spd_10m_ue": 5.895843982696533, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T13:30:00", "spd_3m_ue": 4.467715263366699, "spd_10m_ue": 5.43861722946167, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T14:00:00", "spd_3m_ue": 3.6908929347991943, "spd_10m_ue": 4.285388946533203, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T14:30:00", "spd_3m_ue": 3.860751152038574, "spd_10m_ue": 4.519206523895264, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T15:00:00", "spd_3m_ue": 5.442357540130615, "spd_10m_ue": 6.658589839935303, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T15:30:00", "spd_3m_ue": 5.520473957061768, "spd_10m_ue": 6.698738098144531, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T16:00:00", "spd_3m_ue": 4.7814812660217285, "spd_10m_ue": 5.885684967041016, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T16:30:00", "spd_3m_ue": 5.110118865966797, "spd_10m_ue": 6.4597930908203125, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T17:00:00", "spd_3m_ue": 4.6691694259643555, "spd_10m_ue": 5.8060688972473145, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T17:30:00", "spd_3m_ue": 3.4393246173858643, "spd_10m_ue": 4.3705153465271, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T18:00:00", "spd_3m_ue": 3.5982420444488525, "spd_10m_ue": 4.468983173370361, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T18:30:00", "spd_3m_ue": 3.5946903228759766, "spd_10m_ue": 4.328378200531006, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T19:00:00", "spd_3m_ue": 2.5720388889312744, "spd_10m_ue": 2.835031747817993, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T19:30:00", "spd_3m_ue": 3.1143693923950195, "spd_10m_ue": 3.351553201675415, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T20:00:00", "spd_3m_ue": 3.330960273742676, "spd_10m_ue": 3.6492159366607666, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T20:30:00", "spd_3m_ue": 3.2918074131011963, "spd_10m_ue": 3.4845638275146484, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T21:00:00", "spd_3m_ue": 4.1130499839782715, "spd_10m_ue": 5.057416915893555, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T21:30:00", "spd_3m_ue": 4.709945201873779, "spd_10m_ue": 5.4456000328063965, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T22:00:00", "spd_3m_ue": 5.0910797119140625, "spd_10m_ue": 5.674907684326172, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T22:30:00", "spd_3m_ue": 5.479953289031982, "spd_10m_ue": 6.34313440322876, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T23:00:00", "spd_3m_ue": 5.26323127746582, "spd_10m_ue": 6.209285259246826, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}, {"time": "2023-03-17T23:30:00", "spd_3m_ue": 4.048253536224365, "spd_10m_ue": 5.118921756744385, "SF_avg_1m_ue": 0.0, "SF_avg_2m_ue": 0.0}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>These wind speeds are consistent with known wind speeds for snow dune formation (5-8 m/s)</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./modules/module6"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab6-2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 6-2: Blowing snow - snow redistribution on the landscape scale</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../module7/module7.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">7) Snow melt</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 6-3: Blowing snow - snow redistribution on the site scale</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#redistribution-of-the-snowpack-by-blowing-snow-infilling-of-depressions">Redistribution of the snowpack by blowing snow - infilling of depressions</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#blowing-snow-snow-dunes">Blowing snow - snow dunes</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eli Schwat, Steven Pestana, Jessica D. Lundquist, and other contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1056 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab 3-2: Plotting the Surface Energy Balance at Kettle Ponds</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/module3/lab3-2';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4) Temperatures: snowpack and atmospheric stability" href="../module4/module4.html" />
+    <link rel="prev" title="Lab 3-1: Surface Energy Balance at Kettle Ponds - Radiation Balance" href="lab3-1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Snow Hydrology
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/a-syllabus.html">Syllabus: CEWA 568</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/b-project.html">Course Project: CEWA 568</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../module1/module1.html">1) Properties of Snow</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../module2/module2.html">2) Measurement Strategies, Basics of the Snowpack Mass and Energy Balances, and Snowpack Dynamics</a></li>
+
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="module3.html">3) Snowpack Energy Balance – Radiation + Albedo, Dust on Snow</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lab3-1.html">Lab 3-1: Surface Energy Balance at Kettle Ponds - Radiation Balance</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lab 3-2: Plotting the Surface Energy Balance at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module4/module4.html">4) Temperatures: snowpack and atmospheric stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-0.html">Intuition about the heat equation - Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-1.html">Lab 4-1: Snowpack temperature profiles</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-2.html">Lab 4-2: Snowpack internal energy - completing the snowpack energy balance</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-3.html">Lab 4-3: Snowpack temperature and density profiles - snowpit data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-4.html">Lab 4-4: Atmospheric temperatures and stability</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module5/module5.html">5) Turbulent transport - momentum, heat, and moisture fluxes above the snow covered earth</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-1.html">Lab 5-1: Turbulent fluxes and measures of stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-2.html">Lab 5-2: Water vapor fluxes at Kettle Ponds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/lab5-3.html">Lab 5-3: Mixing length theory at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module6/module6.html">6) Blowing snow transport and sublimation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-1.html">Lab 6-1: Blowing snow fluxes, wind speed, and shear velocity</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-2.html">Lab 6-2: Blowing snow - snow redistribution on the landscape scale</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-3.html">Lab 6-3: Blowing snow - snow redistribution on the site scale</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module7/module7.html">7) Snow melt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-1.html">Lab 7-1: Snowpack ripening and melt initiation - Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-2.html">Lab 7-2: Snowpack ripening and melt initiation - Energy Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-3.html">Lab 7-3 - Predicting snowmelt rates with the Temperature-Index method</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module8/module8.html">8) Snow-dominated watershed hydrology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-1.html">Lab 8-1: Predicting streamflow with the SWE regression method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-2.html">Lab 8-2: Modeling a snowpack with a gridded, numerical model - openAMUNDSEN</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/a-learning-python.html">Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module1/numpy-tutorial.html">NumPy and the ndarray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1/some-python-tips.html">More python tips</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/b-learning-jupyter.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/instructor_resources.html">Resources for Instructors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/edit/main/book/modules/module3/lab3-2.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/issues/new?title=Issue%20on%20page%20%2Fmodules/module3/lab3-2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/modules/module3/lab3-2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 3-2: Plotting the Surface Energy Balance at Kettle Ponds</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 3-2: Plotting the Surface Energy Balance at Kettle Ponds</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#snowpack-energy-balance-equation">Snowpack Energy Balance Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-turbulent-flux-measurements-into-energy-flux-units-w-m-2">Converting turbulent flux measurements into energy flux units (<span class="math notranslate nohighlight">\(W/m^2\)</span>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-turbulent-latent-heat-flux-measurements-into-energy-flux-units-w-m-2">Converting turbulent latent heat flux measurements into energy flux units (<span class="math notranslate nohighlight">\(W/m^2\)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-turbulent-sensible-heat-flux-measurements-into-energy-flux-units-w-m-2">Converting turbulent sensible heat flux measurements into energy flux units (<span class="math notranslate nohighlight">\(W/m^2\)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-internal-energy-term">Estimating the internal energy term</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sos-data">SOS Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-net-radiation">Calculate net radiation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-latent-heat-flux-in-energy-units">Calculate latent heat flux in energy units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-sensible-heat-flux-in-energy-units">Calculate sensible heat flux in energy units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-snow-surface-temperature-change-in-energy-units">Calculate snow surface temperature change in energy units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-energy-balance-terms-for-a-5-day-period-in-april">Plot energy balance terms for a 5 day period in April</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-average-hourly-daily-energy-balance-for-december-march">Calculate the average hourly daily energy balance for December - March</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-residual">Estimating the residual</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-3-2-plotting-the-surface-energy-balance-at-kettle-ponds">
+<h1>Lab 3-2: Plotting the Surface Energy Balance at Kettle Ponds<a class="headerlink" href="#lab-3-2-plotting-the-surface-energy-balance-at-kettle-ponds" title="Link to this heading">#</a></h1>
+<p>Written by Daniel Hogan - April, 2023.</p>
+<p>Modified by Jessica Lundquist - April, 2023.</p>
+<p>Modified by Eli Schwat - January 2024.</p>
+<section id="snowpack-energy-balance-equation">
+<h2>Snowpack Energy Balance Equation<a class="headerlink" href="#snowpack-energy-balance-equation" title="Link to this heading">#</a></h2>
+<p>Consider the snowpack energy balance equation during mid-winter periods when there is no snow melt:</p>
+<div class="math notranslate nohighlight">
+\[ \frac{d}{dt} (U \Delta z) = R_{net} - H_L - H_s + G\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[R_{net} = LW_{in} - LW_{out} + SW_{in} - SW_{out} \]</div>
+<p>and ∆z is the snowpack depth.</p>
+<p>In Lab 3-1, we examined the four radiation terms. In this lab, we will estimate the remaining terms.
+We want all measurements to be in units of <span class="math notranslate nohighlight">\(W/m^2\)</span>.
+The radiation variables are already in these units.
+The other variables in the dataset require conversion.</p>
+<hr class="docutils" />
+</section>
+<section id="converting-turbulent-flux-measurements-into-energy-flux-units-w-m-2">
+<h2>Converting turbulent flux measurements into energy flux units (<span class="math notranslate nohighlight">\(W/m^2\)</span>)<a class="headerlink" href="#converting-turbulent-flux-measurements-into-energy-flux-units-w-m-2" title="Link to this heading">#</a></h2>
+<p>Without diving too much into the details of the turbulent water vapor (latent heat) flux <span class="math notranslate nohighlight">\(H_L\)</span> and sensible heat flux <span class="math notranslate nohighlight">\(H_s\)</span>, we note that turbulent water vapor flux is measured in units of <span class="math notranslate nohighlight">\(g/m^2/s\)</span> and sensible heat flux is measured in units <span class="math notranslate nohighlight">\(K/m^2/s\)</span>, and are in the dataset as the following variables:</p>
+<p><code class="docutils literal notranslate"><span class="pre">w_h2o__3m_c</span></code> (latent heat flux)</p>
+<p>and</p>
+<p><code class="docutils literal notranslate"><span class="pre">w_tc__3m_c</span></code> (sensible heat flux).</p>
+<hr class="docutils" />
+<section id="converting-turbulent-latent-heat-flux-measurements-into-energy-flux-units-w-m-2">
+<h3>Converting turbulent latent heat flux measurements into energy flux units (<span class="math notranslate nohighlight">\(W/m^2\)</span>)<a class="headerlink" href="#converting-turbulent-latent-heat-flux-measurements-into-energy-flux-units-w-m-2" title="Link to this heading">#</a></h3>
+<p>To convert <code class="docutils literal notranslate"><span class="pre">w_h2o__3m_c</span></code> (latent heat flux in <span class="math notranslate nohighlight">\(g/m^2/s\)</span>) to <span class="math notranslate nohighlight">\(W/m^2\)</span>, we will use the latent heat of sublimation (the sum of the latent heats of fusion and vaporization, <span class="math notranslate nohighlight">\(L_{sub} = 2590 J/g\)</span>).</p>
+<p><span class="math notranslate nohighlight">\(H_l = \)</span> <code class="docutils literal notranslate"><span class="pre">w_h2o__3m_c</span></code> <span class="math notranslate nohighlight">\( * L_{sub}\)</span></p>
+<p>and the units work out like this : <span class="math notranslate nohighlight">\(\frac{g}{m^2 s} * \frac{J}{g} = \frac{J}{m^2 s} = \frac{W}{m^2}\)</span> (b/c 1 Watt = 1 Joule per second).</p>
+</section>
+<hr class="docutils" />
+<section id="converting-turbulent-sensible-heat-flux-measurements-into-energy-flux-units-w-m-2">
+<h3>Converting turbulent sensible heat flux measurements into energy flux units (<span class="math notranslate nohighlight">\(W/m^2\)</span>)<a class="headerlink" href="#converting-turbulent-sensible-heat-flux-measurements-into-energy-flux-units-w-m-2" title="Link to this heading">#</a></h3>
+<p>To convert <code class="docutils literal notranslate"><span class="pre">w_tc__3m_c</span></code> (sensible heat flux in units <span class="math notranslate nohighlight">\(K m/s\)</span>) to <span class="math notranslate nohighlight">\(W/m^2\)</span>, we will use the specific heat capacity of air (<span class="math notranslate nohighlight">\(c_{p}^{air} = 1.005\)</span> <span class="math notranslate nohighlight">\(J/K/g\)</span>) and the density of air (<span class="math notranslate nohighlight">\(\rho_{air} = 1000 g / m^3\)</span>). Note that we use the physical constants for air since it is air that is transporting heat away from the snowpack.</p>
+<p><span class="math notranslate nohighlight">\(H_s = \)</span> <code class="docutils literal notranslate"><span class="pre">w_tc__3m_c</span></code> <span class="math notranslate nohighlight">\( * c_{p}^{air} * \rho_{air}\)</span></p>
+<p>and the units work out like this: <span class="math notranslate nohighlight">\(\frac{K m}{s} * \frac{J}{K g} * \frac{g}{m^3} = = \frac{W}{m^2}\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="estimating-the-internal-energy-term">
+<h3>Estimating the internal energy term<a class="headerlink" href="#estimating-the-internal-energy-term" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[ \frac{dU}{dt} = \rho_s c_p^{ice} \Delta z \frac{d}{dt} \langle T_s \rangle \]</div>
+<p>The internal energy term involves estimating the bulk temperature of the snowpack which is a bit challenging, so we will leave it to a future lab.</p>
+<p>For now, we will solve for all the terms in the energy balance equation, and calculate this internal energy term as the residual of the sum of the other terms.</p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="sos-data">
+<h2>SOS Data<a class="headerlink" href="#sos-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sos_file</span> <span class="o">=</span> <span class="s2">&quot;../data/sos_full_dataset_30min.nc&quot;</span>
+<span class="n">sos_dataset</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">sos_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-net-radiation">
+<h2>Calculate net radiation<a class="headerlink" href="#calculate-net-radiation" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">sos_dataset</span><span class="o">.</span><span class="n">data_vars</span> <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Rsw&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Rsw_in_9m_d&#39;, &#39;Rsw_out_9m_d&#39;, &#39;Rsw_net_9m_d&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">sos_dataset</span><span class="o">.</span><span class="n">data_vars</span> <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Rlw&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Rlw_in_9m_d&#39;,
+ &#39;Rlw_out_9m_d&#39;,
+ &#39;Rlw_in_9m_uw&#39;,
+ &#39;Rlw_out_9m_uw&#39;,
+ &#39;Rlw_net_9m_d&#39;,
+ &#39;Rlw_net_9m_uw&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that we are accounting for the energy balance of the snow surface, so SW and LW radiation <em>away</em> from the snow pack are subtracted.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">net_radiation</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Rsw_in_9m_d&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Rsw_out_9m_d&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Rlw_in_9m_d&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Rlw_out_9m_d&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-latent-heat-flux-in-energy-units">
+<h2>Calculate latent heat flux in energy units<a class="headerlink" href="#calculate-latent-heat-flux-in-energy-units" title="Link to this heading">#</a></h2>
+<p>Note that the measurement <code class="docutils literal notranslate"><span class="pre">w_h2o__3m_c</span></code> is latent heat flux <em>away</em> from the snow pack, so in terms of snowpack surface energy, positive <code class="docutils literal notranslate"><span class="pre">w_h2o__3m_c</span></code> is energy lost.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">latent_heat_sublimation</span> <span class="o">=</span> <span class="mi">2590</span> <span class="c1">#J/g</span>
+<span class="n">latent_heat_flux</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;w_h2o__3m_c&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">latent_heat_sublimation</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-sensible-heat-flux-in-energy-units">
+<h2>Calculate sensible heat flux in energy units<a class="headerlink" href="#calculate-sensible-heat-flux-in-energy-units" title="Link to this heading">#</a></h2>
+<p>Note that the measurement <code class="docutils literal notranslate"><span class="pre">w_tc__3m_c</span></code> is sensible heat flux <em>away</em> from the snow pack, so in terms of snowpack surface energy, positive <code class="docutils literal notranslate"><span class="pre">w_h2o__3m_c</span></code> is energy lost.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">specific_heat_capacity_air</span> <span class="o">=</span> <span class="mf">1.005</span> <span class="c1"># J/K/g</span>
+<span class="n">air_density</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># g/m^3                                       </span>
+<span class="n">sensible_heat_flux</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;w_tc__3m_c&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">specific_heat_capacity_air</span> <span class="o">*</span> <span class="n">air_density</span>
+
+<span class="c1"># negating the measurements</span>
+<span class="n">sensible_heat_flux</span> <span class="o">=</span> <span class="o">-</span> <span class="n">sensible_heat_flux</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-snow-surface-temperature-change-in-energy-units">
+<h2>Calculate snow surface temperature change in energy units<a class="headerlink" href="#calculate-snow-surface-temperature-change-in-energy-units" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">specific_heat_capacity_ice</span> <span class="o">=</span> <span class="mf">2.1</span> <span class="c1"># J/K/g</span>
+<span class="n">density_ice</span> <span class="o">=</span> <span class="mf">9.1e5</span> <span class="c1">#g/m^3</span>
+<span class="n">surface_layer_thickness</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1">#m</span>
+
+<span class="c1"># calculate the forward difference of T_ss</span>
+<span class="n">delta_Tss_over_delta_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span>
+    <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Tsurf_c&#39;</span><span class="p">],</span>
+    <span class="mi">30</span><span class="o">*</span><span class="mi">60</span> <span class="c1"># number of seconds in thirty minutes</span>
+<span class="p">)</span>
+
+<span class="c1"># np.gradient returns a numpy array. We can create an XArray dataarray from the returned numpy array so that we can use the same plotting functions for all of our terms.</span>
+<span class="n">delta_Tss_over_delta_t</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
+    <span class="n">delta_Tss_over_delta_t</span><span class="p">,</span>
+    <span class="n">coords</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Tsurf_c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">coords</span><span class="p">,</span>
+    <span class="n">dims</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Tsurf_c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dims</span>
+<span class="p">)</span>
+<span class="n">snow_surface_temp_change</span> <span class="o">=</span> <span class="n">delta_Tss_over_delta_t</span> <span class="o">*</span> <span class="n">specific_heat_capacity_ice</span> <span class="o">*</span> <span class="n">density_ice</span> <span class="o">*</span> <span class="n">surface_layer_thickness</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-energy-balance-terms-for-a-5-day-period-in-april">
+<h2>Plot energy balance terms for a 5 day period in April<a class="headerlink" href="#plot-energy-balance-terms-for-a-5-day-period-in-april" title="Link to this heading">#</a></h2>
+<p>Look at some other time periods too. The radiometers went out a lot, but this stretch of time had good radiometer data.</p>
+<p>Identify the ground heat flux (already in the correct units)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ground_heat_flux</span> <span class="o">=</span>  <span class="o">-</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Gsoil_d&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_slice</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;20230401&#39;</span><span class="p">,</span> <span class="s1">&#39;20230405&#39;</span><span class="p">)</span>
+<span class="n">ground_heat_flux</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;G&#39;</span><span class="p">)</span>
+<span class="n">net_radiation</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$LW_</span><span class="si">{in}</span><span class="s1"> - LW_</span><span class="si">{out}</span><span class="s1"> + SW_</span><span class="si">{in}</span><span class="s1"> - SW_</span><span class="si">{out}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">latent_heat_flux</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$H_L$&#39;</span><span class="p">)</span>
+<span class="n">sensible_heat_flux</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time_slice</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$H_s$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Snow Surface Energy Balance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Energy flux (W/m^2)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Energy flux (W/m^2)&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/c5c108d0a642878a1ceea35706c7432afc7dc584564704b3768917522bee6027.png" src="../../_images/c5c108d0a642878a1ceea35706c7432afc7dc584564704b3768917522bee6027.png" />
+</div>
+</div>
+</section>
+<section id="calculate-the-average-hourly-daily-energy-balance-for-december-march">
+<h2>Calculate the average hourly daily energy balance for December - March<a class="headerlink" href="#calculate-the-average-hourly-daily-energy-balance-for-december-march" title="Link to this heading">#</a></h2>
+<p>This period represents “mid-winter”, when snow cover is continuous and no snow melt occurs.</p>
+<p>We calculate the average value for each term for each hour. This is often called a “diurnal cycle” or “composite” plot.</p>
+<p>I find this is easier to do with a Pandas Dataframe than an Xarray dataset, so I create a Pandas Dataframe with our results first.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the dataframe with the terms we calculated. Assign the dataframe index as the timestamps.</span>
+<span class="n">energy_balance_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s1">&#39;net_radiation&#39;</span><span class="p">:</span> <span class="n">net_radiation</span><span class="p">,</span>
+        <span class="s1">&#39;latent_heat_flux&#39;</span><span class="p">:</span> <span class="n">latent_heat_flux</span><span class="p">,</span>
+        <span class="s1">&#39;sensible_heat_flux&#39;</span><span class="p">:</span> <span class="n">sensible_heat_flux</span><span class="p">,</span>
+        <span class="s1">&#39;ground_heat_flux&#39;</span><span class="p">:</span> <span class="n">ground_heat_flux</span><span class="p">,</span>
+<span class="p">},</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">net_radiation</span><span class="o">.</span><span class="n">time</span>
+<span class="p">)</span>
+
+<span class="c1"># Isolate data from December through March</span>
+<span class="n">energy_balance_df</span> <span class="o">=</span> <span class="n">energy_balance_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20221201&#39;</span><span class="p">:</span> <span class="s1">&#39;20230331&#39;</span><span class="p">]</span>
+
+<span class="n">energy_balance_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>net_radiation</th>
+      <th>latent_heat_flux</th>
+      <th>sensible_heat_flux</th>
+      <th>ground_heat_flux</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-12-01 00:00:00</th>
+      <td>NaN</td>
+      <td>-2.738287</td>
+      <td>4.247066</td>
+      <td>11.246106</td>
+    </tr>
+    <tr>
+      <th>2022-12-01 00:30:00</th>
+      <td>-37.944641</td>
+      <td>-3.415608</td>
+      <td>-36.489785</td>
+      <td>10.969131</td>
+    </tr>
+    <tr>
+      <th>2022-12-01 01:00:00</th>
+      <td>-46.407837</td>
+      <td>-3.408481</td>
+      <td>0.993175</td>
+      <td>10.704575</td>
+    </tr>
+    <tr>
+      <th>2022-12-01 01:30:00</th>
+      <td>-47.259842</td>
+      <td>-4.678287</td>
+      <td>8.542756</td>
+      <td>10.478374</td>
+    </tr>
+    <tr>
+      <th>2022-12-01 02:00:00</th>
+      <td>NaN</td>
+      <td>-4.264122</td>
+      <td>12.751584</td>
+      <td>10.376369</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a column representing the hour of the day</span>
+<span class="n">energy_balance_df</span><span class="p">[</span><span class="s1">&#39;hour_of_day&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">energy_balance_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">hour</span>
+
+<span class="c1"># Groupby the hour_of_day and take the median (instead of the mean, this will handle any outliers, which appear in the radiation data)</span>
+<span class="n">energy_balance_df_diurnal_average</span> <span class="o">=</span> <span class="n">energy_balance_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;hour_of_day&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because we want to plot the <em>snowpack</em> energy balance, we will make the sensible and latent heat fluxes negative (see above).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">energy_balance_df_diurnal_average</span><span class="p">[</span><span class="s1">&#39;latent_heat_flux&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span> <span class="n">energy_balance_df_diurnal_average</span><span class="p">[</span><span class="s1">&#39;latent_heat_flux&#39;</span><span class="p">]</span>
+<span class="n">energy_balance_df_diurnal_average</span><span class="p">[</span><span class="s1">&#39;sensible_heat_flux&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span> <span class="n">energy_balance_df_diurnal_average</span><span class="p">[</span><span class="s1">&#39;sensible_heat_flux&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">energy_balance_df_diurnal_average</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Average Diurnal Cycle of the Snowpack Energy Balance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Energy flux (W/m^2)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Energy flux (W/m^2)&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/ae78f39d229de8bb87bd69d1d3cb6433e4d392d3d62e3e83dd448a670b8a2342.png" src="../../_images/ae78f39d229de8bb87bd69d1d3cb6433e4d392d3d62e3e83dd448a670b8a2342.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="estimating-the-residual">
+<h1>Estimating the residual<a class="headerlink" href="#estimating-the-residual" title="Link to this heading">#</a></h1>
+<p>According to our simplified energy balance equation,</p>
+<div class="math notranslate nohighlight">
+\[ \frac{dU}{dt} = R_{net} - H_L - H_s + G\]</div>
+<p>the terms should combine to balance. We have not calculated the internal energy change term yet (we will in the next lab).
+However, if this balance is true, it is logical that the <em>residual</em> of the four terms we have estimated should equal the internal energy change term.
+Let’s calculate the <em>residual</em> of our energy balance and add it to our plot - i.e., let’s estimate</p>
+<div class="math notranslate nohighlight">
+\[ \frac{dU}{dt} \]</div>
+<p>with our other terms. Note that we already negated the latent and sensible heat flux terms, so they are <em>added</em> in the math below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">energy_balance_df_diurnal_average</span><span class="p">[</span><span class="s1">&#39;dU/dt (est. as residual)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span> <span class="p">(</span>
+    <span class="n">energy_balance_df_diurnal_average</span><span class="p">[</span><span class="s1">&#39;net_radiation&#39;</span><span class="p">]</span> 
+    <span class="o">+</span> <span class="n">energy_balance_df_diurnal_average</span><span class="p">[</span><span class="s1">&#39;latent_heat_flux&#39;</span><span class="p">]</span> <span class="c1"># we already negated latent heat flux above, so we need to un-negate it here</span>
+    <span class="o">+</span> <span class="n">energy_balance_df_diurnal_average</span><span class="p">[</span><span class="s1">&#39;sensible_heat_flux&#39;</span><span class="p">]</span> <span class="c1"># we already negated sensible heat flux above, so we need to un-negate it here</span>
+    <span class="o">+</span> <span class="n">energy_balance_df_diurnal_average</span><span class="p">[</span><span class="s1">&#39;ground_heat_flux&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Did we do the math correctly? We can check by making sure the sum of all the energy balance terms is 0.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">energy_balance_df_diurnal_average</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hour_of_day
+0     0.0
+1     0.0
+2     0.0
+3     0.0
+4     0.0
+5     0.0
+6     0.0
+7     0.0
+8     0.0
+9     0.0
+10    0.0
+11    0.0
+12    0.0
+13    0.0
+14    0.0
+15    0.0
+16    0.0
+17    0.0
+18    0.0
+19    0.0
+20    0.0
+21    0.0
+22    0.0
+23    0.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">energy_balance_df_diurnal_average</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Snowpack Energy Balance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Energy flux (W/m^2)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Energy flux (W/m^2)&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/e63565901bf6c4a2f5d1dbb0904c81b7308b1fd2fb57473f8cd758fc0b4092a8.png" src="../../_images/e63565901bf6c4a2f5d1dbb0904c81b7308b1fd2fb57473f8cd758fc0b4092a8.png" />
+</div>
+</div>
+<p>What do we think of this residual? Say that we assumed the internal energy change term is equal to the residual. Does our plot make sense?</p>
+<p>Let’s save this calculation so we can use it in future labs</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">energy_balance_df_diurnal_average</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s2">&quot;energy_balance_df_diurnal_average.pkl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./modules/module3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab3-1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 3-1: Surface Energy Balance at Kettle Ponds - Radiation Balance</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../module4/module4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">4) Temperatures: snowpack and atmospheric stability</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 3-2: Plotting the Surface Energy Balance at Kettle Ponds</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#snowpack-energy-balance-equation">Snowpack Energy Balance Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-turbulent-flux-measurements-into-energy-flux-units-w-m-2">Converting turbulent flux measurements into energy flux units (<span class="math notranslate nohighlight">\(W/m^2\)</span>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-turbulent-latent-heat-flux-measurements-into-energy-flux-units-w-m-2">Converting turbulent latent heat flux measurements into energy flux units (<span class="math notranslate nohighlight">\(W/m^2\)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-turbulent-sensible-heat-flux-measurements-into-energy-flux-units-w-m-2">Converting turbulent sensible heat flux measurements into energy flux units (<span class="math notranslate nohighlight">\(W/m^2\)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-internal-energy-term">Estimating the internal energy term</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sos-data">SOS Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-net-radiation">Calculate net radiation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-latent-heat-flux-in-energy-units">Calculate latent heat flux in energy units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-sensible-heat-flux-in-energy-units">Calculate sensible heat flux in energy units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-snow-surface-temperature-change-in-energy-units">Calculate snow surface temperature change in energy units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-energy-balance-terms-for-a-5-day-period-in-april">Plot energy balance terms for a 5 day period in April</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-average-hourly-daily-energy-balance-for-december-march">Calculate the average hourly daily energy balance for December - March</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-residual">Estimating the residual</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eli Schwat, Steven Pestana, Jessica D. Lundquist, and other contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

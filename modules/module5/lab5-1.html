@@ -1,0 +1,918 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab 5-1: Turbulent fluxes and measures of stability</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/module5/lab5-1';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 5-2: Water vapor fluxes at Kettle Ponds" href="lab5-2.html" />
+    <link rel="prev" title="5) Turbulent transport - momentum, heat, and moisture fluxes above the snow covered earth" href="module5.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Snow Hydrology
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/a-syllabus.html">Syllabus: CEWA 568</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/b-project.html">Course Project: CEWA 568</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../module1/module1.html">1) Properties of Snow</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../module2/module2.html">2) Measurement Strategies, Basics of the Snowpack Mass and Energy Balances, and Snowpack Dynamics</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module3/module3.html">3) Snowpack Energy Balance – Radiation + Albedo, Dust on Snow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-1.html">Lab 3-1: Surface Energy Balance at Kettle Ponds - Radiation Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module3/lab3-2.html">Lab 3-2: Plotting the Surface Energy Balance at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module4/module4.html">4) Temperatures: snowpack and atmospheric stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-0.html">Intuition about the heat equation - Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-1.html">Lab 4-1: Snowpack temperature profiles</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-2.html">Lab 4-2: Snowpack internal energy - completing the snowpack energy balance</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-3.html">Lab 4-3: Snowpack temperature and density profiles - snowpit data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module4/lab4-4.html">Lab 4-4: Atmospheric temperatures and stability</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="module5.html">5) Turbulent transport - momentum, heat, and moisture fluxes above the snow covered earth</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lab 5-1: Turbulent fluxes and measures of stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab5-2.html">Lab 5-2: Water vapor fluxes at Kettle Ponds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab5-3.html">Lab 5-3: Mixing length theory at Kettle Ponds</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module6/module6.html">6) Blowing snow transport and sublimation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-1.html">Lab 6-1: Blowing snow fluxes, wind speed, and shear velocity</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-2.html">Lab 6-2: Blowing snow - snow redistribution on the landscape scale</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module6/lab6-3.html">Lab 6-3: Blowing snow - snow redistribution on the site scale</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module7/module7.html">7) Snow melt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-1.html">Lab 7-1: Snowpack ripening and melt initiation - Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-2.html">Lab 7-2: Snowpack ripening and melt initiation - Energy Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module7/lab7-3.html">Lab 7-3 - Predicting snowmelt rates with the Temperature-Index method</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module8/module8.html">8) Snow-dominated watershed hydrology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-1.html">Lab 8-1: Predicting streamflow with the SWE regression method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module8/lab8-2.html">Lab 8-2: Modeling a snowpack with a gridded, numerical model - openAMUNDSEN</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/a-learning-python.html">Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module1/numpy-tutorial.html">NumPy and the ndarray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1/some-python-tips.html">More python tips</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/b-learning-jupyter.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/instructor_resources.html">Resources for Instructors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/edit/main/book/modules/module5/lab5-1.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Mountain-Hydrology-Research-Group/snow-hydrology/issues/new?title=Issue%20on%20page%20%2Fmodules/module5/lab5-1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/modules/module5/lab5-1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 5-1: Turbulent fluxes and measures of stability</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sos-data">SOS Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-out-the-flux-measurements-in-their-native-units">Check out the flux measurements in their native units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-turbulent-fluxes-to-energy-units">Convert turbulent fluxes to energy units</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-turbulent-latent-heat-flux-measurements-into-energy-flux-units-w-m-2">Converting turbulent latent heat flux measurements into energy flux units (<span class="math notranslate nohighlight">\(W/m^2\)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-turbulent-sensible-heat-flux-measurements-into-energy-flux-units-w-m-2">Converting turbulent sensible heat flux measurements into energy flux units (<span class="math notranslate nohighlight">\(W/m^2\)</span>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-static-stability">Calculate Static Stability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-static-stability-with-sensible-heat-fluxes">Compare static stability with sensible heat fluxes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-dynamic-stability">Calculate Dynamic Stability</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-5-1-turbulent-fluxes-and-measures-of-stability">
+<h1>Lab 5-1: Turbulent fluxes and measures of stability<a class="headerlink" href="#lab-5-1-turbulent-fluxes-and-measures-of-stability" title="Link to this heading">#</a></h1>
+<p>Written by Eli Schwat - January 2024.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">altair</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">alt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="sos-data">
+<h2>SOS Data<a class="headerlink" href="#sos-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sos_file</span> <span class="o">=</span> <span class="s2">&quot;../data/sos_full_dataset_30min.nc&quot;</span>
+<span class="n">sos_dataset</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">sos_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="check-out-the-flux-measurements-in-their-native-units">
+<h2>Check out the flux measurements in their native units<a class="headerlink" href="#check-out-the-flux-measurements-in-their-native-units" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;w_tc__3m_c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;20230501&#39;</span><span class="p">,</span> <span class="s1">&#39;20230505&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ff06cfd7f50&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/276ab421d88a2ee52afe048ac0d72f3b55aeecf660732f9f7ecd1ff547d29b24.png" src="../../_images/276ab421d88a2ee52afe048ac0d72f3b55aeecf660732f9f7ecd1ff547d29b24.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;w_h2o__3m_c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;20230501&#39;</span><span class="p">,</span> <span class="s1">&#39;20230505&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ff06df06690&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/c2e98610e84e4f19026ac72d95a7c1439f21fcea514ee08e1ef996d5c4aabe34.png" src="../../_images/c2e98610e84e4f19026ac72d95a7c1439f21fcea514ee08e1ef996d5c4aabe34.png" />
+</div>
+</div>
+</section>
+<section id="convert-turbulent-fluxes-to-energy-units">
+<h2>Convert turbulent fluxes to energy units<a class="headerlink" href="#convert-turbulent-fluxes-to-energy-units" title="Link to this heading">#</a></h2>
+<section id="converting-turbulent-latent-heat-flux-measurements-into-energy-flux-units-w-m-2">
+<h3>Converting turbulent latent heat flux measurements into energy flux units (<span class="math notranslate nohighlight">\(W/m^2\)</span>)<a class="headerlink" href="#converting-turbulent-latent-heat-flux-measurements-into-energy-flux-units-w-m-2" title="Link to this heading">#</a></h3>
+<p>To convert <code class="docutils literal notranslate"><span class="pre">w_h2o__3m_c</span></code> (latent heat flux in <span class="math notranslate nohighlight">\(g/m^2/s\)</span>) to <span class="math notranslate nohighlight">\(W/m^2\)</span>, we will use the latent heat of sublimation (the sum of the latent heats of fusion and vaporization, <span class="math notranslate nohighlight">\(L_{sub} = 2590 J/g\)</span>).</p>
+<p><span class="math notranslate nohighlight">\(H_l = \)</span> <code class="docutils literal notranslate"><span class="pre">w_h2o__3m_c</span></code> <span class="math notranslate nohighlight">\( * L_{sub}\)</span></p>
+<p>and the units work out like this : <span class="math notranslate nohighlight">\(\frac{g}{m^2 s} * \frac{J}{g} = \frac{J}{m^2 s} = \frac{W}{m^2}\)</span> (b/c 1 Watt = 1 Joule per second).</p>
+<hr class="docutils" />
+</section>
+<section id="converting-turbulent-sensible-heat-flux-measurements-into-energy-flux-units-w-m-2">
+<h3>Converting turbulent sensible heat flux measurements into energy flux units (<span class="math notranslate nohighlight">\(W/m^2\)</span>)<a class="headerlink" href="#converting-turbulent-sensible-heat-flux-measurements-into-energy-flux-units-w-m-2" title="Link to this heading">#</a></h3>
+<p>To convert <code class="docutils literal notranslate"><span class="pre">w_tc__3m_c</span></code> (sensible heat flux in units <span class="math notranslate nohighlight">\(K m/s\)</span>) to <span class="math notranslate nohighlight">\(W/m^2\)</span>, we will use the specific heat capacity of air (<span class="math notranslate nohighlight">\(c_{p}^{air} = 1.005\)</span> <span class="math notranslate nohighlight">\(J/K/g\)</span>) and the density of air (<span class="math notranslate nohighlight">\(\rho_{air} = 1000 g / m^3\)</span>). Note that we use the physical constants for air since it is air that is transporting heat away from the snowpack.</p>
+<p><span class="math notranslate nohighlight">\(H_s = \)</span> <code class="docutils literal notranslate"><span class="pre">w_tc__3m_c</span></code> <span class="math notranslate nohighlight">\( * c_{p}^{air} * \rho_{air}\)</span></p>
+<p>and the units work out like this: <span class="math notranslate nohighlight">\(\frac{K m}{s} * \frac{J}{K g} * \frac{g}{m^3} = = \frac{W}{m^2}\)</span></p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">latent_heat_sublimation</span> <span class="o">=</span> <span class="mi">2590</span> <span class="c1">#J/g</span>
+<span class="n">latent_heat_flux</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;w_h2o__3m_c&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">latent_heat_sublimation</span>
+
+<span class="n">specific_heat_capacity_air</span> <span class="o">=</span> <span class="mf">1.005</span> <span class="c1"># J/K/g</span>
+<span class="n">air_density</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># g/m^3                                       </span>
+<span class="n">sensible_heat_flux</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;w_tc__3m_c&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">specific_heat_capacity_air</span> <span class="o">*</span> <span class="n">air_density</span>
+
+<span class="c1"># negating the measurements</span>
+<span class="n">sensible_heat_flux</span> <span class="o">=</span> <span class="n">sensible_heat_flux</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sensible_heat_flux</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;20230501&#39;</span><span class="p">,</span> <span class="s1">&#39;20230505&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;sensible&#39;</span><span class="p">)</span>
+<span class="n">latent_heat_flux</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;20230501&#39;</span><span class="p">,</span> <span class="s1">&#39;20230505&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;latent&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Heat fluxes (W/m^2)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7ff06c636110&gt;
+</pre></div>
+</div>
+<img alt="../../_images/791db54307cbe537e5ecba1f14ba177c261aa543e4d5ec9f7bd738a8d0bc8b39.png" src="../../_images/791db54307cbe537e5ecba1f14ba177c261aa543e4d5ec9f7bd738a8d0bc8b39.png" />
+</div>
+</div>
+<p>Why do we think sensible heat and latent heat have an inverse relationship?</p>
+</section>
+</section>
+<section id="calculate-static-stability">
+<h2>Calculate Static Stability<a class="headerlink" href="#calculate-static-stability" title="Link to this heading">#</a></h2>
+<p>Stability is characterized with many different methods. One of the simpler methods is to characterize the “static stability” - the stabiliy of the atmopshere due to stratification alone. This is done by using the gradient in potential temperature,</p>
+<div class="math notranslate nohighlight">
+\[\frac{d \theta}{dz}\]</div>
+<p>Let’s calculate the static stability of the atmosphere throughout the entire season. We will use a finite difference approximation to the derivative above using measurements at the snow surface and at 3 meters. We will also ignore the fact that the snow depth is fluctuating.</p>
+<div class="math notranslate nohighlight">
+\[ \frac{d \theta}{d z} = \frac{\Delta \theta}{\Delta z} = \frac{\theta_{3m} - \theta_{surf}}{3}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T_vars</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Tsurfpot_c&#39;</span><span class="p">,</span> <span class="s1">&#39;Tpot_3m_c&#39;</span><span class="p">,</span> 
+<span class="p">]</span>
+<span class="n">stability_df</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[</span>
+    <span class="n">T_vars</span>
+    
+<span class="p">]</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+<span class="n">stability_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="n">stability_df</span><span class="p">[</span><span class="s1">&#39;static_stability&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">stability_df</span><span class="p">[</span><span class="s1">&#39;Tpot_3m_c&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">stability_df</span><span class="p">[</span><span class="s1">&#39;Tsurfpot_c&#39;</span><span class="p">])</span><span class="o">/</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="compare-static-stability-with-sensible-heat-fluxes">
+<h3>Compare static stability with sensible heat fluxes<a class="headerlink" href="#compare-static-stability-with-sensible-heat-fluxes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sensible_heat_flux</span> <span class="o">=</span> <span class="n">sensible_heat_flux</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">stability_df</span><span class="p">[[</span><span class="s1">&#39;static_stability&#39;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">sensible_heat_flux</span><span class="p">[</span><span class="s1">&#39;static_stability&#39;</span><span class="p">],</span> <span class="n">sensible_heat_flux</span><span class="p">[</span><span class="s1">&#39;w_tc__3m_c&#39;</span><span class="p">],</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7ff06c523d10&gt;
+</pre></div>
+</div>
+<img alt="../../_images/57f4bc74604b111d03299bbc6c091505e87e482f2a8f703e1aa50093c8aac4c9.png" src="../../_images/57f4bc74604b111d03299bbc6c091505e87e482f2a8f703e1aa50093c8aac4c9.png" />
+</div>
+</div>
+<p>What pattern do we see? Why?</p>
+</section>
+</section>
+<section id="calculate-dynamic-stability">
+<h2>Calculate Dynamic Stability<a class="headerlink" href="#calculate-dynamic-stability" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">0.4</span>
+<span class="n">theta_h</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Tpot_3m_c&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mf">273.15</span>
+<span class="n">theta_s</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;Tsurfpot_c&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mf">273.15</span>
+<span class="n">u_h</span> <span class="o">=</span> <span class="n">sos_dataset</span><span class="p">[</span><span class="s1">&#39;spd_3m_c&#39;</span><span class="p">]</span>
+<span class="n">Ri_bulk</span> <span class="o">=</span> <span class="n">g</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="p">(</span><span class="n">theta_h</span> <span class="o">-</span> <span class="n">theta_s</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u_h</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">theta_h</span> <span class="o">+</span> <span class="n">theta_s</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ri_bulk</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Ri_bulk&#39;</span>
+<span class="n">sensible_heat_flux</span> <span class="o">=</span> <span class="n">sensible_heat_flux</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Ri_bulk</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">())</span>
+<span class="n">sensible_heat_flux</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>w_tc__3m_c</th>
+      <th>static_stability</th>
+      <th>Ri_bulk</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-11-01 00:00:00</th>
+      <td>-1.798522</td>
+      <td>1.977773</td>
+      <td>0.833876</td>
+    </tr>
+    <tr>
+      <th>2022-11-01 00:30:00</th>
+      <td>-8.952477</td>
+      <td>1.909485</td>
+      <td>0.103544</td>
+    </tr>
+    <tr>
+      <th>2022-11-01 01:00:00</th>
+      <td>-0.394793</td>
+      <td>1.734680</td>
+      <td>0.209729</td>
+    </tr>
+    <tr>
+      <th>2022-11-01 01:30:00</th>
+      <td>-7.073821</td>
+      <td>1.545715</td>
+      <td>0.094483</td>
+    </tr>
+    <tr>
+      <th>2022-11-01 02:00:00</th>
+      <td>8.566571</td>
+      <td>1.438609</td>
+      <td>0.067049</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">sensible_heat_flux</span><span class="p">[</span><span class="s1">&#39;Ri_bulk&#39;</span><span class="p">],</span> <span class="n">sensible_heat_flux</span><span class="p">[</span><span class="s1">&#39;w_tc__3m_c&#39;</span><span class="p">],</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7ff06c76bc90&gt;
+</pre></div>
+</div>
+<img alt="../../_images/6cc1db4fb7fea21fcbe3a3b303d4719255c6b924f43abbade186102140326b01.png" src="../../_images/6cc1db4fb7fea21fcbe3a3b303d4719255c6b924f43abbade186102140326b01.png" />
+</div>
+</div>
+<p>How does the relationship between w’T’ and dynamic stability (Ri) differ from the relationship between w’T’ and static stability (<span class="math notranslate nohighlight">\(d \theta /dz\)</span>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">sensible_heat_flux</span><span class="p">[</span><span class="s1">&#39;static_stability&#39;</span><span class="p">],</span> <span class="n">sensible_heat_flux</span><span class="p">[</span><span class="s1">&#39;Ri_bulk&#39;</span><span class="p">],</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7ff06c5dbc50&gt;
+</pre></div>
+</div>
+<img alt="../../_images/eb74538771a0b1141946e2dd93f81e4cbf585b231340ba5a396d8a51bca2ec80.png" src="../../_images/eb74538771a0b1141946e2dd93f81e4cbf585b231340ba5a396d8a51bca2ec80.png" />
+</div>
+</div>
+<p>What pattern do we see? Why?</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./modules/module5"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="module5.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">5) Turbulent transport - momentum, heat, and moisture fluxes above the snow covered earth</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab5-2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 5-2: Water vapor fluxes at Kettle Ponds</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sos-data">SOS Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-out-the-flux-measurements-in-their-native-units">Check out the flux measurements in their native units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-turbulent-fluxes-to-energy-units">Convert turbulent fluxes to energy units</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-turbulent-latent-heat-flux-measurements-into-energy-flux-units-w-m-2">Converting turbulent latent heat flux measurements into energy flux units (<span class="math notranslate nohighlight">\(W/m^2\)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-turbulent-sensible-heat-flux-measurements-into-energy-flux-units-w-m-2">Converting turbulent sensible heat flux measurements into energy flux units (<span class="math notranslate nohighlight">\(W/m^2\)</span>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-static-stability">Calculate Static Stability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-static-stability-with-sensible-heat-fluxes">Compare static stability with sensible heat fluxes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-dynamic-stability">Calculate Dynamic Stability</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eli Schwat, Steven Pestana, Jessica D. Lundquist, and other contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
