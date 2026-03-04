@@ -14,3 +14,4 @@ netcdf4
 contextily
 metpy
 dataretrieval
+pint-xarray
